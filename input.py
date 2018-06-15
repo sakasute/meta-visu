@@ -14,44 +14,35 @@ sampling_end = input('Poiminnan loppupvm (PP-KK-VVVV): ')
 path = 'poiminnat.json'
 
 
-def checkIfNewChild(dictList, name):
-    ''' Checks whether a list of dictionaries already has a dictionary with a given name or not.'''
-    for item in dictList:
-        if item['name'] == name:
-            return True
-    else:
-        return False
-
-
-def getAdminByName(data_dict, adminName):
+def get_admin_by_name(data_dict, admin_name):
     for admin in data_dict['registerAdmins']:
-        if admin['name'] == adminName:
+        if admin['name'] == admin_name:
             return admin
     else:
-        return False
+        return None
 
 
-def getRegisterByName(data_dict, adminName, registerName):
-    admin = getAdminByName(data_dict, adminName)
+def get_register_by_name(data_dict, admin_name, register_name):
+    admin = get_admin_by_name(data_dict, admin_name)
     if admin:
         for register in admin['registers']:
-            if register['name'] == registerName:
+            if register['name'] == register_name:
                 return register
         else:
-            return False
+            return None
     else:
-        return False
+        return None
 
 
-def addNewAdmin(data_dict, newAdmin):
-    data_dict['registerAdmins'].append(newAdmin)
+def add_new_admin(data_dict, new_admin):
+    data_dict['registerAdmins'].append(new_admin)
     return data_dict
 
 
-def addNewRegister(data_dict, adminName, newRegister):
+def add_new_register(data_dict, admin_name, new_register):
     for admin in data_dict['registerAdmins']:
-        if admin['name'] == adminName:
-            admin['registers'].append(newRegister)
+        if admin['name'] == admin_name:
+            admin['registers'].append(new_register)
 
     return data_dict
 
@@ -66,21 +57,22 @@ with open(path, 'r') as data_file:
         'parent': register
     }
 
-    newRegister = {
+    new_register = {
         'name': register_admin,
         'samplings': [sampling],
         'parent': register_admin,
     }
 
-    newAdmin = {
+    new_admin = {
         'name': register_admin,
-        'registers': [newRegister],
+        'registers': [new_register],
         'parent': 'rootLevel'
     }
 
-    if checkIfNewChild(data_dict['registerAdmins'], register_admin):
-        data_dict = addNewAdmin(data_dict, newAdmin)
-    elif checkIfNewRegister()
-
+    if get_admin_by_name(data_dict, register_admin) == None:
+        data_dict = add_new_admin(data_dict, new_admin)
+    elif get_register_by_name(data_dict, register_admin, register) == None:
+        data_dict = add_new_register(data_dict, register_admin, register)
+    # TODO: add_sampling() and handle basic add_admin and add_register
 with open(path, 'w', encoding='utf8') as data_file:
     json.dump(data_dict, data_file, ensure_ascii=False)
