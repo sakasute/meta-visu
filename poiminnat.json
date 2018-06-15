@@ -1,22 +1,5 @@
 {
-  "KELA": {
-    "opintotuki": {
-      "opintotuki8797.rds": { "alkupvm": "1-1-1987", "loppupvm": "31-12-2016" },
-      "opintotuki17.rds": { "alkupvm": "1-1-2017", "loppupvm": "31-12-2017" }
-    },
-    "toimeentulotuki": {
-      "tt1216": { "alkupvm": "1-1-2012", "loppupvm": "31-12-2016" }
-    }
-  },
-  "TEM": {
-    "työ- ja elinkeino": {
-      "tem2010": { "alkupvm": "1-1-2010", "loppupvm": "31-12-2010" }
-    }
-  },
-  "ETK": {
-    "eläketurva": {
-      "elaketurva8716": { "alkupvm": "1-1-1987", "loppupvm": "31-12-2016" },
-      "elaketurva2017.rds": { "alkupvm": "1-1-2017", "loppupvm": "31-12-2017" }
-    }
-  }
+  "name": "rootLevel",
+  "parent": "null",
+  "registerAdmins": []
 }
