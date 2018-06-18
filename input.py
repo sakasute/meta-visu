@@ -5,74 +5,92 @@ import json
 from pprint import pprint
 
 
+def find_by_name(list, name):
+    for idx, item in enumerate(list):
+        if item['name'] == name:
+            return idx
+    else:
+        return None
+
+
+def add_sampling(admin_level, register_level, sampling_level):
+    ''' admin_level is datastructure that goes from admin level to sampling level '''
+    admin_idx = find_by_name(data['registerAdmins'], admin_level['name'])
+    register_idx = None
+    sampling_idx = None
+
+    if admin_idx is not None:
+        register_idx = find_by_name(
+            data['registerAdmins'][admin_idx]['registers'], register_level['name'])
+
+        if register_idx is not None:
+            sampling_idx = find_by_name(data['registerAdmins'][admin_idx]
+                                        ['registers'][register_idx]['samplings'], sampling_level['name'])
+
+    if admin_idx is None:
+        add_from_admin_level(admin_level)
+    elif register_idx is None:
+        add_from_register_level(register_level, admin_idx)
+    elif sampling_idx is None:
+        add_from_sampling_level(sampling_level, admin_idx, register_idx)
+    else:
+        print('Poiminta on jo olemassa - mitään ei tapahtunut.')
+
+
+def add_from_admin_level(admin_level):
+    data['registerAdmins'].append(admin_level)
+
+
+def add_from_register_level(register_level, admin_idx):
+    admin = data['registerAdmins'][admin_idx]
+    admin['registers'].append(register_level)
+
+
+def add_from_sampling_level(sampling_level, admin_idx, register_idx):
+    admin = data['registerAdmins'][admin_idx]
+    register = admin['registers'][register_idx]
+    register['samplings'].append(
+        sampling_level)
+
+
 register_admin = input('Rekisterinpitäjä: ')
 register = input('Rekisteri: ')
 sampling_name = input('Poiminnan nimi: ')
 sampling_start = input('Poiminnan alkupvm (PP-KK-VVVV): ')
 sampling_end = input('Poiminnan loppupvm (PP-KK-VVVV): ')
 
+data = {}
+
 path = 'poiminnat.json'
 
-
-def get_admin_by_name(data_dict, admin_name):
-    for admin in data_dict['registerAdmins']:
-        if admin['name'] == admin_name:
-            return admin
-    else:
-        return None
-
-
-def get_register_by_name(data_dict, admin_name, register_name):
-    admin = get_admin_by_name(data_dict, admin_name)
-    if admin:
-        for register in admin['registers']:
-            if register['name'] == register_name:
-                return register
-        else:
-            return None
-    else:
-        return None
-
-
-def add_new_admin(data_dict, new_admin):
-    data_dict['registerAdmins'].append(new_admin)
-    return data_dict
-
-
-def add_new_register(data_dict, admin_name, new_register):
-    for admin in data_dict['registerAdmins']:
-        if admin['name'] == admin_name:
-            admin['registers'].append(new_register)
-
-    return data_dict
-
-
 with open(path, 'r') as data_file:
-    data_dict = json.load(data_file)
+    '''
+    The default json-file:
+    {"name": "rootLevel", "parent": null, "registerAdmins": []}
+    '''
 
-    sampling = {
+    data = json.load(data_file)
+
+    sampling_level = {
         'name': sampling_name,
         'startDate': sampling_start,
         'endDate': sampling_end,
         'parent': register
     }
 
-    new_register = {
-        'name': register_admin,
-        'samplings': [sampling],
+    register_level = {
+        'name': register,
+        'samplings': [sampling_level],
         'parent': register_admin,
     }
 
-    new_admin = {
+    admin_level = {
         'name': register_admin,
-        'registers': [new_register],
+        'registers': [register_level],
         'parent': 'rootLevel'
     }
 
-    if get_admin_by_name(data_dict, register_admin) == None:
-        data_dict = add_new_admin(data_dict, new_admin)
-    elif get_register_by_name(data_dict, register_admin, register) == None:
-        data_dict = add_new_register(data_dict, register_admin, register)
-    # TODO: add_sampling() and handle basic add_admin and add_register
+    add_sampling(admin_level, register_level, sampling_level)
+
 with open(path, 'w', encoding='utf8') as data_file:
-    json.dump(data_dict, data_file, ensure_ascii=False)
+    json.dump(data, data_file, ensure_ascii=False)

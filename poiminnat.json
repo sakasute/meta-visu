@@ -1,5 +1,1 @@
-{
-  "name": "rootLevel",
-  "parent": "null",
-  "registerAdmins": []
-}
+{"name": "rootLevel", "parent": null, "registerAdmins": [{"name": "KELA", "registers": [{"name": "opintotuki", "samplings": [{"name": "opt8797.rds", "startDate": "1-1-1987", "endDate": "31-12-1997", "parent": "opintotuki"}, {"name": "opt9816.rds", "startDate": "1-1-1998", "endDate": "31-12-2016", "parent": "opintotuki"}], "parent": "KELA"}], "parent": "rootLevel"}, {"name": "TEM", "registers": [{"name": "tulotaso", "samplings": [{"name": "tt8716.txt", "startDate": "1-1-1987", "endDate": "31-12-2016", "parent": "tulostaso"}], "parent": "TEM"}], "parent": "rootLevel"}, {"name": "ETK", "registers": [{"name": "eläkkeet", "samplings": [{"name": "elake8797.rds", "startDate": "1-1-1987", "endDate": "31-12-1997", "parent": "eläkkeet"}, {"name": "elake9816.rds", "startDate": "1-1-1998", "endDate": "31-12-2016", "parent": "eläkkeet"}, {"name": "elake17.rds", "startDate": "1-1-2017", "endDate": "31-12-2017", "parent": "eläkkeet"}], "parent": "ETK"}], "parent": "rootLevel"}]}
