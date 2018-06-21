@@ -15,9 +15,7 @@ function findChildArr(object) {
 
 function diagonal(s, d) {
   const path = `M ${s.y} ${s.x}
-          C ${(s.y + d.y) / 2} ${s.x},
-            ${(s.y + d.y) / 2} ${d.x},
-            ${d.y} ${d.x}`;
+                L ${d.y} ${d.x}`;
 
   return path;
 }
@@ -120,7 +118,8 @@ async function main() {
   linkUpdate
     .transition()
     .duration(duration)
-    .attr('d', d => diagonal(d, d.parent));
+    .attr('d', d => diagonal(d, d.parent))
+    .attr('stroke', 'red');
 
   // TODO: exit
 }
