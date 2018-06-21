@@ -66,7 +66,7 @@ path = 'poiminnat.json'
 with open(path, 'r') as data_file:
     '''
     The default json-file:
-    {"name": "rootLevel", "parent": null, "registerAdmins": []}
+    {"name": "rootLevel", "registerAdmins": []}
     '''
 
     data = json.load(data_file)
@@ -75,19 +75,16 @@ with open(path, 'r') as data_file:
         'name': sampling_name,
         'startDate': sampling_start,
         'endDate': sampling_end,
-        'parent': register
     }
 
     register_level = {
         'name': register,
         'samplings': [sampling_level],
-        'parent': register_admin,
     }
 
     admin_level = {
         'name': register_admin,
         'registers': [register_level],
-        'parent': 'rootLevel'
     }
 
     add_sampling(admin_level, register_level, sampling_level)

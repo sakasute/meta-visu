@@ -1,78 +1,65 @@
 {
   "name": "rootLevel",
-  "parent": null,
-  "children": [
+  "registerAdmins": [
     {
       "name": "KELA",
-      "children": [
+      "registers": [
         {
           "name": "opintotuki",
-          "children": [
+          "samplings": [
             {
               "name": "opt8797.rds",
               "startDate": "1-1-1987",
-              "endDate": "31-12-1997",
-              "parent": "opintotuki"
+              "endDate": "31-12-1997"
             },
             {
               "name": "opt9816.rds",
               "startDate": "1-1-1998",
-              "endDate": "31-12-2016",
-              "parent": "opintotuki"
+              "endDate": "31-12-2016"
             }
-          ],
-          "parent": "KELA"
+          ]
         }
-      ],
-      "parent": "rootLevel"
+      ]
     },
     {
       "name": "TEM",
-      "children": [
+      "registers": [
         {
           "name": "tulotaso",
-          "children": [
+          "samplings": [
             {
               "name": "tt8716.txt",
               "startDate": "1-1-1987",
-              "endDate": "31-12-2016",
-              "parent": "tulostaso"
+              "endDate": "31-12-2016"
             }
-          ],
-          "parent": "TEM"
+          ]
         }
-      ],
-      "parent": "rootLevel"
+      ]
     },
     {
       "name": "ETK",
-      "children": [
+      "registers": [
         {
           "name": "eläkkeet",
-          "children": [
+          "samplings": [
             {
               "name": "elake8797.rds",
               "startDate": "1-1-1987",
-              "endDate": "31-12-1997",
-              "parent": "eläkkeet"
+              "endDate": "31-12-1997"
             },
             {
               "name": "elake9816.rds",
               "startDate": "1-1-1998",
-              "endDate": "31-12-2016",
-              "parent": "eläkkeet"
+              "endDate": "31-12-2016"
             },
             {
               "name": "elake17.rds",
               "startDate": "1-1-2017",
-              "endDate": "31-12-2017",
-              "parent": "eläkkeet"
+              "endDate": "31-12-2017"
             }
-          ],
-          "parent": "ETK"
+          ]
         }
-      ],
-      "parent": "rootLevel"
+      ]
     }
   ]
 }

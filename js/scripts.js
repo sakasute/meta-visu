@@ -4,9 +4,26 @@ async function getData(file) {
     .then(dataJson => dataJson);
 }
 
+function findChildArr(object) {
+  const childArrNames = ['registerAdmins', 'registers', 'samplings'];
+  const childrenName = childArrNames.filter(name => object[name] !== undefined)[0];
+  if (childrenName !== undefined) {
+    return object[childrenName];
+  }
+  return null;
+}
+
+function diagonal(s, d) {
+  const path = `M ${s.y} ${s.x}
+          C ${(s.y + d.y) / 2} ${s.x},
+            ${(s.y + d.y) / 2} ${d.x},
+            ${d.y} ${d.x}`;
+
+  return path;
+}
+
 async function main() {
   const data = await getData('poiminnat.json');
-  console.log(data);
 
   const margin = {
     top: 20,
@@ -28,24 +45,22 @@ async function main() {
     .append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-  const treemap = d3.tree().size([height, width]);
+  const treeLayout = d3.tree().size([height, width]);
 
-  const root = d3.hierarchy(data, d => d.children);
+  const root = d3.hierarchy(data, d => findChildArr(d));
   root.x0 = height / 2;
   root.y0 = 0;
 
-  function diagonal(s, d) {
-    const path = `M ${s.y} ${s.x}
-            C ${(s.y + d.y) / 2} ${s.x},
-              ${(s.y + d.y) / 2} ${d.x},
-              ${d.y} ${d.x}`;
+  const tree = treeLayout(root);
+  console.log('data', data);
+  console.log('root', root);
+  console.log('treeLayout', treeLayout);
+  console.log('tree', tree);
 
-    return path;
-  }
+  const nodes = tree.descendants();
+  console.log(nodes);
 
   function update(source) {
-    console.log(source);
-    const treeData = treemap(source);
     const nodes = treeData.descendants();
     const links = nodes.slice(1);
 
@@ -93,8 +108,6 @@ async function main() {
       .duration(duration)
       .attr('d', d => diagonal(d, d.parent));
   }
-
-  update(root);
 }
 
 main();
