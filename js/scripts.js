@@ -23,7 +23,7 @@ function diagonal(s, d) {
 }
 
 async function main() {
-  const data = await getData('poiminnat.json');
+  const sourceData = await getData('poiminnat.json');
 
   const margin = {
     top: 20,
@@ -34,7 +34,7 @@ async function main() {
   const width = 960 - margin.right - margin.left;
   const height = 800 - margin.top - margin.bottom;
 
-  let i = 0;
+  const i = 0;
   const duration = 750;
 
   const svg = d3
@@ -47,67 +47,82 @@ async function main() {
 
   const treeLayout = d3.tree().size([height, width]);
 
-  const root = d3.hierarchy(data, d => findChildArr(d));
+  const root = d3.hierarchy(sourceData, d => findChildArr(d));
   root.x0 = height / 2;
   root.y0 = 0;
 
   const tree = treeLayout(root);
-  console.log('data', data);
+  console.log('data', sourceData);
   console.log('root', root);
   console.log('treeLayout', treeLayout);
   console.log('tree', tree);
 
-  const nodes = tree.descendants();
-  console.log(nodes);
+  let nodes = tree.descendants();
+  console.log('nodes', nodes);
 
-  function update(source) {
-    const nodes = treeData.descendants();
-    const links = nodes.slice(1);
+  const links = nodes.slice(1);
+  console.log('links', links);
 
-    nodes.forEach((d) => {
-      d.y = d.depth * 180;
+  nodes = nodes.map(d => ({ ...d, y: d.depth * 180 }));
+  console.log('nodes - updated', nodes);
+
+  // ******** nodes ********
+
+  // TODO: add custom key-function (adding d.id)
+  const node = svg.selectAll('g.node').data(nodes);
+
+  // enter
+  const nodeEnter = node
+    .enter()
+    .append('g')
+    .attr('class', 'node')
+    .attr('transform', () => `translate(${root.y0}, ${root.x0})`); // .on('click')
+
+  nodeEnter
+    .append('circle')
+    .attr('class', 'node__circle')
+    .attr('r', 10)
+    .style('fill', 'gray');
+
+  nodeEnter
+    .append('text')
+    .attr('class', 'node__text')
+    .attr('dy', '0.35em')
+    .text(d => d.data.name);
+
+  // update
+  const nodeUpdate = nodeEnter.merge(node);
+
+  nodeUpdate
+    .transition()
+    .duration(duration)
+    .attr('transform', d => `translate(${d.y}, ${d.x})`);
+
+  // TODO: exit
+
+  // ******** links ********
+  // TODO: add ids
+  const link = svg.selectAll('path.link').data(links);
+
+  // enter
+  const linkEnter = link
+    .enter()
+    .insert('path', 'g')
+    .attr('class', 'link')
+    .attr('d', () => {
+      const o = { x: root.x, y: root.y };
+      return diagonal(o, o);
     });
 
-    const node = svg.selectAll('g.node').data(nodes, d => d.id || (d.id = ++i));
+  // update
+  const linkUpdate = linkEnter.merge(link);
 
-    const nodeEnter = node
-      .enter()
-      .append('g')
-      .attr('class', 'node')
-      .attr('transform', () => `translate(${source.y0}, ${source.x0})`);
-    /* .on('click',...) */
+  linkUpdate
+    .transition()
+    .duration(duration)
+    .attr('d', d => diagonal(d, d.parent));
 
-    nodeEnter
-      .append('circle')
-      .attr('class', 'node')
-      .attr('r', 10)
-      .style('fill', 'black');
-
-    const nodeUpdate = nodeEnter.merge(node);
-
-    nodeUpdate
-      .transition()
-      .duration(duration)
-      .attr('transform', d => `translate(${d.y}, ${d.x})`);
-
-    const link = svg.selectAll('path.link').data(links, d => d.id);
-
-    const linkEnter = link
-      .enter()
-      .insert('path', 'g')
-      .attr('class', 'link')
-      .attr('d', () => {
-        const o = { x: source.x0, y: source.y0 };
-        return diagonal(o, o);
-      });
-
-    const linkUpdate = linkEnter.merge(link);
-
-    linkUpdate
-      .transition()
-      .duration(duration)
-      .attr('d', d => diagonal(d, d.parent));
-  }
+  // TODO: exit
 }
 
 main();
