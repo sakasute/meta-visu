@@ -15,7 +15,9 @@ function findChildArr(object) {
 
 function diagonal(s, d) {
   const path = `M ${s.y} ${s.x}
-                L ${d.y} ${d.x}`;
+                C ${(s.y + d.y) / 2} ${s.x},
+                  ${(s.y + d.y) / 2} ${d.x},
+                  ${d.y} ${d.x}`;
 
   return path;
 }
@@ -25,12 +27,12 @@ async function main() {
 
   const margin = {
     top: 20,
-    right: 120,
+    right: 90,
     bottom: 20,
-    left: 120,
+    left: 90,
   };
   const width = 960 - margin.right - margin.left;
-  const height = 800 - margin.top - margin.bottom;
+  const height = 500 - margin.top - margin.bottom;
 
   const i = 0;
   const duration = 750;
@@ -58,10 +60,10 @@ async function main() {
   let nodes = tree.descendants();
   console.log('nodes', nodes);
 
-  const links = nodes.slice(1);
+  const links = tree.descendants().slice(1);
   console.log('links', links);
 
-  nodes = nodes.map(d => ({ ...d, y: d.depth * 180 }));
+  nodes = nodes.map(d => ({ ...d, y: d.depth * 260 }));
   console.log('nodes - updated', nodes);
 
   // ******** nodes ********
@@ -118,8 +120,7 @@ async function main() {
   linkUpdate
     .transition()
     .duration(duration)
-    .attr('d', d => diagonal(d, d.parent))
-    .attr('stroke', 'red');
+    .attr('d', d => diagonal(d, d.parent));
 
   // TODO: exit
 }
