@@ -9,13 +9,23 @@
           "samplings": [
             {
               "name": "opt8797.rds",
-              "startDate": "1-1-1987",
-              "endDate": "31-12-1997"
+              "startDate": "1987-1-1",
+              "endDate": "1997-12-31"
             },
             {
-              "name": "opt9816.rds",
-              "startDate": "1-1-1998",
-              "endDate": "31-12-2016"
+              "name": "opt9710.rds",
+              "startDate": "1997-1-1",
+              "endDate": "2010-12-31"
+            }
+          ]
+        },
+        {
+          "name": "yleinen asumistuki",
+          "samplings": [
+            {
+              "name": "yas.sav",
+              "startDate": "2010-1-1",
+              "endDate": "31-12-2015"
             }
           ]
         }
@@ -25,12 +35,27 @@
       "name": "TEM",
       "registers": [
         {
-          "name": "tulotaso",
+          "name": "lorem",
           "samplings": [
             {
-              "name": "tt8716.txt",
-              "startDate": "1-1-1987",
-              "endDate": "31-12-2016"
+              "name": "tem87.rds",
+              "startDate": "1987-1-1",
+              "endDate": "1997-12-31"
+            },
+            {
+              "name": "tem97.rds",
+              "startDate": "1997-1-1",
+              "endDate": "2010-12-31"
+            }
+          ]
+        },
+        {
+          "name": "ipsum",
+          "samplings": [
+            {
+              "name": "tem2.sav",
+              "startDate": "1997-1-1-",
+              "endDate": "2010-12-31"
             }
           ]
         }
@@ -43,19 +68,14 @@
           "name": "eläkkeet",
           "samplings": [
             {
-              "name": "elake8797.rds",
-              "startDate": "1-1-1987",
-              "endDate": "31-12-1997"
+              "name": "elake87.rds",
+              "startDate": "1987-1-1",
+              "endDate": "2000-12-31"
             },
             {
-              "name": "elake9816.rds",
-              "startDate": "1-1-1998",
-              "endDate": "31-12-2016"
-            },
-            {
-              "name": "elake17.rds",
-              "startDate": "1-1-2017",
-              "endDate": "31-12-2017"
+              "name": "elake00.rds",
+              "startDate": "2000-1-1",
+              "endDate": "2015-12-31"
             }
           ]
         }

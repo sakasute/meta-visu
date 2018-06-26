@@ -3,6 +3,7 @@
 
 import json
 from pprint import pprint
+from datetime import date
 
 
 def find_by_name(list, name):
@@ -53,11 +54,20 @@ def add_from_sampling_level(sampling_level, admin_idx, register_idx):
         sampling_level)
 
 
+# def convert_to_date(date_str):
+#     date_arr = [int(x) for x in date_str.split('-')]
+#     print(date_arr)
+#     return date(date_arr[2], date_arr[1], date_arr[0])
+
+
 register_admin = input('Rekisterinpitäjä: ')
 register = input('Rekisteri: ')
 sampling_name = input('Poiminnan nimi: ')
-sampling_start = input('Poiminnan alkupvm (PP-KK-VVVV): ')
-sampling_end = input('Poiminnan loppupvm (PP-KK-VVVV): ')
+sampling_start = input('Poiminnan alkupvm (VVVV-KK-PP): ')
+sampling_end = input('Poiminnan loppupvm (VVVV-KK-PP): ')
+
+# start_date = convert_to_date(sampling_start)
+# end_date = convert_to_date(sampling_end)
 
 data = {}
 
@@ -90,4 +100,4 @@ with open(path, 'r') as data_file:
     add_sampling(admin_level, register_level, sampling_level)
 
 with open(path, 'w', encoding='utf8') as data_file:
-    json.dump(data, data_file, ensure_ascii=False)
+    json.dump(data, data_file, ensure_ascii=False, default=str, indent=2)
