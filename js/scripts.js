@@ -22,8 +22,8 @@ function diagonal(s, d) {
   return path;
 }
 
-async function main() {
-  const sourceData = await getData('poiminnat.json');
+function initializeTree(data) {
+  const sourceData = data;
 
   const margin = {
     top: 20,
@@ -32,9 +32,9 @@ async function main() {
     left: 90,
   };
   const width = 960 - margin.right - margin.left;
-  const height = 500 - margin.top - margin.bottom;
+  const height = 600 - margin.top - margin.bottom;
 
-  const i = 0;
+  // const i = 0;
   const duration = 750;
 
   const svg = d3
@@ -52,19 +52,19 @@ async function main() {
   root.y0 = 0;
 
   const tree = treeLayout(root);
-  console.log('data', sourceData);
-  console.log('root', root);
-  console.log('treeLayout', treeLayout);
-  console.log('tree', tree);
+  // console.log('data', sourceData);
+  // console.log('root', root);
+  // console.log('treeLayout', treeLayout);
+  // console.log('tree', tree);
 
   let nodes = tree.descendants();
-  console.log('nodes', nodes);
+  // console.log('nodes', nodes);
 
   const links = tree.descendants().slice(1);
-  console.log('links', links);
+  // console.log('links', links);
 
   nodes = nodes.map(d => ({ ...d, y: d.depth * 260 }));
-  console.log('nodes - updated', nodes);
+  // console.log('nodes - updated', nodes);
 
   // ******** nodes ********
 
@@ -123,6 +123,48 @@ async function main() {
     .attr('d', d => diagonal(d, d.parent));
 
   // TODO: exit
+}
+
+async function main() {
+  const sourceData = await getData('poiminnat.json');
+  initializeTree(sourceData);
+
+  const width = 460;
+  const height = 75;
+
+  const dataShard = sourceData.registerAdmins[0].registers[0].samplings; // one set of samplings
+  const timeStart = new Date(1987, 0, 1); // TODO: calculate from data
+  const timeEnd = new Date(2017, 11, 31);
+
+  const x = d3
+    .scaleTime()
+    .domain([timeStart, timeEnd])
+    .range([0, width]);
+
+  // **** TIMELINE ****
+  const timeChart = d3
+    .select('body')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height);
+
+  timeChart
+    .selectAll('rect')
+    .data(dataShard)
+    .enter()
+    .append('rect')
+    .attr('class', 'time-chart__bar')
+    .attr('height', 15)
+    .attr('width', d => x(new Date(d.endDate)) - x(new Date(d.startDate)))
+    .attr('x', d => x(new Date(d.startDate)))
+    .attr('y', height - 50);
+
+  const xAxis = d3.axisBottom(x);
+
+  timeChart
+    .append('g')
+    .call(xAxis)
+    .attr('transform', `translate(0, ${height - 30})`);
 }
 
 main();

@@ -23,3 +23,13 @@ html {
   stroke: #ccc;
   stroke-width: 2px;
 }
+
+.time-chart__bar {
+  fill: green;
+  opacity: 0.75;
+  stroke-width: 2.5;
+}
+
+.time-chart__bar:hover {
+  opacity: 1;
+}
