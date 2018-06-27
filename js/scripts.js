@@ -22,9 +22,29 @@ function diagonal(s, d) {
   return path;
 }
 
-function initializeTree(data) {
-  const sourceData = data;
+function collapse(d) {
+  if (d.children) {
+    d.childrenStored = d.children;
+    d.childrenStored.forEach(collapse);
+    d.children = null;
+  }
+}
 
+function clickNode(d) {
+  console.log(d);
+  const { source } = d;
+  if (source.children) {
+    source.childrenStored = source.children;
+    source.children = null;
+  } else {
+    source.children = source.childrenStored;
+    source.childrenStored = null;
+  }
+  console.log({ ...d, source });
+  updateTree({ ...d, source });
+}
+
+function initializeTree(data) {
   const margin = {
     top: 20,
     right: 90,
@@ -37,7 +57,7 @@ function initializeTree(data) {
   // const i = 0;
   const duration = 750;
 
-  const svg = d3
+  const treeSVG = d3
     .select('body')
     .append('svg')
     .attr('width', width + margin.right + margin.left)
@@ -47,47 +67,67 @@ function initializeTree(data) {
 
   const treeLayout = d3.tree().size([height, width]);
 
-  const root = d3.hierarchy(sourceData, d => findChildArr(d));
+  const root = d3.hierarchy(data, d => findChildArr(d));
   root.x0 = height / 2;
   root.y0 = 0;
 
   const tree = treeLayout(root);
-  // console.log('data', sourceData);
-  // console.log('root', root);
-  // console.log('treeLayout', treeLayout);
-  // console.log('tree', tree);
 
-  let nodes = tree.descendants();
-  // console.log('nodes', nodes);
+  return {
+    source: root,
+    root,
+    treeSVG,
+    treeLayout,
+    duration,
+    tree,
+  };
+}
 
+function updateTree(sourceObj) {
+  console.log(sourceObj);
+  const { source } = sourceObj;
+  const { root } = sourceObj;
+  const { duration } = sourceObj;
+  const { treeSVG } = sourceObj;
+  const { tree } = sourceObj;
+
+  const nodes = tree.descendants().map(d => ({ ...d, y: d.depth * 260 }));
   const links = tree.descendants().slice(1);
-  // console.log('links', links);
-
-  nodes = nodes.map(d => ({ ...d, y: d.depth * 260 }));
-  // console.log('nodes - updated', nodes);
 
   // ******** nodes ********
 
   // TODO: add custom key-function (adding d.id)
-  const node = svg.selectAll('g.node').data(nodes);
+  const node = treeSVG.selectAll('g.node').data(nodes);
 
   // enter
   const nodeEnter = node
     .enter()
     .append('g')
     .attr('class', 'node')
-    .attr('transform', () => `translate(${root.y0}, ${root.x0})`); // .on('click')
+    .attr('transform', () => `translate(${source.y0}, ${source.x0})`)
+    .on('click', (d) => {
+      console.log(d);
+      clickNode({
+        source: d,
+        root,
+        duration,
+        treeSVG,
+        tree,
+      });
+    });
 
   nodeEnter
     .append('circle')
     .attr('class', 'node__circle')
-    .attr('r', 10)
-    .style('fill', 'gray');
+    .attr('r', 1e-6)
+    .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
 
   nodeEnter
     .append('text')
-    .attr('class', 'node__text')
+    .attr('class', 'node__label')
     .attr('dy', '0.35em')
+    .attr('x', d => (d.children || d.childrenStored ? -13 : 13))
+    .attr('text-anchor', d => (d.children || d.childrenStored ? 'end' : 'start'))
     .text(d => d.data.name);
 
   // update
@@ -98,11 +138,27 @@ function initializeTree(data) {
     .duration(duration)
     .attr('transform', d => `translate(${d.y}, ${d.x})`);
 
-  // TODO: exit
+  nodeUpdate
+    .select('.node__circle')
+    .attr('r', 10)
+    .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
+
+  // exit
+
+  const nodeExit = node
+    .exit()
+    .transition()
+    .duration(duration)
+    .attr('transform', () => `translate(${root.y}, ${root.x})`)
+    .remove();
+
+  nodeExit.select('.node__circle').attr('r', 1e-6);
+
+  nodeExit.select('.node__label').style('fill-opacity', 1e-6);
 
   // ******** links ********
   // TODO: add ids
-  const link = svg.selectAll('path.link').data(links);
+  const link = treeSVG.selectAll('path.link').data(links);
 
   // enter
   const linkEnter = link
@@ -127,8 +183,11 @@ function initializeTree(data) {
 
 async function main() {
   const sourceData = await getData('poiminnat.json');
-  initializeTree(sourceData);
 
+  const sourceObj = initializeTree(sourceData);
+  updateTree(sourceObj);
+
+  // ********** timeline prototype ************
   const width = 460;
   const height = 75;
 

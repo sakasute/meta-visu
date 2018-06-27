@@ -8,13 +8,19 @@ html {
   box-sizing: inherit;
 }
 
-.node circle {
+.node__circle {
   fill: #fff;
   stroke: steelblue;
   stroke-width: 3px;
+  opacity: 0.75;
 }
 
-.node text {
+.node__circle:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.node__label {
   font: 12px sans-serif;
 }
 
@@ -32,4 +38,5 @@ html {
 
 .time-chart__bar:hover {
   opacity: 1;
+  cursor: pointer;
 }
