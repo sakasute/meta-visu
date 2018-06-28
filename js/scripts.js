@@ -181,17 +181,11 @@ function updateTree(sourceObj) {
   // TODO: exit
 }
 
-async function main() {
-  const sourceData = await getData('poiminnat.json');
-
-  const sourceObj = initializeTree(sourceData);
-  updateTree(sourceObj);
-
-  // ********** timeline prototype ************
+function timeline(data) {
   const width = 460;
   const height = 75;
 
-  const dataShard = sourceData.registerAdmins[0].registers[0].samplings; // one set of samplings
+  const dataShard = data.registerAdmins[0].registers[0].samplings; // one set of samplings
   const timeStart = new Date(1987, 0, 1); // TODO: calculate from data
   const timeEnd = new Date(2017, 11, 31);
 
@@ -200,7 +194,6 @@ async function main() {
     .domain([timeStart, timeEnd])
     .range([0, width]);
 
-  // **** TIMELINE ****
   const timeChart = d3
     .select('body')
     .append('svg')
@@ -224,6 +217,15 @@ async function main() {
     .append('g')
     .call(xAxis)
     .attr('transform', `translate(0, ${height - 30})`);
+}
+
+async function main() {
+  const data = await getData('poiminnat.json');
+
+  initializeTree(data);
+
+  // ********** timeline prototype ************
+  timeline(data);
 }
 
 main();
