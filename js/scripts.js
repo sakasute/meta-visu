@@ -4,6 +4,92 @@ async function getData(file) {
     .then(dataJson => dataJson);
 }
 
+const treeData = {
+  name: 'rootLevel',
+  registerAdmins: [
+    {
+      name: 'KELA',
+      registers: [
+        {
+          name: 'opintotuki',
+          samplings: [
+            {
+              name: 'opt8797.rds',
+              startDate: '1987-1-1',
+              endDate: '1997-12-31',
+            },
+            {
+              name: 'opt9710.rds',
+              startDate: '1997-1-1',
+              endDate: '2010-12-31',
+            },
+          ],
+        },
+        {
+          name: 'yleinen asumistuki',
+          samplings: [
+            {
+              name: 'yas.sav',
+              startDate: '2010-1-1',
+              endDate: '31-12-2015',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'TEM',
+      registers: [
+        {
+          name: 'lorem',
+          samplings: [
+            {
+              name: 'tem87.rds',
+              startDate: '1987-1-1',
+              endDate: '1997-12-31',
+            },
+            {
+              name: 'tem97.rds',
+              startDate: '1997-1-1',
+              endDate: '2010-12-31',
+            },
+          ],
+        },
+        {
+          name: 'ipsum',
+          samplings: [
+            {
+              name: 'tem2.sav',
+              startDate: '1997-1-1-',
+              endDate: '2010-12-31',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'ETK',
+      registers: [
+        {
+          name: 'eläkkeet',
+          samplings: [
+            {
+              name: 'elake87.rds',
+              startDate: '1987-1-1',
+              endDate: '2000-12-31',
+            },
+            {
+              name: 'elake00.rds',
+              startDate: '2000-1-1',
+              endDate: '2015-12-31',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
 function findChildArr(object) {
   const childArrNames = ['registerAdmins', 'registers', 'samplings'];
   const childrenName = childArrNames.filter(name => object[name] !== undefined)[0];
@@ -13,219 +99,186 @@ function findChildArr(object) {
   return null;
 }
 
-function diagonal(s, d) {
-  const path = `M ${s.y} ${s.x}
-                C ${(s.y + d.y) / 2} ${s.x},
-                  ${(s.y + d.y) / 2} ${d.x},
-                  ${d.y} ${d.x}`;
+// Set the dimensions and margins of the diagram
+let margin = {
+    top: 20,
+    right: 90,
+    bottom: 30,
+    left: 90,
+  },
+  width = 960 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
-  return path;
-}
+// append the svg object to the body of the page
+// appends a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+const svg = d3
+  .select('body')
+  .append('svg')
+  .attr('width', width + margin.right + margin.left)
+  .attr('height', height + margin.top + margin.bottom)
+  .append('g')
+  .attr('transform', `translate(${margin.left},${margin.top})`);
 
+let i = 0,
+  duration = 750,
+  root;
+
+// declares a tree layout and assigns the size
+const treemap = d3.tree().size([height, width]);
+
+// Assigns parent, children, height, depth
+root = d3.hierarchy(treeData, d => findChildArr(d));
+root.x0 = height / 2;
+root.y0 = 0;
+
+// Collapse after the second level
+root.children.forEach(collapse);
+
+update(root);
+
+// Collapse the node and all it's children
 function collapse(d) {
   if (d.children) {
-    d.childrenStored = d.children;
-    d.childrenStored.forEach(collapse);
+    d._children = d.children;
+    d._children.forEach(collapse);
     d.children = null;
   }
 }
 
-function clickNode(d) {
-  console.log(d);
-  const { source } = d;
-  if (source.children) {
-    source.childrenStored = source.children;
-    source.children = null;
-  } else {
-    source.children = source.childrenStored;
-    source.childrenStored = null;
-  }
-  console.log({ ...d, source });
-  updateTree({ ...d, source });
-}
+function update(source) {
+  // Assigns the x and y position for the nodes
+  const treeData = treemap(root);
 
-function initializeTree(data) {
-  const margin = {
-    top: 20,
-    right: 90,
-    bottom: 20,
-    left: 90,
-  };
-  const width = 960 - margin.right - margin.left;
-  const height = 600 - margin.top - margin.bottom;
+  // Compute the new tree layout.
+  let nodes = treeData.descendants(),
+    links = treeData.descendants().slice(1);
 
-  // const i = 0;
-  const duration = 750;
+  // Normalize for fixed-depth.
+  nodes.forEach((d) => {
+    d.y = d.depth * 180;
+  });
 
-  const treeSVG = d3
-    .select('body')
-    .append('svg')
-    .attr('width', width + margin.right + margin.left)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-    .attr('transform', `translate(${margin.left}, ${margin.top})`);
+  // ****************** Nodes section ***************************
 
-  const treeLayout = d3.tree().size([height, width]);
+  // Update the nodes...
+  const node = svg.selectAll('g.node').data(nodes, d => d.id || (d.id = ++i));
 
-  const root = d3.hierarchy(data, d => findChildArr(d));
-  root.x0 = height / 2;
-  root.y0 = 0;
-
-  const tree = treeLayout(root);
-
-  return {
-    source: root,
-    root,
-    treeSVG,
-    treeLayout,
-    duration,
-    tree,
-  };
-}
-
-function updateTree(sourceObj) {
-  console.log(sourceObj);
-  const { source } = sourceObj;
-  const { root } = sourceObj;
-  const { duration } = sourceObj;
-  const { treeSVG } = sourceObj;
-  const { tree } = sourceObj;
-
-  const nodes = tree.descendants().map(d => ({ ...d, y: d.depth * 260 }));
-  const links = tree.descendants().slice(1);
-
-  // ******** nodes ********
-
-  // TODO: add custom key-function (adding d.id)
-  const node = treeSVG.selectAll('g.node').data(nodes);
-
-  // enter
+  // Enter any new modes at the parent's previous position.
   const nodeEnter = node
     .enter()
     .append('g')
     .attr('class', 'node')
-    .attr('transform', () => `translate(${source.y0}, ${source.x0})`)
-    .on('click', (d) => {
-      console.log(d);
-      clickNode({
-        source: d,
-        root,
-        duration,
-        treeSVG,
-        tree,
-      });
-    });
+    .attr('transform', d => `translate(${source.y0},${source.x0})`)
+    .on('click', click);
 
+  // Add Circle for the nodes
   nodeEnter
     .append('circle')
-    .attr('class', 'node__circle')
+    .attr('class', 'node')
     .attr('r', 1e-6)
-    .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
+    .style('fill', d => (d._children ? 'lightsteelblue' : '#fff'));
 
+  // Add labels for the nodes
   nodeEnter
     .append('text')
-    .attr('class', 'node__label')
-    .attr('dy', '0.35em')
-    .attr('x', d => (d.children || d.childrenStored ? -13 : 13))
-    .attr('text-anchor', d => (d.children || d.childrenStored ? 'end' : 'start'))
+    .attr('dy', '.35em')
+    .attr('x', d => (d.children || d._children ? -13 : 13))
+    .attr('text-anchor', d => (d.children || d._children ? 'end' : 'start'))
     .text(d => d.data.name);
 
-  // update
+  // UPDATE
   const nodeUpdate = nodeEnter.merge(node);
 
+  // Transition to the proper position for the node
   nodeUpdate
     .transition()
     .duration(duration)
-    .attr('transform', d => `translate(${d.y}, ${d.x})`);
+    .attr('transform', d => `translate(${d.y},${d.x})`);
 
+  // Update the node attributes and style
   nodeUpdate
-    .select('.node__circle')
+    .select('circle.node')
     .attr('r', 10)
-    .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
+    .style('fill', d => (d._children ? 'lightsteelblue' : '#fff'))
+    .attr('cursor', 'pointer');
 
-  // exit
-
+  // Remove any exiting nodes
   const nodeExit = node
     .exit()
     .transition()
     .duration(duration)
-    .attr('transform', () => `translate(${root.y}, ${root.x})`)
+    .attr('transform', d => `translate(${source.y},${source.x})`)
     .remove();
 
-  nodeExit.select('.node__circle').attr('r', 1e-6);
+  // On exit reduce the node circles size to 0
+  nodeExit.select('circle').attr('r', 1e-6);
 
-  nodeExit.select('.node__label').style('fill-opacity', 1e-6);
+  // On exit reduce the opacity of text labels
+  nodeExit.select('text').style('fill-opacity', 1e-6);
 
-  // ******** links ********
-  // TODO: add ids
-  const link = treeSVG.selectAll('path.link').data(links);
+  // ****************** links section ***************************
 
-  // enter
+  // Update the links...
+  const link = svg.selectAll('path.link').data(links, d => d.id);
+
+  // Enter any new links at the parent's previous position.
   const linkEnter = link
     .enter()
     .insert('path', 'g')
     .attr('class', 'link')
-    .attr('d', () => {
-      const o = { x: root.x, y: root.y };
+    .attr('d', (d) => {
+      const o = { x: source.x0, y: source.y0 };
       return diagonal(o, o);
     });
 
-  // update
+  // UPDATE
   const linkUpdate = linkEnter.merge(link);
 
+  // Transition back to the parent element position
   linkUpdate
     .transition()
     .duration(duration)
     .attr('d', d => diagonal(d, d.parent));
 
-  // TODO: exit
-}
+  // Remove any exiting links
+  const linkExit = link
+    .exit()
+    .transition()
+    .duration(duration)
+    .attr('d', (d) => {
+      const o = { x: source.x, y: source.y };
+      return diagonal(o, o);
+    })
+    .remove();
 
-function timeline(data) {
-  const width = 460;
-  const height = 75;
+  // Store the old positions for transition.
+  nodes.forEach((d) => {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
 
-  const dataShard = data.registerAdmins[0].registers[0].samplings; // one set of samplings
-  const timeStart = new Date(1987, 0, 1); // TODO: calculate from data
-  const timeEnd = new Date(2017, 11, 31);
+  // Creates a curved (diagonal) path from parent to the child nodes
+  function diagonal(s, d) {
+    path = `M ${s.y} ${s.x}
+            C ${(s.y + d.y) / 2} ${s.x},
+              ${(s.y + d.y) / 2} ${d.x},
+              ${d.y} ${d.x}`;
 
-  const x = d3
-    .scaleTime()
-    .domain([timeStart, timeEnd])
-    .range([0, width]);
+    return path;
+  }
 
-  const timeChart = d3
-    .select('body')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height);
-
-  timeChart
-    .selectAll('rect')
-    .data(dataShard)
-    .enter()
-    .append('rect')
-    .attr('class', 'time-chart__bar')
-    .attr('height', 15)
-    .attr('width', d => x(new Date(d.endDate)) - x(new Date(d.startDate)))
-    .attr('x', d => x(new Date(d.startDate)))
-    .attr('y', height - 50);
-
-  const xAxis = d3.axisBottom(x);
-
-  timeChart
-    .append('g')
-    .call(xAxis)
-    .attr('transform', `translate(0, ${height - 30})`);
-}
-
-async function main() {
-  const data = await getData('poiminnat.json');
-
-  initializeTree(data);
-
-  // ********** timeline prototype ************
-  timeline(data);
+  // Toggle children on click.
+  function click(d) {
+    if (d.children) {
+      d._children = d.children;
+      d.children = null;
+    } else {
+      d.children = d._children;
+      d._children = null;
+    }
+    update(d);
+  }
 }
 
 main();
