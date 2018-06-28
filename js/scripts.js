@@ -34,10 +34,7 @@ function initializeTree(data) {
   const width = 960 - margin.right - margin.left;
   const height = 600 - margin.top - margin.bottom;
 
-  // const i = 0;
-  const duration = 750;
-
-  const svg = d3
+  const treeSVG = d3
     .select('body')
     .append('svg')
     .attr('width', width + margin.right + margin.left)
@@ -51,58 +48,35 @@ function initializeTree(data) {
   root.x0 = height / 2;
   root.y0 = 0;
 
-  const tree = treeLayout(root);
-  // console.log('data', sourceData);
-  // console.log('root', root);
-  // console.log('treeLayout', treeLayout);
-  // console.log('tree', tree);
+  const treeData = treeLayout(root);
 
-  let nodes = tree.descendants();
-  // console.log('nodes', nodes);
+  update(treeData, treeSVG);
 
-  const links = tree.descendants().slice(1);
-  // console.log('links', links);
+  const linksData = treeData.descendants().slice(1);
 
-  nodes = nodes.map(d => ({ ...d, y: d.depth * 260 }));
-  // console.log('nodes - updated', nodes);
+  // nodesData.forEach(d => ({ ...d, y: d.depth * 260 }));
 
   // ******** nodes ********
 
   // TODO: add custom key-function (adding d.id)
-  const node = svg.selectAll('g.node').data(nodes);
+  // const node = svg.selectAll('g.node').data(nodesData);
 
   // enter
-  const nodeEnter = node
-    .enter()
-    .append('g')
-    .attr('class', 'node')
-    .attr('transform', () => `translate(${root.y0}, ${root.x0})`); // .on('click')
 
-  nodeEnter
-    .append('circle')
-    .attr('class', 'node__circle')
-    .attr('r', 10)
-    .style('fill', 'gray');
-
-  nodeEnter
-    .append('text')
-    .attr('class', 'node__text')
-    .attr('dy', '0.35em')
-    .text(d => d.data.name);
+  // nodeEnter
+  //   .append('text')
+  //   .attr('class', 'node__text')
+  //   .attr('dy', '0.35em')
+  //   .text(d => d.data.name);
 
   // update
-  const nodeUpdate = nodeEnter.merge(node);
-
-  nodeUpdate
-    .transition()
-    .duration(duration)
-    .attr('transform', d => `translate(${d.y}, ${d.x})`);
+  // const nodeUpdate = nodeEnter.merge(node);
 
   // TODO: exit
 
   // ******** links ********
   // TODO: add ids
-  const link = svg.selectAll('path.link').data(links);
+  const link = treeSVG.selectAll('path.link').data(linksData);
 
   // enter
   const linkEnter = link
@@ -125,10 +99,48 @@ function initializeTree(data) {
   // TODO: exit
 }
 
+const duration = 750;
+function update(treeData, treeSVG) {
+  const nodesData = treeData.descendants();
+
+  const nodeSelection = treeSVG.selectAll('g.node').data(nodesData, d => d.data.name); // FIXME: kind of dangerous assumption that all data points have unique names
+
+  const nodeEnter = nodeSelection
+    .enter()
+    .append('g')
+    .attr('class', 'node')
+    .attr('transform', () => `translate(${treeData.y0}, ${treeData.x0})`)
+    .on('click', (d) => {
+      if (d.children) {
+        d.childrenStored = d.children;
+        d.children = null;
+      } else {
+        d.children = d.childrenStored;
+        d.childrenStored = null;
+      }
+      // NOTE: Changing d implicitly changes nodesData which implicitly changes treeData.
+      update(treeData, treeSVG);
+    });
+
+  nodeEnter
+    .append('circle')
+    .attr('class', 'node__circle')
+    .attr('r', 10)
+    .style('fill', 'gray');
+
+  nodeEnter
+    .transition()
+    .duration(duration)
+    .attr('transform', d => `translate(${d.y}, ${d.x})`);
+
+  const nodeExit = nodeSelection.exit().remove();
+}
+
 async function main() {
   const sourceData = await getData('poiminnat.json');
   initializeTree(sourceData);
 
+  // ***** timeline prototype *****
   const width = 460;
   const height = 75;
 
