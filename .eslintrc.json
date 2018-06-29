@@ -5,5 +5,9 @@
   "globals": {
     "d3": false
   },
-  "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "rules": {
+    "_comment": "disables no-param-reassign for parameter's properties",
+    "no-param-reassign": [2, { "props": false }]
+  }
 }

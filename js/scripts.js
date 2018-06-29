@@ -23,8 +23,6 @@ function diagonal(s, d) {
 }
 
 function initializeTree(data) {
-  const sourceData = data;
-
   const margin = {
     top: 20,
     right: 90,
@@ -44,72 +42,29 @@ function initializeTree(data) {
 
   const treeLayout = d3.tree().size([height, width]);
 
-  const root = d3.hierarchy(sourceData, d => findChildArr(d));
-  root.x0 = height / 2;
-  root.y0 = 0;
+  const hierarchy = d3.hierarchy(data, d => findChildArr(d));
 
-  const treeData = treeLayout(root);
+  const sourcePoint = {
+    x0: height / 2,
+    y0: 0,
+  };
 
-  update(treeData, treeSVG);
+  const treeData = treeLayout(hierarchy);
 
-  const linksData = treeData.descendants().slice(1);
-
-  // nodesData.forEach(d => ({ ...d, y: d.depth * 260 }));
-
-  // ******** nodes ********
-
-  // TODO: add custom key-function (adding d.id)
-  // const node = svg.selectAll('g.node').data(nodesData);
-
-  // enter
-
-  // nodeEnter
-  //   .append('text')
-  //   .attr('class', 'node__text')
-  //   .attr('dy', '0.35em')
-  //   .text(d => d.data.name);
-
-  // update
-  // const nodeUpdate = nodeEnter.merge(node);
-
-  // TODO: exit
-
-  // ******** links ********
-  // TODO: add ids
-  const link = treeSVG.selectAll('path.link').data(linksData);
-
-  // enter
-  const linkEnter = link
-    .enter()
-    .insert('path', 'g')
-    .attr('class', 'link')
-    .attr('d', () => {
-      const o = { x: root.x, y: root.y };
-      return diagonal(o, o);
-    });
-
-  // update
-  const linkUpdate = linkEnter.merge(link);
-
-  linkUpdate
-    .transition()
-    .duration(duration)
-    .attr('d', d => diagonal(d, d.parent));
-
-  // TODO: exit
+  return { treeData, treeSVG, sourcePoint };
 }
 
-const duration = 750;
-function update(treeData, treeSVG) {
+function updateNodes(treeData, treeSVG, sourcePoint) {
   const nodesData = treeData.descendants();
-
-  const nodeSelection = treeSVG.selectAll('g.node').data(nodesData, d => d.data.name); // FIXME: kind of dangerous assumption that all data points have unique names
+  const nodeSelection = treeSVG
+    .selectAll('g.node')
+    .data(nodesData, d => (d.parent ? d.parent.data.name + d.data.name : d.data.name));
 
   const nodeEnter = nodeSelection
     .enter()
     .append('g')
     .attr('class', 'node')
-    .attr('transform', () => `translate(${treeData.y0}, ${treeData.x0})`)
+    .attr('transform', () => `translate(${sourcePoint.y0}, ${sourcePoint.x0})`)
     .on('click', (d) => {
       if (d.children) {
         d.childrenStored = d.children;
@@ -119,7 +74,14 @@ function update(treeData, treeSVG) {
         d.childrenStored = null;
       }
       // NOTE: Changing d implicitly changes nodesData which implicitly changes treeData.
-      update(treeData, treeSVG);
+      updateNodes(treeData, treeSVG, {
+        x0: d.x,
+        y0: d.y,
+      });
+      updateLinks(treeData, treeSVG, {
+        x0: d.x,
+        y0: d.y,
+      });
     });
 
   nodeEnter
@@ -130,15 +92,55 @@ function update(treeData, treeSVG) {
 
   nodeEnter
     .transition()
-    .duration(duration)
+    .duration(750)
     .attr('transform', d => `translate(${d.y}, ${d.x})`);
 
-  const nodeExit = nodeSelection.exit().remove();
+  const nodeExit = nodeSelection
+    .exit()
+    .transition()
+    .duration(750)
+    .attr('transform', `translate(${sourcePoint.y0}, ${sourcePoint.x0})`)
+    .remove();
+}
+
+function updateLinks(treeData, treeSVG, sourcePoint) {
+  const linksData = treeData.descendants().slice(1);
+  const linkSelection = treeSVG
+    .selectAll('path.link')
+    .data(linksData, d => (d.parent ? d.parent.data.name + d.data.name : d.data.name));
+
+  // enter
+  const linkEnter = linkSelection
+    .enter()
+    .insert('path', 'g')
+    .attr('class', 'link')
+    .attr('d', () => {
+      const o = { x: sourcePoint.x0, y: sourcePoint.y0 };
+      return diagonal(o, o);
+    });
+
+  linkEnter
+    .transition()
+    .duration(750)
+    .attr('d', d => diagonal(d, d.parent));
+
+  const linkExit = linkSelection
+    .exit()
+    .transition()
+    .duration(750)
+    .attr('d', () => {
+      const o = { y: sourcePoint.y0, x: sourcePoint.x0 };
+      return diagonal(o, o);
+    })
+    .remove();
 }
 
 async function main() {
   const sourceData = await getData('poiminnat.json');
-  initializeTree(sourceData);
+  const tree = initializeTree(sourceData);
+
+  updateNodes(tree.treeData, tree.treeSVG, tree.sourcePoint);
+  updateLinks(tree.treeData, tree.treeSVG, tree.sourcePoint);
 
   // ***** timeline prototype *****
   const width = 460;
