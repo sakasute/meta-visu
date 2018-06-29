@@ -25,12 +25,13 @@ html {
   stroke-width: 2px;
 }
 
-.time-chart__bar {
+.timeline__bar {
   fill: green;
   opacity: 0.75;
   stroke-width: 2.5;
+  cursor: pointer;
 }
 
-.time-chart__bar:hover {
+.timeline__bar:hover {
   opacity: 1;
 }

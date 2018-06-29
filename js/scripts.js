@@ -131,6 +131,44 @@ class TreeChart {
   }
 }
 
+class TimeLine {
+  constructor(data, svgElement, config) {
+    const timeStart = d3.min(data, el => new Date(el.startDate));
+    const timeEnd = d3.max(data, el => new Date(el.endDate));
+    this.data = data;
+    this.svg = svgElement
+      .attr('width', config.size.width)
+      .attr('height', config.size.height)
+      .append('g');
+    this.x = d3
+      .scaleTime()
+      .domain([timeStart, timeEnd])
+      .range([0, config.size.width]);
+    this.config = config;
+  }
+
+  update() {
+    const xAxis = d3.axisBottom(this.x);
+
+    this.svg
+      .append('g')
+      .call(xAxis)
+      .attr('transform', `translate(0, ${this.config.size.height - 30})`);
+
+    // enter
+    this.svg
+      .selectAll('rect')
+      .data(this.data)
+      .enter()
+      .append('rect')
+      .attr('class', 'timeline__bar')
+      .attr('height', 15)
+      .attr('width', d => this.x(new Date(d.endDate)) - this.x(new Date(d.startDate)))
+      .attr('x', d => this.x(new Date(d.startDate)))
+      .attr('y', this.config.size.height - 50);
+  }
+}
+
 async function getData(file) {
   return fetch(file)
     .then(res => res.json())
@@ -160,43 +198,18 @@ async function main() {
   const treeChart = new TreeChart(data, treeSVG, treeConfig);
   treeChart.updateNodes();
   treeChart.updateLinks();
-  // ***** timeline prototype *****
-  const width = 460;
-  const height = 75;
 
+  // ***** TIMELINE TEST *****
+  const timelineConfig = {
+    size: {
+      width: 460,
+      height: 75,
+    },
+  };
+  const timelineSVG = d3.select('body').append('svg');
   const dataShard = data.registerAdmins[0].registers[0].samplings; // one set of samplings
-  const timeStart = new Date(1987, 0, 1); // TODO: calculate from data
-  const timeEnd = new Date(2017, 11, 31);
-
-  const x = d3
-    .scaleTime()
-    .domain([timeStart, timeEnd])
-    .range([0, width]);
-
-  // **** TIMELINE ****
-  const timeChart = d3
-    .select('body')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height);
-
-  timeChart
-    .selectAll('rect')
-    .data(dataShard)
-    .enter()
-    .append('rect')
-    .attr('class', 'time-chart__bar')
-    .attr('height', 15)
-    .attr('width', d => x(new Date(d.endDate)) - x(new Date(d.startDate)))
-    .attr('x', d => x(new Date(d.startDate)))
-    .attr('y', height - 50);
-
-  const xAxis = d3.axisBottom(x);
-
-  timeChart
-    .append('g')
-    .call(xAxis)
-    .attr('transform', `translate(0, ${height - 30})`);
+  const timeline = new TimeLine(dataShard, timelineSVG, timelineConfig);
+  timeline.update();
 }
 
 main();
