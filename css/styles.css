@@ -8,13 +8,14 @@ html {
   box-sizing: inherit;
 }
 
-.node circle {
+.node__circle {
   fill: #fff;
   stroke: steelblue;
   stroke-width: 3px;
+  cursor: pointer;
 }
 
-.node text {
+.node__text {
   font: 12px sans-serif;
 }
 
