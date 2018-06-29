@@ -15,7 +15,7 @@ html {
   cursor: pointer;
 }
 
-.node__text {
+.node__label {
   font: 12px sans-serif;
 }
 

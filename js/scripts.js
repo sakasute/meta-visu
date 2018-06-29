@@ -1,3 +1,44 @@
+class Timeline {
+  constructor(data, svgElement, config) {
+    const timeStart = d3.min(data, el => new Date(el.startDate));
+    const timeEnd = d3.max(data, el => new Date(el.endDate));
+    this.data = data;
+    this.svg = svgElement
+      .append('g')
+      .attr('width', config.size.width)
+      .attr('height', config.size.height)
+      .attr('transform', `translate(${config.location.x}, ${config.location.y})`);
+    this.x = d3
+      .scaleTime()
+      .domain([timeStart, timeEnd])
+      .range([0, config.size.width]);
+    this.config = config;
+    console.log(config);
+    console.log(data);
+  }
+
+  update() {
+    const xAxis = d3.axisBottom(this.x).ticks(d3.timeYear.every(2));
+
+    this.svg
+      .append('g')
+      .call(xAxis)
+      .attr('transform', `translate(0, ${this.config.size.height - 30})`);
+
+    // enter
+    this.svg
+      .selectAll('rect')
+      .data(this.data)
+      .enter()
+      .append('rect')
+      .attr('class', 'timeline__bar')
+      .attr('height', this.config.barHeight)
+      .attr('width', d => this.x(new Date(d.endDate)) - this.x(new Date(d.startDate)))
+      .attr('x', d => this.x(new Date(d.startDate)))
+      .attr('y', this.config.size.height - 50);
+  }
+}
+
 class TreeChart {
   constructor(data, svgElement, config) {
     const treeHeight = config.size.height - config.margin.top - config.margin.bottom;
@@ -17,6 +58,29 @@ class TreeChart {
     this.config = config;
 
     this.sourceCoord = { x: treeHeight / 2, y: 0 };
+    this.addTimelines();
+  }
+
+  addTimelines() {
+    console.log(this.treeData);
+    this.treeData.children.forEach((adminNode) => {
+      adminNode.children.forEach((registerNode) => {
+        console.log(registerNode);
+        const timelineConfig = {
+          size: {
+            width: 300,
+            height: 50,
+          },
+          location: {
+            x: registerNode.y + 320,
+            y: registerNode.x - 20,
+          },
+          barHeight: 15,
+        };
+        const timeline = new Timeline(registerNode.data.samplings, this.svg, timelineConfig);
+        timeline.update();
+      });
+    });
   }
 
   // NOTE: Changing d implicitly changes nodesData which implicitly changes this.treeData.
@@ -37,19 +101,32 @@ class TreeChart {
     this.updateLinks();
   }
 
-  drawNodeCircles(nodeEnter) {
-    nodeEnter
+  drawNodeCircles(nodeGroup) {
+    nodeGroup
       .append('circle')
       .attr('class', 'node__circle')
-      .attr('r', this.config.nodeSize);
+      .attr('r', this.config.nodeSize)
+      .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
   }
 
-  moveNodesInPlace(nodeEnter) {
-    nodeEnter
+  moveNodesInPlace(nodeGroup) {
+    nodeGroup
       .transition()
       .duration(this.config.animationDuration)
       .attr('transform', d => `translate(${d.y}, ${d.x})`);
   }
+
+  /* eslint-disable class-methods-use-this */
+  addNodeLabels(nodeGroup) {
+    nodeGroup
+      .append('text')
+      .attr('class', 'node__label')
+      .attr('dy', '.35em')
+      .attr('x', d => (d.children || d.childrenStored ? -13 : 13))
+      .attr('text-anchor', d => (d.children || d.childrenStored ? 'end' : 'start'))
+      .text(d => d.data.name);
+  }
+  /* eslint-enable class-methods-use-this */
 
   updateNodes() {
     const nodesData = this.treeData.descendants();
@@ -67,8 +144,9 @@ class TreeChart {
         this.clickNode(d);
       });
 
-    this.drawNodeCircles(nodeEnter);
+    this.drawNodeCircles(nodeEnter.merge(nodeSelection));
     this.moveNodesInPlace(nodeEnter);
+    this.addNodeLabels(nodeEnter);
 
     // exit
     nodeSelection
@@ -131,44 +209,6 @@ class TreeChart {
   }
 }
 
-class TimeLine {
-  constructor(data, svgElement, config) {
-    const timeStart = d3.min(data, el => new Date(el.startDate));
-    const timeEnd = d3.max(data, el => new Date(el.endDate));
-    this.data = data;
-    this.svg = svgElement
-      .attr('width', config.size.width)
-      .attr('height', config.size.height)
-      .append('g');
-    this.x = d3
-      .scaleTime()
-      .domain([timeStart, timeEnd])
-      .range([0, config.size.width]);
-    this.config = config;
-  }
-
-  update() {
-    const xAxis = d3.axisBottom(this.x);
-
-    this.svg
-      .append('g')
-      .call(xAxis)
-      .attr('transform', `translate(0, ${this.config.size.height - 30})`);
-
-    // enter
-    this.svg
-      .selectAll('rect')
-      .data(this.data)
-      .enter()
-      .append('rect')
-      .attr('class', 'timeline__bar')
-      .attr('height', 15)
-      .attr('width', d => this.x(new Date(d.endDate)) - this.x(new Date(d.startDate)))
-      .attr('x', d => this.x(new Date(d.startDate)))
-      .attr('y', this.config.size.height - 50);
-  }
-}
-
 async function getData(file) {
   return fetch(file)
     .then(res => res.json())
@@ -181,13 +221,13 @@ async function main() {
   const treeConfig = {
     margin: {
       top: 20,
-      right: 90,
+      right: 400,
       bottom: 20,
       left: 90,
     },
     size: {
-      width: 960,
-      height: 600,
+      width: 1200,
+      height: 800,
     },
     animationDuration: 750,
     nodeSize: 7.5,
@@ -205,10 +245,15 @@ async function main() {
       width: 460,
       height: 75,
     },
+    location: {
+      x: 0,
+      y: 0,
+    },
+    barHeight: 15,
   };
   const timelineSVG = d3.select('body').append('svg');
   const dataShard = data.registerAdmins[0].registers[0].samplings; // one set of samplings
-  const timeline = new TimeLine(dataShard, timelineSVG, timelineConfig);
+  const timeline = new Timeline(dataShard, timelineSVG, timelineConfig);
   timeline.update();
 }
 
