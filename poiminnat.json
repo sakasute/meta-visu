@@ -10,7 +10,7 @@
             {
               "name": "opt8797.rds",
               "startDate": "1987-1-1",
-              "endDate": "1997-12-31"
+              "endDate": "1996-12-31"
             },
             {
               "name": "opt9710.rds",
@@ -40,7 +40,7 @@
             {
               "name": "tem87.rds",
               "startDate": "1987-1-1",
-              "endDate": "1997-12-31"
+              "endDate": "1996-12-31"
             },
             {
               "name": "tem97.rds",
@@ -70,7 +70,7 @@
             {
               "name": "elake87.rds",
               "startDate": "1987-1-1",
-              "endDate": "2000-12-31"
+              "endDate": "1999-12-31"
             },
             {
               "name": "elake00.rds",

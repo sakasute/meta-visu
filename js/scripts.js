@@ -13,8 +13,6 @@ class Timeline {
       .domain([timeStart, timeEnd])
       .range([0, config.size.width]);
     this.config = config;
-    console.log(config);
-    console.log(data);
   }
 
   update() {
@@ -39,6 +37,85 @@ class Timeline {
   }
 }
 
+class TimelineRegister {
+  constructor(data, svgElement, config) {
+    this.scaleStart = config.scaleStartDate
+      ? config.scaleStartDate
+      : d3.min(data.map(el => this.constructor.findEarliestStartDate(el.samplings)));
+    this.scaleEnd = config.scaleEndDate
+      ? config.scaleEndDate
+      : d3.max(data, el => this.constructor.findLatestEndDate(el.samplings));
+    this.data = data;
+    this.svg = svgElement
+      .append('g')
+      .attr('class', 'timeline-chart')
+      .attr('width', config.size.width)
+      .attr('height', config.size.height)
+      .attr('transform', `translate(${config.location.x}, ${config.location.y})`);
+    this.x = d3
+      .scaleTime()
+      .domain([this.scaleStart, this.scaleEnd])
+      .range([0, config.size.width]);
+    this.xAxisPadding = 30;
+    this.y = d3
+      .scaleBand()
+      .domain(data.map(el => el.name))
+      .range([this.xAxisPadding, config.size.height])
+      .round(true)
+      .padding(0.25);
+    this.config = config;
+  }
+
+  static findEarliestStartDate(dataArr) {
+    return d3.min(dataArr, el => new Date(el.startDate));
+  }
+
+  static findLatestEndDate(dataArr) {
+    return d3.max(dataArr, el => new Date(el.endDate));
+  }
+
+  calculateSectionWidth(sectionData) {
+    return this.x(new Date(sectionData.endDate)) - this.x(new Date(sectionData.startDate));
+  }
+
+  calculateSectionXPos(sectionData) {
+    return this.x(new Date(sectionData.startDate));
+  }
+
+  update() {
+    const xAxis = d3.axisBottom(this.x);
+
+    this.svg
+      .append('g')
+      .call(xAxis)
+      .attr('transform', `translate(0, ${this.config.size.height - this.xAxisPadding})`);
+
+    // enter
+    const timelineEnter = this.svg
+      .selectAll('.timeline')
+      .data(this.data)
+      .enter()
+      .append('g')
+      .attr('class', 'timeline');
+
+    timelineEnter.attr('transform', d => `translate(0, ${this.y(d.name) - this.xAxisPadding})`);
+
+    const sectionEnter = timelineEnter
+      .selectAll('timeline__section')
+      .data(d => d.samplings)
+      .enter()
+      .append('rect')
+      .attr('class', 'timeline__section');
+
+    sectionEnter
+      .attr('x', d => this.calculateSectionXPos(d))
+      .attr('height', this.y.bandwidth())
+      .attr('width', d => this.calculateSectionWidth(d));
+  }
+
+  // TODO: move-method
+}
+
 class TreeChart {
   constructor(data, svgElement, config) {
     const treeHeight = config.size.height - config.margin.top - config.margin.bottom;
@@ -58,14 +135,11 @@ class TreeChart {
     this.config = config;
 
     this.sourceCoord = { x: treeHeight / 2, y: 0 };
-    this.addTimelines();
   }
 
   addTimelines() {
-    console.log(this.treeData);
     this.treeData.children.forEach((adminNode) => {
       adminNode.children.forEach((registerNode) => {
-        console.log(registerNode);
         const timelineConfig = {
           size: {
             width: 300,
@@ -243,7 +317,7 @@ async function main() {
   const timelineConfig = {
     size: {
       width: 460,
-      height: 75,
+      height: 95,
     },
     location: {
       x: 0,
@@ -251,9 +325,13 @@ async function main() {
     },
     barHeight: 15,
   };
-  const timelineSVG = d3.select('body').append('svg');
-  const dataShard = data.registerAdmins[0].registers[0].samplings; // one set of samplings
-  const timeline = new Timeline(dataShard, timelineSVG, timelineConfig);
+  const timelineSVG = d3
+    .select('body')
+    .append('svg')
+    .attr('height', timelineConfig.size.height)
+    .attr('width', treeConfig.size.width);
+  const registerData = data.registerAdmins[1].registers;
+  const timeline = new TimelineRegister(registerData, timelineSVG, timelineConfig);
   timeline.update();
 }
 
