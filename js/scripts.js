@@ -100,6 +100,8 @@ class TreeChart {
     this.sourceCoord = { x: treeHeight / 2, y: 0 };
   }
 
+  addColorScheme(scheme) {}
+
   // FIXME: this is just an ugly ugly function, probs should use recursion
   collapseLevel(lvl) {
     switch (lvl) {
@@ -312,6 +314,8 @@ async function main() {
     console.log(adminNode.x, adminNode.y);
     const timeline = new TimelineRegister(registers, treeChart.svg, config);
     timeline.update();
+
+    treeChart.addColor(d3.schemeCategory10);
   });
 
   // ***** TIMELINE TEST *****
