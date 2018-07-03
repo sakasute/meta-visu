@@ -296,22 +296,36 @@ async function main() {
 
   treeChart.collapseLevel(2);
 
-  console.log(treeChart.treeData);
-
   // ***** TIMELINE *****
+  treeChart.treeData.children.forEach((adminNode) => {
+    const { registers } = adminNode.data;
+    const config = {
+      size: {
+        width: 400,
+        height: registers.length * 50 + 30,
+      },
+      pos: {
+        x: adminNode.y + 280, // NOTE: the treelayout has x and y coordinates inversed
+        y: adminNode.x - registers.length * 30,
+      },
+    };
+    console.log(adminNode.x, adminNode.y);
+    const timeline = new TimelineRegister(registers, treeChart.svg, config);
+    timeline.update();
+  });
 
   // ***** TIMELINE TEST *****
-  const timelineConfig = {
-    size: {
-      width: 400,
-      height: 250,
-    },
-    pos: {
-      x: 0,
-      y: 0,
-    },
-    barHeight: 15,
-  };
+  // const timelineConfig = {
+  //   size: {
+  //     width: 400,
+  //     height: 250,
+  //   },
+  //   pos: {
+  //     x: 0,
+  //     y: 0,
+  //   },
+  //   barHeight: 15,
+  // };
   // const timelineSVG = d3
   //   .select('body')
   //   .append('svg')
