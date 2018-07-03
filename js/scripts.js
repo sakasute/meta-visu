@@ -1,42 +1,3 @@
-class Timeline {
-  constructor(data, svgElement, config) {
-    const timeStart = d3.min(data, el => new Date(el.startDate));
-    const timeEnd = d3.max(data, el => new Date(el.endDate));
-    this.data = data;
-    this.svg = svgElement
-      .append('g')
-      .attr('width', config.size.width)
-      .attr('height', config.size.height)
-      .attr('transform', `translate(${config.location.x}, ${config.location.y})`);
-    this.x = d3
-      .scaleTime()
-      .domain([timeStart, timeEnd])
-      .range([0, config.size.width]);
-    this.config = config;
-  }
-
-  update() {
-    const xAxis = d3.axisBottom(this.x).ticks(d3.timeYear.every(2));
-
-    this.svg
-      .append('g')
-      .call(xAxis)
-      .attr('transform', `translate(0, ${this.config.size.height - 30})`);
-
-    // enter
-    this.svg
-      .selectAll('rect')
-      .data(this.data)
-      .enter()
-      .append('rect')
-      .attr('class', 'timeline__bar')
-      .attr('height', this.config.barHeight)
-      .attr('width', d => this.x(new Date(d.endDate)) - this.x(new Date(d.startDate)))
-      .attr('x', d => this.x(new Date(d.startDate)))
-      .attr('y', this.config.size.height - 50);
-  }
-}
-
 class TimelineRegister {
   constructor(data, svgElement, config) {
     this.scaleStart = config.scaleStartDate
@@ -51,7 +12,7 @@ class TimelineRegister {
       .attr('class', 'timeline-chart')
       .attr('width', config.size.width)
       .attr('height', config.size.height)
-      .attr('transform', `translate(${config.location.x}, ${config.location.y})`);
+      .attr('transform', `translate(${config.pos.x}, ${config.pos.y})`);
     this.x = d3
       .scaleTime()
       .domain([this.scaleStart, this.scaleEnd])
@@ -113,7 +74,9 @@ class TimelineRegister {
       .attr('width', d => this.calculateSectionWidth(d));
   }
 
-  // TODO: move-method
+  moveTo(x, y) {
+    this.svg.attr('transform', `translate(${x}, ${y})`);
+  }
 }
 
 class TreeChart {
@@ -137,24 +100,40 @@ class TreeChart {
     this.sourceCoord = { x: treeHeight / 2, y: 0 };
   }
 
-  addTimelines() {
-    this.treeData.children.forEach((adminNode) => {
-      adminNode.children.forEach((registerNode) => {
-        const timelineConfig = {
-          size: {
-            width: 300,
-            height: 50,
-          },
-          location: {
-            x: registerNode.y + 320,
-            y: registerNode.x - 20,
-          },
-          barHeight: 15,
-        };
-        const timeline = new Timeline(registerNode.data.samplings, this.svg, timelineConfig);
-        timeline.update();
-      });
-    });
+  // FIXME: this is just an ugly ugly function, probs should use recursion
+  collapseLevel(lvl) {
+    switch (lvl) {
+      case 0:
+        if (this.treeData.children) {
+          this.treeData.childrenStored = this.treeData.children;
+          this.treeData.children = null;
+          this.updateNodes();
+          this.updateLinks();
+        }
+        break;
+      case 1:
+        this.treeData.children.forEach((el) => {
+          if (el.children) {
+            el.childrenStored = el.children;
+            el.children = null;
+            this.updateNodes();
+            this.updateLinks();
+          }
+        });
+        break;
+      case 2:
+        this.treeData.children.forEach(el =>
+          el.children.forEach((el2) => {
+            if (el2.children) {
+              el2.childrenStored = el2.children;
+              el2.children = null;
+              this.updateNodes();
+              this.updateLinks();
+            }
+          }));
+        break;
+      default:
+    }
   }
 
   // NOTE: Changing d implicitly changes nodesData which implicitly changes this.treeData.
@@ -211,6 +190,7 @@ class TreeChart {
     // enter
     const nodeEnter = nodeSelection
       .enter()
+      .filter(d => d.depth > 0)
       .append('g')
       .attr('class', 'node')
       .attr('transform', () => `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`)
@@ -240,6 +220,7 @@ class TreeChart {
     // enter
     const linkEnter = linkSelection
       .enter()
+      .filter(d => d.depth > 1) // don't draw links to root element
       .insert('path', 'g')
       .attr('class', 'link')
       .attr('d', () => {
@@ -297,10 +278,10 @@ async function main() {
       top: 20,
       right: 400,
       bottom: 20,
-      left: 90,
+      left: 0,
     },
     size: {
-      width: 1200,
+      width: 1000,
       height: 800,
     },
     animationDuration: 750,
@@ -313,26 +294,32 @@ async function main() {
   treeChart.updateNodes();
   treeChart.updateLinks();
 
+  treeChart.collapseLevel(2);
+
+  console.log(treeChart.treeData);
+
+  // ***** TIMELINE *****
+
   // ***** TIMELINE TEST *****
   const timelineConfig = {
     size: {
-      width: 460,
-      height: 95,
+      width: 400,
+      height: 250,
     },
-    location: {
+    pos: {
       x: 0,
       y: 0,
     },
     barHeight: 15,
   };
-  const timelineSVG = d3
-    .select('body')
-    .append('svg')
-    .attr('height', timelineConfig.size.height)
-    .attr('width', treeConfig.size.width);
-  const registerData = data.registerAdmins[1].registers;
-  const timeline = new TimelineRegister(registerData, timelineSVG, timelineConfig);
-  timeline.update();
+  // const timelineSVG = d3
+  //   .select('body')
+  //   .append('svg')
+  //   .attr('height', timelineConfig.size.height)
+  //   .attr('width', timelineConfig.size.width);
+  // const registerData = data.registerAdmins[1].registers;
+  // const timeline = new TimelineRegister(registerData, timelineSVG, timelineConfig);
+  // timeline.update();
 }
 
 main();
