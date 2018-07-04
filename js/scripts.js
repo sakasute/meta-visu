@@ -1,29 +1,36 @@
-class TimelineRegister {
+class CategoryTimeline {
   constructor(data, svgElement, config) {
     this.scaleStart = config.scaleStartDate
       ? config.scaleStartDate
       : d3.min(data.map(el => this.constructor.findEarliestStartDate(el.samplings)));
+
     this.scaleEnd = config.scaleEndDate
       ? config.scaleEndDate
       : d3.max(data, el => this.constructor.findLatestEndDate(el.samplings));
+
     this.data = data;
+
     this.svg = svgElement
       .append('g')
       .attr('class', 'timeline-chart')
       .attr('width', config.size.width)
       .attr('height', config.size.height)
       .attr('transform', `translate(${config.pos.x}, ${config.pos.y})`);
+
     this.x = d3
       .scaleTime()
       .domain([this.scaleStart, this.scaleEnd])
       .range([0, config.size.width]);
+
     this.xAxisPadding = 30;
+
     this.y = d3
       .scaleBand()
       .domain(data.map(el => el.name))
       .range([this.xAxisPadding, config.size.height])
       .round(true)
       .padding(0.25);
+
     this.config = config;
   }
 
@@ -192,7 +199,7 @@ class TreeChart {
     // enter
     const nodeEnter = nodeSelection
       .enter()
-      .filter(d => d.depth > 0)
+      // .filter(d => d.depth > 0)
       .append('g')
       .attr('class', 'node')
       .attr('transform', () => `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`)
@@ -222,7 +229,7 @@ class TreeChart {
     // enter
     const linkEnter = linkSelection
       .enter()
-      .filter(d => d.depth > 1) // don't draw links to root element
+      // .filter(d => d.depth > 1) // don't draw links to root element
       .insert('path', 'g')
       .attr('class', 'link')
       .attr('d', () => {
@@ -280,7 +287,7 @@ async function main() {
       top: 20,
       right: 400,
       bottom: 20,
-      left: 0,
+      left: 50,
     },
     size: {
       width: 1000,
@@ -290,54 +297,30 @@ async function main() {
     nodeSize: 7.5,
   };
 
+  const kelaData = data.registerAdmins[0];
+
   const treeSVG = d3.select('body').append('svg');
 
-  const treeChart = new TreeChart(data, treeSVG, treeConfig);
+  const treeChart = new TreeChart(kelaData, treeSVG, treeConfig);
   treeChart.updateNodes();
   treeChart.updateLinks();
 
   treeChart.collapseLevel(2);
 
   // ***** TIMELINE *****
-  treeChart.treeData.children.forEach((adminNode) => {
-    const { registers } = adminNode.data;
-    const config = {
-      size: {
-        width: 400,
-        height: registers.length * 50 + 30,
-      },
-      pos: {
-        x: adminNode.y + 280, // NOTE: the treelayout has x and y coordinates inversed
-        y: adminNode.x - registers.length * 30,
-      },
-    };
-    console.log(adminNode.x, adminNode.y);
-    const timeline = new TimelineRegister(registers, treeChart.svg, config);
-    timeline.update();
-
-    treeChart.addColor(d3.schemeCategory10);
-  });
-
-  // ***** TIMELINE TEST *****
-  // const timelineConfig = {
-  //   size: {
-  //     width: 400,
-  //     height: 250,
-  //   },
-  //   pos: {
-  //     x: 0,
-  //     y: 0,
-  //   },
-  //   barHeight: 15,
-  // };
-  // const timelineSVG = d3
-  //   .select('body')
-  //   .append('svg')
-  //   .attr('height', timelineConfig.size.height)
-  //   .attr('width', timelineConfig.size.width);
-  // const registerData = data.registerAdmins[1].registers;
-  // const timeline = new TimelineRegister(registerData, timelineSVG, timelineConfig);
-  // timeline.update();
+  const { registers } = data.registerAdmins[0];
+  const config = {
+    size: {
+      width: 400,
+      height: registers.length * 50 + 30,
+    },
+    pos: {
+      x: 0,
+      y: 0,
+    },
+  };
+  const timeline = new CategoryTimeline(registers, treeChart.svg, config);
+  timeline.update();
 }
 
 main();
