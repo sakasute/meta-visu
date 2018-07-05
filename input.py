@@ -3,6 +3,7 @@
 
 import json
 from datetime import date
+from os import listdir
 
 
 def fill_date(dateString, end):
@@ -50,7 +51,7 @@ def add_sampling(sampling, locationArr):
 
 
 def create_file(register_admin):
-    filepath = register_admin + '.json'
+    filepath = 'data/' + register_admin + '.json'
     try:
         f = open(filepath, 'r')
         f.close()
@@ -61,41 +62,77 @@ def create_file(register_admin):
         f.close()
 
 
-register_admin = input('Rekisterinpitäjä: ')
-register = input('Rekisteri: ')
-# TODO: should be possible to leave as empty?
-category = input('Rekisterin alaluokka: ')
-sampling_name = input('Poiminnan nimi: ')
-sampling_start = input('Poiminnan alkupvm (VVVV tai VVVV-KK-PP): ')
-sampling_end = input('Poiminnan loppupvm (VVVV tai VVVV-KK-PP): ')
-sampling_cohort = input('Poiminnan kohortti (1987/1997): ')
-sampling_parents = input('Poiminta vanhemmista (k/e): ')
+def create_fill_options(list):
+    fill_string = ""
+    for i in range(0, len(list)):
+        fill_string = fill_string + str(i + 1) + '=' + list[i] + '\n'
+    return fill_string
 
-sampling_start = fill_date(sampling_start, '-1-1')
-sampling_end = fill_date(sampling_end, '-12-31')
-sampling_cohort = fill_cohort(sampling_cohort)
 
-data = {}
+def select_option(list, inp):
+    try:
+        inp_as_int = int(inp)
+        return list[inp_as_int - 1]
+    except:
+        return inp
 
+
+def take_input(description, auto_fill_arr):
+    inp = input('%s (%s): ' %
+                (description, create_fill_options(auto_fill_arr)))
+    return select_option(auto_fill_arr, inp)
+
+
+admin_list = list(map(lambda f: f.split('.')[0], listdir('data/')))
+register_admin = take_input('Rekisterinpitäjä', admin_list)
 create_file(register_admin)
 
-path = register_admin + '.json'
+path = 'data/' + register_admin + '.json'
 
+# generate auto-fill shortcuts
 with open(path, 'r') as data_file:
     data = json.load(data_file)
 
-    sampling = {
-        'name': sampling_name,
-        'startDate': sampling_start,
-        'endDate': sampling_end,
-        'cohort': sampling_cohort,
-        'parents': sampling_parents in ['kyllä', 'k', 'yes', 'y']
-    }
+    register_list = list(map(lambda r: r['name'], data['registers']))
+    register = take_input('Rekisteri', register_list)
 
-    add_sampling(sampling, [
-                 {'array_name': 'registers', 'search_name': register},
-                 {'array_name': 'categories', 'search_name': category},
-                 {'array_name': 'samplings', 'search_name': sampling_name}])
+    register_idx = find_by_name(data['registers'], register)
+    category_list = []
+    if register_idx is not None:
+        category_list = list(
+            map(lambda c: c['name'], data['registers'][register_idx]['categories']))
 
-with open(path, 'w', encoding='utf8') as data_file:
-    json.dump(data, data_file, ensure_ascii=False, default=str, indent=2)
+    category = take_input('Rekisterin alaluokka', category_list)
+
+# FIXME: just a rough version of letting input multiple samplings at once (under one register/category)
+while 1:
+    sampling_name = input('Poiminnan nimi: ')
+    sampling_start = input('Poiminnan alkupvm (VVVV tai VVVV-KK-PP): ')
+    sampling_end = input('Poiminnan loppupvm (VVVV tai VVVV-KK-PP): ')
+    sampling_cohort = input('Poiminnan kohortti (1987/1997): ')
+    sampling_parents = input('Poiminta vanhemmista (k/e): ')
+
+    sampling_start = fill_date(sampling_start, '-1-1')
+    sampling_end = fill_date(sampling_end, '-12-31')
+    sampling_cohort = fill_cohort(sampling_cohort)
+
+    data = {}
+
+    with open(path, 'r') as data_file:
+        data = json.load(data_file)
+
+        sampling = {
+            'name': sampling_name,
+            'startDate': sampling_start,
+            'endDate': sampling_end,
+            'cohort': sampling_cohort,
+            'parents': sampling_parents in ['kyllä', 'k', 'yes', 'y']
+        }
+
+        add_sampling(sampling, [
+            {'array_name': 'registers', 'search_name': register},
+            {'array_name': 'categories', 'search_name': category},
+            {'array_name': 'samplings', 'search_name': sampling_name}])
+
+    with open(path, 'w', encoding='utf8') as data_file:
+        json.dump(data, data_file, ensure_ascii=False, default=str, indent=2)
