@@ -2,8 +2,21 @@
 # -*- coding: utf-8 -*-
 
 import json
-from pprint import pprint
 from datetime import date
+
+
+def fill_date(dateString, end):
+    if len(dateString.split('-')) == 1:
+        return dateString + end
+    else:
+        return dateString
+
+
+def fill_cohort(year):
+    if len(year) == 2:
+        return '19' + year
+    else:
+        return year
 
 
 def find_by_name(list, name):
@@ -14,90 +27,75 @@ def find_by_name(list, name):
         return None
 
 
-def add_sampling(admin_level, register_level, sampling_level):
-    ''' admin_level is datastructure that goes from admin level to sampling level '''
-    admin_idx = find_by_name(data['registerAdmins'], admin_level['name'])
-    register_idx = None
-    sampling_idx = None
+def add_sampling(sampling, locationArr):
+    data_temp = data
 
-    if admin_idx is not None:
-        register_idx = find_by_name(
-            data['registerAdmins'][admin_idx]['registers'], register_level['name'])
+    for idx, location in enumerate(locationArr):
+        array_name = location['array_name']
+        search_name = location['search_name']
 
-        if register_idx is not None:
-            sampling_idx = find_by_name(data['registerAdmins'][admin_idx]
-                                        ['registers'][register_idx]['samplings'], sampling_level['name'])
+        # check if given array exists, or create it
+        if data_temp.get(array_name) is None:
+            data_temp[array_name] = []
 
-    if admin_idx is None:
-        add_from_admin_level(admin_level)
-    elif register_idx is None:
-        add_from_register_level(register_level, admin_idx)
-    elif sampling_idx is None:
-        add_from_sampling_level(sampling_level, admin_idx, register_idx)
-    else:
-        print('Poiminta on jo olemassa - mitään ei tapahtunut.')
+        search_idx = find_by_name(data_temp[array_name], search_name)
+        # check if on last iteration: if so, add sampling
+        if idx == len(locationArr) - 1:
+            data_temp[array_name].append(sampling)
+        # check if element with given name exists, or create it
+        elif search_idx is None:
+            data_temp[array_name].append({'name': search_name})
+
+        data_temp = data_temp[array_name][-1]
 
 
-def add_from_admin_level(admin_level):
-    data['registerAdmins'].append(admin_level)
-
-
-def add_from_register_level(register_level, admin_idx):
-    admin = data['registerAdmins'][admin_idx]
-    admin['registers'].append(register_level)
-
-
-def add_from_sampling_level(sampling_level, admin_idx, register_idx):
-    admin = data['registerAdmins'][admin_idx]
-    register = admin['registers'][register_idx]
-    register['samplings'].append(
-        sampling_level)
-
-
-# def convert_to_date(date_str):
-#     date_arr = [int(x) for x in date_str.split('-')]
-#     print(date_arr)
-#     return date(date_arr[2], date_arr[1], date_arr[0])
+def create_file(register_admin):
+    filepath = register_admin + '.json'
+    try:
+        f = open(filepath, 'r')
+        f.close()
+    except IOError:
+        f = open(filepath, 'w')
+        f.write('{"name": ' + '"' + register_admin +
+                '",' + ' "registers": []' + '}')
+        f.close()
 
 
 register_admin = input('Rekisterinpitäjä: ')
 register = input('Rekisteri: ')
+# TODO: should be possible to leave as empty?
+category = input('Rekisterin alaluokka: ')
 sampling_name = input('Poiminnan nimi: ')
-sampling_start = input('Poiminnan alkupvm (VVVV-KK-PP): ')
-sampling_end = input('Poiminnan loppupvm (VVVV-KK-PP): ')
+sampling_start = input('Poiminnan alkupvm (VVVV tai VVVV-KK-PP): ')
+sampling_end = input('Poiminnan loppupvm (VVVV tai VVVV-KK-PP): ')
+sampling_cohort = input('Poiminnan kohortti (1987/1997): ')
+sampling_parents = input('Poiminta vanhemmista (k/e): ')
 
-# start_date = convert_to_date(sampling_start)
-# end_date = convert_to_date(sampling_end)
+sampling_start = fill_date(sampling_start, '-1-1')
+sampling_end = fill_date(sampling_end, '-12-31')
+sampling_cohort = fill_cohort(sampling_cohort)
 
 data = {}
 
-path = 'poiminnat.json'
+create_file(register_admin)
+
+path = register_admin + '.json'
 
 with open(path, 'r') as data_file:
-    '''
-    The default json-file:
-    {"name": "rootLevel", "registerAdmins": []}
-    '''
-
     data = json.load(data_file)
 
-    sampling_level = {
+    sampling = {
         'name': sampling_name,
         'startDate': sampling_start,
         'endDate': sampling_end,
+        'cohort': sampling_cohort,
+        'parents': sampling_parents in ['kyllä', 'k', 'yes', 'y']
     }
 
-    register_level = {
-        'name': register,
-        'samplings': [sampling_level],
-    }
-
-    admin_level = {
-        'name': register_admin,
-        'registers': [register_level],
-    }
-
-    add_sampling(admin_level, register_level, sampling_level)
+    add_sampling(sampling, [
+                 {'array_name': 'registers', 'search_name': register},
+                 {'array_name': 'categories', 'search_name': category},
+                 {'array_name': 'samplings', 'search_name': sampling_name}])
 
 with open(path, 'w', encoding='utf8') as data_file:
     json.dump(data, data_file, ensure_ascii=False, default=str, indent=2)
