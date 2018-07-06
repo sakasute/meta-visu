@@ -1,8 +1,22 @@
 /* eslint-disable-next-line */
 class TreeChart {
   constructor(data, svgElement, config) {
-    const treeHeight = config.size.height - config.margin.top - config.margin.bottom;
-    const treeWidth = config.size.width - config.margin.left - config.margin.right;
+    this.config = {
+      width: config.width ? config.width : 400,
+      height: config.height ? config.height : 200,
+      margin: config.margin
+        ? config.margin
+        : {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        },
+      nodeSize: config.nodeSize ? config.nodeSize : 10,
+      animationDuration: config.animationDuration ? config.animationDuration : 750,
+    };
+    const treeHeight = this.config.height - this.config.margin.top - this.config.margin.bottom;
+    const treeWidth = this.config.width - this.config.margin.left - this.config.margin.right;
     const treeLayout = d3.tree().size([treeHeight, treeWidth]);
 
     const hierarchy = d3.hierarchy(data, d => this.constructor.findChildArr(d));
@@ -10,12 +24,10 @@ class TreeChart {
     this.treeData = treeLayout(hierarchy);
 
     this.svg = svgElement
-      .attr('width', config.size.width)
-      .attr('height', config.size.height)
+      .attr('width', this.config.width)
+      .attr('height', this.config.height)
       .append('g')
-      .attr('transform', `translate(${config.margin.left}, ${config.margin.top})`);
-
-    this.config = config;
+      .attr('transform', `translate(${this.config.margin.left}, ${this.config.margin.top})`);
 
     this.sourceCoord = { x: treeHeight / 2, y: 0 };
   }

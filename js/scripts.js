@@ -16,10 +16,10 @@ async function main() {
       bottom: 25,
       left: 375,
     },
-    size: {
-      width: 1400,
-      height: 800,
-    },
+
+    width: 1400,
+    height: 800,
+
     animationDuration: 750,
     nodeSize: 7.5,
   };
@@ -40,7 +40,6 @@ async function main() {
       height: 200,
     },
   };
-  console.log(thlData);
 
   const categoryTimeline = new CategoryTimeline(
     thlData.registers[0].categories,
