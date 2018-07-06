@@ -76,8 +76,10 @@ class CategoryTimeline {
       .attr('y1', this.y.bandwidth() + 5)
       .attr('x2', this.x(this.config.scaleEndDate))
       .attr('y2', this.y.bandwidth() + 5)
-      .attr('stroke-width', 1)
-      .attr('stroke', 'black');
+      .attr('stroke-width', 0.5)
+      .attr('stroke', 'black')
+      .attr('stroke-dasharray', '4')
+      .attr('shape-rendering', 'crispEdges');
 
     categoryEnter
       .append('text')
