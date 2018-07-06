@@ -14,14 +14,14 @@ async function main() {
       top: 25,
       right: 400,
       bottom: 25,
-      left: 375,
+      left: 225,
     },
 
     width: 1400,
-    height: 800,
+    height: 1000,
 
     animationDuration: 750,
-    nodeSize: 7.5,
+    nodeSize: 10,
   };
 
   const treeSVG = d3.select('body').append('svg');
@@ -35,18 +35,29 @@ async function main() {
   // ***** Timelines *****
 
   const timelineConfig = {
-    size: {
-      width: 400,
-      height: 200,
-    },
+    width: 400,
+    height: 100,
   };
 
-  const categoryTimeline = new CategoryTimeline(
-    thlData.registers[0].categories,
-    treeSVG,
-    timelineConfig,
-  );
+  let singleTimelineData = thlData.registers[1].categories[0].samplings;
+  const parentsData = singleTimelineData.filter(el => el.parents);
+  const subjectsData = singleTimelineData.filter(el => !el.parents);
+  singleTimelineData = [
+    {
+      type: 'parents',
+      data: parentsData,
+    },
+    {
+      type: 'subjects',
+      data: subjectsData,
+    },
+  ];
+  console.log(singleTimelineData);
+
+  const categoryTimeline = new CategoryTimeline(singleTimelineData, treeSVG, timelineConfig);
   categoryTimeline.update();
+
+  categoryTimeline.moveTo(825, 70);
 }
 
 main();

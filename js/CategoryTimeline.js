@@ -28,10 +28,10 @@ class CategoryTimeline {
 
     this.y = d3
       .scaleBand()
-      .domain(data.map(el => el.name))
+      .domain(data.map(el => el.type))
       .range([this.xAxisPadding, this.config.height])
-      .round(true)
-      .padding(0.25);
+      .paddingInner(0.25)
+      .round(true);
   }
 
   static findEarliestStartDate(dataArr) {
@@ -59,26 +59,52 @@ class CategoryTimeline {
       .attr('transform', `translate(0, ${this.config.height - this.xAxisPadding})`);
 
     // enter
-    const timelineEnter = this.svg
+    const categoryEnter = this.svg
       .selectAll('.timeline')
       .data(this.data)
       .enter()
       .append('g')
       .attr('class', 'timeline');
 
-    timelineEnter.attr('transform', d => `translate(0, ${this.y(d.name) - this.xAxisPadding})`);
+    categoryEnter.attr('transform', d => `translate(0, ${this.y(d.type) - this.xAxisPadding})`);
 
-    const sectionEnter = timelineEnter
+    categoryEnter
+      .filter(d => d.type === 'parents')
+      .append('line')
+      .attr('class', 'timeline__separator')
+      .attr('x1', this.x(this.config.scaleStartDate) - 60)
+      .attr('y1', this.y.bandwidth() + 5)
+      .attr('x2', this.x(this.config.scaleEndDate))
+      .attr('y2', this.y.bandwidth() + 5)
+      .attr('stroke-width', 1)
+      .attr('stroke', 'black');
+
+    categoryEnter
+      .append('text')
+      .attr('class', 'timeline__label')
+      .text(d => d.type)
+      .attr('dy', '1.5em')
+      .attr('dx', '-5em'); // FIXME: set text anchor correctly and change layout to position labels inside chart
+
+    const sectionEnter = categoryEnter
       .selectAll('timeline__section')
-      .data(d => d.samplings)
+      .data(d => d.data)
       .enter()
       .append('rect')
       .attr('class', 'timeline__section');
 
     sectionEnter
       .attr('x', d => this.calculateSectionXPos(d))
-      .attr('height', this.y.bandwidth())
+      .attr('height', this.y.bandwidth() / 2)
       .attr('width', d => this.calculateSectionWidth(d));
+
+    sectionEnter
+      .filter(d => d.cohort === '1997')
+      .attr('transform', `translate(0, ${this.y.bandwidth() / 2})`);
+
+    sectionEnter
+      .filter(d => d.cohort === '1987')
+      .attr('class', 'timeline__section timeline__section--87');
   }
 
   moveTo(x, y) {

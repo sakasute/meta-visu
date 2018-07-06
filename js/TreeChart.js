@@ -181,6 +181,8 @@ class TreeChart {
       .remove();
   }
 
+  // TODO: restructure this function into a class constructor parameter /
+  // optional parameter in config
   static findChildArr(object) {
     const childArrNames = ['registerAdmins', 'registers', 'samplings', 'categories'];
     const childrenName = childArrNames.filter(name => object[name] !== undefined)[0];

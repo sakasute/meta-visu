@@ -26,12 +26,20 @@ html {
 }
 
 .timeline__section {
-  fill: green;
-  opacity: 0.75;
+  fill: lightgreen;
+  /* opacity: 0.75;
   stroke-width: 2.5;
-  cursor: pointer;
+  cursor: pointer; */
+}
+
+.timeline__section--87 {
+  fill: lightcoral;
 }
 
 .timeline__section:hover {
   opacity: 1;
+}
+
+.timeline__label {
+  font: 12px sans-serif;
 }
