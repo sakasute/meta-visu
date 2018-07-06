@@ -8,6 +8,7 @@ class CategoryTimeline {
       posY: config.posY ? config.posY : 0,
       scaleStartDate: config.scaleStartDate ? config.scaleStartDate : new Date('1970-1-1'),
       scaleEndDate: config.scaleEndDate ? config.scaleEndDate : new Date(),
+      showXAxis: config.showXAxis !== 'undefined' ? config.showXAxis : true,
     };
 
     this.data = data;
@@ -53,10 +54,14 @@ class CategoryTimeline {
   update() {
     const xAxis = d3.axisBottom(this.x);
 
-    this.svg
-      .append('g')
-      .call(xAxis)
-      .attr('transform', `translate(0, ${this.config.height - this.xAxisPadding})`);
+    this.svg.append('g').attr('class', 'category-timeline');
+
+    if (this.config.showXAxis) {
+      this.svg
+        .select('.category-timeline')
+        .call(xAxis)
+        .attr('transform', `translate(0, ${this.config.height - this.xAxisPadding})`);
+    }
 
     // enter
     const categoryEnter = this.svg
