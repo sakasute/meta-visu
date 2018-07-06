@@ -3,7 +3,9 @@
     "browser": true
   },
   "globals": {
-    "d3": false
+    "d3": false,
+    "TreeChart": false,
+    "CategoryTimeline": false
   },
   "extends": "airbnb-base",
   "rules": {
