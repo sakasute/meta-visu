@@ -38,26 +38,27 @@ async function main() {
     width: 400,
     height: 100,
   };
-
-  let singleTimelineData = thlData.registers[1].categories[0].samplings;
-  const parentsData = singleTimelineData.filter(el => el.parents);
-  const subjectsData = singleTimelineData.filter(el => !el.parents);
-  singleTimelineData = [
-    {
-      type: 'parents',
-      data: parentsData,
-    },
-    {
-      type: 'subjects',
-      data: subjectsData,
-    },
-  ];
-  console.log(singleTimelineData);
-
-  const categoryTimeline = new CategoryTimeline(singleTimelineData, treeSVG, timelineConfig);
-  categoryTimeline.update();
-
-  categoryTimeline.moveTo(825, 70);
+  console.log(treeChart.treeData);
+  treeChart.treeData.children.forEach((registerNode) => {
+    registerNode.children.forEach((categoryNode) => {
+      let timelineData = categoryNode.data.samplings;
+      const parentsData = timelineData.filter(el => el.parents);
+      const subjectsData = timelineData.filter(el => !el.parents);
+      timelineData = [
+        {
+          type: 'parents',
+          data: parentsData,
+        },
+        {
+          type: 'subjects',
+          data: subjectsData,
+        },
+      ];
+      const categoryTimeline = new CategoryTimeline(timelineData, treeSVG, timelineConfig);
+      categoryTimeline.moveTo(categoryNode.y + 310, categoryNode.x - 15); // NOTE: the tree structure kind of swap x and y coords
+      categoryTimeline.update();
+    });
+  });
 }
 
 main();
