@@ -30,6 +30,7 @@ class TreeChart {
       .attr('transform', `translate(${this.config.margin.left}, ${this.config.margin.top})`);
 
     this.sourceCoord = { x: treeHeight / 2, y: 0 };
+    this.idCounter = 0;
   }
 
   addColorScheme(scheme) {}
@@ -117,10 +118,12 @@ class TreeChart {
 
   updateNodes() {
     const nodesData = this.treeData.descendants();
-    const nodeSelection = this.svg
-      .selectAll('g.node')
-      // FIXME: the identifying function is currently borked
-      .data(nodesData, d => (d.parent ? d.parent.data.name + d.data.name : d.data.name));
+    const nodeSelection = this.svg.selectAll('g.node').data(nodesData, (d) => {
+      const id = d.id ? d.id : this.idCounter;
+      d.id = id;
+      this.idCounter += 1;
+      return id;
+    });
 
     // enter
     const nodeEnter = nodeSelection
@@ -148,10 +151,12 @@ class TreeChart {
 
   updateLinks() {
     const linksData = this.treeData.descendants().slice(1);
-    const linkSelection = this.svg
-      .selectAll('path.link')
-      // FIXME: the identifying function is currently borked
-      .data(linksData, d => (d.parent ? d.parent.data.name + d.data.name : d.data.name));
+    const linkSelection = this.svg.selectAll('path.link').data(linksData, (d) => {
+      const id = d.id ? d.id : this.idCounter;
+      d.id = id;
+      this.idCounter += 1;
+      return id;
+    });
 
     // enter
     const linkEnter = linkSelection
