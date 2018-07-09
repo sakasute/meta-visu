@@ -16,12 +16,11 @@ async function main() {
       bottom: 25,
       left: 225,
     },
-
-    width: 1400,
-    height: 1000,
-
+    width: 1200,
+    height: 700,
+    childrenNames: ['registers', 'categories'],
     animationDuration: 750,
-    nodeSize: 10,
+    nodeSize: 7.5,
   };
 
   const treeSVG = d3.select('body').append('svg');
@@ -39,9 +38,8 @@ async function main() {
     height: 100,
     showXAxis: false,
   };
-  console.log(treeChart.treeData);
   treeChart.treeData.children.forEach((registerNode) => {
-    registerNode.children.forEach((categoryNode, idx) => {
+    registerNode.children.forEach((categoryNode) => {
       let timelineData = categoryNode.data.samplings;
       // const scaleStartDate = new Date(d3.min(timelineData, el => el.startDate));
       // const scaleEndDate = new Date(d3.max(timelineData, el => el.endDate));

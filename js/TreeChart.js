@@ -12,6 +12,9 @@ class TreeChart {
           bottom: 0,
           left: 0,
         },
+      childrenNames: config.childrenNames
+        ? config.childrenNames
+        : ['registerAdmins', 'registers', 'categories', 'samplings'],
       nodeSize: config.nodeSize ? config.nodeSize : 10,
       animationDuration: config.animationDuration ? config.animationDuration : 750,
     };
@@ -19,7 +22,7 @@ class TreeChart {
     const treeWidth = this.config.width - this.config.margin.left - this.config.margin.right;
     const treeLayout = d3.tree().size([treeHeight, treeWidth]);
 
-    const hierarchy = d3.hierarchy(data, d => this.constructor.findChildArr(d));
+    const hierarchy = d3.hierarchy(data, d => this.findChildArr(d));
 
     this.treeData = treeLayout(hierarchy);
 
@@ -33,7 +36,14 @@ class TreeChart {
     this.idCounter = 0;
   }
 
-  addColorScheme(scheme) {}
+  findChildArr(object) {
+    const childArrNames = this.config.childrenNames;
+    const childrenName = childArrNames.filter(name => object[name] !== undefined)[0];
+    if (childrenName !== undefined) {
+      return object[childrenName];
+    }
+    return null;
+  }
 
   // FIXME: this is just an ugly ugly function, probs should use recursion
   collapseLevel(lvl) {
@@ -91,10 +101,12 @@ class TreeChart {
 
   drawNodeCircles(nodeGroup) {
     nodeGroup
-      .append('circle')
+      .append('rect')
       .attr('class', 'node__circle')
-      .attr('r', this.config.nodeSize)
-      .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
+      .attr('width', 100)
+      .attr('height', 50)
+      .attr('transform', 'translate(-50, -25)');
+    // .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
   }
 
   moveNodesInPlace(nodeGroup) {
@@ -118,7 +130,7 @@ class TreeChart {
 
   updateNodes() {
     const nodesData = this.treeData.descendants();
-    const nodeSelection = this.svg.selectAll('g.node').data(nodesData, (d) => {
+    const nodeSelection = this.svg.selectAll('.node').data(nodesData, (d) => {
       const id = d.id ? d.id : this.idCounter;
       d.id = id;
       this.idCounter += 1;
@@ -186,22 +198,11 @@ class TreeChart {
       .remove();
   }
 
-  // TODO: restructure this function into a class constructor parameter /
-  // optional parameter in config
-  static findChildArr(object) {
-    const childArrNames = ['registerAdmins', 'registers', 'samplings', 'categories'];
-    const childrenName = childArrNames.filter(name => object[name] !== undefined)[0];
-    if (childrenName !== undefined) {
-      return object[childrenName];
-    }
-    return null;
-  }
-
   static diagonal(s, d) {
-    const path = `M ${s.y} ${s.x}
+    const path = `M ${s.y - 25} ${s.x}
                   C ${(s.y + d.y) / 2} ${s.x},
                     ${(s.y + d.y) / 2} ${d.x},
-                    ${d.y} ${d.x}`;
+                    ${d.y + 25} ${d.x}`;
 
     return path;
   }
