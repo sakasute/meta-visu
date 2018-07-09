@@ -8,9 +8,11 @@ class CategoryTimeline {
       posY: config.posY ? config.posY : 0,
       scaleStartDate: config.scaleStartDate ? config.scaleStartDate : new Date('1970-1-1'),
       scaleEndDate: config.scaleEndDate ? config.scaleEndDate : new Date(),
-      showXAxis: config.showXAxis !== 'undefined' ? config.showXAxis : true,
+      showXAxis: config.showXAxis != null ? config.showXAxis : true,
+      showLegend: config.showLegend != null ? config.showLegend : true,
     };
-
+    console.log(this.config.showXAxis);
+    console.log(this.config.showLegend);
     this.data = data;
 
     this.xAxisPadding = 30;
@@ -25,7 +27,7 @@ class CategoryTimeline {
     this.x = d3
       .scaleTime()
       .domain([this.config.scaleStartDate, this.config.scaleEndDate])
-      .range([0, this.config.width]);
+      .range([0, this.config.width - 25]);
 
     this.y = d3
       .scaleBand()
@@ -57,10 +59,48 @@ class CategoryTimeline {
     this.svg.append('g').attr('class', 'category-timeline');
 
     if (this.config.showXAxis) {
+      console.log('test');
       this.svg
         .select('.category-timeline')
         .call(xAxis)
         .attr('transform', `translate(0, ${this.config.height - this.xAxisPadding})`);
+    }
+
+    if (this.config.showLegend) {
+      const legend = this.svg.append('g').attr('class', 'legend');
+      legend.attr('transform', `translate(${this.config.width - 15}, 0)`);
+
+      const category1 = legend.append('g').attr('class', 'legend__category');
+
+      category1
+        .append('rect')
+        .attr('class', 'legend__color-1')
+        .attr('width', this.y.bandwidth() / 2)
+        .attr('height', this.y.bandwidth() / 2);
+
+      category1
+        .append('text')
+        .attr('class', 'legend__label')
+        .text('1987')
+        .attr(
+          'transform',
+          `translate(${this.y.bandwidth() / 2 + 5}, ${this.y.bandwidth() / 2 - 5})`,
+        );
+
+      const category2 = legend.append('g').attr('class', 'legend__category');
+
+      category2
+        .append('rect')
+        .attr('class', 'legend__color-2')
+        .attr('width', this.y.bandwidth() / 2)
+        .attr('height', this.y.bandwidth() / 2)
+        .attr('transform', `translate(0, ${this.y.bandwidth() / 2})`);
+
+      category2
+        .append('text')
+        .attr('class', 'legend__label')
+        .text('1997')
+        .attr('transform', `translate(${this.y.bandwidth() / 2 + 5}, ${this.y.bandwidth() - 5})`);
     }
 
     // enter

@@ -1,5 +1,7 @@
 html {
   box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 12px;
 }
 
 *,
@@ -8,7 +10,10 @@ html {
   box-sizing: inherit;
 }
 
-.node__circle {
+.timeline-tree {
+}
+
+.node__marker {
   fill: #fff;
   stroke: steelblue;
   stroke-width: 3px;
@@ -34,6 +39,14 @@ html {
 
 .timeline__section--87 {
   fill: lightcoral;
+}
+
+.legend__color-1 {
+  fill: lightcoral;
+}
+
+.legend__color-2 {
+  fill: lightgreen;
 }
 
 .timeline__section:hover {

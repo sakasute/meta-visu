@@ -20,7 +20,10 @@ class TreeChart {
     };
     const treeHeight = this.config.height - this.config.margin.top - this.config.margin.bottom;
     const treeWidth = this.config.width - this.config.margin.left - this.config.margin.right;
-    const treeLayout = d3.tree().size([treeHeight, treeWidth]);
+    const treeLayout = d3
+      .tree()
+      .size([treeHeight, treeWidth])
+      .separation(() => 1); // NOTE: this seems to spread all the leaf nodes equally far apart
 
     const hierarchy = d3.hierarchy(data, d => this.findChildArr(d));
 
@@ -101,11 +104,9 @@ class TreeChart {
 
   drawNodeCircles(nodeGroup) {
     nodeGroup
-      .append('rect')
-      .attr('class', 'node__circle')
-      .attr('width', 100)
-      .attr('height', 50)
-      .attr('transform', 'translate(-50, -25)');
+      .append('circle')
+      .attr('class', 'node__marker')
+      .attr('r', this.config.nodeSize);
     // .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
   }
 
@@ -121,9 +122,9 @@ class TreeChart {
     nodeGroup
       .append('text')
       .attr('class', 'node__label')
-      .attr('dy', '.35em')
-      .attr('x', d => (d.children || d.childrenStored ? -13 : 13))
-      .attr('text-anchor', d => (d.children || d.childrenStored ? 'end' : 'start'))
+      .attr('dy', '-1.5em')
+      .attr('x', -13)
+      .attr('text-anchor', 'middle')
       .text(d => d.data.name);
   }
   /* eslint-enable class-methods-use-this */
@@ -199,10 +200,10 @@ class TreeChart {
   }
 
   static diagonal(s, d) {
-    const path = `M ${s.y - 25} ${s.x}
+    const path = `M ${s.y} ${s.x}
                   C ${(s.y + d.y) / 2} ${s.x},
                     ${(s.y + d.y) / 2} ${d.x},
-                    ${d.y + 25} ${d.x}`;
+                    ${d.y} ${d.x}`;
 
     return path;
   }
