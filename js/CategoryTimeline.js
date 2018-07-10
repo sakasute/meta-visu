@@ -12,8 +12,6 @@ class CategoryTimeline {
       showXAxis: config.showXAxis != null ? config.showXAxis : true,
       showLegend: config.showLegend != null ? config.showLegend : true,
     };
-    console.log(this.config.showXAxis);
-    console.log(this.config.showLegend);
     this.data = data;
 
     this.xAxisPadding = 30;
@@ -108,6 +106,23 @@ class CategoryTimeline {
     return this.x(new Date(sectionData.startDate));
   }
 
+  static createYearLabel(d) {
+    const startDate = new Date(d.startDate);
+    const endDate = new Date(d.endDate);
+    if (startDate.getFullYear() === endDate.getFullYear()) {
+      return startDate.getFullYear();
+    }
+    return `${startDate.getFullYear()}—${endDate.getFullYear()}`;
+  }
+
+  positionYearLabel(d) {
+    const xStart = this.x(new Date(d.startDate));
+    const xEnd = this.x(new Date(d.endDate));
+    const xCentre = (xStart + xEnd) / 2;
+
+    return `translate(${xCentre}, ${this.y.bandwidth() / 2 - 4})`;
+  }
+
   update() {
     this.svg.append('g').attr('class', 'category-timeline');
 
@@ -152,13 +167,22 @@ class CategoryTimeline {
       .selectAll('timeline__section')
       .data(d => d.data)
       .enter()
-      .append('rect')
-      .attr('class', 'timeline__section');
+      .append('g')
+      .attr('class', 'timeline__section-holder');
 
-    sectionEnter
+    const sectionRects = sectionEnter
+      .append('rect')
+      .attr('class', 'timeline__section')
       .attr('x', d => this.calculateSectionXPos(d))
       .attr('height', this.y.bandwidth() / 2)
       .attr('width', d => this.calculateSectionWidth(d));
+
+    sectionEnter
+      .append('text')
+      .attr('class', 'timeline__year-label')
+      .text(d => this.constructor.createYearLabel(d))
+      .attr('text-anchor', 'middle')
+      .attr('transform', d => this.positionYearLabel(d));
 
     sectionEnter
       .filter(d => d.cohort === '1997')
@@ -166,6 +190,7 @@ class CategoryTimeline {
 
     sectionEnter
       .filter(d => d.cohort === '1987')
+      .select('.timeline__section')
       .attr('class', 'timeline__section timeline__section--87');
   }
 

@@ -50,12 +50,8 @@ async function main() {
         categoryIdx === registerNode.children.length - 1
       ) {
         timelineConfigExt = { ...timelineConfig, showXAxis: true, showLegend: true };
-      } else if (registerIdx === 0 && categoryIdx === 0) {
-        timelineConfigExt = { ...timelineConfig, showXAxis: true, xAxisOrientation: 'top' };
       }
       let timelineData = categoryNode.data.samplings;
-      // const scaleStartDate = new Date(d3.min(timelineData, el => el.startDate));
-      // const scaleEndDate = new Date(d3.max(timelineData, el => el.endDate));
       const parentsData = timelineData.filter(el => el.parents);
       const subjectsData = timelineData.filter(el => !el.parents);
       timelineData = [
@@ -68,7 +64,6 @@ async function main() {
           data: subjectsData,
         },
       ];
-      // const timelineConfigExtended = { ...timelineConfig, scaleStartDate, scaleEndDate };
       const categoryTimeline = new CategoryTimeline(timelineData, treeSVG, timelineConfigExt);
       categoryTimeline.moveTo(categoryNode.y + 350, categoryNode.x - 15); // NOTE: the tree structure kind of swap x and y coords
       categoryTimeline.update();

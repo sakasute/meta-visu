@@ -51,6 +51,12 @@ html {
   opacity: 1;
 }
 
+.timeline__year-label {
+  font-size: 10px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
 .timeline__label {
   font: 12px sans-serif;
 }
