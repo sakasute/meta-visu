@@ -50,16 +50,24 @@ def add_sampling(sampling, locationArr):
         data_temp = data_temp[array_name][-1]
 
 
-def create_file(register_admin):
+def create_ra_file(register_admin):
     filepath = 'data/' + register_admin + '.json'
     try:
         f = open(filepath, 'r')
         f.close()
+    # create the file if it doesn't exist, ie. opening it fails
     except IOError:
         f = open(filepath, 'w')
         f.write('{"name": ' + '"' + register_admin +
                 '",' + ' "registers": []' + '}')
         f.close()
+
+
+def save_filename_list():
+    with open('data/filenames.json', 'w', encoding='utf8') as f:
+        filenames = list(
+            filter(lambda n: n != 'filenames.json', listdir('data/')))
+        json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
 
 
 def create_fill_options(list):
@@ -84,10 +92,12 @@ def take_input(description, auto_fill_arr):
 
 
 admin_list = list(map(lambda f: f.split('.')[0], listdir('data/')))
+admin_list = list(filter(lambda n: n != 'filenames', admin_list))
 register_admin = take_input('Rekisterinpitäjä', admin_list)
-create_file(register_admin)
+create_ra_file(register_admin)
 
 path = 'data/' + register_admin + '.json'
+save_filename_list()
 
 # generate auto-fill shortcuts
 with open(path, 'r') as data_file:
