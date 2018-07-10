@@ -32,9 +32,7 @@ html {
 
 .timeline__section {
   fill: lightgreen;
-  /* opacity: 0.75;
-  stroke-width: 2.5;
-  cursor: pointer; */
+  opacity: 0.75;
 }
 
 .timeline__section--87 {

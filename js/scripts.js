@@ -45,11 +45,13 @@ async function main() {
   treeChart.treeData.children.forEach((registerNode, registerIdx) => {
     registerNode.children.forEach((categoryNode, categoryIdx) => {
       let timelineConfigExt = timelineConfig;
-      if (registerIdx === 0 && categoryIdx === 0) {
-        timelineConfigExt = { ...timelineConfig, showLegend: true };
-      } else if (registerIdx === 5) {
-        //  FIXME: currently hardcoded value
-        timelineConfigExt = { ...timelineConfig, showXAxis: true };
+      if (
+        registerIdx === treeChart.treeData.children.length - 1 &&
+        categoryIdx === registerNode.children.length - 1
+      ) {
+        timelineConfigExt = { ...timelineConfig, showXAxis: true, showLegend: true };
+      } else if (registerIdx === 0 && categoryIdx === 0) {
+        timelineConfigExt = { ...timelineConfig, showXAxis: true, xAxisOrientation: 'top' };
       }
       let timelineData = categoryNode.data.samplings;
       // const scaleStartDate = new Date(d3.min(timelineData, el => el.startDate));
