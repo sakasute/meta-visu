@@ -4,22 +4,16 @@ class TreeChart {
     this.config = {
       width: config.width ? config.width : 400,
       height: config.height ? config.height : 200,
-      margin: config.margin
-        ? config.margin
-        : {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-        },
+      posX: config.posX ? config.posX : 0,
+      posY: config.posY ? config.posY : 0,
       childrenNames: config.childrenNames
         ? config.childrenNames
         : ['registerAdmins', 'registers', 'categories', 'samplings'],
       nodeSize: config.nodeSize ? config.nodeSize : 10,
       animationDuration: config.animationDuration ? config.animationDuration : 750,
     };
-    const treeHeight = this.config.height - this.config.margin.top - this.config.margin.bottom;
-    const treeWidth = this.config.width - this.config.margin.left - this.config.margin.right;
+    const treeHeight = this.config.height;
+    const treeWidth = this.config.width;
     const treeLayout = d3
       .tree()
       .size([treeHeight, treeWidth])
@@ -30,10 +24,12 @@ class TreeChart {
     this.treeData = treeLayout(hierarchy);
 
     this.svg = svgElement
+      .append('g')
+      .attr('class', 'treechart')
       .attr('width', this.config.width)
       .attr('height', this.config.height)
-      .append('g')
-      .attr('transform', `translate(${this.config.margin.left}, ${this.config.margin.top})`);
+      .attr('transform', `translate(${this.config.posX}, ${this.config.posY})`)
+      .append('g');
 
     this.sourceCoord = { x: treeHeight / 2, y: 0 };
     this.idCounter = 0;
@@ -149,7 +145,7 @@ class TreeChart {
         this.clickNode(d);
       });
 
-    this.drawNodeCircles(nodeEnter.merge(nodeSelection));
+    // this.drawNodeCircles(nodeEnter.merge(nodeSelection));
     this.moveNodesInPlace(nodeEnter);
     this.addNodeLabels(nodeEnter);
 

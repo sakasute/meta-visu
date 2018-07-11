@@ -10,25 +10,23 @@ async function main() {
   // ***** TreeChart *****
 
   const treeConfig = {
-    margin: {
-      top: 25,
-      right: 625,
-      bottom: 25,
-      left: 150,
-    },
-    width: 1200,
-    height: 900,
+    width: 600,
+    height: 800,
+    posX: 150,
+    posY: 50,
     childrenNames: ['registers', 'categories'],
     animationDuration: 750,
     nodeSize: 7.5,
   };
 
-  const treeSVG = d3
+  const svg = d3
     .select('body')
     .append('svg')
+    .attr('height', 900)
+    .attr('width', 1200)
     .attr('class', 'timeline-tree');
 
-  const treeChart = new TreeChart(thlData, treeSVG, treeConfig);
+  const treeChart = new TreeChart(thlData, svg, treeConfig);
   treeChart.updateNodes();
   treeChart.updateLinks();
 
@@ -64,8 +62,8 @@ async function main() {
           data: subjectsData,
         },
       ];
-      const categoryTimeline = new CategoryTimeline(timelineData, treeSVG, timelineConfigExt);
-      categoryTimeline.moveTo(categoryNode.y + 350, categoryNode.x - 15); // NOTE: the tree structure kind of swap x and y coords
+      const categoryTimeline = new CategoryTimeline(timelineData, svg, timelineConfigExt);
+      categoryTimeline.moveTo(categoryNode.y + 325, categoryNode.x + 12.5); // NOTE: the tree structure kind of swap x and y coords
       categoryTimeline.update();
     });
   });

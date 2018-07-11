@@ -11,6 +11,7 @@ html {
 }
 
 .timeline-tree {
+  border: solid black 1px;
 }
 
 .node__marker {
