@@ -35,6 +35,15 @@ class TreeChart {
     this.idCounter = 0;
   }
 
+  static diagonal(s, d) {
+    const path = `M ${s.y} ${s.x}
+                  C ${(s.y + d.y) / 2} ${s.x},
+                    ${(s.y + d.y) / 2} ${d.x},
+                    ${d.y} ${d.x}`;
+
+    return path;
+  }
+
   findChildArr(object) {
     const childArrNames = this.config.childrenNames;
     const childrenName = childArrNames.filter(name => object[name] !== undefined)[0];
@@ -212,14 +221,5 @@ class TreeChart {
         return this.constructor.diagonal(o, o);
       })
       .remove();
-  }
-
-  static diagonal(s, d) {
-    const path = `M ${s.y} ${s.x}
-                  C ${(s.y + d.y) / 2} ${s.x},
-                    ${(s.y + d.y) / 2} ${d.x},
-                    ${d.y} ${d.x}`;
-
-    return path;
   }
 }

@@ -44,6 +44,15 @@ class CategoryTimeline {
     return d3.max(dataArr, el => new Date(el.endDate));
   }
 
+  static createYearLabel(d) {
+    const startDate = new Date(d.startDate);
+    const endDate = new Date(d.endDate);
+    if (startDate.getFullYear() === endDate.getFullYear()) {
+      return startDate.getFullYear();
+    }
+    return `${startDate.getFullYear()}—${endDate.getFullYear()}`;
+  }
+
   drawXAxis() {
     let xAxis;
     if (this.config.xAxisOrientation === 'top') {
@@ -106,21 +115,16 @@ class CategoryTimeline {
     return this.x(new Date(sectionData.startDate));
   }
 
-  static createYearLabel(d) {
-    const startDate = new Date(d.startDate);
-    const endDate = new Date(d.endDate);
-    if (startDate.getFullYear() === endDate.getFullYear()) {
-      return startDate.getFullYear();
-    }
-    return `${startDate.getFullYear()}—${endDate.getFullYear()}`;
-  }
-
   positionYearLabel(d) {
     const xStart = this.x(new Date(d.startDate));
     const xEnd = this.x(new Date(d.endDate));
     const xCentre = (xStart + xEnd) / 2;
 
     return `translate(${xCentre}, ${this.y.bandwidth() / 2 - 4})`;
+  }
+
+  moveTo(x, y) {
+    this.svg.attr('transform', `translate(${x}, ${y})`);
   }
 
   update() {
@@ -192,9 +196,5 @@ class CategoryTimeline {
       .filter(d => d.cohort === '1987')
       .select('.timeline__section')
       .attr('class', 'timeline__section timeline__section--87');
-  }
-
-  moveTo(x, y) {
-    this.svg.attr('transform', `translate(${x}, ${y})`);
   }
 }
