@@ -1,0 +1,30 @@
+.timeline__section {
+  fill: lightgreen;
+  opacity: 0.75;
+}
+
+.timeline__section--87 {
+  fill: lightcoral;
+}
+
+.legend__color-1 {
+  fill: lightcoral;
+}
+
+.legend__color-2 {
+  fill: lightgreen;
+}
+
+.timeline__section:hover {
+  opacity: 1;
+}
+
+.timeline__year-label {
+  font-size: 10px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.timeline__label {
+  font: 12px sans-serif;
+}

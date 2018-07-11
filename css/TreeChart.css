@@ -1,0 +1,30 @@
+.foreign-object {
+  height: 1px;
+  width: 1px;
+}
+
+.html-label {
+  width: 100px;
+  text-align: center;
+}
+
+.html-label__text {
+  margin: 0;
+}
+
+.node__marker {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+  cursor: pointer;
+}
+
+.node__label {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}

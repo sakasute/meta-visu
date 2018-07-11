@@ -44,6 +44,27 @@ class TreeChart {
     return path;
   }
 
+  static calculateLabelPlacement(d) {
+    try {
+      if (Math.ceil(d.x) > Math.ceil(d.parent.x)) {
+        d.labelPosition = 'under';
+      } else if (Math.ceil(d.x) < Math.ceil(d.parent.x)) {
+        d.labelPosition = 'top';
+      } else {
+        d.labelPosition = d.parent.labelPosition ? d.parent.labelPosition : 'top';
+      }
+    } finally {
+      switch (d.labelPosition) {
+        case 'top':
+          return '-1em';
+        case 'under':
+          return '1.5em';
+        default:
+          return '0em';
+      }
+    }
+  }
+
   findChildArr(object) {
     const childArrNames = this.config.childrenNames;
     const childrenName = childArrNames.filter(name => object[name] !== undefined)[0];
@@ -125,31 +146,30 @@ class TreeChart {
   /* eslint-disable class-methods-use-this */
   addNodeLabels(nodeGroup) {
     nodeGroup
+      .filter(d => d.parent)
       .append('text')
       .attr('class', 'node__label')
-      .attr('dy', (d) => {
-        try {
-          if (Math.ceil(d.x) > Math.ceil(d.parent.x)) {
-            d.labelPosition = 'under';
-          } else if (Math.ceil(d.x) < Math.ceil(d.parent.x)) {
-            d.labelPosition = 'top';
-          } else {
-            d.labelPosition = d.parent.labelPosition ? d.parent.labelPosition : 'top';
-          }
-        } finally {
-          switch (d.labelPosition) {
-            case 'top':
-              return '-1em';
-            case 'under':
-              return '1.5em';
-            default:
-              return '0em';
-          }
-        }
-      })
+      .attr('dy', d => this.constructor.calculateLabelPlacement(d))
       .attr('x', -13)
       .attr('text-anchor', 'middle')
       .text(d => d.data.name);
+
+    // NOTE: handle root node separately to support text wrapping
+    this.addRootLabel(nodeGroup.filter(d => !d.parent));
+  }
+
+  addRootLabel(rootNode) {
+    const fo = rootNode.append('foreignObject').attr('class', 'foreign-object');
+
+    const rootLabel = fo
+      .append('xhtml:div')
+      .attr('class', 'html-label')
+      .append('p')
+      .attr('class', 'html-label__text')
+      .html(d => d.data.name);
+
+    const boundingRect = rootLabel.node().getBoundingClientRect();
+    fo.attr('transform', `translate(${-1 * boundingRect.width}, ${boundingRect.height / -2})`);
   }
   /* eslint-enable class-methods-use-this */
 

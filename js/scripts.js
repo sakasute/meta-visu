@@ -12,7 +12,7 @@ async function main() {
   const treeConfig = {
     width: 550,
     height: 800,
-    posX: 150,
+    posX: 125,
     posY: 50,
     childrenNames: ['registers', 'categories'],
     animationDuration: 750,
