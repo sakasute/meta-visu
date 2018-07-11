@@ -1,9 +1,13 @@
-.timeline__section {
+.timeline__rect {
   fill: lightgreen;
   opacity: 0.75;
 }
 
-.timeline__section--87 {
+.timeline__rect:hover {
+  opacity: 1;
+}
+
+.timeline__rect--87 {
   fill: lightcoral;
 }
 
@@ -13,10 +17,6 @@
 
 .legend__color-2 {
   fill: lightgreen;
-}
-
-.timeline__section:hover {
-  opacity: 1;
 }
 
 .timeline__year-label {

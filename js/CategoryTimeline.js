@@ -18,7 +18,7 @@ class CategoryTimeline {
 
     this.svg = svgElement
       .append('g')
-      .attr('class', 'timeline-chart')
+      .attr('class', 'category-timeline')
       .attr('width', this.config.width)
       .attr('height', this.config.height + this.xAxisPadding)
       .attr('transform', `translate(${this.config.posX}, ${this.config.posY})`);
@@ -62,7 +62,8 @@ class CategoryTimeline {
     }
 
     this.svg
-      .select('.category-timeline')
+      .append('g')
+      .attr('class', 'category-timeline__axis')
       .call(xAxis)
       .attr('transform', () => {
         if (this.config.xAxisOrientation === 'top') {
@@ -128,8 +129,6 @@ class CategoryTimeline {
   }
 
   update() {
-    this.svg.append('g').attr('class', 'category-timeline');
-
     if (this.config.showXAxis) {
       this.drawXAxis();
     }
@@ -150,7 +149,7 @@ class CategoryTimeline {
     categoryEnter
       .filter(d => d.type === 'parents')
       .append('line')
-      .attr('class', 'timeline__separator')
+      .attr('class', 'category-timeline__separator')
       .attr('x1', this.x(this.config.scaleStartDate) - 60)
       .attr('y1', this.y.bandwidth() + 5)
       .attr('x2', this.x(this.config.scaleEndDate))
@@ -162,7 +161,7 @@ class CategoryTimeline {
 
     categoryEnter
       .append('text')
-      .attr('class', 'timeline__label')
+      .attr('class', 'timeline__title')
       .text(d => d.type)
       .attr('dy', '1.5em')
       .attr('dx', '-5em'); // FIXME: set text anchor correctly and change layout to position labels inside chart
@@ -172,11 +171,11 @@ class CategoryTimeline {
       .data(d => d.data)
       .enter()
       .append('g')
-      .attr('class', 'timeline__section-holder');
+      .attr('class', 'timeline__section');
 
     const sectionRects = sectionEnter
       .append('rect')
-      .attr('class', 'timeline__section')
+      .attr('class', 'timeline__rect')
       .attr('x', d => this.calculateSectionXPos(d))
       .attr('height', this.y.bandwidth() / 2)
       .attr('width', d => this.calculateSectionWidth(d));
@@ -194,7 +193,7 @@ class CategoryTimeline {
 
     sectionEnter
       .filter(d => d.cohort === '1987')
-      .select('.timeline__section')
-      .attr('class', 'timeline__section timeline__section--87');
+      .select('.timeline__rect')
+      .attr('class', 'timeline__rect timeline__rect--87');
   }
 }
