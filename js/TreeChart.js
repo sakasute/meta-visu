@@ -118,7 +118,26 @@ class TreeChart {
     nodeGroup
       .append('text')
       .attr('class', 'node__label')
-      .attr('dy', '-1.5em')
+      .attr('dy', (d) => {
+        try {
+          if (Math.ceil(d.x) > Math.ceil(d.parent.x)) {
+            d.labelPosition = 'under';
+          } else if (Math.ceil(d.x) < Math.ceil(d.parent.x)) {
+            d.labelPosition = 'top';
+          } else {
+            d.labelPosition = d.parent.labelPosition ? d.parent.labelPosition : 'top';
+          }
+        } finally {
+          switch (d.labelPosition) {
+            case 'top':
+              return '-1em';
+            case 'under':
+              return '1.5em';
+            default:
+              return '0em';
+          }
+        }
+      })
       .attr('x', -13)
       .attr('text-anchor', 'middle')
       .text(d => d.data.name);

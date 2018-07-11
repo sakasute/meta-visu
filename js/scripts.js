@@ -10,7 +10,7 @@ async function main() {
   // ***** TreeChart *****
 
   const treeConfig = {
-    width: 600,
+    width: 550,
     height: 800,
     posX: 150,
     posY: 50,
@@ -35,7 +35,7 @@ async function main() {
   // ***** Timelines *****
 
   const timelineConfig = {
-    width: 300,
+    width: 275,
     height: 100,
     showXAxis: false,
     showLegend: false,
