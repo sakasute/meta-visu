@@ -1,29 +1,26 @@
-.foreign-object {
+.tree__html-object {
   height: 1px;
   width: 1px;
 }
 
-.html-label {
+.tree__html-label {
   width: 100px;
   text-align: center;
-}
-
-.html-label__text {
   margin: 0;
 }
 
-.node__marker {
+.tree__node-marker {
   fill: #fff;
   stroke: steelblue;
   stroke-width: 3px;
   cursor: pointer;
 }
 
-.node__label {
+.tree__node-label {
   font: 12px sans-serif;
 }
 
-.link {
+.tree__link {
   fill: none;
   stroke: #ccc;
   stroke-width: 2px;

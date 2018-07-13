@@ -18,7 +18,7 @@ class CategoryTimeline {
 
     this.svg = svgElement
       .append('g')
-      .attr('class', 'category-timeline')
+      .attr('class', 'timeline-chart')
       .attr('width', this.config.width)
       .attr('height', this.config.height + this.xAxisPadding)
       .attr('transform', `translate(${this.config.posX}, ${this.config.posY})`);
@@ -63,7 +63,7 @@ class CategoryTimeline {
 
     this.svg
       .append('g')
-      .attr('class', 'category-timeline__axis')
+      .attr('class', 'timeline-chart__axis')
       .call(xAxis)
       .attr('transform', () => {
         if (this.config.xAxisOrientation === 'top') {
@@ -149,7 +149,7 @@ class CategoryTimeline {
     categoryEnter
       .filter(d => d.type === 'parents')
       .append('line')
-      .attr('class', 'category-timeline__separator')
+      .attr('class', 'timeline__separator')
       .attr('x1', this.x(this.config.scaleStartDate) - 60)
       .attr('y1', this.y.bandwidth() + 5)
       .attr('x2', this.x(this.config.scaleEndDate))
