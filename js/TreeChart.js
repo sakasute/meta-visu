@@ -138,8 +138,8 @@ class TreeChart {
 
   moveNodesInPlace(nodeGroup) {
     nodeGroup
-      .transition()
-      .duration(this.config.animationDuration)
+      // .transition()
+      // .duration(this.config.animationDuration)
       .attr('transform', d => `translate(${d.y}, ${d.x})`);
   }
 
@@ -198,8 +198,8 @@ class TreeChart {
     // exit
     nodeSelection
       .exit()
-      .transition()
-      .duration(this.config.animationDuration)
+      // .transition()
+      // .duration(this.config.animationDuration)
       .attr('transform', `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`)
       .remove();
   }
@@ -225,8 +225,8 @@ class TreeChart {
       });
 
     linkEnter
-      .transition()
-      .duration(750)
+      // .transition()
+      // .duration(this.config.duration)
       .attr('d', d => this.constructor.diagonal(d, d.parent));
 
     // exit

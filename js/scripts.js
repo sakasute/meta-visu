@@ -1,32 +1,46 @@
-function createNavbar(fileNames) {
-  fileNames
+function createNavbar(filenames) {
+  filenames
     .map(name => name.split('.')[0])
     .sort()
     .forEach((name) => {
       const navItem = document.createElement('li');
       navItem.classList.add('nav__item');
-      navItem.innerHTML = `<button class="nav-btn js-nav-btn" data-nav=${name}>${name}</button>`;
+      navItem.innerHTML = `<button class="nav-btn js-nav-btn" data-filename="${name}.json">${name}</button>`;
       document.getElementsByClassName('js-nav-list')[0].appendChild(navItem);
     });
 }
 
-async function getData(file) {
-  return fetch(file)
-    .then(res => res.json())
-    .then(dataJson => dataJson);
+function activateNavbar() {
+  Array.from(document.getElementsByClassName('js-nav-btn')).forEach((el) => {
+    el.addEventListener('click', (ev) => {
+      const { filename } = el.dataset;
+      console.log(filename);
+      if (!Array.from(el.classList).includes('nav-btn--selected')) {
+        el.classList.add('nav-btn--selected');
+        drawTimelineTree(filename);
+      } else {
+        removeTimelineTree(filename);
+        el.classList.remove('nav-btn--selected');
+      }
+    });
+  });
 }
 
-async function main() {
-  const fileNames = await getData('data/filenames.json');
-  const thlData = await getData('data/National Institute for Health and Welfare.json');
+function calculateCategoryCount(data) {
+  let categoryCount = 0;
+  data.registers.forEach(register => register.categories.forEach(category => (categoryCount += 1)));
+  return categoryCount;
+}
 
-  createNavbar(fileNames);
-
+async function drawTimelineTree(filename) {
+  const data = await getData(`data/${filename}`);
+  const categoryCount = calculateCategoryCount(data);
+  const treeHeight = categoryCount * 100;
   // ***** TreeChart *****
 
   const treeConfig = {
     width: 500,
-    height: 800,
+    height: treeHeight,
     posX: 125,
     posY: 50,
     childrenNames: ['registers', 'categories'],
@@ -37,11 +51,12 @@ async function main() {
   const svg = d3
     .select('body')
     .append('svg')
-    .attr('height', 900)
+    .attr('data-filename', filename)
+    .attr('height', treeHeight + 100)
     .attr('width', 1050)
-    .attr('class', 'timeline-tree');
+    .attr('class', 'timeline-tree js-timeline-tree');
 
-  const treeChart = new TreeChart(thlData, svg, treeConfig);
+  const treeChart = new TreeChart(data, svg, treeConfig);
   treeChart.updateNodes();
   treeChart.updateLinks();
 
@@ -82,6 +97,24 @@ async function main() {
       categoryTimeline.update();
     });
   });
+}
+
+function removeTimelineTree(filename) {
+  const elToRemove = document.querySelector(`.js-timeline-tree[data-filename="${filename}"]`);
+  elToRemove.remove();
+}
+
+async function getData(file) {
+  return fetch(file)
+    .then(res => res.json())
+    .then(dataJson => dataJson);
+}
+
+async function main() {
+  const filenames = await getData('data/filenames.json');
+
+  createNavbar(filenames);
+  activateNavbar();
 }
 
 main();
