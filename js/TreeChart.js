@@ -25,7 +25,7 @@ class TreeChart {
 
     this.svg = svgElement
       .append('g')
-      .attr('class', 'treechart')
+      .attr('class', 'tree')
       .attr('width', this.config.width)
       .attr('height', this.config.height)
       .attr('transform', `translate(${this.config.posX}, ${this.config.posY})`)
@@ -131,7 +131,7 @@ class TreeChart {
   drawNodeCircles(nodeGroup) {
     nodeGroup
       .append('circle')
-      .attr('class', 'node__marker')
+      .attr('class', 'tree__node-marker')
       .attr('r', this.config.nodeSize);
     // .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
   }
@@ -148,7 +148,7 @@ class TreeChart {
     nodeGroup
       .filter(d => d.parent)
       .append('text')
-      .attr('class', 'node__label')
+      .attr('class', 'tree__node-label')
       .attr('dy', d => this.constructor.calculateLabelPlacement(d))
       .attr('x', -13)
       .attr('text-anchor', 'middle')
@@ -159,13 +159,11 @@ class TreeChart {
   }
 
   addRootLabel(rootNode) {
-    const fo = rootNode.append('foreignObject').attr('class', 'foreign-object');
+    const fo = rootNode.append('foreignObject').attr('class', 'tree__html-object');
 
     const rootLabel = fo
-      .append('xhtml:div')
-      .attr('class', 'html-label')
-      .append('p')
-      .attr('class', 'html-label__text')
+      .append('xhtml:p')
+      .attr('class', 'tree__html-label')
       .html(d => d.data.name);
 
     const boundingRect = rootLabel.node().getBoundingClientRect();
@@ -187,7 +185,7 @@ class TreeChart {
       .enter()
       // .filter(d => d.depth > 0)
       .append('g')
-      .attr('class', 'node')
+      .attr('class', 'tree__node')
       .attr('transform', () => `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`)
       .on('click', (d) => {
         this.clickNode(d);
@@ -220,7 +218,7 @@ class TreeChart {
       .enter()
       // .filter(d => d.depth > 1) // don't draw links to root element
       .insert('path', 'g')
-      .attr('class', 'link')
+      .attr('class', 'tree__link')
       .attr('d', () => {
         const o = { x: this.sourceCoord.x, y: this.sourceCoord.y };
         return this.constructor.diagonal(o, o);
