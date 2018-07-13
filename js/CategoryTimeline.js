@@ -61,6 +61,8 @@ class CategoryTimeline {
       xAxis = d3.axisBottom(this.x);
     }
 
+    xAxis.ticks(d3.timeYear.every(10));
+
     this.svg
       .append('g')
       .attr('class', 'timeline-chart__axis')

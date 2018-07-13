@@ -1,3 +1,7 @@
+.tree {
+  font-size: 1.2rem;
+}
+
 .tree__html-object {
   height: 1px;
   width: 1px;
@@ -14,10 +18,6 @@
   stroke: steelblue;
   stroke-width: 3px;
   cursor: pointer;
-}
-
-.tree__node-label {
-  font: 12px sans-serif;
 }
 
 .tree__link {

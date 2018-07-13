@@ -186,10 +186,10 @@ class TreeChart {
       // .filter(d => d.depth > 0)
       .append('g')
       .attr('class', 'tree__node')
-      .attr('transform', () => `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`)
-      .on('click', (d) => {
-        this.clickNode(d);
-      });
+      .attr('transform', () => `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`);
+    // .on('click', (d) => {
+    //   this.clickNode(d);
+    // });
 
     // this.drawNodeCircles(nodeEnter.merge(nodeSelection));
     this.moveNodesInPlace(nodeEnter);

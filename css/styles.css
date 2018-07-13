@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   font-family: sans-serif;
-  font-size: 12px;
+  font-size: 62.5%;
 }
 
 *,
@@ -10,6 +10,44 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  width: 120rem;
+  font-size: 1.6rem;
+  margin: 0 auto;
+}
+
 .timeline-tree {
   border: solid black 1px;
+  margin: 0 auto;
+}
+
+.nav__list {
+  list-style: none;
+  padding: 0;
+}
+
+.nav__item {
+  display: inline;
+  margin: 0 0.5rem;
+}
+
+.nav__item:first-of-type {
+  margin-left: 0;
+}
+
+.nav-btn {
+  height: 3.5rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  padding: 1rem;
+}
+
+.nav-btn:hover {
+  background-color: lightsteelblue;
+}
+
+.nav-btn--selected {
+  background-color: lightgreen;
 }
