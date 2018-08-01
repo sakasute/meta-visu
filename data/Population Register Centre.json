@@ -1,22 +1,22 @@
 {
-  "name": "Statistics Finland",
+  "name": "Population Register Centre",
   "registers": [
     {
-      "name": "Cause of Death Register",
+      "name": "Population Information System",
       "categories": [
         {
-          "name": "Dates and causes of deaths",
+          "name": "Deaths",
           "samplings": [
             {
               "name": "",
               "startDate": "1987-1-1",
-              "endDate": "2015-12-31",
+              "endDate": "2009-06-30",
               "cohort": "1987",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1957-1-1",
               "endDate": "2012-12-31",
               "cohort": "1987",
               "parents": true
@@ -24,45 +24,47 @@
             {
               "name": "",
               "startDate": "1997-1-1",
-              "endDate": "2015-12-31",
+              "endDate": "2016-02-28",
               "cohort": "1997",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
-              "endDate": "2014-12-31",
+              "startDate": "1947-1-1",
+              "endDate": "2016-03-31",
               "cohort": "1997",
               "parents": true
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "Register of Educational Achievements",
-      "categories": [
+        },
         {
-          "name": "Degree data",
+          "name": "Occupations",
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
-              "endDate": "2015-12-31",
+              "startDate": "2009-06-01",
+              "endDate": "2009-06-30",
               "cohort": "1987",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1987-1-1",
-              "endDate": "2009-12-31",
+              "startDate": "2009-06-01",
+              "endDate": "2009-06-30",
               "cohort": "1987",
               "parents": true
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
-              "endDate": "2014-12-31",
+              "startDate": "2016-11-01",
+              "endDate": "2016-11-30",
+              "cohort": "1997",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "2016-11-01",
+              "endDate": "2016-11-30",
               "cohort": "1997",
               "parents": true
             }

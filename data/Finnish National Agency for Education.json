@@ -1,0 +1,22 @@
+{
+  "name": "Finnish National Agency for Education",
+  "registers": [
+    {
+      "name": "",
+      "categories": [
+        {
+          "name": "Joint application data and primary school achievements",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "2003-1-1",
+              "endDate": "2013-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

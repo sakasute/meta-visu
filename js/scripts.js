@@ -69,6 +69,7 @@ async function drawTimelineTree(filename) {
     height: 100,
     showXAxis: false,
     showLegend: false,
+    scaleStartDate: new Date('1950-1-1'),
   };
   treeChart.treeData.children.forEach((registerNode, registerIdx) => {
     registerNode.children.forEach((categoryNode, categoryIdx) => {
@@ -93,7 +94,8 @@ async function drawTimelineTree(filename) {
         },
       ];
       const categoryTimeline = new CategoryTimeline(timelineData, svg, timelineConfigExt);
-      categoryTimeline.moveTo(categoryNode.y + 300, categoryNode.x + 12.5); // NOTE: the tree structure kind of swap x and y coords
+      // NOTE: the tree structure kind of swap x and y coords
+      categoryTimeline.moveTo(categoryNode.y + 300, categoryNode.x + 12.5);
       categoryTimeline.update();
     });
   });

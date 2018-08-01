@@ -1,0 +1,70 @@
+{
+  "name": "Social Insurance Institution of Finland",
+  "registers": [
+    {
+      "name": "Benefits Register",
+      "categories": [
+        {
+          "name": "Psychotropic medicines",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1994-1-1",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
+        },
+        {
+          "name": "Special reimbursement rights",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1987-1-1",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
+        },
+        {
+          "name": "Disability benefits",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1987-1-1",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
+        },
+        {
+          "name": "Rehabilitations",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1986-1-1",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": true
+            }
+          ]
+        },
+        {
+          "name": "Private doctor visits",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1996-1-1",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

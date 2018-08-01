@@ -219,6 +219,44 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Register on Social Assistance",
+      "categories": [
+        {
+          "name": "Social assistance",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1987-1-1",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "1987-1-1",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "parents": true
+            },
+            {
+              "name": "",
+              "startDate": "1997-1-1",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "1997-1-1",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "parents": true
+            }
+          ]
+        }
+      ]
     }
   ]
 }
