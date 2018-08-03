@@ -47,10 +47,23 @@ class CategoryTimeline {
   static createYearLabel(d) {
     const startDate = new Date(d.startDate);
     const endDate = new Date(d.endDate);
-    if (startDate.getFullYear() === endDate.getFullYear()) {
-      return startDate.getFullYear();
+    const startMonth = startDate.getMonth();
+    const endMonth = endDate.getMonth();
+    const startYear = startDate.getFullYear();
+    const endYear = endDate.getFullYear();
+
+    const startStr = startMonth === 0 ? startYear : `${startMonth + 1}/${startYear}`;
+    const endStr = endMonth === 11 ? endYear : `${endDate.getMonth() + 1}/${endYear}`;
+
+    if (startYear === endYear) {
+      if (startMonth === endMonth) {
+        return startStr;
+      } else if (startMonth === 0 && endMonth === 11) {
+        return startYear;
+      }
     }
-    return `${startDate.getFullYear()}—${endDate.getFullYear()}`;
+
+    return `${startStr}—${endStr}`;
   }
 
   drawXAxis() {
@@ -158,8 +171,7 @@ class CategoryTimeline {
       .attr('y2', this.y.bandwidth() + 5)
       .attr('stroke-width', 0.5)
       .attr('stroke', 'black')
-      .attr('stroke-dasharray', '4')
-      .attr('shape-rendering', 'crispEdges');
+      .attr('stroke-dasharray', '4');
 
     categoryEnter
       .append('text')
@@ -182,6 +194,9 @@ class CategoryTimeline {
       .attr('height', this.y.bandwidth() / 2)
       .attr('width', d => this.calculateSectionWidth(d));
 
+    // IDEA: if short timespans become a problem
+    // (ie. sections consisting of several small pieces leading to year labels overflowing),
+    // they could be combined before reaching this point
     sectionEnter
       .append('text')
       .attr('class', 'timeline__year-label')

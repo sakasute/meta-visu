@@ -39,7 +39,7 @@ async function drawTimelineTree(filename) {
   // ***** TreeChart *****
 
   const treeConfig = {
-    width: 500,
+    width: 450,
     height: treeHeight,
     posX: 125,
     posY: 50,
@@ -65,7 +65,7 @@ async function drawTimelineTree(filename) {
   // ***** Timelines *****
 
   const timelineConfig = {
-    width: 200,
+    width: 250,
     height: 100,
     showXAxis: false,
     showLegend: false,

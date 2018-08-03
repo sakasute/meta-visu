@@ -63,6 +63,25 @@
               "parents": false
             }
           ]
+        },
+        {
+          "name": "Child home care allowance",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1987-1-1",
+              "endDate": "2003-12-31",
+              "cohort": "1987",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "2003-1-1",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
         }
       ]
     }
