@@ -187,12 +187,23 @@ class CategoryTimeline {
       .append('g')
       .attr('class', 'timeline__section');
 
-    const sectionRects = sectionEnter
+    // enter multiyear sections => rectangles
+    sectionEnter
+      .filter(d => new Date(d.startDate).getFullYear() !== new Date(d.endDate).getFullYear())
       .append('rect')
       .attr('class', 'timeline__rect')
       .attr('x', d => this.calculateSectionXPos(d))
       .attr('height', this.y.bandwidth() / 2)
       .attr('width', d => this.calculateSectionWidth(d));
+
+    // enter 1 year sections => circles
+    sectionEnter
+      .filter(d => new Date(d.startDate).getFullYear() === new Date(d.endDate).getFullYear())
+      .append('circle')
+      .attr('r', this.y.bandwidth() / 4)
+      .attr('class', 'timeline__rect')
+      .attr('cx', d => this.calculateSectionXPos(d))
+      .attr('cy', 7.5);
 
     // IDEA: if short timespans become a problem
     // (ie. sections consisting of several small pieces leading to year labels overflowing),
