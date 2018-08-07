@@ -103,12 +103,26 @@ async function createRegisterSelector(navItem, filename) {
   data.registers.forEach((register) => {
     const identifier = `${filename}/${register.name}`;
     const listItem = document.createElement('li');
+    listItem.classList.add('register__item');
     listItem.innerHTML = `<input class="js-register-select" type="checkbox" id="${identifier}" 
     data-value="${identifier}" checked/>
     <label for="${identifier}">${register.name}</label>`;
     registerList.appendChild(listItem);
   });
   navItem.appendChild(registerList);
+}
+
+async function showRegisterSelector(navItem, filename) {
+  const registerSelector = navItem.querySelector('.register-selector');
+  if (registerSelector === null) {
+    createRegisterSelector(navItem, filename);
+  } else {
+    registerSelector.classList.remove('vanish');
+  }
+}
+
+function hideRegisterSelector(navItem) {
+  navItem.querySelector('.register-selector').classList.add('vanish');
 }
 
 function activateNavbar() {
@@ -118,9 +132,10 @@ function activateNavbar() {
       if (!Array.from(el.classList).includes('btn--selected')) {
         el.classList.add('btn--selected');
         drawTimelineTree(filename);
-        createRegisterSelector(el.parentElement, filename);
+        showRegisterSelector(el.parentElement, filename);
       } else {
         removeTimelineTree(filename);
+        hideRegisterSelector(el.parentElement);
         el.classList.remove('btn--selected');
       }
     });
