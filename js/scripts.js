@@ -1,29 +1,7 @@
-function createNavbar(filenames) {
-  filenames
-    .map(name => name.split('.')[0])
-    .sort()
-    .forEach((name) => {
-      const navItem = document.createElement('li');
-      navItem.classList.add('nav__item');
-      navItem.innerHTML = `<button class="nav-btn js-nav-btn" data-filename="${name}.json">${name}</button>`;
-      document.getElementsByClassName('js-nav-list')[0].appendChild(navItem);
-    });
-}
-
-function activateNavbar() {
-  Array.from(document.getElementsByClassName('js-nav-btn')).forEach((el) => {
-    el.addEventListener('click', (ev) => {
-      const { filename } = el.dataset;
-      console.log(filename);
-      if (!Array.from(el.classList).includes('nav-btn--selected')) {
-        el.classList.add('nav-btn--selected');
-        drawTimelineTree(filename);
-      } else {
-        removeTimelineTree(filename);
-        el.classList.remove('nav-btn--selected');
-      }
-    });
-  });
+async function getData(file) {
+  return fetch(file)
+    .then(res => res.json())
+    .then(dataJson => dataJson);
 }
 
 function calculateCategoryCount(data) {
@@ -106,10 +84,47 @@ function removeTimelineTree(filename) {
   elToRemove.remove();
 }
 
-async function getData(file) {
-  return fetch(file)
-    .then(res => res.json())
-    .then(dataJson => dataJson);
+function createNavbar(filenames) {
+  filenames
+    .map(name => name.split('.')[0])
+    .sort()
+    .forEach((name) => {
+      const navItem = document.createElement('li');
+      navItem.classList.add('nav__item');
+      navItem.innerHTML = `<button class="btn js-btn" data-filename="${name}.json">${name}</button>`;
+      document.querySelector('.js-nav-list').appendChild(navItem);
+    });
+}
+
+async function createRegisterSelector(navItem, filename) {
+  const data = await getData(`data/${filename}`);
+  const registerList = document.createElement('ul');
+  registerList.classList.add('register-selector');
+  data.registers.forEach((register) => {
+    const identifier = `${filename}/${register.name}`;
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<input class="js-register-select" type="checkbox" id="${identifier}" 
+    data-value="${identifier}" checked/>
+    <label for="${identifier}">${register.name}</label>`;
+    registerList.appendChild(listItem);
+  });
+  navItem.appendChild(registerList);
+}
+
+function activateNavbar() {
+  document.querySelectorAll('.js-btn').forEach((el) => {
+    el.addEventListener('click', () => {
+      const { filename } = el.dataset;
+      if (!Array.from(el.classList).includes('btn--selected')) {
+        el.classList.add('btn--selected');
+        drawTimelineTree(filename);
+        createRegisterSelector(el.parentElement, filename);
+      } else {
+        removeTimelineTree(filename);
+        el.classList.remove('btn--selected');
+      }
+    });
+  });
 }
 
 async function main() {
@@ -117,6 +132,13 @@ async function main() {
 
   createNavbar(filenames);
   activateNavbar();
+  document.querySelector('.js-show-menu').addEventListener('click', () => {
+    document.querySelector('.js-nav-menu').classList.remove('hidden');
+  });
+
+  document.querySelector('.js-hide-menu').addEventListener('click', () => {
+    document.querySelector('.js-nav-menu').classList.add('hidden');
+  });
 }
 
 main();

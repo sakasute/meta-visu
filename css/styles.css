@@ -17,15 +17,34 @@ body {
   margin: 0 auto;
 }
 
+.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
 .timeline-tree {
   border: solid black 1px;
   margin: 0 auto;
   background-color: white;
 }
 
+.timeline-tree:first-of-type {
+  margin-top: 7.5rem;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 35rem;
+
+  background-color: lightslategray;
+}
+
 .nav__list {
   list-style: none;
-  padding: 0;
+  padding: 2.5rem 0 0 5rem;
 }
 
 .nav__item {
@@ -33,11 +52,11 @@ body {
   margin: 1rem 0.5rem;
 }
 
-.nav__item:first-of-type {
-  margin-left: 0;
+.nav__item > .btn {
+  width: 25rem;
 }
 
-.nav-btn {
+.btn {
   height: 3.5rem;
   line-height: 2rem;
   font-size: 1.2rem;
@@ -46,14 +65,56 @@ body {
   padding: 1rem;
 }
 
-.nav-btn:hover {
+.btn:hover {
   background-color: lightsteelblue;
 }
 
-.nav-btn--selected {
+.btn--show {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
   background-color: lightgreen;
 }
 
-.nav-btn--selected:hover {
+.btn--show:hover {
   background-color: hsl(120, 30%, 55%);
+}
+
+.btn--hide {
+  position: relative;
+  top: 2.5rem;
+  left: 2.5rem;
+  background-color: lightcoral;
+}
+
+.btn--hide:hover {
+  background-color: hsl(0, 79%, 62%);
+}
+
+.btn--selected {
+  background-color: lightgreen;
+}
+
+.btn--selected:hover {
+  background-color: hsl(120, 30%, 55%);
+}
+
+.btn--top-left {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+}
+
+.btn--relative {
+  position: relative;
+}
+
+.register-selector {
+  width: 25rem;
+  list-style: none;
+  padding: 1rem;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: white;
 }
