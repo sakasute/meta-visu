@@ -93,12 +93,7 @@
               "parents": true
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "Finnish Hospital Discharge Register",
-      "categories": [
+        },
         {
           "name": "Specialized outpatient care",
           "samplings": [

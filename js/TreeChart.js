@@ -74,6 +74,13 @@ class TreeChart {
     return null;
   }
 
+  drawNodeCircles(nodeGroup) {
+    nodeGroup
+      .append('circle')
+      .attr('class', 'tree__node-marker')
+      .attr('r', this.config.nodeSize);
+    // .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
+  }
   /* eslint-disable class-methods-use-this */
   moveNodesInPlace(nodeGroup) {
     nodeGroup

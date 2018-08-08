@@ -10,8 +10,27 @@ function calculateCategoryCount(data) {
   return categoryCount;
 }
 
-async function drawTimelineTree(filename) {
+function categoryTimelineHelper(samplingData, svg, config) {
+  let timelineData = samplingData;
+  const parentsData = timelineData.filter(el => el.parents);
+  const subjectsData = timelineData.filter(el => !el.parents);
+  timelineData = [
+    {
+      type: 'parents',
+      data: parentsData,
+    },
+    {
+      type: 'subjects',
+      data: subjectsData,
+    },
+  ];
+  return new CategoryTimeline(timelineData, svg, config);
+}
+
+async function drawTimelineTree(filename, filteredRegisters = []) {
   const data = await getData(`data/${filename}`);
+  const filteredRegisterData = data.registers.filter(register => !filteredRegisters.includes(register.name));
+  data.registers = filteredRegisterData;
   const categoryCount = calculateCategoryCount(data);
   const treeHeight = categoryCount * 100;
   // ***** TreeChart *****
@@ -56,21 +75,12 @@ async function drawTimelineTree(filename) {
       ) {
         timelineConfigExt = { ...timelineConfig, showXAxis: true, showLegend: true };
       }
-      let timelineData = categoryNode.data.samplings;
-      const parentsData = timelineData.filter(el => el.parents);
-      const subjectsData = timelineData.filter(el => !el.parents);
-      timelineData = [
-        {
-          type: 'parents',
-          data: parentsData,
-        },
-        {
-          type: 'subjects',
-          data: subjectsData,
-        },
-      ];
-      const categoryTimeline = new CategoryTimeline(timelineData, svg, timelineConfigExt);
-      // NOTE: the tree structure kind of swap x and y coords
+      const categoryTimeline = categoryTimelineHelper(
+        categoryNode.data.samplings,
+        svg,
+        timelineConfigExt,
+      );
+      // NOTE: the tree structure kind of swaps x and y coords
       categoryTimeline.moveTo(categoryNode.y + 300, categoryNode.x + 12.5);
       categoryTimeline.update();
     });
@@ -97,15 +107,15 @@ function createNavbar(filenames) {
 }
 
 function activateRegisterSelector(selectorEl) {
-  selectorEl.querySelectorAll('.js-register-select').forEach((checkbox) => {
-    checkbox.addEventListener('change', () => {
-      const filename = checkbox.dataset.identifier.split('/')[0];
-      const registerName = checkbox.dataset.identifier.split('/')[1];
-      if (checkbox.checked) {
-        console.log(filename, registerName);
-      } else {
-        removeTimelineTree(filename);
-      }
+  selectorEl.querySelectorAll('.js-register-select').forEach((checkboxEl) => {
+    checkboxEl.addEventListener('change', () => {
+      const filename = checkboxEl.dataset.identifier.split('/')[0];
+      const filterList = [...selectorEl.querySelectorAll('.js-register-select')]
+        .filter(checkbox => !checkbox.checked)
+        .map(checkbox => checkbox.dataset.identifier.split('/')[1]);
+
+      removeTimelineTree(filename);
+      drawTimelineTree(filename, filterList);
     });
   });
 }
@@ -144,7 +154,7 @@ function activateNavbar() {
   document.querySelectorAll('.js-btn').forEach((el) => {
     el.addEventListener('click', () => {
       const { filename } = el.dataset;
-      if (!Array.from(el.classList).includes('btn--selected')) {
+      if (![...el.classList].includes('btn--selected')) {
         el.classList.add('btn--selected');
         drawTimelineTree(filename);
         showRegisterSelector(el.parentElement, filename);
