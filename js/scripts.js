@@ -38,8 +38,6 @@ async function drawTimelineTree(filename) {
   treeChart.updateNodes();
   treeChart.updateLinks();
 
-  treeChart.collapseLevel(2);
-
   // ***** Timelines *****
 
   const timelineConfig = {
@@ -81,7 +79,9 @@ async function drawTimelineTree(filename) {
 
 function removeTimelineTree(filename) {
   const elToRemove = document.querySelector(`.js-timeline-tree[data-filename="${filename}"]`);
-  elToRemove.remove();
+  if (elToRemove) {
+    elToRemove.remove();
+  }
 }
 
 function createNavbar(filenames) {
@@ -96,6 +96,20 @@ function createNavbar(filenames) {
     });
 }
 
+function activateRegisterSelector(selectorEl) {
+  selectorEl.querySelectorAll('.js-register-select').forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+      const filename = checkbox.dataset.identifier.split('/')[0];
+      const registerName = checkbox.dataset.identifier.split('/')[1];
+      if (checkbox.checked) {
+        console.log(filename, registerName);
+      } else {
+        removeTimelineTree(filename);
+      }
+    });
+  });
+}
+
 async function createRegisterSelector(navItem, filename) {
   const data = await getData(`data/${filename}`);
   const registerList = document.createElement('ul');
@@ -105,11 +119,12 @@ async function createRegisterSelector(navItem, filename) {
     const listItem = document.createElement('li');
     listItem.classList.add('register__item');
     listItem.innerHTML = `<input class="js-register-select" type="checkbox" id="${identifier}" 
-    data-value="${identifier}" checked/>
+    data-identifier="${identifier}" checked/>
     <label for="${identifier}">${register.name}</label>`;
     registerList.appendChild(listItem);
   });
   navItem.appendChild(registerList);
+  activateRegisterSelector(registerList);
 }
 
 async function showRegisterSelector(navItem, filename) {

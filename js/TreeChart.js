@@ -74,68 +74,7 @@ class TreeChart {
     return null;
   }
 
-  // FIXME: this is just an ugly ugly function, probs should use recursion
-  collapseLevel(lvl) {
-    switch (lvl) {
-      case 0:
-        if (this.treeData.children) {
-          this.treeData.childrenStored = this.treeData.children;
-          this.treeData.children = null;
-          this.updateNodes();
-          this.updateLinks();
-        }
-        break;
-      case 1:
-        this.treeData.children.forEach((el) => {
-          if (el.children) {
-            el.childrenStored = el.children;
-            el.children = null;
-            this.updateNodes();
-            this.updateLinks();
-          }
-        });
-        break;
-      case 2:
-        this.treeData.children.forEach(el =>
-          el.children.forEach((el2) => {
-            if (el2.children) {
-              el2.childrenStored = el2.children;
-              el2.children = null;
-              this.updateNodes();
-              this.updateLinks();
-            }
-          }));
-        break;
-      default:
-    }
-  }
-
-  // NOTE: Changing d implicitly changes nodesData which implicitly changes this.treeData.
-  clickNode(d) {
-    if (d.children) {
-      d.childrenStored = d.children;
-      d.children = null;
-    } else {
-      d.children = d.childrenStored;
-      d.childrenStored = null;
-    }
-
-    this.sourceCoord = {
-      x: d.x,
-      y: d.y,
-    };
-    this.updateNodes();
-    this.updateLinks();
-  }
-
-  drawNodeCircles(nodeGroup) {
-    nodeGroup
-      .append('circle')
-      .attr('class', 'tree__node-marker')
-      .attr('r', this.config.nodeSize);
-    // .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
-  }
-
+  /* eslint-disable class-methods-use-this */
   moveNodesInPlace(nodeGroup) {
     nodeGroup
       // .transition()
@@ -143,7 +82,6 @@ class TreeChart {
       .attr('transform', d => `translate(${d.y}, ${d.x})`);
   }
 
-  /* eslint-disable class-methods-use-this */
   addNodeLabels(nodeGroup) {
     nodeGroup
       .filter(d => d.parent)
