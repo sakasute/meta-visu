@@ -1,3 +1,20 @@
+function compareByName(a, b) {
+  if (a.name < b.name) {
+    return -1;
+  } else if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+}
+
+function sortTreeData(data) {
+  console.log(data);
+  data.registers.sort((a, b) => compareByName(a, b));
+  data.registers.forEach(register => register.categories.sort((a, b) => compareByName(a, b)));
+  console.log(data);
+  return data;
+}
+
 async function getData(file) {
   return fetch(file)
     .then(res => res.json())
@@ -28,9 +45,10 @@ function categoryTimelineHelper(samplingData, svg, config) {
 }
 
 async function drawTimelineTree(filename, filteredRegisters = []) {
-  const data = await getData(`data/${filename}`);
+  let data = await getData(`data/${filename}`);
   const filteredRegisterData = data.registers.filter(register => !filteredRegisters.includes(register.name));
   data.registers = filteredRegisterData;
+  data = sortTreeData(data);
   const categoryCount = calculateCategoryCount(data);
   const treeHeight = categoryCount * 100;
   // ***** TreeChart *****
@@ -121,7 +139,8 @@ function activateRegisterSelector(selectorEl) {
 }
 
 async function createRegisterSelector(navItem, filename) {
-  const data = await getData(`data/${filename}`);
+  let data = await getData(`data/${filename}`);
+  data = sortTreeData(data);
   const registerList = document.createElement('ul');
   registerList.classList.add('register-selector');
   data.registers.forEach((register) => {
@@ -169,7 +188,7 @@ function activateNavbar() {
 
 async function main() {
   const filenames = await getData('data/filenames.json');
-
+  filenames.sort();
   createNavbar(filenames);
   activateNavbar();
   document.querySelector('.js-show-menu').addEventListener('click', () => {
