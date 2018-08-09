@@ -199,6 +199,7 @@ async function main() {
   createPlaceholders(filenames);
   createNavbar(filenames);
   activateNavbar();
+
   document.querySelector('.js-show-menu').addEventListener('click', () => {
     document.querySelector('.js-nav-menu').classList.remove('hidden');
   });
@@ -206,6 +207,12 @@ async function main() {
   document.querySelector('.js-hide-menu').addEventListener('click', () => {
     document.querySelector('.js-nav-menu').classList.add('hidden');
   });
+
+  document
+    .querySelector('.js-btn[data-filename="National Institute for Health and Welfare.json"]')
+    .click();
+
+  document.querySelector('.js-show-menu').click();
 }
 
 main();
