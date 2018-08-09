@@ -8,10 +8,8 @@ function compareByName(a, b) {
 }
 
 function sortTreeData(data) {
-  console.log(data);
   data.registers.sort((a, b) => compareByName(a, b));
   data.registers.forEach(register => register.categories.sort((a, b) => compareByName(a, b)));
-  console.log(data);
   return data;
 }
 
@@ -64,7 +62,7 @@ async function drawTimelineTree(filename, filteredRegisters = []) {
   };
 
   const svg = d3
-    .select('body')
+    .select(`body>div[data-filename="${filename}"]`)
     .append('svg')
     .attr('data-filename', filename)
     .attr('height', treeHeight + 100)
@@ -156,6 +154,15 @@ async function createRegisterSelector(navItem, filename) {
   activateRegisterSelector(registerList);
 }
 
+function createPlaceholders(filenames) {
+  filenames.forEach((filename) => {
+    const placeholder = document.createElement('div');
+    placeholder.classList.add('timeline-tree-wrapper');
+    placeholder.dataset.filename = filename;
+    document.querySelector('body').appendChild(placeholder);
+  });
+}
+
 async function showRegisterSelector(navItem, filename) {
   const registerSelector = navItem.querySelector('.register-selector');
   if (registerSelector === null) {
@@ -189,6 +196,7 @@ function activateNavbar() {
 async function main() {
   const filenames = await getData('data/filenames.json');
   filenames.sort();
+  createPlaceholders(filenames);
   createNavbar(filenames);
   activateNavbar();
   document.querySelector('.js-show-menu').addEventListener('click', () => {

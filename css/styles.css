@@ -17,14 +17,13 @@ body {
   margin: 0 auto;
 }
 
-.timeline-tree {
-  border: solid black 1px;
-  margin: 0 auto;
-  background-color: white;
+.timeline-tree-wrapper {
+  margin: 2.5rem auto;
 }
 
-.timeline-tree:first-of-type {
-  margin-top: 7.5rem;
+.timeline-tree {
+  border: solid black 1px;
+  background-color: white;
 }
 
 .nav {
