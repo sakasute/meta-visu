@@ -1,4 +1,3 @@
-
 class TreeChart {
   constructor(data, svgElement, config) {
     this.config = {
@@ -187,4 +186,4 @@ class TreeChart {
   }
 }
 
-export default TreeChart;
+// export default TreeChart;
