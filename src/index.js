@@ -1,6 +1,16 @@
 import TreeChart from './TreeChart';
 import CategoryTimeline from './CategoryTimeline';
 
+// HACK: "manual" polyfills
+if (window.NodeList && !NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = function (callback, thisArg) {
+    thisArg = thisArg || window;
+    for (let i = 0; i < this.length; i++) {
+      callback.call(thisArg, this[i], i, this);
+    }
+  };
+}
+// ********
 function compareByName(a, b) {
   if (a.name < b.name) {
     return -1;
