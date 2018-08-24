@@ -1,4 +1,3 @@
-
 class CategoryTimeline {
   constructor(data, svgElement, config) {
     this.config = {
@@ -226,4 +225,4 @@ class CategoryTimeline {
   }
 }
 
-// export default CategoryTimeline;
+export default CategoryTimeline;

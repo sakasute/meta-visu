@@ -1,5 +1,5 @@
-// import TreeChart from './TreeChart';
-// import CategoryTimeline from './CategoryTimeline';
+import TreeChart from './TreeChart';
+import CategoryTimeline from './CategoryTimeline';
 
 function compareByName(a, b) {
   if (a.name < b.name) {

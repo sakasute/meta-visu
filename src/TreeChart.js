@@ -186,4 +186,4 @@ class TreeChart {
   }
 }
 
-// export default TreeChart;
+export default TreeChart;
