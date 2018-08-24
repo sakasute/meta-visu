@@ -1,3 +1,6 @@
+import TreeChart from './TreeChart';
+import CategoryTimeline from './CategoryTimeline';
+
 function compareByName(a, b) {
   if (a.name < b.name) {
     return -1;

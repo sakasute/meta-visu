@@ -1,4 +1,4 @@
-/* eslint-disable-next-line */
+
 class CategoryTimeline {
   constructor(data, svgElement, config) {
     this.config = {
@@ -225,3 +225,5 @@ class CategoryTimeline {
       .attr('class', 'timeline__rect timeline__rect--87');
   }
 }
+
+export default CategoryTimeline;
