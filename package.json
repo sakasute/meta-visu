@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "es5-shim": "^4.5.10",
     "promise-polyfill": "^8.1.0",
     "whatwg-fetch": "^2.0.4"
   }
