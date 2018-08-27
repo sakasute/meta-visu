@@ -9,7 +9,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "2005-1-1",
+              "startDate": "2005-01-01",
               "endDate": "2009-12-31",
               "cohort": "1987",
               "parents": false
@@ -26,7 +26,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "2005-1-1",
+              "startDate": "2005-01-01",
               "endDate": "2009-12-31",
               "cohort": "1987",
               "parents": false

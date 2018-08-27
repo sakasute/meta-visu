@@ -9,7 +9,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1994-1-1",
+              "startDate": "1994-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
               "parents": false
@@ -21,7 +21,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
               "parents": false
@@ -33,7 +33,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
               "parents": false
@@ -45,7 +45,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1986-1-1",
+              "startDate": "1986-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
               "parents": true
@@ -57,7 +57,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1996-1-1",
+              "startDate": "1996-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
               "parents": false
@@ -69,7 +69,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2003-12-31",
               "cohort": "1987",
               "parents": false

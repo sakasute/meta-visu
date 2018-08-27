@@ -49,7 +49,7 @@
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
+              "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
               "parents": false
@@ -66,28 +66,28 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1986-1-1",
+              "startDate": "1986-01-01",
               "endDate": "2008-12-31",
               "cohort": "1987",
               "parents": true
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
+              "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1969-1-1",
+              "startDate": "1969-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
               "parents": true
@@ -99,28 +99,28 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1998-1-1",
+              "startDate": "1998-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1998-1-1",
+              "startDate": "1998-01-01",
               "endDate": "2008-12-31",
               "cohort": "1987",
               "parents": true
             },
             {
               "name": "",
-              "startDate": "1998-1-1",
+              "startDate": "1998-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1998-1-1",
+              "startDate": "1998-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
               "parents": true
@@ -137,7 +137,7 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2013-12-31",
               "cohort": "1987",
               "parents": false
@@ -154,21 +154,21 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "2000-1-1",
+              "startDate": "2000-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
+              "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1996-1-1",
+              "startDate": "1996-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
               "parents": true
@@ -185,28 +185,28 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2011-12-31",
               "cohort": "1987",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1994-1-1",
+              "startDate": "1994-01-01",
               "endDate": "2005-12-31",
               "cohort": "1987",
               "parents": true
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
+              "startDate": "199701-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1996-1-1",
+              "startDate": "1996-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
               "parents": true
@@ -223,28 +223,28 @@
           "samplings": [
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1987-1-1",
+              "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
               "parents": true
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
+              "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
               "parents": false
             },
             {
               "name": "",
-              "startDate": "1997-1-1",
+              "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
               "parents": true

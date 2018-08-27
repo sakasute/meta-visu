@@ -122,7 +122,7 @@ while 1:
     sampling_cohort = input('Poiminnan kohortti (1987/1997): ')
     sampling_parents = input('Poiminta vanhemmista (k/e): ')
 
-    sampling_start = fill_date(sampling_start, '-1-1')
+    sampling_start = fill_date(sampling_start, '-01-01')
     sampling_end = fill_date(sampling_end, '-12-31')
     sampling_cohort = fill_cohort(sampling_cohort)
 
