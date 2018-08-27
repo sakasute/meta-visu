@@ -93,7 +93,7 @@ async function drawTimelineTree(filename, filteredRegisters = []) {
     height: 100,
     showXAxis: false,
     showLegend: false,
-    scaleStartDate: new Date('1950-1-1'),
+    scaleStartDate: new Date('1950-01-01'),
   };
   treeChart.treeData.children.forEach((registerNode, registerIdx) => {
     registerNode.children.forEach((categoryNode, categoryIdx) => {
