@@ -1,0 +1,13 @@
+html {
+  --category-1-color: #519b2f;
+  --category-1-color-alt: #7bc143;
+  --category-2-color: #2f62ad;
+  --category-2-color-alt: #29a0c1;
+  --category-3-color: #be3f72;
+  --category-3-color-alt: #cc77ac;
+  --category-4-color: #faa61a;
+
+  --dark-gray: #606060;
+  --medium-gray: #c3c2c6;
+  --light-gray: #dcdfe2;
+}

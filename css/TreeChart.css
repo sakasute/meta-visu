@@ -11,6 +11,8 @@
   width: 100px;
   text-align: center;
   margin: 0;
+  color: var(--dark-gray);
+  font-weight: bold;
 }
 
 .tree__node-marker {
@@ -20,8 +22,13 @@
   cursor: pointer;
 }
 
+.tree__node-label {
+  fill: var(--dark-gray);
+  font-weight: bold;
+}
+
 .tree__link {
   fill: none;
-  stroke: #ccc;
+  stroke: var(--medium-gray);
   stroke-width: 2px;
 }

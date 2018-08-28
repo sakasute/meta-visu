@@ -4,7 +4,7 @@
 }
 
 .timeline__rect {
-  fill: lightgreen;
+  fill: var(--category-1-color-alt);
   opacity: 0.75;
 }
 
@@ -12,8 +12,8 @@
   opacity: 1;
 }
 
-.timeline__rect--87 {
-  fill: lightcoral;
+.timeline__rect--97 {
+  fill: var(--category-2-color-alt);
 }
 
 .legend {
@@ -21,15 +21,22 @@
 }
 
 .legend__color-1 {
-  fill: lightcoral;
+  fill: var(--category-1-color-alt);
 }
 
 .legend__color-2 {
-  fill: lightgreen;
+  fill: var(--category-2-color-alt);
+}
+
+.legend__label {
+  font-size: 1rem;
+  font-weight: bold;
+  fill: var(--dark-gray);
 }
 
 .timeline__year-label {
   font-size: 1rem;
+  font-weight: bold;
   opacity: 0.75;
   pointer-events: none;
 }

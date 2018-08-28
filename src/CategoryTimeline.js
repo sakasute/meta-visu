@@ -133,7 +133,7 @@ class CategoryTimeline {
   positionYearLabel(d) {
     const xStart = this.x(new Date(d.startDate));
     const xEnd = this.x(new Date(d.endDate));
-    const xCentre = (xStart + xEnd) / 2;
+    const xCentre = (xStart + xEnd) / 2 - 2;
 
     return `translate(${xCentre}, ${this.y.bandwidth() / 2 - 4})`;
   }
@@ -216,12 +216,9 @@ class CategoryTimeline {
 
     sectionEnter
       .filter(d => d.cohort === '1997')
-      .attr('transform', `translate(0, ${this.y.bandwidth() / 2})`);
-
-    sectionEnter
-      .filter(d => d.cohort === '1987')
+      .attr('transform', `translate(0, ${this.y.bandwidth() / 2})`)
       .select('.timeline__rect')
-      .attr('class', 'timeline__rect timeline__rect--87');
+      .attr('class', 'timeline__rect timeline__rect--97');
   }
 }
 
