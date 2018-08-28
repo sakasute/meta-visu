@@ -22,7 +22,7 @@ body {
 }
 
 .timeline-tree {
-  border: solid black 1px;
+  border: solid var(--dark-gray) 1px;
   background-color: white;
 }
 

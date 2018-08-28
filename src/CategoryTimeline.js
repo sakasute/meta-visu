@@ -77,7 +77,7 @@ class CategoryTimeline {
 
     this.svg
       .append('g')
-      .attr('class', 'timeline-chart__axis')
+      .attr('class', 'timeline__axis')
       .call(xAxis)
       .attr('transform', () => {
         if (this.config.xAxisOrientation === 'top') {
@@ -167,10 +167,7 @@ class CategoryTimeline {
       .attr('x1', this.x(this.config.scaleStartDate) - 60)
       .attr('y1', this.y.bandwidth() + 5)
       .attr('x2', this.x(this.config.scaleEndDate))
-      .attr('y2', this.y.bandwidth() + 5)
-      .attr('stroke-width', 0.5)
-      .attr('stroke', 'black')
-      .attr('stroke-dasharray', '4');
+      .attr('y2', this.y.bandwidth() + 5);
 
     categoryEnter
       .append('text')
