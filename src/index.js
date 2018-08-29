@@ -236,7 +236,7 @@ async function main() {
 
   document.querySelectorAll('.js-toggle-menu').forEach((toggleBtn) => {
     toggleBtn.addEventListener('click', () => {
-      document.querySelector('.js-nav-menu').classList.toggle('nav--open');
+      document.querySelector('.js-nav-menu').classList.toggle('nav--hidden');
     });
   });
 
