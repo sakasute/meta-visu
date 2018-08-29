@@ -30,9 +30,24 @@ body {
   flex: 1;
 }
 
+.header__settings-btn {
+  color: white;
+  opacity: 0.9;
+  font-size: calc(var(--header-height) - 1rem);
+  margin: 0.5rem 2.5rem;
+  cursor: pointer;
+  transition: 0.1s linear;
+}
+
+.header__settings-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
 .header__main-title {
   text-align: center;
   color: white;
+  opacity: 0.9;
   margin: 0;
   font-size: 4.5rem;
 }
@@ -66,6 +81,21 @@ body {
   margin: 0;
   transition: margin 0.4s ease-in;
   background-color: var(--thl-gray);
+}
+
+.nav__close-btn {
+  float: right;
+  color: white;
+  opacity: 0.9;
+  font-size: 3.5rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  transition: 0.1s linear;
+}
+
+.nav__close-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .nav--hidden {
@@ -107,14 +137,6 @@ body {
 
 .btn:hover {
   background-color: var(--medium-gray);
-}
-
-.btn--hide {
-  background-color: lightcoral;
-}
-
-.btn--hide:hover {
-  background-color: hsl(0, 79%, 62%);
 }
 
 .btn--selected {
