@@ -40,7 +40,7 @@
 .timeline__axis .domain,
 .timeline__axis .tick > line {
   stroke: var(--dark-gray);
-  stroke-width: 1px;
+  stroke-width: 1;
 }
 
 .timeline__axis .tick > text {

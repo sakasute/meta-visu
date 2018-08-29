@@ -1,0 +1,13 @@
+@media print {
+  .nav {
+    display: none;
+  }
+
+  .header {
+    display: none;
+  }
+
+  .timeline-tree-wrapper {
+    page-break-after: always;
+  }
+}

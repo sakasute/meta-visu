@@ -8,21 +8,33 @@
   <title>meta-visu</title>
   <meta name="description" content="metavisualisointityökalu">
   <meta name="author" content="Sakari Sutela">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="css/variables.css?v=1.0">
   <link rel="stylesheet" href="css/styles.css?v=1.0">
   <link rel="stylesheet" href="css/TreeChart.css?v=1.0">
   <link rel="stylesheet" href="css/CategoryTimeline.css?v=1.0">
+  <link rel="stylesheet" href="css/print.css?v=1.0">
+
 
 </head>
 
 <body>
-  <button class="btn btn--show js-show-menu">Show menu</button>
+  <header class="header"></header>
+  <button class="btn btn--show js-toggle-menu">Toggle menu</button>
+  <div class="content-wrapper">
+    <nav class="nav js-nav-menu">
+      <div class="nav-content-wrapper">
+        <button class="btn btn--hide js-toggle-menu">Toggle menu</button>
+        <ul class="nav__list js-nav-list ">
+        </ul>
+      </div>
 
-  <nav class="nav js-nav-menu hidden">
-    <button class="btn btn--hide js-hide-menu">Hide menu</button>
-    <ul class="nav__list js-nav-list ">
-    </ul>
-  </nav>
+    </nav>
+
+    <main class="chart-area"></main>
+  </div>
+
 
   <script src="./src/lib/d3/d3.js "></script>
   <script src="./dist/index_bundle.js "></script>

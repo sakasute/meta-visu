@@ -12,8 +12,31 @@ html {
 }
 
 body {
-  width: 105rem;
   font-size: 1.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 100%;
+  --header-height: 7.5vh;
+  height: var(--header-height);
+  background-color: var(--thl-green);
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: var(--header-height);
+  min-height: 100vh;
+}
+
+.chart-area {
+  width: 105rem;
   margin: 0 auto;
 }
 
@@ -23,18 +46,22 @@ body {
 
 .timeline-tree {
   border: solid var(--dark-gray) 1px;
-  background-color: white;
+  background-color: var(--v-light-gray);
 }
 
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
+  flex-shrink: 0;
+  overflow-x: hidden;
   min-height: 50vh;
   width: 35rem;
-  max-width: 100vw;
-
+  margin-left: -35rem;
+  transition: margin 0.4s ease-in;
   background-color: lightslategray;
+}
+
+.nav--open {
+  margin: 0;
+  transition: margin 0.4s ease-out;
 }
 
 .nav__list {

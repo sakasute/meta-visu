@@ -96,7 +96,7 @@ async function drawTimelineTree(filename, filteredRegisters = []) {
   };
 
   const svg = d3
-    .select(`body>div[data-filename="${filename}"]`)
+    .select(`main.chart-area>div[data-filename="${filename}"]`)
     .append('svg')
     .attr('data-filename', filename)
     .attr('height', treeHeight + 100)
@@ -193,7 +193,7 @@ function createPlaceholders(filenames) {
     const placeholder = document.createElement('div');
     placeholder.classList.add('timeline-tree-wrapper');
     placeholder.dataset.filename = filename;
-    document.querySelector('body').appendChild(placeholder);
+    document.querySelector('main.chart-area').appendChild(placeholder);
   });
 }
 
@@ -234,19 +234,15 @@ async function main() {
   createNavbar(filenames);
   activateNavbar();
 
-  document.querySelector('.js-show-menu').addEventListener('click', () => {
-    document.querySelector('.js-nav-menu').classList.remove('hidden');
-  });
-
-  document.querySelector('.js-hide-menu').addEventListener('click', () => {
-    document.querySelector('.js-nav-menu').classList.add('hidden');
+  document.querySelectorAll('.js-toggle-menu').forEach((toggleBtn) => {
+    toggleBtn.addEventListener('click', () => {
+      document.querySelector('.js-nav-menu').classList.toggle('nav--open');
+    });
   });
 
   document
     .querySelector('.js-btn[data-filename="National Institute for Health and Welfare.json"]')
     .click();
-
-  document.querySelector('.js-show-menu').click();
 }
 
 main();

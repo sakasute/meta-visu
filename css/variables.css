@@ -10,4 +10,14 @@ html {
   --dark-gray: #606060;
   --medium-gray: #c3c2c6;
   --light-gray: #dcdfe2;
+  --v-light-gray: hsl(210, 9%, 95%);
+
+  --thl-green: rgb(123, 193, 67);
+  --thl-gray: rgb(128, 127, 131);
+  --thl-orange: rgb(250, 166, 26);
+  --thl-red: rgb(237, 22, 81);
+  --thl-ruby: rgb(226, 0, 119);
+  --thl-lila: rgb(177, 154, 202);
+  --thl-blue: rgb(81, 145, 205);
+  --thl-turquoise: rgb(10, 187, 182);
 }
