@@ -32,7 +32,7 @@ body {
 }
 
 .timeline-tree-wrapper {
-  margin: 2.5rem auto;
+  margin: 2.5rem 0;
 }
 
 .timeline-tree {
@@ -87,14 +87,18 @@ body {
   transition: 0.1s linear;
 }
 
-.nav__toggle-btn--open {
+.nav__toggle-btn--rotate {
   transform: rotateY(180deg);
   transition: 0.1s linear;
 }
 
-.nav__close-btn:hover {
+.nav__toggle-btn:hover {
   opacity: 1;
   transform: scale(1.1);
+}
+
+.nav__toggle-btn--rotate:hover {
+  transform: rotateY(180deg) scale(1.1);
 }
 
 .nav--hidden {
