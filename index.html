@@ -8,8 +8,7 @@
   <title>meta-visu</title>
   <meta name="description" content="metavisualisointityökalu">
   <meta name="author" content="Sakari Sutela">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/variables.css?v=1.0">
   <link rel="stylesheet" href="css/styles.css?v=1.0">
   <link rel="stylesheet" href="css/TreeChart.css?v=1.0">
@@ -20,28 +19,18 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="header__item">
-      <i class="header__settings-btn fas fa-bars js-toggle-menu"></i>
-    </div>
-    <div class="header__item">
-      <h1 class="header__main-title">META-VISU</h1>
-    </div>
-    <div class="header__item"></div>
-  </header>
-  <div class="content-wrapper">
-    <nav class="nav js-nav-menu">
-      <div class="nav-content-wrapper">
-        <i class="nav__close-btn far fa-times-circle js-toggle-menu"></i>
-        <ul class="nav__list js-nav-list ">
-        </ul>
-      </div>
-
-    </nav>
-
-    <main class="chart-area"></main>
+  <div class="nav js-nav-card">
+    <i class="nav__toggle-btn material-icons js-toggle-menu">
+      arrow_back
+    </i>
+    <ul class="nav__list js-nav-list ">
+    </ul>
   </div>
 
+  <div class="content-wrapper">
+    <div class="sidebar-placeholder"></div>
+    <main class="chart-area"></main>
+  </div>
 
   <script src="./src/lib/d3/d3.js "></script>
   <script src="./dist/index_bundle.js "></script>

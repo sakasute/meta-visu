@@ -234,10 +234,10 @@ async function main() {
   createNavbar(filenames);
   activateNavbar();
 
-  document.querySelectorAll('.js-toggle-menu').forEach((toggleBtn) => {
-    toggleBtn.addEventListener('click', () => {
-      document.querySelector('.js-nav-menu').classList.toggle('nav--hidden');
-    });
+  const toggleBtn = document.querySelector('.js-toggle-menu');
+  toggleBtn.addEventListener('click', () => {
+    document.querySelector('.js-nav-card').classList.toggle('nav--closed');
+    toggleBtn.classList.toggle('nav__toggle-btn--open');
   });
 
   document
