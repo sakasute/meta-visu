@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "webpack-dev": "webpack --watch",
+    "build": "webpack --config webpack.production.config.js",
+    "webpack-dev": "webpack --watch --config webpack.development.config.js",
     "start": "live-server --ignore=**/src/** --no-browser"
   },
   "author": "",
