@@ -1,3 +1,3 @@
 ## Notes
 
-- polyfills etc. bloat the index_bundle.js file from under 20kb to over 100kb
+- Styles won't work properly on IE11 because e.g. var() is used. Could be fixed if really needed.
