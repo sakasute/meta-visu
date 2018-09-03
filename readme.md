@@ -23,9 +23,9 @@ Due to differences between web browsers and me wanting to use modern JavaScript 
     - **NOTE:** I'm developing on Linux myself and I suspect there will be some more trouble on Windows to get the command line to find the `npm` command. If you are having problems you should look into adding commands to "PATH" variable on windows.
 3. While developing you should have two scripts running:
     - `npm run webpack-dev` watches for changes in JavaScript files and bundles them into `dist/index_bundle.js`-file without doing any browser compatibility magic. This bundle should work with at least Chrome and most likely with Firefox without problems.
-    - `npm start` starts a `live-server` which hosts the project locally. When it's running, you can access the web page from `http://localhost:8080` (by default).
+    - `npm start` starts a [`live-server`](https://www.npmjs.com/package/live-server) which hosts the project locally. When it's running, you can access the web page from `http://localhost:8080` (by default).
         - `live-server` also reloads the page automatically when files are saved and injects css-changes to the web page directly making development easier.
-4. When the changes are ready you are ready to make the final commit before publishing changes, you should run `npm run build`. This makes the `index_bundle.js` with the production configuration, which transforms the syntax into older JavaScript and adds some polyfills for features that are missing from some older browsers such as IE11 (although currently, the use of css-variables makes the application practically incompatible with IE11).
+4. When the changes are ready you are ready to make the final commit before publishing changes, you should run `npm run build`. This makes the `index_bundle.js` with the production configuration, which transforms the syntax into older JavaScript and adds some polyfills (using [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/)) for features that are missing from some older browsers such as IE11 (although currently, the use of css-variables makes the application practically incompatible with IE11).
 
 ### Why is the development environment kind of complicated
 
