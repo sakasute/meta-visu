@@ -81,10 +81,7 @@ class TreeChart {
   }
   /* eslint-disable class-methods-use-this */
   moveNodesInPlace(nodeGroup) {
-    nodeGroup
-      // .transition()
-      // .duration(this.config.animationDuration)
-      .attr('transform', d => `translate(${d.y}, ${d.x})`);
+    nodeGroup.attr('transform', d => `translate(${d.y}, ${d.x})`);
   }
 
   addNodeLabels(nodeGroup) {
@@ -98,14 +95,19 @@ class TreeChart {
       // NOTE: limit the length of node labels (the difference between lengths in test)
       // and slice is to prevent the "..." being lengthier than removed chars.
       .text(d => (d.data.name.length <= 43 ? d.data.name : `${d.data.name.slice(0, 40)}...`))
-      .on('mouseover', (d, i, nodes) => this.showFullLabel(d, i, nodes));
+      .on('mouseover', (d, i, nodes) => this.showFullLabel(d, i, nodes))
+      .on('mouseout', (d, i, nodes) => this.showNormalLabel(d, i, nodes));
 
     // NOTE: handle root node separately to support text wrapping
     this.addRootLabel(nodeGroup.filter(d => !d.parent));
   }
 
-  showFullLabel(d, i, nodes) {
-    console.log(d, i, nodes);
+  showFullLabel(dataNode, i, nodes) {
+    d3.select(nodes[i]).text(d => d.data.name);
+  }
+
+  showNormalLabel(data, i, nodes) {
+    d3.select(nodes[i]).text(d => (d.data.name.length <= 43 ? d.data.name : `${d.data.name.slice(0, 40)}...`));
   }
 
   addRootLabel(rootNode) {
