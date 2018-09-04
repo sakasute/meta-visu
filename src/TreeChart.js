@@ -78,7 +78,6 @@ class TreeChart {
       .append('circle')
       .attr('class', 'tree__node-marker')
       .attr('r', this.config.nodeSize);
-    // .style('fill', d => (d.childrenStored ? 'lightsteelblue' : 'white'));
   }
   /* eslint-disable class-methods-use-this */
   moveNodesInPlace(nodeGroup) {
@@ -94,12 +93,19 @@ class TreeChart {
       .append('text')
       .attr('class', 'tree__node-label')
       .attr('dy', d => this.constructor.calculateLabelPlacement(d))
-      .attr('x', -13)
+      .attr('x', -25)
       .attr('text-anchor', 'middle')
-      .text(d => d.data.name);
+      // NOTE: limit the length of node labels (the difference between lengths in test)
+      // and slice is to prevent the "..." being lengthier than removed chars.
+      .text(d => (d.data.name.length <= 43 ? d.data.name : `${d.data.name.slice(0, 40)}...`))
+      .on('mouseover', (d, i, nodes) => this.showFullLabel(d, i, nodes));
 
     // NOTE: handle root node separately to support text wrapping
     this.addRootLabel(nodeGroup.filter(d => !d.parent));
+  }
+
+  showFullLabel(d, i, nodes) {
+    console.log(d, i, nodes);
   }
 
   addRootLabel(rootNode) {
