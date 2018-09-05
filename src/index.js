@@ -157,11 +157,48 @@ async function createRegisterSelector(navItem, filename) {
   activateRegisterSelector(registerList);
 }
 
-function createPlaceholders(filenames) {
+function createYearSelector(startYear, endYear, optionText = '--year--') {
+  const select = document.createElement('select');
+  select.classList.add('year-selector');
+  const firstOption = document.createElement('option');
+  firstOption.value = '';
+  firstOption.textContent = optionText;
+  select.appendChild(firstOption);
+  for (let year = startYear; year <= endYear; year += 1) {
+    const option = document.createElement('option');
+    option.value = year;
+    option.textContent = year;
+    select.appendChild(option);
+  }
+
+  return select;
+}
+
+function createTimelineTreeCards(filenames) {
   filenames.forEach((filename) => {
     const placeholder = document.createElement('div');
-    placeholder.classList.add('timeline-tree-wrapper');
+    placeholder.classList.add('timeline-tree-wrapper', 'card');
     placeholder.dataset.filename = filename;
+    const cardHeader = document.createElement('div');
+    cardHeader.classList.add('card__header');
+    cardHeader.innerHTML = `
+    <h2 class="title card__title">${filename.slice(0, -5)}</h2>
+    <div class="year-control card__year-control js-year-control">
+      <label class="year-form__label">Timeline years: </label>
+    </div>`;
+    const startYearSelector = createYearSelector(1900, new Date().getFullYear(), '--start year--');
+    const endYearSelector = createYearSelector(1900, new Date().getFullYear(), '--end year--');
+    const setYearsBtn = document.createElement('button');
+    setYearsBtn.classList.add('js-set-years-btn');
+    setYearsBtn.dataset.filename = filename;
+    setYearsBtn.textContent = 'Set';
+    const yearForm = cardHeader.querySelector('.js-year-control');
+    yearForm.appendChild(startYearSelector);
+    yearForm.appendChild(document.createTextNode(' — '));
+    yearForm.appendChild(endYearSelector);
+    yearForm.appendChild(setYearsBtn);
+
+    placeholder.appendChild(cardHeader);
     document.querySelector('main.chart-area').appendChild(placeholder);
   });
 }
@@ -199,7 +236,7 @@ function activateNavbar() {
 async function main() {
   const filenames = await getData('data/filenames.json');
   filenames.sort();
-  createPlaceholders(filenames);
+  createTimelineTreeCards(filenames);
   createNavbar(filenames);
   activateNavbar();
 

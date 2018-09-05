@@ -2,7 +2,28 @@
   margin: 2.5rem 0;
 }
 
-.timeline-tree {
+.card {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: white;
+}
+
+.card__header {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  border-bottom: solid 1px var(--light-gray);
+}
+
+.card__title {
+  flex: 1;
+  margin: 0;
+  color: var(--dark-gray);
+  font-size: 1.6rem;
+}
+
+.card__year-control {
+  align-content: flex-end;
+}
+
+.timeline-tree {
 }
