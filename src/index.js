@@ -112,9 +112,16 @@ async function drawTimelineTree(
       categoryTimeline.update();
     });
   });
+
+  document
+    .querySelector(`.js-timeline-tree-card[data-filename="${filename}"]`)
+    .classList.remove('card--collapsed');
 }
 
 function removeTimelineTree(filename) {
+  const timelineTreeCard = document.querySelector(`.js-timeline-tree-card[data-filename="${filename}"]`);
+  timelineTreeCard.classList.add('card--collapsed');
+
   const elToRemove = document.querySelector(`.js-timeline-tree[data-filename="${filename}"]`);
   if (elToRemove) {
     elToRemove.remove();
@@ -161,7 +168,6 @@ function activateYearSelectControls(filename) {
 
     startYear = `${startYear}-01-01`;
     endYear = `${endYear}-12-31`;
-    console.log(endYear);
     const timelineConfigMod = {
       scaleStartDate: new Date(startYear),
       scaleEndDate: new Date(endYear),
@@ -232,7 +238,12 @@ function createYearSelector(startYear, endYear, optionText = '--year--') {
 function createTimelineTreeCards(filenames) {
   filenames.forEach((filename) => {
     const placeholder = document.createElement('div');
-    placeholder.classList.add('timeline-tree-wrapper', 'card', 'js-timeline-tree-card');
+    placeholder.classList.add(
+      'timeline-tree-wrapper',
+      'card',
+      'card--collapsed',
+      'js-timeline-tree-card',
+    );
     placeholder.dataset.filename = filename;
     const cardHeader = document.createElement('div');
     cardHeader.classList.add('card__header');

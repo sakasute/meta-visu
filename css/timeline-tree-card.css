@@ -25,5 +25,11 @@
   align-content: flex-end;
 }
 
+.card--collapsed {
+  max-height: 0;
+  margin: 0;
+  overflow-y: hidden;
+}
+
 .timeline-tree {
 }
