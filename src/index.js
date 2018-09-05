@@ -1,21 +1,6 @@
 import TreeChart from './TreeChart';
 import CategoryTimeline from './CategoryTimeline';
 
-function compareByName(a, b) {
-  if (a.name < b.name) {
-    return -1;
-  } else if (a.name > b.name) {
-    return 1;
-  }
-  return 0;
-}
-
-function sortTreeData(data) {
-  data.registers.sort((a, b) => compareByName(a, b));
-  data.registers.forEach(register => register.categories.sort((a, b) => compareByName(a, b)));
-  return data;
-}
-
 async function getData(file) {
   return fetch(file)
     .then(res => res.json())
@@ -45,7 +30,27 @@ function categoryTimelineHelper(samplingData, svg, config) {
   return new CategoryTimeline(timelineData, svg, config);
 }
 
-async function drawTimelineTree(filename, filteredRegisters = []) {
+function compareByName(a, b) {
+  if (a.name < b.name) {
+    return -1;
+  } else if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+}
+
+function sortTreeData(data) {
+  data.registers.sort((a, b) => compareByName(a, b));
+  data.registers.forEach(register => register.categories.sort((a, b) => compareByName(a, b)));
+  return data;
+}
+
+async function drawTimelineTree(
+  filename,
+  filteredRegisters = [],
+  treeConfigMod = {},
+  timelineConfigMod = {},
+) {
   let data = await getData(`data/${filename}`);
   const filteredRegisterData = data.registers.filter(register => !filteredRegisters.includes(register.name));
   data.registers = filteredRegisterData;
@@ -77,13 +82,16 @@ async function drawTimelineTree(filename, filteredRegisters = []) {
   treeChart.updateLinks();
 
   // ***** Timelines *****
-
+  console.log(timelineConfigMod.scaleEndDate);
   const timelineConfig = {
     width: 250,
     height: 100,
     showXAxis: false,
     showLegend: false,
-    scaleStartDate: new Date('1950-01-01'),
+    scaleStartDate: timelineConfigMod.scaleStartDate
+      ? timelineConfigMod.scaleStartDate
+      : new Date('1950-01-01'),
+    scaleEndDate: timelineConfigMod.scaleEndDate ? timelineConfigMod.scaleEndDate : new Date(),
   };
   treeChart.treeData.children.forEach((registerNode, registerIdx) => {
     registerNode.children.forEach((categoryNode, categoryIdx) => {
@@ -113,37 +121,84 @@ function removeTimelineTree(filename) {
   }
 }
 
-function createNavbar(filenames) {
-  filenames
-    .map(name => name.split('.')[0])
-    .sort()
-    .forEach((name) => {
-      const navItem = document.createElement('li');
-      navItem.classList.add('nav__item');
-      navItem.innerHTML = `<button class="btn js-btn" data-filename="${name}.json">${name}</button>`;
-      document.querySelector('.js-nav-list').appendChild(navItem);
+function activateSidebar() {
+  document.querySelectorAll('.js-register-btn').forEach((el) => {
+    el.addEventListener('click', () => {
+      const { filename } = el.dataset;
+      if (![...el.classList].includes('btn--selected')) {
+        el.classList.add('btn--selected');
+        drawTimelineTree(filename);
+        showRegisterSelector(el.parentElement, filename);
+      } else {
+        removeTimelineTree(filename);
+        hideRegisterSelector(el.parentElement);
+        el.classList.remove('btn--selected');
+      }
     });
+  });
 }
 
 function activateRegisterSelector(selectorEl) {
+  const { filename } = selectorEl.dataset;
+
   selectorEl.querySelectorAll('.js-register-select').forEach((checkboxEl) => {
     checkboxEl.addEventListener('change', () => {
-      const filename = checkboxEl.dataset.identifier.split('/')[0];
-      const filterList = [...selectorEl.querySelectorAll('.js-register-select')]
-        .filter(checkbox => !checkbox.checked)
-        .map(checkbox => checkbox.dataset.identifier.split('/')[1]);
-
+      const filterList = getFilterList(filename);
       removeTimelineTree(filename);
       drawTimelineTree(filename, filterList);
     });
   });
 }
 
+function activateYearSelectControls(filename) {
+  const timelineTree = document.querySelector(`.js-timeline-tree-card[data-filename="${filename}"]`);
+  const setYearsBtn = timelineTree.querySelector('.js-set-years-btn');
+  setYearsBtn.addEventListener('click', () => {
+    let startYear = parseInt(timelineTree.querySelector('.js-start-year').value, 10);
+    startYear = !isNaN(startYear) ? startYear : 1950;
+    let endYear = parseInt(timelineTree.querySelector('.js-end-year').value, 10);
+    endYear = !isNaN(endYear) && endYear > startYear ? endYear : new Date().getFullYear();
+
+    startYear = `${startYear}-01-01`;
+    endYear = `${endYear}-12-31`;
+    console.log(endYear);
+    const timelineConfigMod = {
+      scaleStartDate: new Date(startYear),
+      scaleEndDate: new Date(endYear),
+    };
+    const filteredRegisters = getFilterList(filename);
+    removeTimelineTree(filename);
+    drawTimelineTree(filename, filteredRegisters, {}, timelineConfigMod);
+  });
+}
+
+function getFilterList(filename) {
+  const selectorEl = document.querySelector(`.js-register-list[data-filename="${filename}"]`);
+  const filterList = [...selectorEl.querySelectorAll('.js-register-select')]
+    .filter(checkbox => !checkbox.checked)
+    .map(checkbox => checkbox.dataset.identifier.split('/')[1]);
+
+  return filterList;
+}
+
+function createSidebar(filenames) {
+  filenames
+    .map(name => name.split('.')[0])
+    .sort()
+    .forEach((name) => {
+      const navItem = document.createElement('li');
+      navItem.classList.add('nav__item');
+      navItem.innerHTML = `<button class="btn js-register-btn" data-filename="${name}.json">${name}</button>`;
+      document.querySelector('.js-nav-list').appendChild(navItem);
+    });
+}
+
 async function createRegisterSelector(navItem, filename) {
   let data = await getData(`data/${filename}`);
   data = sortTreeData(data);
   const registerList = document.createElement('ul');
-  registerList.classList.add('register-selector');
+  registerList.classList.add('register-selector', 'js-register-list');
+  registerList.dataset.filename = filename;
   data.registers.forEach((register) => {
     const identifier = `${filename}/${register.name}`;
     const listItem = document.createElement('li');
@@ -177,7 +232,7 @@ function createYearSelector(startYear, endYear, optionText = '--year--') {
 function createTimelineTreeCards(filenames) {
   filenames.forEach((filename) => {
     const placeholder = document.createElement('div');
-    placeholder.classList.add('timeline-tree-wrapper', 'card');
+    placeholder.classList.add('timeline-tree-wrapper', 'card', 'js-timeline-tree-card');
     placeholder.dataset.filename = filename;
     const cardHeader = document.createElement('div');
     cardHeader.classList.add('card__header');
@@ -187,7 +242,9 @@ function createTimelineTreeCards(filenames) {
       <label class="year-form__label">Timeline years: </label>
     </div>`;
     const startYearSelector = createYearSelector(1900, new Date().getFullYear(), '--start year--');
+    startYearSelector.classList.add('js-start-year');
     const endYearSelector = createYearSelector(1900, new Date().getFullYear(), '--end year--');
+    endYearSelector.classList.add('js-end-year');
     const setYearsBtn = document.createElement('button');
     setYearsBtn.classList.add('js-set-years-btn');
     setYearsBtn.dataset.filename = filename;
@@ -200,6 +257,7 @@ function createTimelineTreeCards(filenames) {
 
     placeholder.appendChild(cardHeader);
     document.querySelector('main.chart-area').appendChild(placeholder);
+    activateYearSelectControls(filename);
   });
 }
 
@@ -216,29 +274,12 @@ function hideRegisterSelector(navItem) {
   navItem.querySelector('.register-selector').classList.add('vanish');
 }
 
-function activateNavbar() {
-  document.querySelectorAll('.js-btn').forEach((el) => {
-    el.addEventListener('click', () => {
-      const { filename } = el.dataset;
-      if (![...el.classList].includes('btn--selected')) {
-        el.classList.add('btn--selected');
-        drawTimelineTree(filename);
-        showRegisterSelector(el.parentElement, filename);
-      } else {
-        removeTimelineTree(filename);
-        hideRegisterSelector(el.parentElement);
-        el.classList.remove('btn--selected');
-      }
-    });
-  });
-}
-
 async function main() {
   const filenames = await getData('data/filenames.json');
   filenames.sort();
   createTimelineTreeCards(filenames);
-  createNavbar(filenames);
-  activateNavbar();
+  createSidebar(filenames);
+  activateSidebar();
 
   const toggleBtn = document.querySelector('.js-toggle-menu');
   toggleBtn.addEventListener('click', () => {
@@ -247,7 +288,7 @@ async function main() {
   });
 
   document
-    .querySelector('.js-btn[data-filename="National Institute for Health and Welfare.json"]')
+    .querySelector('.js-register-btn[data-filename="National Institute for Health and Welfare.json"]')
     .click();
 }
 
