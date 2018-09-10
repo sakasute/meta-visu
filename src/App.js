@@ -5,6 +5,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.handleAdminBtnClick = this.handleAdminBtnClick.bind(this);
     this.state = {
       filenames: [],
       data: {},
@@ -35,13 +36,21 @@ class App extends Component {
       }));
   }
 
+  handleAdminBtnClick(event) {
+    // TODO:
+  }
+
   render() {
     const { data } = this.state;
     const { filenames } = this.state;
     return (
       <div>
         <div className="sidebar-placeholder" />
-        <RegisterPanel filenames={filenames} dataSets={Object.values(data)} />
+        <RegisterPanel
+          filenames={filenames}
+          dataSets={Object.values(data)}
+          handleAdminBtnClick={this.handleAdminBtnClick}
+        />
         <main className="chart-area" />
       </div>
     );

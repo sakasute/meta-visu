@@ -10,9 +10,11 @@ class RegisterPanel extends Component {
   }
 
   render() {
-    const { dataSets } = this.props;
+    const { dataSets, handleAdminBtnClick } = this.props;
 
-    const navItems = dataSets.map(data => <NavItem key={data.name} adminData={data} />);
+    const navItems = dataSets.map(data => (
+      <NavItem key={data.name} adminData={data} handleAdminBtnClick={handleAdminBtnClick} />
+    ));
     return (
       <aside className="nav">
         <ul className="nav__list">{navItems}</ul>
