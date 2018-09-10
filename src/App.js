@@ -44,9 +44,9 @@ class App extends Component {
   render() {
     const { data } = this.state;
     const { filenames } = this.state;
-    const timelineTreeCards = filenames.map((filename) => {
-      <TimelineTreeCard filename={filename} />;
-    });
+    const timelineTreeCards = filenames.map(filename => (
+      <TimelineTreeCard filename={filename} treeConfig={{}} timelineConfig={{}} key={filename} />
+    ));
     return (
       <div>
         <RegisterPanel
@@ -56,7 +56,7 @@ class App extends Component {
         />
         <div className="content-wrapper">
           <div className="sidebar-placeholder" />
-          <main className="chart-area" />
+          <main className="chart-area">{timelineTreeCards}</main>
         </div>
       </div>
     );
