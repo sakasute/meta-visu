@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RegisterPanel from './RegisterPanel/RegisterPanel';
+import TimelineTreeCard from './TimelineTreeCard/TimelineTreeCard';
 import './App.css';
 
 class App extends Component {
@@ -43,15 +44,20 @@ class App extends Component {
   render() {
     const { data } = this.state;
     const { filenames } = this.state;
+    const timelineTreeCards = filenames.map((filename) => {
+      <TimelineTreeCard filename={filename} />;
+    });
     return (
       <div>
-        <div className="sidebar-placeholder" />
         <RegisterPanel
           filenames={filenames}
           dataSets={Object.values(data)}
           handleAdminBtnClick={this.handleAdminBtnClick}
         />
-        <main className="chart-area" />
+        <div className="content-wrapper">
+          <div className="sidebar-placeholder" />
+          <main className="chart-area" />
+        </div>
       </div>
     );
   }
