@@ -10,14 +10,17 @@ class TimelineTreeCard extends Component {
   }
 
   render() {
-    const { filename, treeConfig, timelineConfig } = this.props;
+    const {
+      filename, data, treeConfig, timelineConfig,
+    } = this.props;
     return (
       <div className="timeline-tree-wrapper card">
-        <CardHeader filename={filename} />
+        <CardHeader filename={filename} name={data.name} />
         <TimelineTreeSVG
-          filename={filename}
+          data={data}
           treeConfig={treeConfig}
           timelineConfig={timelineConfig}
+          filename={filename}
         />
       </div>
     );

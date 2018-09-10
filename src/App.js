@@ -8,33 +8,27 @@ class App extends Component {
     super(props);
     this.handleAdminBtnClick = this.handleAdminBtnClick.bind(this);
     this.state = {
-      filenames: [],
       data: {},
+      filenames: [],
     };
   }
 
   componentDidMount() {
+    const data = {};
+    let filenamesArr = [];
     // first get filenames, then get data from those files
     fetch('data/filenames.json')
       .then(res => res.json())
-      .then(filenames => filenames.sort())
       .then((filenames) => {
-        this.setState({ filenames });
-        return filenames;
-      })
-      .then(filenames => filenames.forEach((filename) => {
-        fetch(`data/${filename}`)
-          .then(res => res.json())
-          .then((registerData) => {
-            const { data: prevData } = this.state;
-            this.setState({
-              data: {
-                ...prevData,
-                [filename]: registerData,
-              },
+        filenamesArr = filenames;
+        Promise.all(filenames.map(filename => fetch(`/data/${filename}`).then(res => res.json())))
+          .then((jsons) => {
+            jsons.forEach((json, i) => {
+              data[filenamesArr[i]] = json;
             });
-          });
-      }));
+          })
+          .then(() => this.setState({ data, filenames }));
+      });
   }
 
   handleAdminBtnClick(event) {
@@ -42,10 +36,16 @@ class App extends Component {
   }
 
   render() {
-    const { data } = this.state;
-    const { filenames } = this.state;
+    console.log(this.state);
+    const { data, filenames } = this.state;
     const timelineTreeCards = filenames.map(filename => (
-      <TimelineTreeCard filename={filename} treeConfig={{}} timelineConfig={{}} key={filename} />
+      <TimelineTreeCard
+        filename={filename}
+        data={data[filename]}
+        treeConfig={{}}
+        timelineConfig={{}}
+        key={filename}
+      />
     ));
     return (
       <div>
