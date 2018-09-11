@@ -6,11 +6,11 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleRegisterAdminBtnClick = this.handleRegisterAdminBtnClick.bind(this);
+    this.toggleAdminFilter = this.toggleAdminFilter.bind(this);
     this.data = {};
     this.state = {
       filenames: [],
-      visualizations: {},
+      filters: {},
     };
   }
 
@@ -30,18 +30,25 @@ class App extends Component {
           })
           .then(() => {
             this.data = data;
-            this.setState({ filenames });
+            const filters = {};
+            filenames.forEach((filename) => {
+              filters[filename] = { show: false };
+            });
+            this.setState({ filenames, filters });
           });
       });
   }
 
-  handleRegisterAdminBtnClick(event) {
-    // TODO:
+  toggleAdminFilter(filename) {
+    const { filters } = { ...this.state };
+    filters[filename].show = !filters[filename].show;
+    this.setState({ filters });
   }
 
   render() {
-    const { filenames } = this.state;
+    const { filenames, filters } = this.state;
     const timelineTreeCards = filenames
+      .filter(filename => filters[filename].show)
       .sort()
       .map(filename => (
         <TimelineTreeCard
@@ -55,9 +62,11 @@ class App extends Component {
     return (
       <div>
         <RegisterPanel
-          filenames={filenames}
-          dataSets={Object.values(this.data)}
-          handleAdminBtnClick={this.handleAdminBtnClick}
+          dataSets={Object.keys(this.data).map(filename => ({
+            filename,
+            data: this.data[filename],
+          }))}
+          handleAdminBtnClick={this.toggleAdminFilter}
         />
         <div className="content-wrapper">
           <div className="sidebar-placeholder" />

@@ -80,7 +80,7 @@ class TimelineTreeSVG extends Component {
   }
 
   componentWillUnmount() {
-    const { filename } = this.state;
+    const { filename } = this.props;
     const nodeToEmpty = document.querySelector(`.js-timeline-tree#${idRef(filename)}`);
     while (nodeToEmpty.firstChild) {
       nodeToEmpty.removeChild(nodeToEmpty.firstChild);

@@ -13,12 +13,15 @@ class NavItem extends Component {
     };
   }
 
-  handleBtnClick() {
+  handleBtnClick(event) {
+    const { handleAdminBtnClick, filename } = this.props;
     const { selected } = this.state;
     this.setState({ selected: !selected });
+    handleAdminBtnClick(filename);
   }
 
   handleRegisterSelection(event) {
+    const { setFilterList } = this.props;
     const { selectedRegisters } = { ...this.state };
     const registerName = event.target.id;
     const selected = event.target.checked;
@@ -28,7 +31,7 @@ class NavItem extends Component {
 
   render() {
     const { selected } = this.state;
-    const { adminData, handleAdminBtnClick } = this.props;
+    const { adminData } = this.props;
     const btnClass = selected ? 'btn btn--selected' : 'btn';
 
     return (

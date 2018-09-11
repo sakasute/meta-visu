@@ -11,12 +11,16 @@ class RegisterPanel extends Component {
   }
 
   render() {
-    const { dataSets, handleRegisterAdminBtnClick } = this.props;
-    console.log(dataSets);
+    const { dataSets, handleAdminBtnClick } = this.props;
     const navItems = dataSets
-      .sort((a, b) => compareByName(a, b))
-      .map(data => (
-        <NavItem key={data.name} adminData={data} handleBtnClick={handleRegisterAdminBtnClick} />
+      // FIXME: sort
+      .map(dataObj => (
+        <NavItem
+          key={dataObj.filename}
+          filename={dataObj.filename}
+          adminData={dataObj.data}
+          handleAdminBtnClick={handleAdminBtnClick}
+        />
       ));
     return (
       <aside className="nav">
