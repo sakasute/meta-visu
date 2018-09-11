@@ -18,6 +18,10 @@ body {
   font-family: sans-serif;
 }
 
+.vanish {
+  display: none;
+}
+
 :root {
   --category-1-color: #519b2f;
   --category-1-color-alt: #7bc143;

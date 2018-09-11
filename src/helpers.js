@@ -1,5 +1,9 @@
 import CategoryTimeline from './d3Visualizations/CategoryTimeline';
 
+export function parseNameFromFilename(filename) {
+  return filename.split('.')[0];
+}
+
 export function calculateCategoryCount(data) {
   let categoryCount = 0;
   data.registers.forEach(register => register.categories.forEach(category => (categoryCount += 1)));
@@ -35,10 +39,6 @@ export function compareByName(a, b) {
 
 export function idRef(filename) {
   return parseNameFromFilename(filename).replace(/ /g, '');
-}
-
-export function parseNameFromFilename(filename) {
-  return filename.split('.')[0];
 }
 
 export function sortTreeData(data) {

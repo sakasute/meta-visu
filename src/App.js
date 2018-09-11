@@ -6,10 +6,11 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleAdminBtnClick = this.handleAdminBtnClick.bind(this);
+    this.handleRegisterAdminBtnClick = this.handleRegisterAdminBtnClick.bind(this);
+    this.data = {};
     this.state = {
-      data: {},
       filenames: [],
+      visualizations: {},
     };
   }
 
@@ -27,31 +28,35 @@ class App extends Component {
               data[filenamesArr[i]] = json;
             });
           })
-          .then(() => this.setState({ data, filenames }));
+          .then(() => {
+            this.data = data;
+            this.setState({ filenames });
+          });
       });
   }
 
-  handleAdminBtnClick(event) {
+  handleRegisterAdminBtnClick(event) {
     // TODO:
   }
 
   render() {
-    console.log(this.state);
-    const { data, filenames } = this.state;
-    const timelineTreeCards = filenames.map(filename => (
-      <TimelineTreeCard
-        filename={filename}
-        data={data[filename]}
-        treeConfig={{}}
-        timelineConfig={{}}
-        key={filename}
-      />
-    ));
+    const { filenames } = this.state;
+    const timelineTreeCards = filenames
+      .sort()
+      .map(filename => (
+        <TimelineTreeCard
+          filename={filename}
+          data={this.data[filename]}
+          treeConfig={{}}
+          timelineConfig={{}}
+          key={filename}
+        />
+      ));
     return (
       <div>
         <RegisterPanel
           filenames={filenames}
-          dataSets={Object.values(data)}
+          dataSets={Object.values(this.data)}
           handleAdminBtnClick={this.handleAdminBtnClick}
         />
         <div className="content-wrapper">

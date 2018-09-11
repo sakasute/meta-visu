@@ -60,7 +60,12 @@ class TimelineTreeSVG extends Component {
       registerNode.children.forEach((categoryNode, categoryIdx) => {
         let timelineConfigModified = timelineConfigExtended;
         if (registerIdx === 0 && categoryIdx === 0) {
-          timelineConfigModified = { ...timelineConfigExtended, showXAxis: true, showLegend: true };
+          timelineConfigModified = {
+            ...timelineConfigExtended,
+            showXAxis: true,
+            showLegend: true,
+            xAxisOrientation: 'top',
+          };
         }
         const categoryTimeline = categoryTimelineHelper(
           categoryNode.data.samplings,
@@ -74,10 +79,16 @@ class TimelineTreeSVG extends Component {
     });
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    const { filename } = this.state;
+    const nodeToEmpty = document.querySelector(`.js-timeline-tree#${idRef(filename)}`);
+    while (nodeToEmpty.firstChild) {
+      nodeToEmpty.removeChild(nodeToEmpty.firstChild);
+    }
+  }
 
   render() {
-    const { filename, data } = this.props;
+    const { filename } = this.props;
     return <svg id={idRef(filename)} className="js-timeline-tree timeline-tree" />;
   }
 }

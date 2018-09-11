@@ -1,11 +1,11 @@
 import React from 'react';
 
 function RegisterItem(props) {
-  const { register } = props;
+  const { register, handleChange } = props;
 
   return (
     <li className="register__item">
-      <input type="checkbox" id={register.name} />
+      <input type="checkbox" onChange={handleChange} id={register.name} />
       <label htmlFor={register.name}>{register.name}</label>
     </li>
   );
