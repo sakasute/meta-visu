@@ -13,6 +13,7 @@ class TimelineTreeCard extends Component {
     const {
       filename, data, treeConfig, timelineConfig,
     } = this.props;
+    console.log(data);
     return (
       <div className="timeline-tree-wrapper card">
         <CardHeader filename={filename} name={data.name} />

@@ -1,0 +1,38 @@
+.tree {
+  font-size: 1.2rem;
+}
+
+.tree__html-object {
+  height: 1px;
+  width: 1px;
+}
+
+.tree__html-label {
+  width: 100px;
+  text-align: center;
+  margin: 0;
+  color: var(--dark-gray);
+  font-weight: bold;
+}
+
+.tree__node-marker {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+  cursor: pointer;
+}
+
+.tree__node-label {
+  fill: var(--dark-gray);
+  font-weight: bold;
+}
+
+.tree__node-label:hover {
+  fill: var(--thl-red);
+}
+
+.tree__link {
+  fill: none;
+  stroke: var(--medium-gray);
+  stroke-width: 2px;
+}

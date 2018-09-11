@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import './TreeChart.css';
 
 class TreeChart {
   constructor(data, svgElement, config) {

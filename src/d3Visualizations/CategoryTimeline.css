@@ -1,0 +1,68 @@
+.timeline {
+  font-size: 1.2rem;
+  shape-rendering: crispEdges;
+}
+
+.timeline__title {
+  fill: var(--dark-gray);
+}
+
+.timeline__separator {
+  stroke-width: 1;
+  stroke: var(--dark-gray);
+  stroke-dasharray: 4;
+}
+
+.timeline__rect {
+  fill: var(--category-1-color-alt);
+  opacity: 0.75;
+}
+
+.timeline__rect:hover {
+  opacity: 1;
+}
+
+.timeline__rect--97 {
+  fill: var(--category-2-color-alt);
+}
+
+.timeline__year-label {
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.timeline__axis {
+  shape-rendering: crispEdges;
+}
+
+.timeline__axis .domain,
+.timeline__axis .tick > line {
+  stroke: var(--dark-gray);
+  stroke-width: 1;
+}
+
+.timeline__axis .tick > text {
+  fill: var(--dark-gray);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.legend {
+  font-size: 1.2rem;
+}
+
+.legend__color-1 {
+  fill: var(--category-1-color-alt);
+}
+
+.legend__color-2 {
+  fill: var(--category-2-color-alt);
+}
+
+.legend__label {
+  font-size: 1rem;
+  font-weight: bold;
+  fill: var(--dark-gray);
+}

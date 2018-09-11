@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import './CategoryTimeline.css';
 
 class CategoryTimeline {
   constructor(data, svgElement, config) {
@@ -59,7 +60,8 @@ class CategoryTimeline {
     if (startYear === endYear) {
       if (startMonth === endMonth) {
         return startStr;
-      } if (startMonth === 0 && endMonth === 11) {
+      }
+      if (startMonth === 0 && endMonth === 11) {
         return startYear;
       }
     }
