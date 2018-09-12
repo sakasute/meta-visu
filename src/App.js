@@ -6,7 +6,8 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.toggleAdminFilter = this.toggleAdminFilter.bind(this);
+    this.toggleFileFilter = this.toggleFileFilter.bind(this);
+    this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
     this.data = {};
     this.state = {
       filenames: [],
@@ -30,35 +31,72 @@ class App extends Component {
           })
           .then(() => {
             this.data = data;
+            // Initialize the filterState
             const filters = {};
             filenames.forEach((filename) => {
-              filters[filename] = { show: false };
+              filters[filename] = { isSelected: false, registers: {} };
+              this.data[filename].registers.forEach((register) => {
+                filters[filename].registers[register.name] = { isSelected: true };
+              });
             });
             this.setState({ filenames, filters });
           });
       });
   }
 
-  toggleAdminFilter(filename) {
-    const { filters } = { ...this.state };
-    filters[filename].show = !filters[filename].show;
-    this.setState({ filters });
+  toggleFileFilter(filename) {
+    // NOTE: this is damn ugly but this is the way to update nested state without external library
+    // and without making a deep copy of the whole object
+    this.setState(prevState => ({
+      ...prevState,
+      filters: {
+        ...prevState.filters,
+        [filename]: {
+          ...prevState.filters[filename],
+          isSelected: !prevState.filters[filename].isSelected,
+        },
+      },
+    }));
+  }
+
+  toggleRegisterFilter(filename, registerName) {
+    console.log(this.data['National Institute for Health and Welfare.json']);
+    this.setState(prevState => ({
+      ...prevState,
+      filters: {
+        ...prevState.filters,
+        [filename]: {
+          ...prevState.filters[filename],
+          registers: {
+            ...prevState.filters[filename].registers,
+            [registerName]: {
+              ...prevState.filters[filename].registers[registerName],
+              isSelected: !prevState.filters[filename].registers[registerName].isSelected,
+            },
+          },
+        },
+      },
+    }));
   }
 
   render() {
     const { filenames, filters } = this.state;
     const timelineTreeCards = filenames
-      .filter(filename => filters[filename].show)
+      .filter(filename => filters[filename].isSelected)
       .sort()
-      .map(filename => (
-        <TimelineTreeCard
-          filename={filename}
-          data={this.data[filename]}
-          treeConfig={{}}
-          timelineConfig={{}}
-          key={filename}
-        />
-      ));
+      .map((filename) => {
+        const registerFilter = filters[filename].registers;
+        return (
+          <TimelineTreeCard
+            filename={filename}
+            data={this.data[filename]}
+            registerFilter={registerFilter}
+            treeConfig={{}}
+            timelineConfig={{}}
+            key={filename}
+          />
+        );
+      });
     return (
       <div>
         <RegisterPanel
@@ -66,7 +104,8 @@ class App extends Component {
             filename,
             data: this.data[filename],
           }))}
-          handleAdminBtnClick={this.toggleAdminFilter}
+          handleRegisterAdminBtnClick={this.toggleFileFilter}
+          handleRegisterSelection={this.toggleRegisterFilter}
         />
         <div className="content-wrapper">
           <div className="sidebar-placeholder" />

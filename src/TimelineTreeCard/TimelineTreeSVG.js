@@ -32,12 +32,18 @@ class TimelineTreeSVG extends Component {
 
   // FIXME: could/should be broken into smaller pieces
   componentDidMount() {
-    // TODO: registerFilter
-    let {
-      filename, data, treeConfig, timelineConfig,
+    const { data: dataProp } = this.props;
+    // NOTE: this makes sure that we are not modifying the original data in the App-component
+    let data = { ...dataProp };
+    const {
+      filename, registerFilter, treeConfig, timelineConfig,
     } = this.props;
 
     // ***** TreeChart *****
+    const filteredRegisterData = data.registers.filter(
+      register => registerFilter[register.name].isSelected,
+    );
+    data.registers = filteredRegisterData;
     data = sortTreeData(data);
     const categoryCount = calculateCategoryCount(data);
     const treeHeight = categoryCount * this.CATEGORY_HEIGHT;
@@ -56,27 +62,29 @@ class TimelineTreeSVG extends Component {
 
     // ***** Timelines *****
     const timelineConfigExtended = { ...this.timelineConfigDefault, ...timelineConfig };
-    treeChart.treeData.children.forEach((registerNode, registerIdx) => {
-      registerNode.children.forEach((categoryNode, categoryIdx) => {
-        let timelineConfigModified = timelineConfigExtended;
-        if (registerIdx === 0 && categoryIdx === 0) {
-          timelineConfigModified = {
-            ...timelineConfigExtended,
-            showXAxis: true,
-            showLegend: true,
-            xAxisOrientation: 'top',
-          };
-        }
-        const categoryTimeline = categoryTimelineHelper(
-          categoryNode.data.samplings,
-          svg,
-          timelineConfigModified,
-        );
-        // NOTE: the tree structure kind of swaps x and y coords
-        categoryTimeline.moveTo(categoryNode.y + 300, categoryNode.x + 12.5);
-        categoryTimeline.update();
+    if (treeChart.treeData.children) {
+      treeChart.treeData.children.forEach((registerNode, registerIdx) => {
+        registerNode.children.forEach((categoryNode, categoryIdx) => {
+          let timelineConfigModified = timelineConfigExtended;
+          if (registerIdx === 0 && categoryIdx === 0) {
+            timelineConfigModified = {
+              ...timelineConfigExtended,
+              showXAxis: true,
+              showLegend: true,
+              xAxisOrientation: 'top',
+            };
+          }
+          const categoryTimeline = categoryTimelineHelper(
+            categoryNode.data.samplings,
+            svg,
+            timelineConfigModified,
+          );
+          // NOTE: the tree structure kind of swaps x and y coords
+          categoryTimeline.moveTo(categoryNode.y + 300, categoryNode.x + 12.5);
+          categoryTimeline.update();
+        });
       });
-    });
+    }
   }
 
   componentWillUnmount() {
@@ -88,7 +96,7 @@ class TimelineTreeSVG extends Component {
   }
 
   render() {
-    const { filename } = this.props;
+    const { filename, registerFilter } = this.props;
     return <svg id={idRef(filename)} className="js-timeline-tree timeline-tree" />;
   }
 }

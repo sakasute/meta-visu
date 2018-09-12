@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import RegisterSelector from './RegisterSelector';
 
@@ -8,31 +9,32 @@ class NavItem extends Component {
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleRegisterSelection = this.handleRegisterSelection.bind(this);
     this.state = {
-      selected: false,
+      isSelected: false,
       selectedRegisters: {},
     };
   }
 
   handleBtnClick(event) {
-    const { handleAdminBtnClick, filename } = this.props;
-    const { selected } = this.state;
-    this.setState({ selected: !selected });
-    handleAdminBtnClick(filename);
+    const { handleRegisterAdminBtnClick, filename } = this.props;
+    const { isSelected } = this.state;
+    this.setState({ isSelected: !isSelected });
+    handleRegisterAdminBtnClick(filename);
   }
 
   handleRegisterSelection(event) {
-    const { setFilterList } = this.props;
+    const { filename, handleRegisterSelection: handleRegisterSelectionParent } = this.props;
     const { selectedRegisters } = { ...this.state };
     const registerName = event.target.id;
-    const selected = event.target.checked;
-    selectedRegisters[registerName] = selected;
+    const isSelected = event.target.checked;
+    selectedRegisters[registerName] = isSelected;
     this.setState({ selectedRegisters });
+    handleRegisterSelectionParent(filename, registerName);
   }
 
   render() {
-    const { selected } = this.state;
+    const { isSelected } = this.state;
     const { adminData } = this.props;
-    const btnClass = selected ? 'btn btn--selected' : 'btn';
+    const btnClass = isSelected ? 'btn btn--selected' : 'btn';
 
     return (
       <li className="nav__item">
@@ -45,7 +47,7 @@ class NavItem extends Component {
           {adminData.name}
         </button>
         <RegisterSelector
-          show={selected}
+          show={isSelected}
           adminName={adminData.name}
           registers={adminData.registers}
           handleRegisterSelection={this.handleRegisterSelection}

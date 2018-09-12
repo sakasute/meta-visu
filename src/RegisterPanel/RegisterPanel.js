@@ -11,7 +11,7 @@ class RegisterPanel extends Component {
   }
 
   render() {
-    const { dataSets, handleAdminBtnClick } = this.props;
+    const { dataSets, handleRegisterAdminBtnClick, handleRegisterSelection } = this.props;
     const navItems = dataSets
       // FIXME: sort
       .map(dataObj => (
@@ -19,7 +19,8 @@ class RegisterPanel extends Component {
           key={dataObj.filename}
           filename={dataObj.filename}
           adminData={dataObj.data}
-          handleAdminBtnClick={handleAdminBtnClick}
+          handleRegisterAdminBtnClick={handleRegisterAdminBtnClick}
+          handleRegisterSelection={handleRegisterSelection}
         />
       ));
     return (
