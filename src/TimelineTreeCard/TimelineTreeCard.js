@@ -11,8 +11,11 @@ class TimelineTreeCard extends Component {
 
   render() {
     const {
-      filename, data, registerFilter, treeConfig, timelineConfig,
+      show, filename, data, fileFilter, treeConfig, timelineConfig,
     } = this.props;
+
+    const classes = show ? 'timeline-tree-wrapper card' : 'vanish timeline-tree-wrapper card';
+    const registerFilter = fileFilter.registers;
     // NOTE: this key updates depending on the registerFilter prop to force remounting
     // the d3-visualization with updated filters
     const key = Object.keys(registerFilter).join('')
@@ -20,8 +23,8 @@ class TimelineTreeCard extends Component {
         .map(reg => reg.isSelected)
         .join('');
     return (
-      <div className="timeline-tree-wrapper card">
-        <CardHeader filename={filename} name={data.name} />
+      <div className={classes}>
+        <CardHeader filename={filename} name={fileFilter.name} />
         <TimelineTreeSVG
           data={data}
           registerFilter={registerFilter}

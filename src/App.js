@@ -88,22 +88,20 @@ class App extends Component {
 
   render() {
     const { filenames, filters } = this.state;
-    const timelineTreeCards = filenames
-      .filter(filename => filters[filename].isSelected)
-      .sort()
-      .map((filename) => {
-        const registerFilter = filters[filename].registers;
-        return (
-          <TimelineTreeCard
-            filename={filename}
-            data={this.data[filename]}
-            registerFilter={registerFilter}
-            treeConfig={{}}
-            timelineConfig={{}}
-            key={filename}
-          />
-        );
-      });
+    const timelineTreeCards = filenames.sort().map((filename) => {
+      const fileFilter = filters[filename];
+      return (
+        <TimelineTreeCard
+          show={filters[filename].isSelected}
+          filename={filename}
+          data={this.data[filename]}
+          fileFilter={fileFilter}
+          treeConfig={{}}
+          timelineConfig={{}}
+          key={filename}
+        />
+      );
+    });
     return (
       <div>
         <RegisterPanel
