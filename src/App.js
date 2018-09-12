@@ -34,9 +34,16 @@ class App extends Component {
             // Initialize the filterState
             const filters = {};
             filenames.forEach((filename) => {
-              filters[filename] = { isSelected: false, registers: {} };
+              filters[filename] = {
+                name: this.data[filename].name,
+                isSelected: false,
+                registers: {},
+              };
               this.data[filename].registers.forEach((register) => {
-                filters[filename].registers[register.name] = { isSelected: true };
+                filters[filename].registers[register.name] = {
+                  name: register.name,
+                  isSelected: true,
+                };
               });
             });
             this.setState({ filenames, filters });
@@ -100,10 +107,7 @@ class App extends Component {
     return (
       <div>
         <RegisterPanel
-          dataSets={Object.keys(this.data).map(filename => ({
-            filename,
-            data: this.data[filename],
-          }))}
+          filterState={filters}
           handleRegisterAdminBtnClick={this.toggleFileFilter}
           handleRegisterSelection={this.toggleRegisterFilter}
         />

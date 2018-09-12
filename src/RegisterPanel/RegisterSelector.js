@@ -4,16 +4,16 @@ import { compareByName } from '../helpers';
 
 function RegisterSelector(props) {
   const {
-    adminName, registers, show, handleRegisterSelection,
+    registerAdminName, registerFilter, show, handleCheckboxChange,
   } = props;
 
-  const registerItems = registers
-    .sort((a, b) => compareByName(a, b))
-    .map(register => (
+  const registerItems = Object.keys(registerFilter)
+    .sort((a, b) => compareByName(registerFilter[a], registerFilter[b]))
+    .map(registerName => (
       <RegisterItem
-        key={`${adminName}/${register.name}`}
-        handleChange={handleRegisterSelection}
-        register={register}
+        key={`${registerAdminName}/${registerName}`}
+        handleCheckboxChange={handleCheckboxChange}
+        register={registerFilter[registerName]}
       />
     ));
 

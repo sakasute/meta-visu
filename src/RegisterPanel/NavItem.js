@@ -7,50 +7,45 @@ class NavItem extends Component {
   constructor(props) {
     super(props);
     this.handleBtnClick = this.handleBtnClick.bind(this);
-    this.handleRegisterSelection = this.handleRegisterSelection.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.state = {
       isSelected: false,
       selectedRegisters: {},
     };
   }
 
-  handleBtnClick(event) {
+  handleBtnClick() {
     const { handleRegisterAdminBtnClick, filename } = this.props;
     const { isSelected } = this.state;
     this.setState({ isSelected: !isSelected });
     handleRegisterAdminBtnClick(filename);
   }
 
-  handleRegisterSelection(event) {
-    const { filename, handleRegisterSelection: handleRegisterSelectionParent } = this.props;
+  handleCheckboxChange(event) {
+    const { filename, handleRegisterSelection } = this.props;
     const { selectedRegisters } = { ...this.state };
     const registerName = event.target.id;
     const isSelected = event.target.checked;
     selectedRegisters[registerName] = isSelected;
     this.setState({ selectedRegisters });
-    handleRegisterSelectionParent(filename, registerName);
+    handleRegisterSelection(filename, registerName);
   }
 
   render() {
     const { isSelected } = this.state;
-    const { adminData } = this.props;
+    const { filter } = this.props;
     const btnClass = isSelected ? 'btn btn--selected' : 'btn';
 
     return (
       <li className="nav__item">
-        <button
-          type="button"
-          id={adminData.name}
-          className={btnClass}
-          onClick={this.handleBtnClick}
-        >
-          {adminData.name}
+        <button type="button" id={filter.name} className={btnClass} onClick={this.handleBtnClick}>
+          {filter.name}
         </button>
         <RegisterSelector
           show={isSelected}
-          adminName={adminData.name}
-          registers={adminData.registers}
-          handleRegisterSelection={this.handleRegisterSelection}
+          registerAdminName={filter.name}
+          registerFilter={filter.registers}
+          handleCheckboxChange={this.handleCheckboxChange}
         />
       </li>
     );
