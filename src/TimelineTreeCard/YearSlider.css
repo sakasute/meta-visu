@@ -1,0 +1,25 @@
+.year-control {
+  display: flex;
+  width: 40rem;
+}
+
+.year-control__slider {
+}
+
+.year-control__slider > .rc-slider-track {
+  background-color: var(--thl-blue);
+}
+
+.year-control__slider > .rc-slider-rail {
+  background-color: var(--light-gray);
+}
+.year-control__slider > .rc-slider-handle {
+  border-color: var(--thl-blue);
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.year-control__label {
+  margin: 0 1rem;
+  font-size: 1.2rem;
+}

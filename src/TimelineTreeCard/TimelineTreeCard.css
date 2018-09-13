@@ -10,19 +10,26 @@
 .card__header {
   display: flex;
   flex-direction: row;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 2.5rem;
   border-bottom: solid 1px var(--light-gray);
 }
 
 .card__title {
   flex: 1;
-  margin: 0;
+  margin: auto 0;
   color: var(--dark-gray);
   font-size: 1.6rem;
 }
 
 .card__year-control {
   align-content: flex-end;
+}
+
+.year-control-title {
+  font-size: 1.2rem;
+  color: var(--thl-gray);
+  text-align: center;
+  margin: 0 0 0.5rem 0;
 }
 
 .card--collapsed {

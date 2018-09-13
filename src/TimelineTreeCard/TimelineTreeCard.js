@@ -9,13 +9,26 @@ import './TimelineTreeCard.css';
 class TimelineTreeCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.yearSelected = this.yearSelected.bind(this);
+    this.currentYear = new Date().getFullYear();
+    this.state = {
+      scaleYears: [1950, this.currentYear],
+    };
+  }
+
+  yearSelected(event) {
+    this.setState({ scaleYears: event });
   }
 
   render() {
     const {
       show, filename, data, fileFilter, treeConfig, timelineConfig,
     } = this.props;
+
+    const { scaleYears } = this.state;
+    const scaleStartDate = new Date(`${scaleYears[0]}-01-01`);
+    const scaleEndDate = new Date(`${scaleYears[1]}-12-31`);
+    const timelineConfigExtended = { ...timelineConfig, scaleStartDate, scaleEndDate };
 
     const classes = show ? 'timeline-tree-wrapper card' : 'vanish timeline-tree-wrapper card';
     const registerFilter = fileFilter.registers;
@@ -24,15 +37,16 @@ class TimelineTreeCard extends Component {
     const key = Object.keys(registerFilter).join('')
       + Object.values(registerFilter)
         .map(reg => reg.isSelected)
-        .join('');
+        .join('')
+      + scaleYears.join('');
     return (
       <div className={classes}>
-        <CardHeader filename={filename} name={fileFilter.name} />
+        <CardHeader filename={filename} name={fileFilter.name} yearSelected={this.yearSelected} />
         <TimelineTreeSVG
           data={data}
           registerFilter={registerFilter}
           treeConfig={treeConfig}
-          timelineConfig={timelineConfig}
+          timelineConfig={timelineConfigExtended}
           filename={filename}
           key={key}
         />
