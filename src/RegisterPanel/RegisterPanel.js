@@ -44,7 +44,7 @@ class RegisterPanel extends Component {
     return (
       <aside className={classes}>
         <button type="button" className={toggleBtnClasses} onClick={this.toggleMinimize}>
-          <img src="/assets/material-arrow_back.svg" alt="register panel toggle" />
+          <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
         </button>
         <ul className="nav__list">{navItems}</ul>
       </aside>

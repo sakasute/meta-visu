@@ -23,7 +23,7 @@ class App extends Component {
       .then(res => res.json())
       .then((filenames) => {
         filenamesArr = filenames;
-        Promise.all(filenames.map(filename => fetch(`/data/${filename}`).then(res => res.json())))
+        Promise.all(filenames.map(filename => fetch(`data/${filename}`).then(res => res.json())))
           .then((jsons) => {
             jsons.forEach((json, i) => {
               data[filenamesArr[i]] = json;
