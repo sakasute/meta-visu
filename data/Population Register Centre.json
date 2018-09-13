@@ -1,0 +1,76 @@
+{
+  "name": "Population Register Centre",
+  "registers": [
+    {
+      "name": "Population Information System",
+      "categories": [
+        {
+          "name": "Deaths",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1987-01-01",
+              "endDate": "2009-06-30",
+              "cohort": "1987",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "1957-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": true
+            },
+            {
+              "name": "",
+              "startDate": "1997-01-01",
+              "endDate": "2016-02-28",
+              "cohort": "1997",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "1947-01-01",
+              "endDate": "2016-03-31",
+              "cohort": "1997",
+              "parents": true
+            }
+          ]
+        },
+        {
+          "name": "Occupations",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "2009-06-01",
+              "endDate": "2009-06-30",
+              "cohort": "1987",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "2009-06-01",
+              "endDate": "2009-06-30",
+              "cohort": "1987",
+              "parents": true
+            },
+            {
+              "name": "",
+              "startDate": "2016-11-01",
+              "endDate": "2016-11-30",
+              "cohort": "1997",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "2016-11-01",
+              "endDate": "2016-11-30",
+              "cohort": "1997",
+              "parents": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

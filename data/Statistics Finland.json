@@ -1,0 +1,74 @@
+{
+  "name": "Statistics Finland",
+  "registers": [
+    {
+      "name": "Cause of Death Register",
+      "categories": [
+        {
+          "name": "Dates and causes of deaths",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "1987-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "parents": true
+            },
+            {
+              "name": "",
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "1997-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1997",
+              "parents": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Register of Educational Achievements",
+      "categories": [
+        {
+          "name": "Degree data",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "parents": false
+            },
+            {
+              "name": "",
+              "startDate": "1987-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1987",
+              "parents": true
+            },
+            {
+              "name": "",
+              "startDate": "1997-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1997",
+              "parents": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Finnish Defence Forces",
+  "registers": [
+    {
+      "name": "Data on Service Register",
+      "categories": [
+        {
+          "name": "Service class data",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "2005-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Results of Aptitude Tests Register",
+      "categories": [
+        {
+          "name": "Results of aptitude tests",
+          "samplings": [
+            {
+              "name": "",
+              "startDate": "2005-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1987",
+              "parents": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
