@@ -37,12 +37,21 @@
   align-self: flex-end;
   transform: rotateY(0deg);
 
+  border: none;
+  background: none;
+
   color: black;
   opacity: 0.9;
-  font-size: 4rem;
-  margin: 1.5rem 0.5rem;
   cursor: pointer;
   transition: 0.1s linear;
+}
+
+.nav__toggle-btn:focus {
+  outline: 0;
+}
+
+.nav__toggle-btn > img {
+  height: 4rem;
 }
 
 .nav__toggle-btn--rotate {
@@ -57,11 +66,6 @@
 
 .nav__toggle-btn--rotate:hover {
   transform: rotateY(180deg) scale(1.1);
-}
-
-.nav--hidden {
-  margin-left: -22.5rem;
-  transition: margin 0.4s ease-out;
 }
 
 .nav__list {

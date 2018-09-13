@@ -16,8 +16,7 @@ class NavItem extends Component {
 
   handleBtnClick() {
     const { handleRegisterAdminBtnClick, filename } = this.props;
-    const { isSelected } = this.state;
-    this.setState({ isSelected: !isSelected });
+    this.setState(prevState => ({ isSelected: !prevState.isSelected }));
     handleRegisterAdminBtnClick(filename);
   }
 
