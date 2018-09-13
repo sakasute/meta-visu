@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import * as d3 from 'd3';
-import CategoryTimeline from '../d3Visualizations/CategoryTimeline';
+// NOTE: CategoryTimelines are currently created with an external helper function
+// import CategoryTimeline from '../d3Visualizations/CategoryTimeline';
 import TreeChart from '../d3Visualizations/TreeChart';
 import {
   sortTreeData, calculateCategoryCount, categoryTimelineHelper, idRef,
@@ -96,9 +99,17 @@ class TimelineTreeSVG extends Component {
   }
 
   render() {
-    const { filename, registerFilter } = this.props;
+    const { filename } = this.props;
     return <svg id={idRef(filename)} className="js-timeline-tree timeline-tree" />;
   }
 }
+
+TimelineTreeSVG.propTypes = {
+  data: PropTypes.object.isRequired,
+  registerFilter: PropTypes.object.isRequired,
+  treeConfig: PropTypes.object.isRequired,
+  timelineConfig: PropTypes.object.isRequired,
+  filename: PropTypes.string.isRequired,
+};
 
 export default TimelineTreeSVG;

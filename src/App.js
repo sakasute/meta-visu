@@ -67,7 +67,6 @@ class App extends Component {
   }
 
   toggleRegisterFilter(filename, registerName) {
-    console.log(this.data['National Institute for Health and Welfare.json']);
     this.setState(prevState => ({
       ...prevState,
       filters: {

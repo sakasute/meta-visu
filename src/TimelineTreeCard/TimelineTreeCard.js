@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import CardHeader from './CardHeader';
 import TimelineTreeSVG from './TimelineTreeSVG';
+
 import './TimelineTreeCard.css';
 
 class TimelineTreeCard extends Component {
@@ -37,5 +40,14 @@ class TimelineTreeCard extends Component {
     );
   }
 }
+
+TimelineTreeCard.propTypes = {
+  show: PropTypes.bool.isRequired,
+  filename: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+  fileFilter: PropTypes.object.isRequired,
+  treeConfig: PropTypes.object.isRequired,
+  timelineConfig: PropTypes.object.isRequired,
+};
 
 export default TimelineTreeCard;

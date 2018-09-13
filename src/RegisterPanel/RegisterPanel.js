@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import NavItem from './NavItem';
 import { compareByName } from '../helpers';
 
@@ -50,5 +51,11 @@ class RegisterPanel extends Component {
     );
   }
 }
+
+RegisterPanel.propTypes = {
+  filterState: PropTypes.object.isRequired,
+  handleRegisterAdminBtnClick: PropTypes.func.isRequired,
+  handleRegisterSelection: PropTypes.func.isRequired,
+};
 
 export default RegisterPanel;

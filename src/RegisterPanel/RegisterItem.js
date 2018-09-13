@@ -1,8 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function RegisterItem(props) {
-  const { register, handleCheckboxChange } = props;
-
+function RegisterItem({ register, handleCheckboxChange }) {
   return (
     <li className="register__item">
       <input type="checkbox" onChange={handleCheckboxChange} id={register.name} defaultChecked />
@@ -10,5 +9,10 @@ function RegisterItem(props) {
     </li>
   );
 }
+
+RegisterItem.propTypes = {
+  register: PropTypes.object.isRequired,
+  handleCheckboxChange: PropTypes.func.isRequired,
+};
 
 export default RegisterItem;

@@ -51,4 +51,11 @@ class NavItem extends Component {
   }
 }
 
+NavItem.propTypes = {
+  filename: PropTypes.string.isRequired,
+  filter: PropTypes.object.isRequired,
+  handleRegisterAdminBtnClick: PropTypes.func.isRequired,
+  handleRegisterSelection: PropTypes.func.isRequired,
+};
+
 export default NavItem;

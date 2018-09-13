@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RegisterItem from './RegisterItem';
 import { compareByName } from '../helpers';
 
-function RegisterSelector(props) {
-  const {
-    registerAdminName, registerFilter, show, handleCheckboxChange,
-  } = props;
-
+function RegisterSelector({
+  registerAdminName, registerFilter, show, handleCheckboxChange,
+}) {
   const registerItems = Object.keys(registerFilter)
     .sort((a, b) => compareByName(registerFilter[a], registerFilter[b]))
     .map(registerName => (
@@ -21,5 +20,12 @@ function RegisterSelector(props) {
 
   return <ul className={selectorClass}>{registerItems}</ul>;
 }
+
+RegisterSelector.propTypes = {
+  show: PropTypes.bool.isRequired,
+  registerAdminName: PropTypes.string.isRequired,
+  registerFilter: PropTypes.object.isRequired,
+  handleCheckboxChange: PropTypes.func.isRequired,
+};
 
 export default RegisterSelector;
