@@ -14,7 +14,7 @@
 }
 
 .timeline__rect {
-  fill: var(--category-1-color-alt);
+  fill: var(--category-1-color-light);
   opacity: 0.75;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .timeline__rect--97 {
-  fill: var(--category-2-color-alt);
+  fill: var(--category-2-color-light);
 }
 
 .timeline__year-label {
@@ -54,11 +54,11 @@
 }
 
 .legend__color-1 {
-  fill: var(--category-1-color-alt);
+  fill: var(--category-1-color-light);
 }
 
 .legend__color-2 {
-  fill: var(--category-2-color-alt);
+  fill: var(--category-2-color-light);
 }
 
 .legend__label {

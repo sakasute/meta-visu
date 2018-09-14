@@ -25,8 +25,10 @@ body {
 :root {
   --category-1-color: #519b2f;
   --category-1-color-alt: #7bc143;
+  --category-1-color-light: hsl(93, 50%, 61%);
   --category-2-color: #2f62ad;
   --category-2-color-alt: #29a0c1;
+  --category-2-color-light: hsl(193, 65%, 56%);
   --category-3-color: #be3f72;
   --category-3-color-alt: #cc77ac;
   --category-4-color: #faa61a;

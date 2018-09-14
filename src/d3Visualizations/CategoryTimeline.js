@@ -126,18 +126,58 @@ class CategoryTimeline {
       .attr('transform', `translate(${this.y.bandwidth() / 2 + 5}, ${this.y.bandwidth() - 5})`);
   }
 
+  calculateScaleBoundDates(startDateStr, endDateStr) {
+    let startDate = new Date(startDateStr);
+    let endDate = new Date(endDateStr);
+    const { scaleStartDate, scaleEndDate } = this.config;
+    // NOTE: handle cases where time sections go out of scales
+    if (startDate < scaleStartDate) {
+      startDate = scaleStartDate;
+    } else if (startDate > scaleEndDate) {
+      startDate = scaleEndDate;
+    }
+
+    if (endDate > scaleEndDate) {
+      endDate = scaleEndDate;
+    } else if (endDate < scaleStartDate) {
+      endDate = scaleStartDate;
+    }
+
+    return [startDate, endDate];
+  }
+
   calculateSectionWidth(sectionData) {
-    return this.x(new Date(sectionData.endDate)) - this.x(new Date(sectionData.startDate));
+    const [startDate, endDate] = this.calculateScaleBoundDates(
+      sectionData.startDate,
+      sectionData.endDate,
+    );
+
+    return this.x(endDate) - this.x(startDate);
   }
 
   calculateSectionXPos(sectionData) {
-    return this.x(new Date(sectionData.startDate));
+    const startDate = this.calculateScaleBoundDates(sectionData.startDate)[0];
+
+    return this.x(startDate);
   }
 
   positionYearLabel(d) {
-    const xStart = this.x(new Date(d.startDate));
-    const xEnd = this.x(new Date(d.endDate));
-    const xCentre = (xStart + xEnd) / 2 - 2;
+    if (this.calculateSectionWidth(d) <= 0) {
+      // if section is out of scales, throw the label way off screen
+      return `translate(${1000}, ${this.y.bandwidth() / 2 - 4})`;
+    }
+
+    const [startDate, endDate] = this.calculateScaleBoundDates(d.startDate, d.endDate);
+    const xStart = this.x(startDate);
+    const xEnd = this.x(endDate);
+    let xCentre = (xStart + xEnd) / 2 - 2;
+
+    const xEndScale = this.x(this.config.scaleEndDate);
+    const limit = 20;
+    const offset = 15;
+
+    xCentre = xCentre < limit ? xCentre + offset : xCentre;
+    xCentre = Math.abs(xCentre - xEndScale) < limit ? xCentre - offset : xCentre;
 
     return `translate(${xCentre}, ${this.y.bandwidth() / 2 - 4})`;
   }
@@ -200,7 +240,12 @@ class CategoryTimeline {
     sectionEnter
       .filter(d => new Date(d.startDate).getFullYear() === new Date(d.endDate).getFullYear())
       .append('circle')
-      .attr('r', this.y.bandwidth() / 4)
+      .attr('r', (d) => {
+        const calculatedWidth = this.calculateSectionWidth(d);
+        // NOTE: if width would be 0, the section is out of scales and shouldn't be visible,
+        // else it should be constant.
+        return calculatedWidth === 0 ? calculatedWidth : this.y.bandwidth() / 4;
+      })
       .attr('class', 'timeline__rect')
       .attr('cx', d => this.calculateSectionXPos(d))
       .attr('cy', 7.5);
