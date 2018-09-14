@@ -16,8 +16,8 @@ class TimelineTreeCard extends Component {
     };
   }
 
-  yearSelected(event) {
-    this.setState({ scaleYears: event });
+  yearSelected(yearArr) {
+    this.setState({ scaleYears: yearArr });
   }
 
   render() {
@@ -30,10 +30,12 @@ class TimelineTreeCard extends Component {
     const scaleEndDate = new Date(`${scaleYears[1]}-12-31`);
     const timelineConfigExtended = { ...timelineConfig, scaleStartDate, scaleEndDate };
 
-    const classes = show ? 'timeline-tree-wrapper card' : 'vanish timeline-tree-wrapper card';
+    const classes = show
+      ? 'timeline-tree-wrapper card'
+      : 'card--collapsed timeline-tree-wrapper card';
     const registerFilter = fileFilter.registers;
     // NOTE: this key updates depending on the registerFilter prop to force remounting
-    // the d3-visualization with updated filters
+    // the TimelineTree with updated filters
     const key = Object.keys(registerFilter).join('')
       + Object.values(registerFilter)
         .map(reg => reg.isSelected)

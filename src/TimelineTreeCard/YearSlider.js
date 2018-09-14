@@ -15,7 +15,7 @@ function YearSlider({ slideStopped }) {
         prefixCls="rc-slider-tooltip"
         overlay={value}
         visible={dragging}
-        placement="left"
+        placement="bottom"
         key={index}
       >
         <Handle value={value} {...restProps} />

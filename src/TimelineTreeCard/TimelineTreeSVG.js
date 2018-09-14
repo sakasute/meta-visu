@@ -8,7 +8,6 @@ import TreeChart from '../d3Visualizations/TreeChart';
 import {
   sortTreeData, calculateCategoryCount, categoryTimelineHelper, idRef,
 } from '../helpers';
-import './TimelineTreeSVG.css';
 
 class TimelineTreeSVG extends Component {
   constructor(props) {
