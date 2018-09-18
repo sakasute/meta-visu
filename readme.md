@@ -19,4 +19,4 @@ Step-by-step instructions to get started with developing the React app:
 2. Install the dependencies by opening a terminal/command line in the root folder of the project and running command `npm install`. This command tells NPM to install the dependencies that are defined in the `package.json`-file.
    - **NOTE:** I'm developing on Linux myself and I suspect there will be some more trouble on Windows to get the command line to find the `npm` command. If you are having problems you should look into adding commands to "PATH" variable on windows.
 3. Start development server with: `npm start`
-4. When you are ready to publish the changes, run `npm run deploy`
+4. When you are ready to publish the changes, run `npm run deploy` (if this gives an error about missing 'build'-folder or something like that, run `npm run build` first).
