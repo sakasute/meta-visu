@@ -8,7 +8,7 @@ class CategoryTimeline {
       height: config.height ? config.height : 200,
       posX: config.posX ? config.posX : 0,
       posY: config.posY ? config.posY : 0,
-      scaleStartDate: config.scaleStartDate ? config.scaleStartDate : new Date('1970-01-01'),
+      scaleStartDate: config.scaleStartDate ? config.scaleStartDate : new Date('1987-01-01'),
       scaleEndDate: config.scaleEndDate ? config.scaleEndDate : new Date(),
       xAxisOrientation: config.xAxisOrientation ? config.xAxisOrientation : 'bottom',
       showXAxis: config.showXAxis != null ? config.showXAxis : true,

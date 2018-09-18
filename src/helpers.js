@@ -27,11 +27,20 @@ export function categoryTimelineHelper(samplingData, svg, config) {
   return new CategoryTimeline(timelineData, svg, config);
 }
 
-export function compareByName(a, b) {
+// forcedFirstStr is an optional string that forces a given name placed as
+// the first element of the array
+export function compareByName(a, b, forcedFirstStr) {
+  if (a.name === forcedFirstStr) {
+    return -1;
+  }
+  if (b.name === forcedFirstStr) {
+    return 1;
+  }
+
   if (a.name < b.name) {
     return -1;
   }
-  if (a.name > b.name) {
+  if (a.name > b.name || b.name) {
     return 1;
   }
   return 0;

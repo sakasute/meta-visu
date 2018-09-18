@@ -28,7 +28,7 @@ class RegisterPanel extends Component {
       : 'nav__toggle-btn';
 
     const navItems = Object.keys(filterState)
-      .sort((a, b) => compareByName(filterState[a], filterState[b]))
+      .sort((a, b) => compareByName(filterState[a], filterState[b], 'National Institute for Health and Welfare'))
       .map((filename) => {
         const filter = filterState[filename];
         return (

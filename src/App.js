@@ -87,20 +87,31 @@ class App extends Component {
 
   render() {
     const { filenames, filters } = this.state;
-    const timelineTreeCards = filenames.sort().map((filename) => {
-      const fileFilter = filters[filename];
-      return (
-        <TimelineTreeCard
-          show={filters[filename].isSelected}
-          filename={filename}
-          data={this.data[filename]}
-          fileFilter={fileFilter}
-          treeConfig={{}}
-          timelineConfig={{}}
-          key={filename}
-        />
-      );
-    });
+    const timelineTreeCards = filenames
+      .sort((a, b) => {
+        const forcedFirstStr = 'National Institute for Health and Welfare.json';
+        if (a === forcedFirstStr) {
+          return -1;
+        }
+        if (b === forcedFirstStr) {
+          return 1;
+        }
+        return 0;
+      })
+      .map((filename) => {
+        const fileFilter = filters[filename];
+        return (
+          <TimelineTreeCard
+            show={filters[filename].isSelected}
+            filename={filename}
+            data={this.data[filename]}
+            fileFilter={fileFilter}
+            treeConfig={{}}
+            timelineConfig={{}}
+            key={filename}
+          />
+        );
+      });
     return (
       <div>
         <RegisterPanel

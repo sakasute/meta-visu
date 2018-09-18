@@ -12,7 +12,7 @@ class TimelineTreeCard extends Component {
     this.yearSelected = this.yearSelected.bind(this);
     this.currentYear = new Date().getFullYear();
     this.state = {
-      scaleYears: [1950, this.currentYear],
+      scaleYears: [1987, this.currentYear],
     };
   }
 

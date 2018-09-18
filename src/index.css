@@ -47,3 +47,29 @@ body {
   --thl-blue: rgb(81, 145, 205);
   --thl-turquoise: rgb(10, 187, 182);
 }
+
+@media print {
+  aside.nav {
+    display: none;
+  }
+
+  .sidebar-placeholder {
+    display: none;
+  }
+
+  .timeline-tree-wrapper {
+    page-break-after: always;
+  }
+
+  .timeline-tree-wrapper.card {
+    box-shadow: none;
+  }
+
+  .card__year-control {
+    opacity: 0;
+  }
+
+  .rc-slider-tooltip {
+    display: none;
+  }
+}

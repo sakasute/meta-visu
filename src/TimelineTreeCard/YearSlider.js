@@ -33,7 +33,7 @@ function YearSlider({ slideStopped }) {
         handle={handle}
         min={1900}
         max={currentYear}
-        defaultValue={[1950, currentYear]}
+        defaultValue={[1987, currentYear]}
         onAfterChange={slideStopped}
       />
       <span className="year-control__label">{currentYear}</span>
