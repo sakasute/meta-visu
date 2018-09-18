@@ -112,6 +112,7 @@ class App extends Component {
           />
         );
       });
+
     return (
       <div>
         <RegisterPanel
@@ -121,7 +122,13 @@ class App extends Component {
         />
         <div className="content-wrapper">
           <div className="sidebar-placeholder" />
-          <main className="chart-area">{timelineTreeCards}</main>
+          <main className="chart-area">
+            <h2 className="info-header">
+              Please select which register adminstrators you want to view from the panel on the
+              left.
+            </h2>
+            {timelineTreeCards}
+          </main>
         </div>
       </div>
     );

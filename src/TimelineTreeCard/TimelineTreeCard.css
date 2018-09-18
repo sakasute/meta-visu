@@ -1,5 +1,7 @@
 .timeline-tree-wrapper {
   margin: 2.5rem 0;
+  position: relative;
+  z-index: 10;
 }
 
 .card {
