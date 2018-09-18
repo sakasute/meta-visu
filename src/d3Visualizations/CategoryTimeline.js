@@ -13,6 +13,7 @@ class CategoryTimeline {
       xAxisOrientation: config.xAxisOrientation ? config.xAxisOrientation : 'bottom',
       showXAxis: config.showXAxis != null ? config.showXAxis : true,
       showLegend: config.showLegend != null ? config.showLegend : true,
+      categories: config.categories ? config.categories : ['parents', 'subjects'],
     };
     this.data = data;
 
@@ -204,14 +205,18 @@ class CategoryTimeline {
 
     categoryEnter.attr('transform', d => `translate(0, ${this.y(d.type) - this.xAxisPadding})`);
 
-    categoryEnter
-      .filter(d => d.type === 'parents')
-      .append('line')
-      .attr('class', 'timeline__separator')
-      .attr('x1', this.x(this.config.scaleStartDate) - 60)
-      .attr('y1', this.y.bandwidth() + 5)
-      .attr('x2', this.x(this.config.scaleEndDate))
-      .attr('y2', this.y.bandwidth() + 5);
+    this.config.categories.forEach((category, i) => {
+      if (i < this.config.categories.length - 1) {
+        categoryEnter
+          .filter(d => d.type === category)
+          .append('line')
+          .attr('class', 'timeline__separator')
+          .attr('x1', this.x(this.config.scaleStartDate) - 60)
+          .attr('y1', this.y.bandwidth() + 5)
+          .attr('x2', this.x(this.config.scaleEndDate))
+          .attr('y2', this.y.bandwidth() + 5);
+      }
+    });
 
     categoryEnter
       .append('text')
