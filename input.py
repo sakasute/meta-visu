@@ -51,7 +51,7 @@ def add_sampling(sampling, locationArr):
 
 
 def create_ra_file(register_admin):
-    filepath = 'data/' + register_admin + '.json'
+    filepath = 'public/data/' + register_admin + '.json'
     try:
         f = open(filepath, 'r')
         f.close()
@@ -64,9 +64,9 @@ def create_ra_file(register_admin):
 
 
 def save_filename_list():
-    with open('data/filenames.json', 'w', encoding='utf8') as f:
+    with open('public/data/filenames.json', 'w', encoding='utf8') as f:
         filenames = list(
-            filter(lambda n: n != 'filenames.json', listdir('data/')))
+            filter(lambda n: n != 'filenames.json', listdir('public/data/')))
         json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
 
 
@@ -91,12 +91,12 @@ def take_input(description, auto_fill_arr):
     return select_option(auto_fill_arr, inp)
 
 
-admin_list = list(map(lambda f: f.split('.')[0], listdir('data/')))
+admin_list = list(map(lambda f: f.split('.')[0], listdir('public/data/')))
 admin_list = list(filter(lambda n: n != 'filenames', admin_list))
 register_admin = take_input('Rekisterinpitäjä', admin_list)
 create_ra_file(register_admin)
 
-path = 'data/' + register_admin + '.json'
+path = 'public/data/' + register_admin + '.json'
 save_filename_list()
 
 # generate auto-fill shortcuts
@@ -131,12 +131,17 @@ while 1:
     with open(path, 'r') as data_file:
         data = json.load(data_file)
 
+        if sampling_parents in ['kyllä', 'k', 'yes', 'y']:
+            sampling_category = 'parents'
+        else:
+            sampling_category = 'subjects'
+
         sampling = {
             'name': sampling_name,
             'startDate': sampling_start,
             'endDate': sampling_end,
             'cohort': sampling_cohort,
-            'parents': sampling_parents in ['kyllä', 'k', 'yes', 'y']
+            'category': sampling_category
         }
 
         add_sampling(sampling, [
