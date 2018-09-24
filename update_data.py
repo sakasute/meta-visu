@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from openpyxl import load_workbook
+import json
 import regex
 import pprint
 
@@ -18,14 +19,14 @@ NOTE_COL = 5  # 'F'
 data = []
 
 
-def parse_dates(dates_str):
+def parse_dates(raw_dates_str):
     dates = []
-    dates_str = dates_str.replace(' ', '')
-    dates_list = dates_str.split(';')
+    raw_dates_str = raw_dates_str.replace(' ', '')
+    dates_list = raw_dates_str.split(';')
     for date_str in dates_list:
-        start_date = format_date(dates_str.split('-')[0], '01-01')
+        start_date = format_date(date_str.split('-')[0], '-01-01')
         if start_date:
-            end_date = format_date(dates_str.split('-')[1], '12-31') if len(dates_str.split('-')) > 1 else start_date
+            end_date = format_date(date_str.split('-')[1], '-12-31') if len(date_str.split('-')) > 1 else start_date
             dates.append({'start_date': start_date, 'end_date': end_date})
     return dates
 
@@ -48,7 +49,7 @@ def format_date(date_str, default_date):
 
 def find_by_name(list, name, lang):
     for idx, item in enumerate(list):
-        if item['name'][lang] == name:
+        if item['name'][lang] == name[lang]:
             return idx
     else:
         return None
@@ -80,21 +81,21 @@ def parse_sheet(sheet, sampling_category):
         register_admin_idx = find_by_name(data, register_admin, 'en')
 
         if register_admin_idx == None:
-            register_admin_idx = create_register_admin(register_admin)
+            register_admin_idx = create_register_admin(dict(register_admin))
 
         register['fi'] = row_fi[REG_COL].value if row_fi[REG_COL].value != None else register['fi']
         register['en'] = row_en[REG_COL].value if row_en[REG_COL].value != None else register['en']
         register_idx = find_by_name(data[register_admin_idx]['registers'], register, 'en')
 
         if register_idx == None:
-            register_idx = create_register(register, register_admin_idx)
+            register_idx = create_register(dict(register), register_admin_idx)
 
         category['fi'] = row_fi[CAT_COL].value if row_fi[CAT_COL].value != None else category['fi']
         category['en'] = row_en[CAT_COL].value if row_en[CAT_COL].value != None else category['en']
         category_idx = find_by_name(data[register_admin_idx]['registers'][register_idx]['categories'], category, 'en')
 
         if category_idx == None:
-            category_idx = create_category(category, register_admin_idx, register_idx)
+            category_idx = create_category(dict(category), register_admin_idx, register_idx)
 
         cohort_87_dates_str = str(row_fi[COH_87_COL].value)
         cohort_97_dates_str = str(row_fi[COH_97_COL].value)
@@ -110,6 +111,7 @@ def create_register_admin(register_admin):
         'name': register_admin,
         'registers': []
     })
+
     return len(data) - 1
 
 
@@ -152,4 +154,18 @@ workbook = load_workbook('FBC-rekisterit.xlsx', read_only=True)
 subject_sheet = workbook['Kohorttilaiset']
 parse_sheet(subject_sheet, 'subjects')
 
-# TODO: write data into file and validate, handle parents-sheet
+parent_sheet = workbook['Vanhemmat']
+parse_sheet(parent_sheet, 'parents')
+
+filenames = []
+# pp = pprint.PrettyPrinter(depth=5)
+# pp.pprint(data)
+for dataset in data:
+    filename = dataset['name']['en'] + '.json'
+    with open(DATA_PATH + filename, 'w') as f:
+        print('Create/update file: ' + DATA_PATH + filename)
+        json.dump(dataset, f, ensure_ascii=False, default=str, indent=2)
+        filenames.append(filename)
+
+with open(DATA_PATH + 'filenames.json', 'w') as f:
+    json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
