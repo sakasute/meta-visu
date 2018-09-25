@@ -1,9 +1,24 @@
 {
   "name": {
-    "en": "Finnish Defence Forces",
-    "fi": "Puolustusvoimat"
+    "en": "National Board of Education",
+    "fi": "Opetushallitus"
   },
   "registers": [
+    {
+      "name": {
+        "en": "Benefits Register",
+        "fi": "Etuusrekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Joint application data and primary school achievements",
+            "fi": "Yhteisvalintatiedot"
+          },
+          "samplings": []
+        }
+      ]
+    },
     {
       "name": {
         "en": "Results of aptitude tests register",
@@ -30,14 +45,7 @@
             "en": "Service class data",
             "fi": "Palveluskelpoisuusluokka"
           },
-          "samplings": [
-            {
-              "startDate": "2005-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1987",
-              "category": "subjects"
-            }
-          ]
+          "samplings": []
         }
       ]
     }

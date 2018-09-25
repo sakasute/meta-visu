@@ -13,6 +13,7 @@ class TreeChart {
         : ['registerAdmins', 'registers', 'categories', 'samplings'],
       nodeSize: config.nodeSize ? config.nodeSize : 10,
       animationDuration: config.animationDuration ? config.animationDuration : 750,
+      lang: config.lang ? config.lang : 'en',
     };
     const treeHeight = this.config.height;
     const treeWidth = this.config.width;
@@ -98,7 +99,13 @@ class TreeChart {
       .attr('text-anchor', 'middle')
       // NOTE: limit the length of node labels (the difference between lengths in test)
       // and slice is to prevent the "..." being lengthier than removed chars.
-      .text(d => (d.data.name.length <= 43 ? d.data.name : `${d.data.name.slice(0, 40)}...`))
+      .text(
+        d => d.data.name[
+          this.config.lang
+        ] /* .length <= 43
+          ? d.data.name[this.config.lang]
+          : `${d.data.name[this.config.lang].slice(0, 40)}...` */,
+      )
       .on('mouseover', (d, i, nodes) => this.showFullLabel(d, i, nodes))
       .on('mouseout', (d, i, nodes) => this.showNormalLabel(d, i, nodes));
 
@@ -107,13 +114,15 @@ class TreeChart {
   }
 
   showFullLabel(dataNode, i, nodes) {
-    d3.select(nodes[i]).text(d => d.data.name);
+    // d3.select(nodes[i]).text(d => d.data.name[this.config.lang]);
   }
 
   showNormalLabel(data, i, nodes) {
-    d3.select(nodes[i]).text(
-      d => (d.data.name.length <= 43 ? d.data.name : `${d.data.name.slice(0, 40)}...`),
-    );
+    // d3.select(nodes[i]).text(
+    //   d => (d.data.name[this.config.lang].length <= 43
+    //     ? d.data[this.config.lang]
+    //     : `${d.data.name[this.config.lang].slice(0, 40)}...`),
+    // );
   }
 
   addRootLabel(rootNode) {
@@ -122,7 +131,7 @@ class TreeChart {
     const rootLabel = fo
       .append('xhtml:p')
       .attr('class', 'tree__html-label')
-      .html(d => d.data.name);
+      .html(d => d.data.name[this.config.lang]);
 
     const boundingRect = rootLabel.node().getBoundingClientRect();
     fo.attr('transform', `translate(${-1 * boundingRect.width}, ${boundingRect.height / -2})`);

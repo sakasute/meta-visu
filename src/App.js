@@ -10,6 +10,7 @@ class App extends Component {
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
     this.data = {};
     this.state = {
+      lang: 'fi',
       filenames: [],
       filters: {},
     };
@@ -40,7 +41,7 @@ class App extends Component {
                 registers: {},
               };
               this.data[filename].registers.forEach((register) => {
-                filters[filename].registers[register.name] = {
+                filters[filename].registers[register.name.en] = {
                   name: register.name,
                   isSelected: true,
                 };
@@ -86,7 +87,7 @@ class App extends Component {
   }
 
   render() {
-    const { filenames, filters } = this.state;
+    const { filenames, filters, lang } = this.state;
     const timelineTreeCards = filenames
       .sort((a, b) => {
         const forcedFirstStr = 'National Institute for Health and Welfare.json';
@@ -102,12 +103,13 @@ class App extends Component {
         const fileFilter = filters[filename];
         return (
           <TimelineTreeCard
+            lang={lang}
             show={filters[filename].isSelected}
             filename={filename}
             data={this.data[filename]}
             fileFilter={fileFilter}
-            treeConfig={{}}
-            timelineConfig={{}}
+            treeConfig={{ lang }}
+            timelineConfig={{ lang }}
             key={filename}
           />
         );
@@ -116,6 +118,7 @@ class App extends Component {
     return (
       <div>
         <RegisterPanel
+          lang={lang}
           filterState={filters}
           handleRegisterAdminBtnClick={this.toggleFileFilter}
           handleRegisterSelection={this.toggleRegisterFilter}

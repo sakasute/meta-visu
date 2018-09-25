@@ -44,7 +44,7 @@ class TimelineTreeSVG extends Component {
 
     // ***** TreeChart *****
     const filteredRegisterData = data.registers.filter(
-      register => registerFilter[register.name].isSelected,
+      register => registerFilter[register.name.en].isSelected,
     );
     data.registers = filteredRegisterData;
     data = sortTreeData(data);

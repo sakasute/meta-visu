@@ -19,7 +19,9 @@ class RegisterPanel extends Component {
   }
 
   render() {
-    const { filterState, handleRegisterAdminBtnClick, handleRegisterSelection } = this.props;
+    const {
+      filterState, handleRegisterAdminBtnClick, handleRegisterSelection, lang,
+    } = this.props;
     const { isMinimized } = this.state;
 
     const classes = isMinimized ? 'nav nav--closed' : 'nav';
@@ -28,11 +30,12 @@ class RegisterPanel extends Component {
       : 'nav__toggle-btn';
 
     const navItems = Object.keys(filterState)
-      .sort((a, b) => compareByName(filterState[a], filterState[b], 'National Institute for Health and Welfare'))
+      // .sort((a, b) => compareByName(filterState[a], filterState[b], 'National Institute for Health and Welfare'))
       .map((filename) => {
         const filter = filterState[filename];
         return (
           <NavItem
+            lang={lang}
             key={filename}
             filename={filename}
             filter={filter}
@@ -55,6 +58,7 @@ class RegisterPanel extends Component {
 }
 
 RegisterPanel.propTypes = {
+  lang: PropTypes.string.isRequired,
   filterState: PropTypes.object.isRequired,
   handleRegisterAdminBtnClick: PropTypes.func.isRequired,
   handleRegisterSelection: PropTypes.func.isRequired,

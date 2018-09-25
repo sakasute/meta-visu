@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import YearSlider from './YearSlider';
 
-function CardHeader({ name, yearSelected }) {
+function CardHeader({ lang, name, yearSelected }) {
   return (
     <div className="card__header">
-      <a href={`#${name}`} className="title card__title">
-        {name}
+      <a href={`#${name[lang]}`} className="title card__title">
+        {name[lang]}
       </a>
       <div className="card__year-control">
         <h3 className="year-control-title">Set years:</h3>
@@ -17,7 +17,8 @@ function CardHeader({ name, yearSelected }) {
 }
 
 CardHeader.propTypes = {
-  name: PropTypes.string.isRequired,
+  lang: PropTypes.string.isRequired,
+  name: PropTypes.object.isRequired,
   yearSelected: PropTypes.func.isRequired,
 };
 

@@ -32,17 +32,23 @@ class NavItem extends Component {
 
   render() {
     const { isSelected } = this.state;
-    const { filter } = this.props;
+    const { filter, lang } = this.props;
     const btnClass = isSelected ? 'btn btn--selected' : 'btn';
 
     return (
       <li className="nav__item">
-        <button type="button" id={filter.name} className={btnClass} onClick={this.handleBtnClick}>
-          {filter.name}
+        <button
+          type="button"
+          id={filter.name.en}
+          className={btnClass}
+          onClick={this.handleBtnClick}
+        >
+          {filter.name[lang]}
         </button>
         <RegisterSelector
+          lang={lang}
           show={isSelected}
-          registerAdminName={filter.name}
+          registerAdminName={filter.name[lang]}
           registerFilter={filter.registers}
           handleCheckboxChange={this.handleCheckboxChange}
         />
@@ -52,6 +58,7 @@ class NavItem extends Component {
 }
 
 NavItem.propTypes = {
+  lang: PropTypes.string.isRequired,
   filename: PropTypes.string.isRequired,
   filter: PropTypes.object.isRequired,
   handleRegisterAdminBtnClick: PropTypes.func.isRequired,

@@ -14,6 +14,7 @@ class CategoryTimeline {
       showXAxis: config.showXAxis != null ? config.showXAxis : true,
       showLegend: config.showLegend != null ? config.showLegend : true,
       categories: config.categories ? config.categories : ['parents', 'subjects'],
+      lang: config.lang ? config.lang : 'en',
     };
     this.data = data;
 

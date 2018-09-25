@@ -22,13 +22,15 @@ class TimelineTreeCard extends Component {
 
   render() {
     const {
-      show, filename, data, fileFilter, treeConfig, timelineConfig,
+      lang, show, filename, data, fileFilter, treeConfig, timelineConfig,
     } = this.props;
 
     const { scaleYears } = this.state;
     const scaleStartDate = new Date(`${scaleYears[0]}-01-01`);
     const scaleEndDate = new Date(`${scaleYears[1]}-12-31`);
-    const timelineConfigExtended = { ...timelineConfig, scaleStartDate, scaleEndDate };
+    const timelineConfigExtended = {
+      ...timelineConfig, scaleStartDate, scaleEndDate,
+    };
 
     const classes = show
       ? 'timeline-tree-wrapper card'
@@ -43,7 +45,12 @@ class TimelineTreeCard extends Component {
       + scaleYears.join('');
     return (
       <div className={classes}>
-        <CardHeader filename={filename} name={fileFilter.name} yearSelected={this.yearSelected} />
+        <CardHeader
+          lang={lang}
+          filename={filename}
+          name={fileFilter.name}
+          yearSelected={this.yearSelected}
+        />
         <TimelineTreeSVG
           data={data}
           registerFilter={registerFilter}
@@ -58,6 +65,7 @@ class TimelineTreeCard extends Component {
 }
 
 TimelineTreeCard.propTypes = {
+  lang: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
   filename: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,

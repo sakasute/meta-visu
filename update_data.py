@@ -6,7 +6,7 @@ import json
 import regex
 import pprint
 
-DATA_PATH = 'data/'
+DATA_PATH = 'public/data/'
 START_ROW = 4
 
 REG_ADM_COL = 0  # 'A'
