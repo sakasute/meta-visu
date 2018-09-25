@@ -8,6 +8,7 @@ class App extends Component {
     super(props);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
+    this.handleLangSelect = this.handleLangSelect.bind(this);
     this.data = {};
     this.state = {
       lang: 'fi',
@@ -52,9 +53,14 @@ class App extends Component {
       });
   }
 
+  handleLangSelect(event) {
+    console.log(event.target.id)
+    this.setState({ lang: event.target.id });
+  }
+
+  // NOTE: this is damn ugly but this is the way to update nested state without external library
+  // and without making a deep copy of the whole object
   toggleFileFilter(filename) {
-    // NOTE: this is damn ugly but this is the way to update nested state without external library
-    // and without making a deep copy of the whole object
     this.setState(prevState => ({
       ...prevState,
       filters: {
@@ -120,6 +126,7 @@ class App extends Component {
         <RegisterPanel
           lang={lang}
           filterState={filters}
+          handleLangSelect={this.handleLangSelect}
           handleRegisterAdminBtnClick={this.toggleFileFilter}
           handleRegisterSelection={this.toggleRegisterFilter}
         />

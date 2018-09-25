@@ -29,7 +29,9 @@ class TimelineTreeCard extends Component {
     const scaleStartDate = new Date(`${scaleYears[0]}-01-01`);
     const scaleEndDate = new Date(`${scaleYears[1]}-12-31`);
     const timelineConfigExtended = {
-      ...timelineConfig, scaleStartDate, scaleEndDate,
+      ...timelineConfig,
+      scaleStartDate,
+      scaleEndDate,
     };
 
     const classes = show
@@ -38,11 +40,28 @@ class TimelineTreeCard extends Component {
     const registerFilter = fileFilter.registers;
     // NOTE: this key updates depending on the registerFilter prop to force remounting
     // the TimelineTree with updated filters
-    const key = Object.keys(registerFilter).join('')
+    const svgKey = Object.keys(registerFilter).join('')
       + Object.values(registerFilter)
         .map(reg => reg.isSelected)
         .join('')
-      + scaleYears.join('');
+      + scaleYears.join('')
+      + lang;
+
+    const renderSVG = () => {
+      if (fileFilter.isSelected) {
+        return (
+          <TimelineTreeSVG
+            data={data}
+            registerFilter={registerFilter}
+            treeConfig={treeConfig}
+            timelineConfig={timelineConfigExtended}
+            filename={filename}
+            key={svgKey}
+          />
+        );
+      }
+      return null;
+    };
     return (
       <div className={classes}>
         <CardHeader
@@ -51,14 +70,7 @@ class TimelineTreeCard extends Component {
           name={fileFilter.name}
           yearSelected={this.yearSelected}
         />
-        <TimelineTreeSVG
-          data={data}
-          registerFilter={registerFilter}
-          treeConfig={treeConfig}
-          timelineConfig={timelineConfigExtended}
-          filename={filename}
-          key={key}
-        />
+        {renderSVG()}
       </div>
     );
   }

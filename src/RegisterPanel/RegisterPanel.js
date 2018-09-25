@@ -20,7 +20,11 @@ class RegisterPanel extends Component {
 
   render() {
     const {
-      filterState, handleRegisterAdminBtnClick, handleRegisterSelection, lang,
+      filterState,
+      handleRegisterAdminBtnClick,
+      handleRegisterSelection,
+      lang,
+      handleLangSelect,
     } = this.props;
     const { isMinimized } = this.state;
 
@@ -28,6 +32,17 @@ class RegisterPanel extends Component {
     const toggleBtnClasses = isMinimized
       ? 'nav__toggle-btn nav__toggle-btn--rotate'
       : 'nav__toggle-btn';
+
+    const languageSelectors = ['en', 'fi'].map((langOpt) => {
+      const langClasses = lang === langOpt
+        ? 'nav__language-selector nav__language-selector--selected'
+        : 'nav__language-selector';
+      return (
+        <button type="button" className={langClasses} key={langOpt} id={langOpt} onClick={handleLangSelect}>
+          {langOpt}
+        </button>
+      );
+    });
 
     const navItems = Object.keys(filterState)
       .sort((a, b) => compareByName(filterState[a], filterState[b], lang, {
@@ -49,12 +64,18 @@ class RegisterPanel extends Component {
       });
     return (
       <aside className={classes}>
-        <div className="nav-toggle">
-          <button type="button" className={toggleBtnClasses} onClick={this.toggleMinimize}>
-            <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
-          </button>
+        <div className="nav__controls">
+          <div className="nav__language-control">{languageSelectors}</div>
+          <div className="nav-toggle">
+            <button type="button" className={toggleBtnClasses} onClick={this.toggleMinimize}>
+              <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
+            </button>
+          </div>
         </div>
-        <ul className="nav__list">{navItems}</ul>
+
+        <div className="nav__list-wrapper">
+          <ul className="nav__list">{navItems}</ul>
+        </div>
       </aside>
     );
   }
@@ -65,6 +86,7 @@ RegisterPanel.propTypes = {
   filterState: PropTypes.object.isRequired,
   handleRegisterAdminBtnClick: PropTypes.func.isRequired,
   handleRegisterSelection: PropTypes.func.isRequired,
+  handleLangSelect: PropTypes.func.isRequired,
 };
 
 export default RegisterPanel;

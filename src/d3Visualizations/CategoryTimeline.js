@@ -164,7 +164,7 @@ class CategoryTimeline {
   }
 
   positionYearLabel(d) {
-    if (new Date(d.startDate) < this.config.scaleStartDate || new Date(d.endDate) > this.config.scaleEndDate) {
+    if (new Date(d.endDate) < this.config.scaleStartDate || new Date(d.startDate) > this.config.scaleEndDate) {
       // if section is out of scales, throw the label way off screen
       return `translate(${1000}, ${this.y.bandwidth() / 2 - 4})`;
     }

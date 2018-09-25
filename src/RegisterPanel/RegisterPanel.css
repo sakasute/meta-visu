@@ -8,11 +8,12 @@
   flex-direction: column;
 
   max-height: 90vh;
-  padding: 2.5rem;
+  width: 27.5rem;
+  padding: 0;
   margin-left: 2.5rem;
 
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   background-color: white;
@@ -29,13 +30,36 @@
   transition: opacity 0.4s ease-in;
 }
 
-.nav.nav--closed > *:not(.nav-toggle) {
+.nav.nav--closed > *:not(.nav__controls) {
   opacity: 0;
   transition: opacity 0.4s ease-out;
 }
 
+.nav__controls {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 2.5rem;
+  padding-bottom: 0;
+}
+
+.nav__language-control {
+  flex: 5;
+  margin: auto 0 auto 0;
+}
+
+.nav__language-selector {
+  color: var(--thl-blue);
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.nav__language-selector--selected {
+  font-weight: bold;
+}
+
 .nav-toggle {
-  align-self: flex-end;
+  flex: 1;
 }
 
 .nav__toggle-btn {
@@ -72,9 +96,14 @@
   transform: rotateY(180deg) scale(1.1);
 }
 
+.nav__list-wrapper {
+  overflow-y: auto;
+}
+
 .nav__list {
   list-style: none;
-  padding: 0;
+  padding: 2.5rem;
+  padding-top: 0;
   margin: 0;
   --nav-width: 22.5rem;
   width: var(--nav-width);
@@ -93,7 +122,7 @@
 .register-selector {
   width: 100%;
   list-style: none;
-  padding: 1rem;
+  padding: 1rem 0 1rem 0;
   font-size: 1.2rem;
   overflow: hidden;
   background-color: white;
