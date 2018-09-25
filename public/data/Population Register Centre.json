@@ -89,20 +89,20 @@
           },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-11-03",
+              "endDate": "2016-11-03",
               "cohort": "1997",
               "category": "subjects"
             },
             {
-              "startDate": "2009-01-01",
-              "endDate": false,
+              "startDate": "2009-06-10",
+              "endDate": "2009-06-10",
               "cohort": "1987",
               "category": "parents"
             },
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-11-03",
+              "endDate": "2016-11-03",
               "cohort": "1997",
               "category": "parents"
             }
@@ -115,8 +115,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-03-15",
+              "endDate": "2016-03-15",
               "cohort": "1997",
               "category": "subjects"
             }
@@ -129,8 +129,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-03-15",
+              "endDate": "2016-03-15",
               "cohort": "1997",
               "category": "subjects"
             }
@@ -149,13 +149,6 @@
               "category": "parents"
             }
           ]
-        },
-        {
-          "name": {
-            "en": "Socio-economic status",
-            "fi": "SES"
-          },
-          "samplings": []
         }
       ]
     }

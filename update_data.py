@@ -27,6 +27,7 @@ def parse_dates(raw_dates_str):
         start_date = format_date(date_str.split('-')[0], '-01-01')
         if start_date:
             end_date = format_date(date_str.split('-')[1], '-12-31') if len(date_str.split('-')) > 1 else start_date
+
             dates.append({'start_date': start_date, 'end_date': end_date})
     return dates
 
@@ -56,7 +57,6 @@ def find_by_name(list, name, lang):
 
 
 def parse_sheet(sheet, sampling_category):
-    iterator = sheet.iter_rows(min_row=START_ROW)
     register_admin = {
         'en': '',
         'fi': '',
@@ -69,12 +69,18 @@ def parse_sheet(sheet, sampling_category):
         'en': '',
         'fi': '',
     }
+    iterator = sheet.iter_rows(min_row=START_ROW)
     for row in iterator:
         row_fi = row
         try:
             row_en = next(iterator)
         except StopIteration:
             break
+
+        if len(row_en) == 0:
+            break
+
+        print(row_en[REG_ADM_COL].value)
 
         register_admin['fi'] = row_fi[REG_ADM_COL].value if row_fi[REG_ADM_COL].value != None else register_admin['fi']
         register_admin['en'] = row_en[REG_ADM_COL].value if row_en[REG_ADM_COL].value != None else register_admin['en']

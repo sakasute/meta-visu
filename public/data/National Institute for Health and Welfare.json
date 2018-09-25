@@ -15,7 +15,20 @@
             "en": "Pregnancy and birth outcomes (own)",
             "fi": "Oman syntymän raskaus- ja synnytystiedot"
           },
-          "samplings": []
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "1987-01-01",
+              "cohort": "1987",
+              "category": "subjects"
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "1997-01-01",
+              "cohort": "1997",
+              "category": "subjects"
+            }
+          ]
         },
         {
           "name": {
@@ -43,6 +56,12 @@
             "fi": "Raskaus- ja synnytystiedot"
           },
           "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "1987-01-01",
+              "cohort": "1987",
+              "category": "parents"
+            },
             {
               "startDate": "1987-01-01",
               "endDate": "2015-12-31",
