@@ -7,7 +7,7 @@ function RegisterSelector({
   lang, registerAdminName, registerFilter, show, handleCheckboxChange,
 }) {
   const registerItems = Object.keys(registerFilter)
-    // .sort((a, b) => compareByName(registerFilter[a], registerFilter[b], lang))
+    .sort((a, b) => compareByName(registerFilter[a], registerFilter[b], lang))
     .map(registerName => (
       <RegisterItem
         lang={lang}

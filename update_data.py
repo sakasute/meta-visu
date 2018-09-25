@@ -80,13 +80,12 @@ def parse_sheet(sheet, sampling_category):
         if len(row_en) == 0:
             break
 
-        print(row_en[REG_ADM_COL].value)
-
         register_admin['fi'] = row_fi[REG_ADM_COL].value if row_fi[REG_ADM_COL].value != None else register_admin['fi']
         register_admin['en'] = row_en[REG_ADM_COL].value if row_en[REG_ADM_COL].value != None else register_admin['en']
         register_admin_idx = find_by_name(data, register_admin, 'en')
 
         if register_admin_idx == None:
+            # using dict() here creates a copy of the dict so the function doesn't modify the original
             register_admin_idx = create_register_admin(dict(register_admin))
 
         register['fi'] = row_fi[REG_COL].value if row_fi[REG_COL].value != None else register['fi']
@@ -94,6 +93,7 @@ def parse_sheet(sheet, sampling_category):
         register_idx = find_by_name(data[register_admin_idx]['registers'], register, 'en')
 
         if register_idx == None:
+            # using dict() here creates a copy of the dict so the function doesn't modify the original
             register_idx = create_register(dict(register), register_admin_idx)
 
         category['fi'] = row_fi[CAT_COL].value if row_fi[CAT_COL].value != None else category['fi']
@@ -101,6 +101,7 @@ def parse_sheet(sheet, sampling_category):
         category_idx = find_by_name(data[register_admin_idx]['registers'][register_idx]['categories'], category, 'en')
 
         if category_idx == None:
+            # using dict() here creates a copy of the dict so the function doesn't modify the original
             category_idx = create_category(dict(category), register_admin_idx, register_idx)
 
         cohort_87_dates_str = str(row_fi[COH_87_COL].value)

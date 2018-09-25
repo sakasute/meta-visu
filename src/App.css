@@ -23,5 +23,6 @@
   font-size: 1.6rem;
   color: var(--dark-gray);
   width: 30rem;
+  margin-left: 25rem;
   text-align: center;
 }

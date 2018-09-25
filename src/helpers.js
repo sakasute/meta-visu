@@ -26,11 +26,13 @@ export function categoryTimelineHelper(samplingData, svg, config) {
 // forcedFirstStr is an optional string that forces a given name placed as
 // the first element of the array
 export function compareByName(a, b, lang, forcedFirstStr) {
-  if (a.name === forcedFirstStr) {
-    return -1;
-  }
-  if (b.name === forcedFirstStr) {
-    return 1;
+  if (forcedFirstStr) {
+    if (a.name[lang] === forcedFirstStr[lang]) {
+      return -1;
+    }
+    if (b.name[lang] === forcedFirstStr[lang]) {
+      return 1;
+    }
   }
 
   if (a.name[lang] < b.name[lang]) {

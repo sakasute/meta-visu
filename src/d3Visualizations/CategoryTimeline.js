@@ -164,7 +164,7 @@ class CategoryTimeline {
   }
 
   positionYearLabel(d) {
-    if (this.calculateSectionWidth(d) <= 0) {
+    if (new Date(d.startDate) < this.config.scaleStartDate || new Date(d.endDate) > this.config.scaleEndDate) {
       // if section is out of scales, throw the label way off screen
       return `translate(${1000}, ${this.y.bandwidth() / 2 - 4})`;
     }
@@ -233,7 +233,7 @@ class CategoryTimeline {
       .append('g')
       .attr('class', 'timeline__section');
 
-    // enter multiyear sections => rectangles
+    // enter timespan sections => rectangles
     sectionEnter
       .filter(d => new Date(d.startDate).getFullYear() !== new Date(d.endDate).getFullYear())
       .append('rect')
@@ -242,15 +242,15 @@ class CategoryTimeline {
       .attr('height', this.y.bandwidth() / 2)
       .attr('width', d => this.calculateSectionWidth(d));
 
-    // enter 1 year sections => circles
+    // enter point sections => circles
     sectionEnter
-      .filter(d => new Date(d.startDate).getFullYear() === new Date(d.endDate).getFullYear())
+      .filter(d => new Date(d.startDate).getTime() === new Date(d.endDate).getTime())
       .append('circle')
       .attr('r', (d) => {
-        const calculatedWidth = this.calculateSectionWidth(d);
-        // NOTE: if width would be 0, the section is out of scales and shouldn't be visible,
-        // else it should be constant.
-        return calculatedWidth === 0 ? calculatedWidth : this.y.bandwidth() / 4;
+        if (new Date(d.startDate) < this.config.scaleStartDate || new Date(d.endDate) > this.config.scaleEndDate) {
+          return 0;
+        }
+        return this.y.bandwidth() / 4;
       })
       .attr('class', 'timeline__rect')
       .attr('cx', d => this.calculateSectionXPos(d))
