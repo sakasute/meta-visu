@@ -20,7 +20,6 @@ class CategoryTimeline {
       lang: config.lang ? config.lang : 'en',
     };
     this.data = this.constructor.prepareData(data, this.config);
-    console.log(this.data);
 
     this.xAxisPadding = 30;
 

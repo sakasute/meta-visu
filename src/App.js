@@ -59,7 +59,6 @@ class App extends Component {
   }
 
   handleLangSelect(event) {
-    console.log(event.target.id);
     this.setState({ lang: event.target.id });
   }
 

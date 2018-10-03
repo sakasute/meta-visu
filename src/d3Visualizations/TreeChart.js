@@ -47,6 +47,49 @@ class TreeChart {
     return path;
   }
 
+  // NOTE: src: https://bl.ocks.org/mbostock/7555321
+  // FIXME: make it better?
+  static wrapText(textSelections, width) {
+    textSelections.each(function wrap() {
+      const text = d3.select(this);
+      const words = text
+        .text()
+        .split(/\s+/)
+        .reverse();
+      let word;
+      let line = [];
+      let lineNumber = 0;
+      const lineHeight = 1.25;
+      const y = text.attr('y');
+      const dy = parseFloat(text.attr('dy'));
+      const dx = parseFloat(text.attr('dx'));
+      let tspan = text
+        .text(null)
+        .append('tspan')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', `${dy}em`);
+      /* eslint-disable */
+      while ((word = words.pop())) {
+        line.push(word);
+        tspan.text(line.join(' '));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          tspan.text(line.join(' '));
+          line = [word];
+          tspan = text
+            .append('tspan')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + 'em')
+            .attr('dx', dx)
+            .text(word);
+        }
+      }
+      /* eslint enable */
+    });
+  }
+
   static calculateLabelPlacement(d) {
     try {
       if (Math.ceil(d.x) > Math.ceil(d.parent.x)) {
@@ -59,9 +102,9 @@ class TreeChart {
     } finally {
       switch (d.labelPosition) {
         case 'top':
-          return '-1em';
+          return '-1.75em';
         case 'under':
-          return '1.5em';
+          return '1.25em';
         default:
           return '0em';
       }
@@ -95,34 +138,13 @@ class TreeChart {
       .append('text')
       .attr('class', 'tree__node-label')
       .attr('dy', d => this.constructor.calculateLabelPlacement(d))
-      .attr('x', -25)
+      .attr('dx', -15)
       .attr('text-anchor', 'middle')
-      // NOTE: limit the length of node labels (the difference between lengths in test)
-      // and slice is to prevent the "..." being lengthier than removed chars.
-      .text(
-        d => d.data.name[
-          this.config.lang
-        ] /* .length <= 43
-          ? d.data.name[this.config.lang]
-          : `${d.data.name[this.config.lang].slice(0, 40)}...` */,
-      )
-      .on('mouseover', (d, i, nodes) => this.showFullLabel(d, i, nodes))
-      .on('mouseout', (d, i, nodes) => this.showNormalLabel(d, i, nodes));
+      .text(d => d.data.name[this.config.lang])
+      .call(this.constructor.wrapText, 205);
 
     // NOTE: handle root node separately to support text wrapping
     this.addRootLabel(nodeGroup.filter(d => !d.parent));
-  }
-
-  showFullLabel(dataNode, i, nodes) {
-    // d3.select(nodes[i]).text(d => d.data.name[this.config.lang]);
-  }
-
-  showNormalLabel(data, i, nodes) {
-    // d3.select(nodes[i]).text(
-    //   d => (d.data.name[this.config.lang].length <= 43
-    //     ? d.data[this.config.lang]
-    //     : `${d.data.name[this.config.lang].slice(0, 40)}...`),
-    // );
   }
 
   addRootLabel(rootNode) {
@@ -140,7 +162,7 @@ class TreeChart {
 
   updateNodes() {
     const nodesData = this.treeData.descendants();
-    const nodeSelection = this.svg.selectAll('.node').data(nodesData, (d) => {
+    const nodeSelection = this.svg.selectAll('.node').data(nodesData, d => {
       const id = d.id ? d.id : this.idCounter;
       d.id = id;
       this.idCounter += 1;
@@ -173,7 +195,7 @@ class TreeChart {
 
   updateLinks() {
     const linksData = this.treeData.descendants().slice(1);
-    const linkSelection = this.svg.selectAll('path.link').data(linksData, (d) => {
+    const linkSelection = this.svg.selectAll('path.link').data(linksData, d => {
       const id = d.id ? d.id : this.idCounter;
       d.id = id;
       this.idCounter += 1;
