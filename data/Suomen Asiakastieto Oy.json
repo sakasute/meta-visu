@@ -1,0 +1,42 @@
+{
+  "name": {
+    "en": "Suomen Asiakastieto Oy",
+    "fi": "Suomen Asiakastieto Oy"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "<no name>",
+        "fi": "<ei nimeä>"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Overindebtedness",
+            "fi": "Ylivelkaantumistiedot"
+          },
+          "samplings": [
+            {
+              "startDate": "2004-01-01",
+              "endDate": "2004-01-01",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2010-04-01",
+              "endDate": "2010-04-01",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,78 +1,410 @@
 {
-  "name": "Social Insurance Institution of Finland",
+  "name": {
+    "en": "Social Insurance Institution of Finland",
+    "fi": "Kela"
+  },
   "registers": [
     {
-      "name": "Benefits Register",
+      "name": {
+        "en": "Benefits Register",
+        "fi": "Etuusrekisteri"
+      },
       "categories": [
         {
-          "name": "Psychotropic medicines",
+          "name": {
+            "en": "Psychotropic medicines",
+            "fi": "Lääkärin määräämät psyykenlääkkeet"
+          },
           "samplings": [
             {
-              "name": "",
               "startDate": "1994-01-01",
-              "endDate": "2012-12-31",
+              "endDate": "2016-12-31",
               "cohort": "1987",
-              "parents": false
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
         {
-          "name": "Special reimbursement rights",
+          "name": {
+            "en": "Special reimpbursement rights",
+            "fi": "Erityiskorvausoikeudet"
+          },
           "samplings": [
             {
-              "name": "",
               "startDate": "1987-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
-              "parents": false
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
         {
-          "name": "Disability benefits",
+          "name": {
+            "en": "Child home care allowance",
+            "fi": "Lastenhoitotuki"
+          },
           "samplings": [
             {
-              "name": "",
-              "startDate": "1987-01-01",
-              "endDate": "2012-12-31",
-              "cohort": "1987",
-              "parents": false
-            }
-          ]
-        },
-        {
-          "name": "Rehabilitations",
-          "samplings": [
-            {
-              "name": "",
-              "startDate": "1986-01-01",
-              "endDate": "2012-12-31",
-              "cohort": "1987",
-              "parents": true
-            }
-          ]
-        },
-        {
-          "name": "Private doctor visits",
-          "samplings": [
-            {
-              "name": "",
-              "startDate": "1996-01-01",
-              "endDate": "2012-12-31",
-              "cohort": "1987",
-              "parents": false
-            }
-          ]
-        },
-        {
-          "name": "Child home care allowance",
-          "samplings": [
-            {
-              "name": "",
               "startDate": "1987-01-01",
               "endDate": "2003-12-31",
               "cohort": "1987",
-              "parents": false
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Disability benefits",
+            "fi": "Vammaistuet"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Parental allowance",
+            "fi": "Äitiys-, isyys- ja vanhempainpäiväraha"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1986-01-01",
+              "endDate": "1994-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Home care allowance",
+            "fi": "Kotihoidontuki"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Unemployment benefits",
+            "fi": "Työttömyyskorvaustiedot"
+          },
+          "samplings": [
+            {
+              "startDate": "2005-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Basic unemployment allowance",
+            "fi": "Peruspäiväraha"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Labour market subsidy",
+            "fi": "Työmarkkinatuki"
+          },
+          "samplings": [
+            {
+              "startDate": "1994-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Rehabilitation allowance",
+            "fi": "Kuntoutusraha"
+          },
+          "samplings": [
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2013-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Rehabilitations",
+            "fi": "Kuntoutukset"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Disability pension",
+            "fi": "Työkyvyttömyyseläkkeet"
+          },
+          "samplings": [
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2013-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Study gnats",
+            "fi": "Opintotuki"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Private doctor visits",
+            "fi": "Yksityiset lääkärissäkäynnit"
+          },
+          "samplings": [
+            {
+              "startDate": "1996-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Marital status, county, municipality",
+            "fi": "Siviilisääty, lääni, kunta"
+          },
+          "samplings": [
+            {
+              "startDate": "1988-01-01",
+              "endDate": "1994-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Parents' all children",
+            "fi": "Vanhempien kaikki lapset"
+          },
+          "samplings": [
+            {
+              "startDate": "1939-01-01",
+              "endDate": "2013-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         }

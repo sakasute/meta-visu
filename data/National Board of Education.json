@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "National Board of Education",
+    "fi": "Opetushallitus"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "<no name>",
+        "fi": "<ei nimeä>"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Joint application data and primary school achievements",
+            "fi": "Yhteisvalintatiedot"
+          },
+          "samplings": []
+        }
+      ]
+    }
+  ]
+}

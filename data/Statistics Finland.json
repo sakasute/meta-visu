@@ -1,70 +1,99 @@
 {
-  "name": "Statistics Finland",
+  "name": {
+    "en": "Statistics Finland",
+    "fi": "Tilastokeskus"
+  },
   "registers": [
     {
-      "name": "Cause of Death Register",
+      "name": {
+        "en": "Cause of Death Register",
+        "fi": "Kuolemansyytilasto"
+      },
       "categories": [
         {
-          "name": "Dates and causes of deaths",
+          "name": {
+            "en": "Dates and causes of deaths",
+            "fi": "Kuolinpäivä ja kuolemansyy"
+          },
           "samplings": [
             {
-              "name": "",
               "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
-              "parents": false
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             },
             {
-              "name": "",
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
               "startDate": "1987-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
-              "parents": true
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             },
             {
-              "name": "",
-              "startDate": "1997-01-01",
-              "endDate": "2015-12-31",
-              "cohort": "1997",
-              "parents": false
-            },
-            {
-              "name": "",
               "startDate": "1997-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
-              "parents": true
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         }
       ]
     },
     {
-      "name": "Register of Educational Achievements",
+      "name": {
+        "en": "Register of Educational Achievements",
+        "fi": "Tutkintorekisteri"
+      },
       "categories": [
         {
-          "name": "Degree data",
+          "name": {
+            "en": "Degree data",
+            "fi": "Tutkintotiedot"
+          },
           "samplings": [
             {
-              "name": "",
               "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
-              "parents": false
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             },
             {
-              "name": "",
               "startDate": "1987-01-01",
               "endDate": "2009-12-31",
               "cohort": "1987",
-              "parents": true
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             },
             {
-              "name": "",
               "startDate": "1997-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
-              "parents": true
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         }

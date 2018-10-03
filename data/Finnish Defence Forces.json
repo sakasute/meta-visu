@@ -1,35 +1,44 @@
 {
-  "name": "Finnish Defence Forces",
+  "name": {
+    "en": "Finnish Defence Forces",
+    "fi": "Puolustusvoimat"
+  },
   "registers": [
     {
-      "name": "Data on Service Register",
+      "name": {
+        "en": "Results of aptitude tests register",
+        "fi": "Peruskoerekisteri"
+      },
       "categories": [
         {
-          "name": "Service class data",
-          "samplings": [
-            {
-              "name": "",
-              "startDate": "2005-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1987",
-              "parents": false
-            }
-          ]
+          "name": {
+            "en": "Results of aptitude tests",
+            "fi": "Peruskokeiden tulokset"
+          },
+          "samplings": []
         }
       ]
     },
     {
-      "name": "Results of Aptitude Tests Register",
+      "name": {
+        "en": "Data on service register",
+        "fi": "Asevelvollisuusrekisteri"
+      },
       "categories": [
         {
-          "name": "Results of aptitude tests",
+          "name": {
+            "en": "Service class data",
+            "fi": "Palveluskelpoisuusluokka"
+          },
           "samplings": [
             {
-              "name": "",
               "startDate": "2005-01-01",
               "endDate": "2009-12-31",
               "cohort": "1987",
-              "parents": false
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         }
