@@ -20,13 +20,19 @@
               "startDate": "2004-01-01",
               "endDate": "2004-01-01",
               "cohort": "1987",
-              "category": "parents"
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             },
             {
               "startDate": "2010-04-01",
               "endDate": "2010-04-01",
               "cohort": "1987",
-              "category": "parents"
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         }

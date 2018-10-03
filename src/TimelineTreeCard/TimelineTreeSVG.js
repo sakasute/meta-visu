@@ -5,9 +5,8 @@ import * as d3 from 'd3';
 // NOTE: CategoryTimelines are currently created with an external helper function
 // import CategoryTimeline from '../d3Visualizations/CategoryTimeline';
 import TreeChart from '../d3Visualizations/TreeChart';
-import {
-  sortTreeData, calculateCategoryCount, categoryTimelineHelper, idRef,
-} from '../helpers';
+import CategoryTimeline from '../d3Visualizations/CategoryTimeline';
+import { sortTreeData, calculateCategoryCount, idRef } from '../helpers';
 
 class TimelineTreeSVG extends Component {
   constructor(props) {
@@ -28,7 +27,6 @@ class TimelineTreeSVG extends Component {
       showLegend: false,
       scaleStartDate: new Date('1987-01-01'),
       scaleEndDate: new Date(),
-      categories: ['parents', 'subjects'],
     };
     this.state = {};
   }
@@ -77,7 +75,7 @@ class TimelineTreeSVG extends Component {
               xAxisOrientation: 'top',
             };
           }
-          const categoryTimeline = categoryTimelineHelper(
+          const categoryTimeline = new CategoryTimeline(
             categoryNode.data.samplings,
             svg,
             timelineConfigModified,

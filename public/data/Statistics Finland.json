@@ -20,25 +20,37 @@
               "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
-              "category": "subjects"
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             },
             {
               "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
-              "category": "subjects"
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             },
             {
               "startDate": "1987-01-01",
               "endDate": "2012-12-31",
               "cohort": "1987",
-              "category": "parents"
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             },
             {
               "startDate": "1997-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
-              "category": "parents"
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         }
@@ -60,19 +72,28 @@
               "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1987",
-              "category": "subjects"
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             },
             {
               "startDate": "1987-01-01",
               "endDate": "2009-12-31",
               "cohort": "1987",
-              "category": "parents"
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             },
             {
               "startDate": "1997-01-01",
               "endDate": "2014-12-31",
               "cohort": "1997",
-              "category": "parents"
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         }

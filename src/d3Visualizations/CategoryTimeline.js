@@ -13,10 +13,14 @@ class CategoryTimeline {
       xAxisOrientation: config.xAxisOrientation ? config.xAxisOrientation : 'bottom',
       showXAxis: config.showXAxis != null ? config.showXAxis : true,
       showLegend: config.showLegend != null ? config.showLegend : true,
-      categories: config.categories ? config.categories : ['parents', 'subjects'],
+      categories: config.categories
+        ? config.categories
+        : [{ en: 'parents', fi: 'vanhemmat' }, { en: 'subjects', fi: 'kohorttilaiset' }],
+      cohorts: config.cohorts ? config.cohorts : ['1987', '1997'],
       lang: config.lang ? config.lang : 'en',
     };
-    this.data = data;
+    this.data = this.constructor.prepareData(data, this.config);
+    console.log(this.data);
 
     this.xAxisPadding = 30;
 
@@ -34,10 +38,22 @@ class CategoryTimeline {
 
     this.y = d3
       .scaleBand()
-      .domain(data.map(el => el.type))
+      .domain(this.config.categories.map(category => category.en))
       .range([this.xAxisPadding, this.config.height])
       .paddingInner(0.25)
       .round(true);
+  }
+
+  static prepareData(data, config) {
+    const timelineData = [];
+    config.categories.forEach((category) => {
+      timelineData.push({
+        category,
+        data: data.filter(el => el.category.en === category.en),
+      });
+    });
+
+    return timelineData;
   }
 
   static findEarliestStartDate(dataArr) {
@@ -93,39 +109,31 @@ class CategoryTimeline {
       });
   }
 
-  // FIXME: quite a clumsy way of doing this
   drawLegend() {
     const legend = this.svg.append('g').attr('class', 'legend');
     legend.attr('transform', `translate(${this.config.width - 15}, 0)`);
 
-    const category1 = legend.append('g').attr('class', 'legend__category');
+    this.config.cohorts.forEach((cohort, idx) => {
+      const category = legend
+        .append('g')
+        .attr('class', 'legend__category')
+        .attr('transform', `translate(0, ${(idx * this.y.bandwidth()) / 2})`);
 
-    category1
-      .append('rect')
-      .attr('class', 'legend__color-1')
-      .attr('width', this.y.bandwidth() / 2)
-      .attr('height', this.y.bandwidth() / 2);
+      category
+        .append('rect')
+        .attr('class', ` legend__rect-${idx + 1}`)
+        .attr('width', this.y.bandwidth() / 2)
+        .attr('height', this.y.bandwidth() / 2);
 
-    category1
-      .append('text')
-      .attr('class', 'legend__label')
-      .text('1987')
-      .attr('transform', `translate(${this.y.bandwidth() / 2 + 5}, ${this.y.bandwidth() / 2 - 5})`);
-
-    const category2 = legend.append('g').attr('class', 'legend__category');
-
-    category2
-      .append('rect')
-      .attr('class', 'legend__color-2')
-      .attr('width', this.y.bandwidth() / 2)
-      .attr('height', this.y.bandwidth() / 2)
-      .attr('transform', `translate(0, ${this.y.bandwidth() / 2})`);
-
-    category2
-      .append('text')
-      .attr('class', 'legend__label')
-      .text('1997')
-      .attr('transform', `translate(${this.y.bandwidth() / 2 + 5}, ${this.y.bandwidth() - 5})`);
+      category
+        .append('text')
+        .attr('class', 'legend__label')
+        .text(cohort)
+        .attr(
+          'transform',
+          `translate(${this.y.bandwidth() / 2 + 5}, ${this.y.bandwidth() / 2 - 5})`,
+        );
+    });
   }
 
   calculateScaleBoundDates(startDateStr, endDateStr) {
@@ -164,7 +172,10 @@ class CategoryTimeline {
   }
 
   positionYearLabel(d) {
-    if (new Date(d.endDate) < this.config.scaleStartDate || new Date(d.startDate) > this.config.scaleEndDate) {
+    if (
+      new Date(d.endDate) < this.config.scaleStartDate
+      || new Date(d.startDate) > this.config.scaleEndDate
+    ) {
       // if section is out of scales, throw the label way off screen
       return `translate(${1000}, ${this.y.bandwidth() / 2 - 4})`;
     }
@@ -192,7 +203,6 @@ class CategoryTimeline {
     if (this.config.showXAxis) {
       this.drawXAxis();
     }
-
     if (this.config.showLegend) {
       this.drawLegend();
     }
@@ -204,12 +214,15 @@ class CategoryTimeline {
       .append('g')
       .attr('class', 'timeline');
 
-    categoryEnter.attr('transform', d => `translate(0, ${this.y(d.type) - this.xAxisPadding})`);
+    categoryEnter.attr(
+      'transform',
+      d => `translate(0, ${this.y(d.category.en) - this.xAxisPadding})`,
+    );
 
     this.config.categories.forEach((category, i) => {
       if (i < this.config.categories.length - 1) {
         categoryEnter
-          .filter(d => d.type === category)
+          .filter(d => d.category.en === category.en)
           .append('line')
           .attr('class', 'timeline__separator')
           .attr('x1', this.x(this.config.scaleStartDate) - 60)
@@ -222,9 +235,10 @@ class CategoryTimeline {
     categoryEnter
       .append('text')
       .attr('class', 'timeline__title')
-      .text(d => d.type)
+      .text(d => d.category[this.config.lang])
+      .attr('text-anchor', 'end')
       .attr('dy', '1.5em')
-      .attr('dx', '-5em'); // FIXME: set text anchor correctly and change layout to position labels inside chart
+      .attr('dx', '-1.5em');
 
     const sectionEnter = categoryEnter
       .selectAll('timeline__section')
@@ -247,7 +261,10 @@ class CategoryTimeline {
       .filter(d => new Date(d.startDate).getTime() === new Date(d.endDate).getTime())
       .append('circle')
       .attr('r', (d) => {
-        if (new Date(d.startDate) < this.config.scaleStartDate || new Date(d.endDate) > this.config.scaleEndDate) {
+        if (
+          new Date(d.startDate) < this.config.scaleStartDate
+          || new Date(d.endDate) > this.config.scaleEndDate
+        ) {
           return 0;
         }
         return this.y.bandwidth() / 4;

@@ -14,6 +14,11 @@ class App extends Component {
       lang: 'fi',
       filenames: [],
       filters: {},
+      infoMsg: {
+        en:
+          'Please select which register adminstrators you want to view from the panel on the left.',
+        fi: 'Valitse haluttu rekisteriviranomainen paneelista vasemmalla.',
+      },
     };
   }
 
@@ -54,7 +59,7 @@ class App extends Component {
   }
 
   handleLangSelect(event) {
-    console.log(event.target.id)
+    console.log(event.target.id);
     this.setState({ lang: event.target.id });
   }
 
@@ -93,7 +98,9 @@ class App extends Component {
   }
 
   render() {
-    const { filenames, filters, lang } = this.state;
+    const {
+      filenames, filters, lang, infoMsg,
+    } = this.state;
     const timelineTreeCards = filenames
       .sort((a, b) => {
         const forcedFirstStr = 'National Institute for Health and Welfare.json';
@@ -133,10 +140,7 @@ class App extends Component {
         <div className="content-wrapper">
           <div className="sidebar-placeholder" />
           <main className="chart-area">
-            <h2 className="info-header">
-              Please select which register adminstrators you want to view from the panel on the
-              left.
-            </h2>
+            <h2 className="info-header">{infoMsg[lang]}</h2>
             {timelineTreeCards}
           </main>
         </div>

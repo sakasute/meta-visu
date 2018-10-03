@@ -16,6 +16,8 @@ COH_87_COL = 3  # 'D'
 COH_97_COL = 4  # 'E'
 NOTE_COL = 5  # 'F'
 
+CATEGORIES = {"subjects": {"fi": "kohorttilaiset", "en": "subjects"}, "parents": {"fi": "vanhemmat", "en": "parents"}}
+
 data = []
 
 
@@ -147,7 +149,7 @@ def create_samplings(dates_str, cohort, category):
             'startDate': date['start_date'],
             'endDate': date['end_date'],
             'cohort': cohort,
-            'category': category
+            'category': CATEGORIES[category]
         })
     return samplings
 

@@ -53,11 +53,11 @@
   font-size: 1.2rem;
 }
 
-.legend__color-1 {
+.legend__rect-1 {
   fill: var(--category-1-color-light);
 }
 
-.legend__color-2 {
+.legend__rect-2 {
   fill: var(--category-2-color-light);
 }
 

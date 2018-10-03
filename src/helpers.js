@@ -12,11 +12,10 @@ export function calculateCategoryCount(data) {
 
 export function categoryTimelineHelper(samplingData, svg, config) {
   const timelineData = [];
-
   config.categories.forEach((category) => {
     timelineData.push({
-      type: category,
-      data: samplingData.filter(el => el.category === category),
+      category,
+      data: samplingData.filter(el => el.category.en === category.en),
     });
   });
 
