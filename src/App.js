@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RegisterPanel from './RegisterPanel/RegisterPanel';
 import TimelineTreeCard from './TimelineTreeCard/TimelineTreeCard';
 import './App.css';
+import { compareByName } from './helpers';
 
 class App extends Component {
   constructor(props) {
@@ -101,17 +102,10 @@ class App extends Component {
       filenames, filters, lang, infoMsg,
     } = this.state;
     const timelineTreeCards = filenames
-      .sort((a, b) => {
-        const forcedFirstStr = 'National Institute for Health and Welfare.json';
-        if (a === forcedFirstStr) {
-          return -1;
-        }
-        if (b === forcedFirstStr) {
-          return 1;
-        }
-        return 0;
-      })
-      .map((filename) => {
+      .map(filename => ({ filename, name: filters[filename].name }))
+      .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
+      .map((nameObj) => {
+        const { filename } = nameObj;
         const fileFilter = filters[filename];
         return (
           <TimelineTreeCard

@@ -3,6 +3,10 @@
   width: 40rem;
 }
 
+.rc-slider-tooltip {
+  z-index: 7;
+}
+
 .year-control__slider {
 }
 
