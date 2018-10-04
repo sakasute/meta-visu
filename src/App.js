@@ -12,6 +12,7 @@ class App extends Component {
     this.handleLangSelect = this.handleLangSelect.bind(this);
     this.data = {};
     this.state = {
+      dataset: 'finnish-birth-cohort',
       lang: 'fi',
       filenames: [],
       filters: {},
@@ -24,14 +25,30 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // get starting parameters/cofiguration from the url
+    const url = new URL(window.location.href);
+    const langParam = url.searchParams.get('lang');
+    const datasetParam = url.searchParams.get('ds');
+    let { lang, dataset } = this.state;
+    // defaults
+    if (['en', 'fi'].includes(langParam)) {
+      lang = langParam;
+    }
+    if (!['finnish-birth-cohort', 'psycohorts'].includes(datasetParam)) {
+      dataset = datasetParam;
+    }
+    this.setState({ lang, dataset });
+    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
     const data = {};
     let filenamesArr = [];
     // first get filenames, then get data from those files
-    fetch('data/filenames.json')
+    fetch(`data/${dataset}/filenames.json`)
       .then(res => res.json())
       .then((filenames) => {
         filenamesArr = filenames;
-        Promise.all(filenames.map(filename => fetch(`data/${filename}`).then(res => res.json())))
+        Promise.all(
+          filenames.map(filename => fetch(`data/${dataset}/${filename}`).then(res => res.json())),
+        )
           .then((jsons) => {
             jsons.forEach((json, i) => {
               data[filenamesArr[i]] = json;
@@ -60,7 +77,10 @@ class App extends Component {
   }
 
   handleLangSelect(event) {
-    this.setState({ lang: event.target.id });
+    const newLang = event.target.id;
+    const { dataset } = this.state;
+    this.setState({ lang: newLang });
+    window.history.pushState(null, '', `?lang=${newLang}&ds=${dataset}`); // just changes the url to reflect the state
   }
 
   // NOTE: this is damn ugly but this is the way to update nested state without external library

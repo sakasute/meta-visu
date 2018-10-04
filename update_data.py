@@ -6,7 +6,8 @@ import json
 import regex
 import pprint
 
-DATA_PATH = 'public/data/'
+DATASET = 'finnish-birth-cohort'
+DATA_PATH = 'public/data/' + DATASET + '/'
 START_ROW = 4
 
 REG_ADM_COL = 0  # 'A'

@@ -5,9 +5,7 @@ import YearSlider from './YearSlider';
 function CardHeader({ lang, name, yearSelected }) {
   return (
     <div className="card__header">
-      <a href={`#${name[lang]}`} className="title card__title">
-        {name[lang]}
-      </a>
+      <h2 className="title card__title">{name[lang]}</h2>
       <div className="card__year-control">
         <h3 className="year-control-title">Set years:</h3>
         <YearSlider slideStopped={yearSelected} />

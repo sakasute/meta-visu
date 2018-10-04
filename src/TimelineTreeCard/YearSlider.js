@@ -6,7 +6,7 @@ import 'rc-slider/assets/index.css';
 import './YearSlider.css';
 
 function YearSlider({ slideStopped }) {
-  const handle = (props) => {
+  /*   const handle = (props) => {
     const {
       value, dragging, index, ...restProps
     } = props;
@@ -21,7 +21,7 @@ function YearSlider({ slideStopped }) {
         <Handle value={value} {...restProps} />
       </Tooltip>
     );
-  };
+  }; */
 
   const currentYear = new Date().getFullYear();
 
