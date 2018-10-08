@@ -72,7 +72,6 @@ class TimelineTreeCard extends Component {
       <div className={classes}>
         <CardHeader
           lang={lang}
-          filename={filename}
           name={fileFilter.name}
           defaultStartYear={timelineConfig.scaleStartDate.getFullYear()}
           handleYearSelection={this.handleYearSelection}

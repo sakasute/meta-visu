@@ -38,7 +38,13 @@ class RegisterPanel extends Component {
         ? 'nav__language-selector nav__language-selector--selected'
         : 'nav__language-selector';
       return (
-        <button type="button" className={langClasses} key={langOpt} id={langOpt} onClick={handleLangSelect}>
+        <button
+          type="button"
+          className={langClasses}
+          key={langOpt}
+          id={langOpt}
+          onClick={handleLangSelect}
+        >
           {langOpt}
         </button>
       );
