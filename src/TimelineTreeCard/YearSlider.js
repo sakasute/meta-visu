@@ -5,7 +5,7 @@ import Tooltip from 'rc-tooltip';
 import 'rc-slider/assets/index.css';
 import './YearSlider.css';
 
-function YearSlider({ slideStopped }) {
+function YearSlider({ slideStopped, defaultStartYear }) {
   /*   const handle = (props) => {
     const {
       value, dragging, index, ...restProps
@@ -33,7 +33,7 @@ function YearSlider({ slideStopped }) {
         // handle={handle}
         min={1900}
         max={currentYear}
-        defaultValue={[1987, currentYear]}
+        defaultValue={[defaultStartYear, currentYear]}
         onAfterChange={slideStopped}
       />
       <span className="year-control__label">{currentYear}</span>
@@ -43,6 +43,7 @@ function YearSlider({ slideStopped }) {
 
 YearSlider.propTypes = {
   slideStopped: PropTypes.func.isRequired,
+  defaultStartYear: PropTypes.number.isRequired,
 };
 
 export default YearSlider;

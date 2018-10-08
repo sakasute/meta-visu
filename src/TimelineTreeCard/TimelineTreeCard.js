@@ -9,14 +9,20 @@ import './TimelineTreeCard.css';
 class TimelineTreeCard extends Component {
   constructor(props) {
     super(props);
-    this.yearSelected = this.yearSelected.bind(this);
-    this.currentYear = new Date().getFullYear();
+    this.handleYearSelection = this.handleYearSelection.bind(this);
     this.state = {
-      scaleYears: [1987, this.currentYear],
+      scaleYears: [],
     };
   }
 
-  yearSelected(yearArr) {
+  componentDidMount() {
+    const { timelineConfig } = this.props;
+    const startYear = timelineConfig.scaleStartDate.getFullYear();
+    const currentYear = new Date().getFullYear();
+    this.setState({ scaleYears: [startYear, currentYear] });
+  }
+
+  handleYearSelection(yearArr) {
     this.setState({ scaleYears: yearArr });
   }
 
@@ -68,7 +74,8 @@ class TimelineTreeCard extends Component {
           lang={lang}
           filename={filename}
           name={fileFilter.name}
-          yearSelected={this.yearSelected}
+          defaultStartYear={timelineConfig.scaleStartDate.getFullYear()}
+          handleYearSelection={this.handleYearSelection}
         />
         {renderSVG()}
       </div>
