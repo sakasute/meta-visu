@@ -7,9 +7,11 @@ import { compareByName } from './helpers';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.checkURLParams = this.checkURLParams.bind(this);
+    this.handleLangSelect = this.handleLangSelect.bind(this);
+    this.initializeFilters = this.initializeFilters.bind(this);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
-    this.handleLangSelect = this.handleLangSelect.bind(this);
     this.data = {};
     this.state = {
       dataset: 'finnish-birth-cohort',
@@ -27,18 +29,8 @@ class App extends Component {
   componentDidMount() {
     // get starting parameters/cofiguration from the url
     const url = new URL(window.location.href);
-    const langParam = url.searchParams.get('lang');
-    const datasetParam = url.searchParams.get('ds');
-    let { lang, dataset } = this.state;
-    // defaults
-    if (['en', 'fi'].includes(langParam)) {
-      lang = langParam;
-    }
-    if (!['finnish-birth-cohort', 'psycohorts'].includes(datasetParam)) {
-      dataset = datasetParam;
-    }
-    this.setState({ lang, dataset });
-    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
+    const { dataset } = this.checkURLParams(url);
+
     const data = {};
     let filenamesArr = [];
     // first get filenames, then get data from those files
@@ -56,24 +48,25 @@ class App extends Component {
           })
           .then(() => {
             this.data = data;
-            // Initialize the filterState
-            const filters = {};
-            filenames.forEach((filename) => {
-              filters[filename] = {
-                name: this.data[filename].name,
-                isSelected: false,
-                registers: {},
-              };
-              this.data[filename].registers.forEach((register) => {
-                filters[filename].registers[register.name.en] = {
-                  name: register.name,
-                  isSelected: true,
-                };
-              });
-            });
-            this.setState({ filenames, filters });
+            this.initializeFilters(filenames);
           });
       });
+  }
+
+  checkURLParams(url) {
+    const langParam = url.searchParams.get('lang');
+    const datasetParam = url.searchParams.get('ds');
+    let { lang, dataset } = this.state;
+    // defaults
+    if (['en', 'fi'].includes(langParam)) {
+      lang = langParam;
+    }
+    if (!['finnish-birth-cohort', 'psycohorts'].includes(datasetParam)) {
+      dataset = datasetParam;
+    }
+    this.setState({ lang, dataset });
+    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
+    return { lang, dataset };
   }
 
   handleLangSelect(event) {
@@ -81,6 +74,24 @@ class App extends Component {
     const { dataset } = this.state;
     this.setState({ lang: newLang });
     window.history.pushState(null, '', `?lang=${newLang}&ds=${dataset}`); // just changes the url to reflect the state
+  }
+
+  initializeFilters(filenames) {
+    const filters = {};
+    filenames.forEach((filename) => {
+      filters[filename] = {
+        name: this.data[filename].name,
+        isSelected: false,
+        registers: {},
+      };
+      this.data[filename].registers.forEach((register) => {
+        filters[filename].registers[register.name.en] = {
+          name: register.name,
+          isSelected: true,
+        };
+      });
+    });
+    this.setState({ filenames, filters });
   }
 
   // NOTE: this is damn ugly but this is the way to update nested state without external library
@@ -121,6 +132,7 @@ class App extends Component {
     const {
       filenames, filters, lang, infoMsg,
     } = this.state;
+
     const timelineTreeCards = filenames
       .map(filename => ({ filename, name: filters[filename].name }))
       .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
