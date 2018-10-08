@@ -120,7 +120,7 @@ class CategoryTimeline {
 
       category
         .append('rect')
-        .attr('class', ` legend__rect-${idx + 1}`)
+        .attr('class', `fill-color-${idx + 1}`)
         .attr('width', this.y.bandwidth() / 2)
         .attr('height', this.y.bandwidth() / 2);
 
@@ -247,12 +247,13 @@ class CategoryTimeline {
       .attr('class', 'timeline__section');
 
     // enter timespan sections => rectangles
+    const cohortNum = this.config.cohorts.length;
     sectionEnter
       .filter(d => new Date(d.startDate).getFullYear() !== new Date(d.endDate).getFullYear())
       .append('rect')
       .attr('class', 'timeline__rect')
       .attr('x', d => this.calculateSectionXPos(d))
-      .attr('height', this.y.bandwidth() / 2)
+      .attr('height', this.y.bandwidth() / cohortNum)
       .attr('width', d => this.calculateSectionWidth(d));
 
     // enter point sections => circles
@@ -275,6 +276,7 @@ class CategoryTimeline {
     // IDEA: if short timespans become a problem
     // (ie. sections consisting of several small pieces leading to year labels overflowing),
     // they could be combined before reaching this point
+
     sectionEnter
       .append('text')
       .attr('class', 'timeline__year-label')
@@ -282,11 +284,14 @@ class CategoryTimeline {
       .attr('text-anchor', 'middle')
       .attr('transform', d => this.positionYearLabel(d));
 
-    sectionEnter
-      .filter(d => d.cohort === '1997')
-      .attr('transform', `translate(0, ${this.y.bandwidth() / 2})`)
-      .select('.timeline__rect')
-      .attr('class', 'timeline__rect timeline__rect--97');
+    // move cohorts to "own lanes"
+    this.config.cohorts.forEach((cohort, idx) => {
+      sectionEnter
+        .filter(d => d.cohort === cohort)
+        .attr('transform', `translate(0, ${(this.y.bandwidth() / cohortNum) * idx})`)
+        .select('.timeline__rect')
+        .attr('class', `timeline__rect fill-color-${idx + 1}`);
+    });
   }
 }
 

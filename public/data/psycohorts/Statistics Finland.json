@@ -1,0 +1,128 @@
+{
+  "name": {
+    "en": "Statistics Finland",
+    "fi": "Tilastokeskus"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "Cause of Death Register",
+        "fi": "Kuolemansyytilasto"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Causes of deaths",
+            "fi": "Kuolinsyyt"
+          },
+          "samplings": [
+            {
+              "startDate": "2015-01-01",
+              "endDate": "2015-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2015-01-01",
+              "endDate": "2015-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2015-01-01",
+              "endDate": "2015-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "<?>",
+        "fi": "<?>"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Occupation and socioeconomic status",
+            "fi": "Ammatti, sosioekonominen asema"
+          },
+          "samplings": [
+            {
+              "startDate": "1995-01-01",
+              "endDate": "1995-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2000-01-01",
+              "endDate": "2000-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2004-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Register of Educational Achievements",
+        "fi": "Tutkintorekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Highest degree",
+            "fi": "Korkein suoritettu tutkinto"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

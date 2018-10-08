@@ -25,7 +25,6 @@ class TimelineTreeSVG extends Component {
       height: 100,
       showXAxis: false,
       showLegend: false,
-      scaleStartDate: new Date('1987-01-01'),
       scaleEndDate: new Date(),
     };
     this.state = {};

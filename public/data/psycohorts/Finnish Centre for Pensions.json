@@ -1,0 +1,272 @@
+{
+  "name": {
+    "en": "Finnish Centre for Pensions",
+    "fi": "Eläketurvakeskus ETK"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "Pension Register",
+        "fi": "Eläkerekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Employee pension extras",
+            "fi": "Työeläkelisät"
+          },
+          "samplings": [
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2010-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2010-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2010-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2010-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Employee pension",
+            "fi": "Työeläketiedot"
+          },
+          "samplings": [
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Earning Register",
+        "fi": "Ansaintarekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "<no description>",
+            "fi": "<ei kuvausta>"
+          },
+          "samplings": [
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Unpaid times",
+            "fi": "Palkattomat ajat"
+          },
+          "samplings": [
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2005-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2005-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2005-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1967-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2005-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

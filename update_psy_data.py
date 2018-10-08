@@ -6,16 +6,18 @@ import json
 import regex
 import pprint
 
-DATASET = 'finnish-birth-cohort'
+DATASET = 'psycohorts'
+FILENAME = 'PSYCOHORTS-registers.xlsx'
 DATA_PATH = 'public/data/' + DATASET + '/'
 START_ROW = 4
 
 REG_ADM_COL = 0  # 'A'
 REG_COL = 1  # 'B'
 CAT_COL = 2  # 'C'
-COH_87_COL = 3  # 'D'
-COH_97_COL = 4  # 'E'
-NOTE_COL = 5  # 'F'
+COH_66_COL = {'subjects': 3, 'parents': 5}
+COH_86_COL = {'subjects': 4, 'parents': 6}
+
+NOTE_COL = 7  # 'H'
 
 CATEGORIES = {"subjects": {"fi": "kohorttilaiset", "en": "subjects"}, "parents": {"fi": "vanhemmat", "en": "parents"}}
 
@@ -36,8 +38,8 @@ def parse_dates(raw_dates_str):
 
 
 def format_date(date_str, default_date):
-    valid1 = regex.match('^[0-9]{4}$', date_str)
-    valid2 = regex.match('^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}$', date_str)
+    valid1 = regex.match('^[0-9]{4}$', date_str)  # just a year
+    valid2 = regex.match('^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}$', date_str)  # whole date
 
     if valid1:
         return date_str + default_date
@@ -107,11 +109,11 @@ def parse_sheet(sheet, sampling_category):
             # using dict() here creates a copy of the dict so the function doesn't modify the original
             category_idx = create_category(dict(category), register_admin_idx, register_idx)
 
-        cohort_87_dates_str = str(row_fi[COH_87_COL].value)
-        cohort_97_dates_str = str(row_fi[COH_97_COL].value)
+        cohort_87_dates_str = str(row_fi[COH_66_COL[sampling_category]].value)
+        cohort_97_dates_str = str(row_fi[COH_86_COL[sampling_category]].value)
 
-        samplings_87 = create_samplings(cohort_87_dates_str, '1987', sampling_category)
-        samplings_97 = create_samplings(cohort_97_dates_str, '1997', sampling_category)
+        samplings_87 = create_samplings(cohort_87_dates_str, '1966', sampling_category)
+        samplings_97 = create_samplings(cohort_97_dates_str, '1986', sampling_category)
 
         add_samplings(samplings_87 + samplings_97, register_admin_idx, register_idx, category_idx)
 
@@ -160,12 +162,10 @@ def add_samplings(samplings, register_admin_idx, register_idx, category_idx):
         data[register_admin_idx]['registers'][register_idx]['categories'][category_idx]['samplings'].append(sampling)
 
 
-workbook = load_workbook('FBC-rekisterit.xlsx', read_only=True)
-subject_sheet = workbook['Kohorttilaiset']
-parse_sheet(subject_sheet, 'subjects')
-
-parent_sheet = workbook['Vanhemmat']
-parse_sheet(parent_sheet, 'parents')
+workbook = load_workbook(FILENAME, read_only=True)
+sheet = workbook['registers']
+parse_sheet(sheet, 'subjects')
+parse_sheet(sheet, 'parents')
 
 filenames = []
 # pp = pprint.PrettyPrinter(depth=5)

@@ -14,16 +14,11 @@
 }
 
 .timeline__rect {
-  fill: var(--category-1-color-light);
   opacity: 0.75;
 }
 
 .timeline__rect:hover {
   opacity: 1;
-}
-
-.timeline__rect--97 {
-  fill: var(--category-2-color-light);
 }
 
 .timeline__year-label {
@@ -53,11 +48,11 @@
   font-size: 1.2rem;
 }
 
-.legend__rect-1 {
+.fill-color-1 {
   fill: var(--category-1-color-light);
 }
 
-.legend__rect-2 {
+.fill-color-2 {
   fill: var(--category-2-color-light);
 }
 

@@ -1,0 +1,148 @@
+{
+  "name": {
+    "en": "Population Register Centre",
+    "fi": "Väestörekisterikeskus"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "Population Information System",
+        "fi": "Väestötietojärjestelmä"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Addresses",
+            "fi": "Osoitteet"
+          },
+          "samplings": [
+            {
+              "startDate": "2017-01-01",
+              "endDate": "2017-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2017-01-01",
+              "endDate": "2017-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2017-01-01",
+              "endDate": "2017-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2017-01-01",
+              "endDate": "2017-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Children born in the family",
+            "fi": "Syntyneet lapset"
+          },
+          "samplings": [
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Marital history",
+            "fi": "Aviohistoria"
+          },
+          "samplings": [
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2016-01-01",
+              "endDate": "2016-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

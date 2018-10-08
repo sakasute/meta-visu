@@ -18,6 +18,8 @@ class App extends Component {
       lang: 'fi',
       filenames: [],
       filters: {},
+      treeConfig: {},
+      timelineConfig: {},
       infoMsg: {
         en:
           'Please select which register adminstrators you want to view from the panel on the left.',
@@ -29,7 +31,8 @@ class App extends Component {
   componentDidMount() {
     // get starting parameters/cofiguration from the url
     const url = new URL(window.location.href);
-    const { dataset } = this.checkURLParams(url);
+    const { dataset, lang } = this.checkURLParams(url);
+    this.updateConfigs(dataset, lang);
 
     const data = {};
     let filenamesArr = [];
@@ -61,7 +64,7 @@ class App extends Component {
     if (['en', 'fi'].includes(langParam)) {
       lang = langParam;
     }
-    if (!['finnish-birth-cohort', 'psycohorts'].includes(datasetParam)) {
+    if (['finnish-birth-cohort', 'psycohorts'].includes(datasetParam)) {
       dataset = datasetParam;
     }
     this.setState({ lang, dataset });
@@ -128,9 +131,32 @@ class App extends Component {
     }));
   }
 
+  updateConfigs(dataset) {
+    switch (dataset) {
+      case 'finnish-birth-cohorts':
+        this.setState({
+          timelineConfig: {
+            cohorts: ['1987', '1997'],
+            scaleStartDate: new Date('1987-01-01'),
+          },
+        });
+        break;
+      case 'psycohorts':
+        this.setState({
+          timelineConfig: {
+            cohorts: ['1966', '1986'],
+            scaleStartDate: new Date('1966-01-01'),
+          },
+        });
+        break;
+      default:
+        console.log('No such dataset!');
+    }
+  }
+
   render() {
     const {
-      filenames, filters, lang, infoMsg,
+      filenames, filters, lang, infoMsg, treeConfig, timelineConfig,
     } = this.state;
 
     const timelineTreeCards = filenames
@@ -146,8 +172,8 @@ class App extends Component {
             filename={filename}
             data={this.data[filename]}
             fileFilter={fileFilter}
-            treeConfig={{ lang }}
-            timelineConfig={{ lang }}
+            treeConfig={{ ...treeConfig, lang }}
+            timelineConfig={{ ...timelineConfig, lang }}
             key={filename}
           />
         );
