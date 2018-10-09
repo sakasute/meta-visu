@@ -21,8 +21,7 @@ class App extends Component {
     return { lang, dataset };
   }
 
-  static updateConfigs(dataset) {
-    console.log('ds', dataset);
+  static initializeConfigs(dataset) {
     let timelineConfig = {};
     switch (dataset) {
       case 'finnish-birth-cohorts':
@@ -33,7 +32,7 @@ class App extends Component {
         break;
       case 'psycohorts':
         timelineConfig = {
-          cohorts: ['1966', '1986'],
+          cohorts: ['1966', '1986', '1987', '1997'],
           scaleStartDate: new Date('1966-01-01'),
         };
         break;
@@ -69,7 +68,7 @@ class App extends Component {
     // get starting parameters/cofiguration from the url
     const url = new URL(window.location.href);
     const { dataset, lang } = this.constructor.checkURLParams(url);
-    const timelineConfig = this.constructor.updateConfigs(dataset, lang);
+    const timelineConfig = this.constructor.initializeConfigs(dataset, lang);
 
     const data = {};
     let filenamesArr = [];

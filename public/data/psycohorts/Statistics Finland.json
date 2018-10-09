@@ -17,8 +17,17 @@
           },
           "samplings": [
             {
-              "startDate": "2015-01-01",
-              "endDate": "2015-01-01",
+              "startDate": "1965-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1985-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1986",
               "category": {
                 "fi": "kohorttilaiset",
@@ -26,8 +35,8 @@
               }
             },
             {
-              "startDate": "2015-01-01",
-              "endDate": "2015-01-01",
+              "startDate": "1971-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1966",
               "category": {
                 "fi": "vanhemmat",
@@ -35,9 +44,45 @@
               }
             },
             {
-              "startDate": "2015-01-01",
-              "endDate": "2015-01-01",
+              "startDate": "1985-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1997",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
@@ -98,8 +143,8 @@
       "categories": [
         {
           "name": {
-            "en": "Highest degree",
-            "fi": "Korkein suoritettu tutkinto"
+            "en": "Degree data",
+            "fi": "Tutkintotiedot"
           },
           "samplings": [
             {
@@ -118,6 +163,33 @@
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
               }
             }
           ]

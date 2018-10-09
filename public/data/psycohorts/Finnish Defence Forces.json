@@ -1,0 +1,55 @@
+{
+  "name": {
+    "en": "Finnish Defence Forces",
+    "fi": "Puolustusvoimat"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "Results of aptitude tests register",
+        "fi": "Peruskoerekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Results of aptitude tests",
+            "fi": "Peruskokeiden tulokset"
+          },
+          "samplings": []
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Data on service register",
+        "fi": "Asevelvollisuusrekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Service class data",
+            "fi": "Palveluskelpoisuusluokka"
+          },
+          "samplings": [
+            {
+              "startDate": "2005-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Overindebtedness",
+            "fi": "Ylivelkaantumistiedot"
+          },
+          "samplings": []
+        }
+      ]
+    }
+  ]
+}

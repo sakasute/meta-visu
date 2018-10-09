@@ -95,38 +95,45 @@
             "en": "Employee pension",
             "fi": "Työeläketiedot"
           },
+          "samplings": []
+        },
+        {
+          "name": {
+            "en": "Pension data",
+            "fi": "Eläketiedot"
+          },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1966",
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
             },
             {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1986",
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
             },
             {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1966",
+              "startDate": "1964-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
               }
             },
             {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1986",
+              "startDate": "1965-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
@@ -144,41 +151,23 @@
       "categories": [
         {
           "name": {
-            "en": "<no description>",
-            "fi": "<ei kuvausta>"
+            "en": "Earning periods",
+            "fi": "Ansaintajaksot"
           },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1966",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1986",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1966",
+              "startDate": "1943-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
               }
             },
             {
-              "startDate": "2016-01-01",
-              "endDate": "2016-01-01",
-              "cohort": "1986",
+              "startDate": "1954-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
@@ -259,6 +248,86 @@
               "startDate": "2005-01-01",
               "endDate": "2016-12-31",
               "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1968-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1970-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Annual earnings",
+            "fi": "Vuosiansiot"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1943-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1950-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"

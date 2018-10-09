@@ -33,6 +33,24 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2012-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         }
