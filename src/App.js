@@ -5,17 +5,54 @@ import './App.css';
 import { compareByName } from './helpers';
 
 class App extends Component {
+  static checkURLParams(url) {
+    const langParam = url.searchParams.get('lang');
+    const datasetParam = url.searchParams.get('ds');
+    let lang = langParam || 'fi';
+    let dataset = datasetParam || 'finnish-birth-cohorts';
+    // defaults
+    if (['en', 'fi'].includes(langParam)) {
+      lang = langParam;
+    }
+    if (['finnish-birth-cohorts', 'psycohorts'].includes(datasetParam)) {
+      dataset = datasetParam;
+    }
+    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
+    return { lang, dataset };
+  }
+
+  static updateConfigs(dataset) {
+    console.log('ds', dataset);
+    let timelineConfig = {};
+    switch (dataset) {
+      case 'finnish-birth-cohorts':
+        timelineConfig = {
+          cohorts: ['1987', '1997'],
+          scaleStartDate: new Date('1987-01-01'),
+        };
+        break;
+      case 'psycohorts':
+        timelineConfig = {
+          cohorts: ['1966', '1986'],
+          scaleStartDate: new Date('1966-01-01'),
+        };
+        break;
+
+      default:
+        console.log('Given dataset was not found!');
+    }
+    return timelineConfig;
+  }
+
   constructor(props) {
     super(props);
-    this.checkURLParams = this.checkURLParams.bind(this);
     this.handleLangSelect = this.handleLangSelect.bind(this);
-    this.initializeFilters = this.initializeFilters.bind(this);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
     this.data = {};
     this.state = {
-      dataset: 'finnish-birth-cohort',
-      lang: 'fi',
+      dataset: '',
+      lang: '',
       filenames: [],
       filters: {},
       treeConfig: {},
@@ -31,8 +68,8 @@ class App extends Component {
   componentDidMount() {
     // get starting parameters/cofiguration from the url
     const url = new URL(window.location.href);
-    const { dataset, lang } = this.checkURLParams(url);
-    this.updateConfigs(dataset, lang);
+    const { dataset, lang } = this.constructor.checkURLParams(url);
+    const timelineConfig = this.constructor.updateConfigs(dataset, lang);
 
     const data = {};
     let filenamesArr = [];
@@ -51,25 +88,16 @@ class App extends Component {
           })
           .then(() => {
             this.data = data;
-            this.initializeFilters(filenames);
+            const filters = this.initializeFilters(filenames);
+            this.setState({
+              dataset,
+              filenames,
+              filters,
+              lang,
+              timelineConfig,
+            });
           });
       });
-  }
-
-  checkURLParams(url) {
-    const langParam = url.searchParams.get('lang');
-    const datasetParam = url.searchParams.get('ds');
-    let { lang, dataset } = this.state;
-    // defaults
-    if (['en', 'fi'].includes(langParam)) {
-      lang = langParam;
-    }
-    if (['finnish-birth-cohort', 'psycohorts'].includes(datasetParam)) {
-      dataset = datasetParam;
-    }
-    this.setState({ lang, dataset });
-    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
-    return { lang, dataset };
   }
 
   handleLangSelect(event) {
@@ -94,7 +122,7 @@ class App extends Component {
         };
       });
     });
-    this.setState({ filenames, filters });
+    return filters;
   }
 
   // NOTE: this is damn ugly but this is the way to update nested state without external library
@@ -129,29 +157,6 @@ class App extends Component {
         },
       },
     }));
-  }
-
-  updateConfigs(dataset) {
-    switch (dataset) {
-      case 'finnish-birth-cohorts':
-        this.setState({
-          timelineConfig: {
-            cohorts: ['1987', '1997'],
-            scaleStartDate: new Date('1987-01-01'),
-          },
-        });
-        break;
-      case 'psycohorts':
-        this.setState({
-          timelineConfig: {
-            cohorts: ['1966', '1986'],
-            scaleStartDate: new Date('1966-01-01'),
-          },
-        });
-        break;
-      default:
-        console.log('No such dataset!');
-    }
   }
 
   render() {

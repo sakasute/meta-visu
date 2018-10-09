@@ -6,7 +6,7 @@ import json
 import regex
 import pprint
 
-DATASET = 'finnish-birth-cohort'
+DATASET = 'finnish-birth-cohorts'
 FILENAME = 'FBC-rekisterit.xlsx'
 DATA_PATH = 'public/data/' + DATASET + '/'
 START_ROW = 4
