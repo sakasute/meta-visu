@@ -57,10 +57,10 @@ filenames = []
 
 for dataset in data:
     filename = dataset['name']['en'] + '.json'
-    with open(DATA_PATH + filename, 'w') as f:
+    with open(DATA_PATH + filename, 'w', encoding='utf-8') as f:
         print('Create/update file: ' + DATA_PATH + filename)
         json.dump(dataset, f, ensure_ascii=False, default=str, indent=2)
         filenames.append(filename)
 
-with open(DATA_PATH + 'filenames.json', 'w') as f:
+with open(DATA_PATH + 'filenames.json', 'w', encoding='utf-8') as f:
     json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)

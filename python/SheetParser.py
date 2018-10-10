@@ -124,7 +124,8 @@ class SheetParser:
 
             register['fi'] = row_fi[self.reg_col].value if row_fi[self.reg_col].value != None else register['fi']
             register['en'] = row_en[self.reg_col].value if row_en[self.reg_col].value != None else register['en']
-            register_idx = self.find_by_name(self.data[register_admin_idx]['registers'], register, 'en')
+            register_idx = self.find_by_name(
+                self.data[register_admin_idx]['registers'], register, 'en')
 
             if register_idx == None:
                 # using dict() here creates a copy of the dict so the function doesn't modify the original
@@ -137,12 +138,14 @@ class SheetParser:
 
             if category_idx == None:
                 # using dict() here creates a copy of the dict so the function doesn't modify the original
-                category_idx = self.create_category(dict(category), register_admin_idx, register_idx)
+                category_idx = self.create_category(
+                    dict(category), register_admin_idx, register_idx)
 
             samplings = []
             for cohort_col in self.cohort_cols:
                 cohort_dates_str = str(row_fi[cohort_col['col']].value)
-                cohort_samplings = self.create_samplings(cohort_dates_str, cohort_col['cohort'], cohort_col['category'])
+                cohort_samplings = self.create_samplings(
+                    cohort_dates_str, cohort_col['cohort'], cohort_col['category'])
                 samplings += cohort_samplings
 
             self.add_samplings(samplings, register_admin_idx, register_idx, category_idx)
