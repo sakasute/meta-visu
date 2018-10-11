@@ -1,0 +1,669 @@
+{
+  "name": {
+    "en": "National Institute for Health and Welfare",
+    "fi": "THL"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "Terveydenhuollon hoitoilmoitusrekisteri",
+        "fi": "Care Register for Health Care"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Specialized care Inpatient treatments",
+            "fi": "Erikoissairaanhoidon osastokäynnit"
+          },
+          "samplings": [
+            {
+              "startDate": "2008-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2008-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2008-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2008-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Specialized care outpatient treatments",
+            "fi": "Erikoissairaanhoidon poliklinikkakäynnit"
+          },
+          "samplings": [
+            {
+              "startDate": "1966-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1966-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1966-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1966-01-01",
+              "endDate": "2018-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1998-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1998-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1998-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1998-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Register of Primary Health Care visits",
+        "fi": "Perusterveydenhuollon avohoidon hoitoilmoitus"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Primary care outpatient treatments",
+            "fi": "Perusterveyden avohoidon käynnit"
+          },
+          "samplings": [
+            {
+              "startDate": "2011-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2011-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2011-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2011-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Finnish Cancer Registry",
+        "fi": "Suomen Syöpärekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Cancer Register",
+            "fi": "Syöpärekisteri"
+          },
+          "samplings": [
+            {
+              "startDate": "1952-01-01",
+              "endDate": "2013-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1952-01-01",
+              "endDate": "2013-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1952-01-01",
+              "endDate": "2013-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1952-01-01",
+              "endDate": "2013-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Mass screening data, Cervical and breast cancer screening data ",
+            "fi": "Joukkorekisteridata (kohdunkaulan ja rintasyövän seulontatiedot)"
+          },
+          "samplings": [
+            {
+              "startDate": "1992-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1992-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1992-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1992-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Finnish Medical Birth Register",
+        "fi": "Syntymärekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Pregnancy and birth outcomes (own)",
+            "fi": "Oman syntymän raskaus- ja synnytystiedot"
+          },
+          "samplings": [
+            {
+              "startDate": "1986-01-01",
+              "endDate": "1986-01-01",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        },
+        {
+          "name": {
+            "en": "Pregnancy and birth outcomes (childrens)",
+            "fi": "Omien lasten raskaus- ja synnytystiedot"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Visual Disability Register",
+        "fi": "Näkövammarekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Visual Disability Register",
+            "fi": "Näkövammarekisteri"
+          },
+          "samplings": [
+            {
+              "startDate": "1983-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1983-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1983-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1983-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Infectious Disease Register",
+        "fi": "Tartuntatautirekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Chlamydia trachomatis",
+            "fi": "Klamydia"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2013-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Register on Induced Abortions",
+        "fi": "Raskaudenkeskeyttämisrekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Induced abortions",
+            "fi": "Raskaudenkeskeytykset"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Register on Social Assistance",
+        "fi": "Toimeentulorekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Social assistance",
+            "fi": "Toimeentulotuki"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Institutionalized care in social institutions",
+        "fi": "Sosiaalihuollon hoitoilmoitusrekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Institutional care and diagnosis",
+            "fi": "Palveluala ja diagnoosit"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2011-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1994-01-01",
+              "endDate": "2005-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1996-01-01",
+              "endDate": "2014-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Register on Child Welfare",
+        "fi": "Lastensuojelurekisteri"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Children placed in out-of-home -care",
+            "fi": "Lastensuojelutoimenpiteiden kohteena olleet kohorttiin kuuluvat"
+          },
+          "samplings": [
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2008-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

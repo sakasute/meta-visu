@@ -1,0 +1,33 @@
+{
+  "name": {
+    "en": "Ministry of Employment and the Economy",
+    "fi": "Työ- ja elinkeinoministeriö"
+  },
+  "registers": [
+    {
+      "name": {
+        "en": "Data from the information system of the Employment and Economic Development Offices (URA)",
+        "fi": "Työnvälitystilasto"
+      },
+      "categories": [
+        {
+          "name": {
+            "en": "Summary penal judgements",
+            "fi": "Rangaistusmääräykset"
+          },
+          "samplings": [
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
