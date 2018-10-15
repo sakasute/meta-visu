@@ -135,6 +135,7 @@ class TreeChart {
   addNodeLabels(nodeGroup) {
     nodeGroup
       .filter(d => d.parent)
+      .append('a')
       .append('text')
       .attr('class', 'tree__node-label')
       .attr('dy', d => this.constructor.calculateLabelPlacement(d))
@@ -142,6 +143,20 @@ class TreeChart {
       .attr('text-anchor', 'middle')
       .text(d => d.data.name[this.config.lang])
       .call(this.constructor.wrapText, 205);
+
+    // add actual links to nodes with URLs
+    nodeGroup
+      .selectAll('a')
+      .filter(d => {
+        const link = d.data.link ? d.data.link[this.config.lang] : '';
+        if (link !== '') {
+          return true;
+        }
+      })
+      .attr('href', d => d.data.link[this.config.lang])
+      .attr('rel', 'noopener noreferrer')
+      .attr('target', '_blank')
+      .attr('class', 'tree__url-link');
 
     // NOTE: handle root node separately to support text wrapping
     this.addRootLabel(nodeGroup.filter(d => !d.parent));

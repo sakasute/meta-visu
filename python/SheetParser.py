@@ -165,10 +165,9 @@ class SheetParser:
             register_admin['fi'] = row_fi[self.reg_adm_col].value if row_fi[self.reg_adm_col].value != None else register_admin['fi']
             register_admin['en'] = row_en[self.reg_adm_col].value if row_en[self.reg_adm_col].value != None else register_admin['en']
             register_admin_idx = self.find_by_name(self.data, register_admin, 'en')
-            print(register_admin)
+
             register = {'fi': row_fi[self.reg_col].value, 'en': row_en[self.reg_col].value}
             register_idx = self.find_by_name(self.data[register_admin_idx]['registers'], register, 'en')
-            print(register)
 
             try:
                 link_fi = row_fi[link_col].value
