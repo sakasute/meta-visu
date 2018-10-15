@@ -170,13 +170,13 @@ class SheetParser:
             register_idx = self.find_by_name(self.data[register_admin_idx]['registers'], register, 'en')
 
             try:
-                link_fi = row_fi[link_col].value
+                link_fi = row_fi[link_col].value if row_fi[link_col].value != None else ''
             except IndexError:
                 link_fi = ''
 
             try:
-                link_en = row_en[link_col].value
-            except:
+                link_en = row_en[link_col].value if row_en[link_col].value != None else ''
+            except IndexError:
                 link_en = ''
 
             link = {'fi': link_fi, 'en': link_en}
