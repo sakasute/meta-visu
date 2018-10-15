@@ -15,6 +15,9 @@ class SheetParser:
         self.cat_col = config['cat_col']
         self.cohort_cols = config['cohort_cols']
 
+    def add_link(self, link, register_admin_idx, register_idx):
+        self.data[register_admin_idx]['registers'][register_idx]['link'] = link
+
     def create_register_admin(self, register_admin):
         self.data.append({
             'name': register_admin,
@@ -27,6 +30,7 @@ class SheetParser:
         # TODO: add support for keywords and URLs to register description
         self.data[register_admin_idx]['registers'].append({
             'name': register,
+            'link': {'fi': "", 'en': ""},
             'categories': []
         })
         return len(self.data[register_admin_idx]['registers']) - 1
@@ -91,18 +95,9 @@ class SheetParser:
         return dates
 
     def parse_sheet(self):
-        register_admin = {
-            'en': '',
-            'fi': '',
-        }
-        register = {
-            'en': '',
-            'fi': '',
-        }
-        category = {
-            'en': '',
-            'fi': '',
-        }
+        register_admin = {'en': '', 'fi': ''}
+        register = {'en': '', 'fi': ''}
+        category = {'en': '', 'fi': ''}
         iterator = self.sheet.iter_rows(min_row=self.start_row)
         for row in iterator:
             row_fi = row
@@ -149,3 +144,41 @@ class SheetParser:
                 samplings += cohort_samplings
 
             self.add_samplings(samplings, register_admin_idx, register_idx, category_idx)
+
+    def parse_link_sheet(self, link_sheet):
+        register_admin = {'fi': '', 'en': ''}
+
+        link_col = 2
+        iterator = link_sheet.iter_rows(min_row=self.start_row)
+        for row in iterator:
+            row_fi = row
+            try:
+                row_en = next(iterator)
+            except StopIteration:
+                break
+
+            if len(row_en) == 0:
+                break
+
+            # NOTE: this method assumes that register admins and registers have already been created
+            # with parse_sheet()
+            register_admin['fi'] = row_fi[self.reg_adm_col].value if row_fi[self.reg_adm_col].value != None else register_admin['fi']
+            register_admin['en'] = row_en[self.reg_adm_col].value if row_en[self.reg_adm_col].value != None else register_admin['en']
+            register_admin_idx = self.find_by_name(self.data, register_admin, 'en')
+            print(register_admin)
+            register = {'fi': row_fi[self.reg_col].value, 'en': row_en[self.reg_col].value}
+            register_idx = self.find_by_name(self.data[register_admin_idx]['registers'], register, 'en')
+            print(register)
+
+            try:
+                link_fi = row_fi[link_col].value
+            except IndexError:
+                link_fi = ''
+
+            try:
+                link_en = row_en[link_col].value
+            except:
+                link_en = ''
+
+            link = {'fi': link_fi, 'en': link_en}
+            self.add_link(dict(link), register_admin_idx, register_idx)

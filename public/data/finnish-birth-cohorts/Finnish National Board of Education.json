@@ -6,8 +6,12 @@
   "registers": [
     {
       "name": {
-        "en": "<no name>",
-        "fi": "<ei nimeä>"
+        "en": "Benefits Register",
+        "fi": "Etuusrekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {

@@ -53,6 +53,8 @@ parents_parser.data = subjects_data
 parents_parser.parse_sheet()
 data = parents_parser.data
 
+parents_parser.parse_link_sheet(workbook['links'])
+
 filenames = []
 
 for dataset in data:

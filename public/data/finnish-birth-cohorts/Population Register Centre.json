@@ -9,6 +9,10 @@
         "en": "Population Information System",
         "fi": "Väestötietojärjestelmä"
       },
+      "link": {
+        "fi": "https://vrk.fi/vaestotietojarjestelma",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -113,8 +117,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-11-03",
-              "endDate": "2016-11-03",
+              "startDate": "2016-01-01",
+              "endDate": false,
               "cohort": "1997",
               "category": {
                 "fi": "kohorttilaiset",
@@ -122,8 +126,8 @@
               }
             },
             {
-              "startDate": "2009-06-10",
-              "endDate": "2009-06-10",
+              "startDate": "2009-01-01",
+              "endDate": false,
               "cohort": "1987",
               "category": {
                 "fi": "vanhemmat",
@@ -131,8 +135,8 @@
               }
             },
             {
-              "startDate": "2016-11-03",
-              "endDate": "2016-11-03",
+              "startDate": "2016-01-01",
+              "endDate": false,
               "cohort": "1997",
               "category": {
                 "fi": "vanhemmat",
@@ -148,8 +152,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-03-15",
-              "endDate": "2016-03-15",
+              "startDate": "2016-01-01",
+              "endDate": false,
               "cohort": "1997",
               "category": {
                 "fi": "kohorttilaiset",
@@ -165,8 +169,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-03-15",
-              "endDate": "2016-03-15",
+              "startDate": "2016-01-01",
+              "endDate": false,
               "cohort": "1997",
               "category": {
                 "fi": "kohorttilaiset",
