@@ -104,7 +104,6 @@
 }
 
 .nav__list {
-  overflow-x: hidden;
   list-style: none;
   padding: 2.5rem;
   padding-top: 0;

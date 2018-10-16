@@ -1,24 +1,43 @@
 .year-control {
   display: flex;
   width: 40rem;
+  padding: 0 4rem;
 }
 
-.rc-slider-tooltip {
-  z-index: 7;
+.input-range__slider {
+  background: var(--thl-blue);
+  border: 1px solid var(--thl-blue);
+  z-index: 10;
 }
 
-.year-control__slider {
+.input-range__slider:focus {
+  box-shadow: 0 0 0 5px rgba(10, 187, 182, 0.4);
 }
 
-.year-control__slider > .rc-slider-track {
-  background-color: var(--thl-blue);
+.input-range__track--active {
+  background: var(--thl-blue);
 }
 
-.year-control__slider > .rc-slider-rail {
-  background-color: var(--light-gray);
+.input-range__label--min,
+.input-range__label--max {
+  font: 1.2rem sans-serif;
+  font-weight: bold;
+  bottom: -0.25rem;
 }
-.year-control__slider > .rc-slider-handle {
-  border-color: var(--thl-blue);
+
+.input-range__label--min {
+  left: -2rem;
+}
+
+.input-range__label--max {
+  right: -2rem;
+}
+
+.input-range__label--value {
+  color: var(--thl-dark-gray);
+  font: 1.2rem sans-serif;
+  top: auto;
+  bottom: -1.75rem;
 }
 
 .year-control__label {

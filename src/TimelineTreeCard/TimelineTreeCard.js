@@ -11,7 +11,8 @@ class TimelineTreeCard extends Component {
     super(props);
     this.handleYearSelection = this.handleYearSelection.bind(this);
     this.state = {
-      scaleYears: [],
+      scaleYearsSlider: { min: 1900, max: 2018 },
+      scaleYears: { min: 1900, max: 2018 },
     };
   }
 
@@ -19,11 +20,22 @@ class TimelineTreeCard extends Component {
     const { timelineConfig } = this.props;
     const startYear = timelineConfig.scaleStartDate.getFullYear();
     const currentYear = new Date().getFullYear();
-    this.setState({ scaleYears: [startYear, currentYear] });
+    this.setState({ scaleYearsSlider: { min: startYear, max: currentYear } });
+    this.setState({ scaleYears: { min: startYear, max: currentYear } });
   }
 
-  handleYearSelection(yearArr) {
-    this.setState({ scaleYears: yearArr });
+  handleYearSelection(years, mode) {
+    const { scaleYearsSlider } = this.state;
+    switch (mode) {
+      case 'change':
+        this.setState({ scaleYearsSlider: { min: years.min, max: years.max } });
+        break;
+      case 'afterChange':
+        this.setState({ scaleYears: scaleYearsSlider });
+        break;
+      default:
+        console.log('no such event mode');
+    }
   }
 
   render() {
@@ -31,9 +43,9 @@ class TimelineTreeCard extends Component {
       lang, show, filename, data, fileFilter, treeConfig, timelineConfig,
     } = this.props;
 
-    const { scaleYears } = this.state;
-    const scaleStartDate = new Date(`${scaleYears[0]}-01-01`);
-    const scaleEndDate = new Date(`${scaleYears[1]}-12-31`);
+    const { scaleYearsSlider, scaleYears } = this.state;
+    const scaleStartDate = new Date(`${scaleYears.min}-01-01`);
+    const scaleEndDate = new Date(`${scaleYears.max}-12-31`);
     const timelineConfigExtended = {
       ...timelineConfig,
       scaleStartDate,
@@ -50,7 +62,8 @@ class TimelineTreeCard extends Component {
       + Object.values(registerFilter)
         .map(reg => reg.isSelected)
         .join('')
-      + scaleYears.join('')
+      + scaleYears.min
+      + scaleYears.max
       + lang;
 
     const renderSVG = () => {
@@ -73,7 +86,7 @@ class TimelineTreeCard extends Component {
         <CardHeader
           lang={lang}
           name={fileFilter.name}
-          defaultStartYear={timelineConfig.scaleStartDate.getFullYear()}
+          selectedYears={scaleYearsSlider}
           handleYearSelection={this.handleYearSelection}
         />
         {renderSVG()}

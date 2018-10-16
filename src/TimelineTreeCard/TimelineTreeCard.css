@@ -27,13 +27,14 @@
 
 .card__year-control {
   align-content: flex-end;
+  height: 4rem;
 }
 
 .year-control-title {
   font-size: 1.2rem;
   color: var(--thl-gray);
   text-align: center;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 1rem 0;
 }
 
 .card--collapsed {

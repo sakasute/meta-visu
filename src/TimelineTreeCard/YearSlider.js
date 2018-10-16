@@ -1,49 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Range, Handle } from 'rc-slider';
-import Tooltip from 'rc-tooltip';
-import 'rc-slider/assets/index.css';
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/input-range/input-range.css';
 import './YearSlider.css';
 
-function YearSlider({ slideStopped, defaultStartYear }) {
-  /*   const handle = (props) => {
-    const {
-      value, dragging, index, ...restProps
-    } = props;
-    return (
-      <Tooltip
-        prefixCls="rc-slider-tooltip"
-        overlay={value}
-        visible={dragging}
-        placement="bottom"
-        key={index}
-      >
-        <Handle value={value} {...restProps} />
-      </Tooltip>
-    );
-  }; */
-
+function YearSlider({ handleYearSelection, selectedYears }) {
   const currentYear = new Date().getFullYear();
 
   return (
     <div className="year-control">
-      <span className="year-control__label">1900</span>
-      <Range
+      <InputRange
         className="year-control__slider"
-        // handle={handle}
-        min={1900}
-        max={currentYear}
-        defaultValue={[defaultStartYear, currentYear]}
-        onAfterChange={slideStopped}
+        minValue={1900}
+        maxValue={currentYear}
+        value={selectedYears}
+        onChange={years => handleYearSelection(years, 'change')}
+        onChangeComplete={years => handleYearSelection(years, 'afterChange')}
       />
-      <span className="year-control__label">{currentYear}</span>
     </div>
   );
 }
 
 YearSlider.propTypes = {
-  slideStopped: PropTypes.func.isRequired,
-  defaultStartYear: PropTypes.number.isRequired,
+  handleYearSelection: PropTypes.func.isRequired,
+  selectedYears: PropTypes.object.isRequired,
 };
 
 export default YearSlider;
