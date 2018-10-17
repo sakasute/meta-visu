@@ -9,6 +9,10 @@
         "en": "Cause of Death Register",
         "fi": "Kuolemansyytilasto"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -97,6 +101,10 @@
         "en": "<?>",
         "fi": "<?>"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -139,6 +147,10 @@
       "name": {
         "en": "Register of Educational Achievements",
         "fi": "Tutkintorekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {

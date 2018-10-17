@@ -72,9 +72,10 @@ for dataset in data:
     filename = dataset['name']['en'] + '.json'
     with open(DATA_PATH + filename, 'w', encoding='utf-8') as f:
         print('Create/update file: ' + DATA_PATH + filename)
-        print(dataset['name']['fi'])
         json.dump(dataset, f, ensure_ascii=False, default=str, indent=2)
         filenames.append(filename)
 
 with open(DATA_PATH + 'filenames.json', 'w', encoding='utf-8') as f:
     json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
+
+sheet_parser.bundle_json_files(DATA_PATH)

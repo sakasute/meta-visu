@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import regex
+import os
+import json
 
 
 class SheetParser:
@@ -14,6 +16,25 @@ class SheetParser:
         self.reg_col = config['reg_col']
         self.cat_col = config['cat_col']
         self.cohort_cols = config['cohort_cols']
+
+    @staticmethod
+    def bundle_json_files(path):
+        # NOTE: this method breaks if there are subfolders in the given path
+        filelist = os.listdir(path)
+        try:
+            filelist.remove('filenames.json')
+            filelist.remove('data_bundle.json')
+        except ValueError:
+            pass
+
+        data_bundle = {}
+        for filename in filelist:
+            with open(path + filename, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                data_bundle[filename] = data
+
+        with open(path + 'data_bundle.json', 'w', encoding='utf-8') as f:
+            json.dump(data_bundle, f, ensure_ascii=False, default=str)
 
     def add_link(self, link, register_admin_idx, register_idx):
         self.data[register_admin_idx]['registers'][register_idx]['link'] = link

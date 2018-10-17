@@ -70,32 +70,19 @@ class App extends Component {
     const { dataset, lang } = this.constructor.checkURLParams(url);
     const timelineConfig = this.constructor.initializeConfigs(dataset, lang);
 
-    const data = {};
-    let filenamesArr = [];
-    // first get filenames, then get data from those files
-    fetch(`data/${dataset}/filenames.json`)
+    fetch(`data/${dataset}/data_bundle.json`)
       .then(res => res.json())
-      .then((filenames) => {
-        filenamesArr = filenames;
-        Promise.all(
-          filenames.map(filename => fetch(`data/${dataset}/${filename}`).then(res => res.json())),
-        )
-          .then((jsons) => {
-            jsons.forEach((json, i) => {
-              data[filenamesArr[i]] = json;
-            });
-          })
-          .then(() => {
-            this.data = data;
-            const filters = this.initializeFilters(filenames);
-            this.setState({
-              dataset,
-              filenames,
-              filters,
-              lang,
-              timelineConfig,
-            });
-          });
+      .then((dataBundle) => {
+        this.data = dataBundle;
+        const filenames = Object.keys(dataBundle);
+        const filters = this.initializeFilters(filenames);
+        this.setState({
+          dataset,
+          filenames,
+          filters,
+          lang,
+          timelineConfig,
+        });
       });
   }
 

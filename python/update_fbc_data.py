@@ -66,3 +66,5 @@ for dataset in data:
 
 with open(DATA_PATH + 'filenames.json', 'w', encoding='utf-8') as f:
     json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
+
+parents_parser.bundle_json_files(DATA_PATH)
