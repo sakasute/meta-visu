@@ -1,4 +1,5 @@
-import * as d3 from 'd3';
+import d3 from './d3imports';
+
 import './TreeChart.css';
 
 class TreeChart {
@@ -187,23 +188,16 @@ class TreeChart {
     // enter
     const nodeEnter = nodeSelection
       .enter()
-      // .filter(d => d.depth > 0)
       .append('g')
       .attr('class', 'tree__node')
       .attr('transform', () => `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`);
-    // .on('click', (d) => {
-    //   this.clickNode(d);
-    // });
 
-    // this.drawNodeCircles(nodeEnter.merge(nodeSelection));
     this.moveNodesInPlace(nodeEnter);
     this.addNodeLabels(nodeEnter);
 
     // exit
     nodeSelection
       .exit()
-      // .transition()
-      // .duration(this.config.animationDuration)
       .attr('transform', `translate(${this.sourceCoord.y}, ${this.sourceCoord.x})`)
       .remove();
   }
@@ -220,7 +214,6 @@ class TreeChart {
     // enter
     const linkEnter = linkSelection
       .enter()
-      // .filter(d => d.depth > 1) // don't draw links to root element
       .insert('path', 'g')
       .attr('class', 'tree__link')
       .attr('d', () => {
@@ -228,16 +221,11 @@ class TreeChart {
         return this.constructor.diagonal(o, o);
       });
 
-    linkEnter
-      // .transition()
-      // .duration(this.config.duration)
-      .attr('d', d => this.constructor.diagonal(d, d.parent));
+    linkEnter.attr('d', d => this.constructor.diagonal(d, d.parent));
 
     // exit
     linkSelection
       .exit()
-      .transition()
-      .duration(750)
       .attr('d', () => {
         const o = { y: this.sourceCoord.y, x: this.sourceCoord.x };
         return this.constructor.diagonal(o, o);
