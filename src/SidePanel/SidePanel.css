@@ -44,7 +44,7 @@
 }
 
 .sidePanel__langSelector {
-  color: var(--thl-gray);
+  color: var(--thl-ui-text);
   cursor: pointer;
   font-size: 1.6rem;
   text-decoration: underline;

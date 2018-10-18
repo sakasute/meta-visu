@@ -23,29 +23,40 @@ body {
 }
 
 :root {
-  --category-1-color: #519b2f;
-  --category-1-color-alt: #7bc143;
+  /* The category colors are from here: https://terho.thl.fi/wiki01/display/viestinta/Kuviot+ja+visualisoinnit?preview=/154993756/154993752/THL%20tiedon%20visualisoinnin%20ohjeistus_200618_bookmarks.pdf */
+  --category-1-color: hsl(101, 53%, 40%);
+  --category-1-color-alt: hsl(93, 50%, 51%);
   --category-1-color-light: hsl(93, 50%, 61%);
-  --category-2-color: #2f62ad;
-  --category-2-color-alt: #29a0c1;
+  --category-2-color: hsl(216, 57%, 43%);
+  --category-2-color-alt: hsl(193, 65%, 46%);
   --category-2-color-light: hsl(193, 65%, 56%);
-  --category-3-color: #be3f72;
-  --category-3-color-alt: #cc77ac;
-  --category-4-color: #faa61a;
+  --category-3-color: hsl(336, 50%, 50%);
+  --category-3-color-alt: hsl(323, 45%, 63%);
+  --category-4-color: hsl(38, 96%, 54%);
 
-  --dark-gray: #606060;
-  --medium-gray: #c3c2c6;
-  --light-gray: #dcdfe2;
-  --v-light-gray: hsl(210, 9%, 95%);
+  --dark-gray: hsl(0, 0%, 38%);
+  --medium-gray: hsl(255, 3%, 77%);
+  --light-gray: hsl(210, 9%, 87%);
+  --v-light-gray: rgb(241, 242, 243);
 
-  --thl-green: rgb(123, 193, 67);
-  --thl-gray: rgb(128, 127, 131);
-  --thl-orange: rgb(250, 166, 26);
-  --thl-red: rgb(237, 22, 81);
-  --thl-ruby: rgb(226, 0, 119);
-  --thl-lila: rgb(177, 154, 202);
-  --thl-blue: rgb(81, 145, 205);
-  --thl-turquoise: rgb(10, 187, 182);
+  /* Colours below are from here: https://yhteistyotilat.fi/wiki08/pages/viewpage.action?pageId=21561358 */
+  --thl-background: hsl(0, 0%, 95%);
+  --thl-ui-text: hsl(0, 0%, 38%);
+  --thl-main-text: hsl(0, 0%, 19%);
+  --thl-link: hsl(205, 100%, 33%);
+  --thl-highlight: hsl(38, 96%, 54%);
+
+  --thl-turquoise: hsl(180, 92%, 32%);
+  --thl-blue: hsl(207, 66%, 42%);
+  --thl-lila: hsl(266, 36%, 59%);
+  --thl-pink: hsl(311, 46%, 52%);
+  --thl-red: hsl(339, 65%, 55%);
+  --thl-brown: hsl(36, 90%, 37%);
+  --thl-cyan: hsl(193, 65%, 46%);
+
+  /* apparently these greens should only be used  in thl.fi*/
+  --thl-green: hsl(93, 50%, 51%);
+  --thl-dark-green: hsl(101, 53%, 40%);
 }
 
 @media print {

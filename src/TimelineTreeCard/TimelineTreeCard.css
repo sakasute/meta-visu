@@ -10,7 +10,7 @@
 
 .year-control-title {
   font-size: 1.2rem;
-  color: var(--thl-gray);
+  color: var(--thl-ui-text);
   text-align: center;
   margin: 0 0 1rem 0;
 }
