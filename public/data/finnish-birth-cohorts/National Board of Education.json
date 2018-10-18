@@ -6,8 +6,8 @@
   "registers": [
     {
       "name": {
-        "en": "Benefits Register",
-        "fi": "Etuusrekisteri"
+        "en": "<unnamed>",
+        "fi": "<ei nimeä>"
       },
       "link": {
         "fi": "",
@@ -19,45 +19,26 @@
             "en": "Joint application data and primary school achievements",
             "fi": "Yhteisvalintatiedot"
           },
-          "samplings": []
-        }
-      ]
-    },
-    {
-      "name": {
-        "en": "Results of aptitude tests register",
-        "fi": "Peruskoerekisteri"
-      },
-      "link": {
-        "fi": "",
-        "en": ""
-      },
-      "categories": [
-        {
-          "name": {
-            "en": "Results of aptitude tests",
-            "fi": "Peruskokeiden tulokset"
-          },
-          "samplings": []
-        }
-      ]
-    },
-    {
-      "name": {
-        "en": "Data on service register",
-        "fi": "Asevelvollisuusrekisteri"
-      },
-      "link": {
-        "fi": "",
-        "en": ""
-      },
-      "categories": [
-        {
-          "name": {
-            "en": "Service class data",
-            "fi": "Palveluskelpoisuusluokka"
-          },
-          "samplings": []
+          "samplings": [
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2012-12-31",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2012-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
         }
       ]
     }
