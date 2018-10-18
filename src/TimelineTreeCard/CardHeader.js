@@ -8,7 +8,7 @@ function CardHeader({
   return (
     <div className="card__header">
       <h2 className="title card__title">{name[lang]}</h2>
-      <div className="card__year-control">
+      <div className="card__yearControl">
         <h3 className="year-control-title">Set years:</h3>
         <YearSlider handleYearSelection={handleYearSelection} selectedYears={selectedYears} />
       </div>

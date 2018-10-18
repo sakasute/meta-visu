@@ -28,15 +28,17 @@ class RegisterPanel extends Component {
     } = this.props;
     const { isMinimized } = this.state;
 
-    const classes = isMinimized ? 'nav nav--closed' : 'nav';
+    const classes = isMinimized
+      ? 'card card--strongShadow sidePanel sidePanel--closed'
+      : 'card card--strongShadow sidePanel';
     const toggleBtnClasses = isMinimized
-      ? 'nav__toggle-btn nav__toggle-btn--rotate'
-      : 'nav__toggle-btn';
+      ? 'sidePanel__toggleControl sidePanel__toggleControl--rotate'
+      : 'sidePanel__toggleControl';
 
     const languageSelectors = ['en', 'fi'].map((langOpt) => {
       const langClasses = lang === langOpt
-        ? 'nav__language-selector nav__language-selector--selected'
-        : 'nav__language-selector';
+        ? 'sidePanel__langSelector sidePanel__langSelector--selected'
+        : 'sidePanel__langSelector';
       return (
         <button
           type="button"
@@ -70,18 +72,15 @@ class RegisterPanel extends Component {
       });
     return (
       <aside className={classes}>
-        <div className="nav__controls">
-          <div className="nav__language-control">{languageSelectors}</div>
-          <div className="nav-toggle">
-            <button type="button" className={toggleBtnClasses} onClick={this.toggleMinimize}>
-              <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
-            </button>
-          </div>
+        <div className="sidePanel__controls">
+          <div className="sidePanel__langControls">{languageSelectors}</div>
+
+          <button type="button" className={toggleBtnClasses} onClick={this.toggleMinimize}>
+            <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
+          </button>
         </div>
 
-        <div className="nav__list-wrapper">
-          <ul className="nav__list">{navItems}</ul>
-        </div>
+        <ul className="simpleList sidePanel__simpleList">{navItems}</ul>
       </aside>
     );
   }

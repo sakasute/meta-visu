@@ -54,7 +54,7 @@ class TimelineTreeCard extends Component {
 
     const classes = show
       ? 'timeline-tree-wrapper card'
-      : 'card--collapsed timeline-tree-wrapper card';
+      : ' timeline-tree-wrapper card card--collapsed';
     const registerFilter = fileFilter.registers;
     // NOTE: this key updates depending on the registerFilter prop to force remounting
     // the TimelineTree with updated filters

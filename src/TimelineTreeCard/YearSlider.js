@@ -8,9 +8,9 @@ function YearSlider({ handleYearSelection, selectedYears }) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="year-control">
+    <div className="yearControl">
       <InputRange
-        className="year-control__slider"
+        className="yearControl__slider"
         minValue={1900}
         maxValue={currentYear}
         value={selectedYears}

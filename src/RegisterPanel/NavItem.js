@@ -33,10 +33,12 @@ class NavItem extends Component {
   render() {
     const { isSelected } = this.state;
     const { filter, lang } = this.props;
-    const btnClass = isSelected ? 'btn btn--selected' : 'btn';
+    const btnClass = isSelected
+      ? 'button button--selected simpleList__button'
+      : 'button simpleList__button';
 
     return (
-      <li className="nav__item">
+      <li>
         <button
           type="button"
           id={filter.name.en}

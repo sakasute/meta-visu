@@ -17,7 +17,7 @@ function RegisterSelector({
       />
     ));
 
-  const selectorClass = show ? 'register-selector' : 'register-selector vanish';
+  const selectorClass = show ? 'simpleList' : 'simpleList vanish';
 
   return <ul className={selectorClass}>{registerItems}</ul>;
 }

@@ -4,11 +4,6 @@
   z-index: 5;
 }
 
-.card {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: white;
-}
-
 .card__header {
   display: flex;
   flex-direction: row;
@@ -25,7 +20,7 @@
   font-weight: bold;
 }
 
-.card__year-control {
+.card__yearControl {
   align-content: flex-end;
   height: 4rem;
 }

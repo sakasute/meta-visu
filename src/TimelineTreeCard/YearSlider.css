@@ -1,4 +1,4 @@
-.year-control {
+.yearControl {
   display: flex;
   width: 40rem;
   padding: 0 4rem;
@@ -38,9 +38,4 @@
   font: 1.2rem sans-serif;
   top: auto;
   bottom: -1.75rem;
-}
-
-.year-control__label {
-  margin: 0 1rem;
-  font-size: 1.2rem;
 }

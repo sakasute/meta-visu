@@ -171,7 +171,7 @@ class App extends Component {
       });
 
     return (
-      <div>
+      <React.Fragment>
         <RegisterPanel
           lang={lang}
           filterState={filters}
@@ -186,7 +186,7 @@ class App extends Component {
             {timelineTreeCards}
           </main>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
