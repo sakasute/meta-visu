@@ -2,7 +2,7 @@ html {
   box-sizing: border-box;
   font-family: sans-serif;
   font-size: 62.5%;
-  background-color: #e2e1e0;
+  background-color: var(--thl-background);
 }
 
 *,
@@ -53,6 +53,12 @@ body {
   --thl-red: hsl(339, 65%, 55%);
   --thl-brown: hsl(36, 90%, 37%);
   --thl-cyan: hsl(193, 65%, 46%);
+
+  --thl-gray-1: hsl(0, 0%, 70%);
+  --thl-gray-2: hsl(0, 0%, 55%);
+  --thl-gray-3: hsl(0, 0%, 40%);
+  --thl-gray-4: hsl(0, 0%, 25%);
+  --thl-gray-5: hsl(0, 0%, 10%);
 
   /* apparently these greens should only be used  in thl.fi*/
   --thl-green: hsl(93, 50%, 51%);

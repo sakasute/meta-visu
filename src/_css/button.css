@@ -6,6 +6,7 @@
   border: none;
   padding: 1rem;
   background-color: var(--light-gray);
+  color: var(--thl-ui-text);
 }
 
 .button:hover {

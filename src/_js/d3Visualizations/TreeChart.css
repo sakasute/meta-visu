@@ -28,11 +28,11 @@
 }
 
 .tree__url-link > * {
-  text-decoration: underline;
+  fill: var(--thl-link);
 }
 
 .tree__url-link > *:hover {
-  fill: var(--thl-blue);
+  text-decoration: underline;
 }
 
 .tree__link {
