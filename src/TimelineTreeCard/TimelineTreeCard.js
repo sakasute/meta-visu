@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import CardHeader from './CardHeader';
-import TimelineTreeSVG from './TimelineTreeSVG';
-
+import CardHeader from '../CardHeader/CardHeader';
+import TimelineTreeSVG from '../TimelineTreeSVG/TimelineTreeSVG';
+import '../_css/card.css';
 import './TimelineTreeCard.css';
 
 class TimelineTreeCard extends Component {

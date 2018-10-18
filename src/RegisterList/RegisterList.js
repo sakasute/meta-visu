@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RegisterItem from './RegisterItem';
-import { compareByName } from '../helpers';
+import RegisterItem from '../RegisterItem/RegisterItem';
+import { compareByName } from '../_js/helpers';
+
+import './RegisterList.css';
 
 function RegisterSelector({
   lang, registerAdminName, registerFilter, show, handleCheckboxChange,

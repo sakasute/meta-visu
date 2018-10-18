@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './RegisterItem.css';
 
 function RegisterItem({ lang, register, handleCheckboxChange }) {
   return (

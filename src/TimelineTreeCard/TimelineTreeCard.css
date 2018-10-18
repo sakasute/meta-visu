@@ -4,36 +4,9 @@
   z-index: 5;
 }
 
-.card__header {
-  display: flex;
-  flex-direction: row;
-  padding: 1rem 1rem 1rem 2.5rem;
-  border-bottom: solid 1px var(--light-gray);
-}
-
-.card__title {
-  flex: 1;
-  margin: auto 0;
-  color: var(--dark-gray);
-  font-size: 1.6rem;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.card__yearControl {
-  align-content: flex-end;
-  height: 4rem;
-}
-
 .year-control-title {
   font-size: 1.2rem;
   color: var(--thl-gray);
   text-align: center;
   margin: 0 0 1rem 0;
-}
-
-.card--collapsed {
-  height: 0;
-  margin: 0;
-  overflow-y: hidden;
 }

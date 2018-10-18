@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import YearSlider from './YearSlider';
+import YearSlider from '../YearSlider/YearSlider';
 
 function CardHeader({
   lang, name, handleYearSelection, selectedYears,

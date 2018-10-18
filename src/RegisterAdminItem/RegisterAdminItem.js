@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import RegisterSelector from './RegisterSelector';
+import RegisterSelector from '../RegisterList/RegisterList';
+
+import '../_css/button.css';
+import './RegisterAdminItem.css';
 
 class NavItem extends Component {
   constructor(props) {

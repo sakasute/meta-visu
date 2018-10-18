@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import RegisterPanel from './RegisterPanel/RegisterPanel';
-import TimelineTreeCard from './TimelineTreeCard/TimelineTreeCard';
+import SidePanel from '../SidePanel/SidePanel';
+import TimelineTreeCard from '../TimelineTreeCard/TimelineTreeCard';
 import './App.css';
-import { compareByName } from './helpers';
+import { compareByName } from '../_js/helpers';
 
 class App extends Component {
   static checkURLParams(url) {
@@ -172,7 +172,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <RegisterPanel
+        <SidePanel
           lang={lang}
           filterState={filters}
           handleLangSelect={this.handleLangSelect}

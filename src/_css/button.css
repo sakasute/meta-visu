@@ -1,0 +1,21 @@
+.button {
+  min-height: 3.5rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  padding: 1rem;
+  background-color: var(--light-gray);
+}
+
+.button:hover {
+  background-color: var(--medium-gray);
+}
+
+.button--selected {
+  background-color: lightgreen;
+}
+
+.button--selected:hover {
+  background-color: hsl(120, 30%, 55%);
+}

@@ -1,26 +1,3 @@
-.card {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  background-color: white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-.card--strongShadow {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-.simpleList {
-  list-style: none;
-  overflow-y: auto;
-  padding: 1rem 0 0 0;
-  font-size: 1.4rem;
-}
-
-.simpleList__button {
-  width: 100%;
-  margin: 1rem auto 0 auto;
-}
-
 .sidePanel {
   position: fixed;
   top: 5vh;
@@ -118,50 +95,4 @@
   padding: 2.5rem;
   padding-top: 0;
   margin: 0;
-}
-
-.registerItem {
-  margin: 0.25rem 0;
-  font-size: 1.2rem;
-}
-
-.registerItem > input,
-.registerItem > label {
-  display: inline-block;
-  vertical-align: top;
-  cursor: pointer;
-}
-.registerItem > input {
-  width: 10%;
-  margin: 0.1rem 0;
-}
-
-.registerItem > label {
-  width: 80%;
-}
-
-.register__item {
-  margin: 0.5rem 0;
-}
-
-.button {
-  height: 3.5rem;
-  line-height: 2rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  border: none;
-  padding: 1rem;
-  background-color: var(--light-gray);
-}
-
-.button:hover {
-  background-color: var(--medium-gray);
-}
-
-.button--selected {
-  background-color: lightgreen;
-}
-
-.button--selected:hover {
-  background-color: hsl(120, 30%, 55%);
 }

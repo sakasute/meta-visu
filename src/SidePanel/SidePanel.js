@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import NavItem from './NavItem';
-import { compareByName } from '../helpers';
+import RegisterAdminItem from '../RegisterAdminItem/RegisterAdminItem';
+import { compareByName } from '../_js/helpers';
 
-import './RegisterPanel.css';
+import '../_css/simpleList.css';
+import '../_css/card.css';
+import './SidePanel.css';
 
 class RegisterPanel extends Component {
   constructor(props) {
@@ -60,7 +62,7 @@ class RegisterPanel extends Component {
       .map((filename) => {
         const filter = filterState[filename];
         return (
-          <NavItem
+          <RegisterAdminItem
             lang={lang}
             key={filename}
             filename={filename}
