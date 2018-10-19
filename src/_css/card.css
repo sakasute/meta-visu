@@ -25,7 +25,7 @@
 .card__title {
   flex: 1;
   margin: auto 0;
-  color: var(--dark-gray);
+  color: var(--thl-ui-text);
   font-size: 1.6rem;
   text-decoration: none;
   font-weight: bold;

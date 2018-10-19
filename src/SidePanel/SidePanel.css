@@ -53,7 +53,7 @@
 }
 
 .sidePanel__langSelector--selected {
-  color: var(--thl-blue);
+  color: var(--thl-link);
   font-weight: bold;
   text-decoration: none;
   cursor: auto;

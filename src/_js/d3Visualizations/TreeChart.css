@@ -11,7 +11,7 @@
   width: 100px;
   text-align: center;
   margin: 0;
-  color: var(--dark-gray);
+  color: var(--thl-ui-text);
   font-weight: bold;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .tree__node-label {
-  fill: var(--dark-gray);
+  fill: var(--thl-ui-text);
   font-weight: bold;
 }
 
@@ -37,6 +37,6 @@
 
 .tree__link {
   fill: none;
-  stroke: var(--medium-gray);
+  stroke: var(--thl-gray-1);
   stroke-width: 2px;
 }

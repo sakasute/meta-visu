@@ -5,18 +5,18 @@
   cursor: pointer;
   border: none;
   padding: 1rem;
-  background-color: var(--light-gray);
+  background-color: var(--thl-gray-1);
   color: var(--thl-ui-text);
 }
 
 .button:hover {
-  background-color: var(--medium-gray);
+  background-color: var(--thl-gray-2);
 }
 
 .button--selected {
-  background-color: lightgreen;
+  background-color: var(--thl-primary-1-v-light);
 }
 
 .button--selected:hover {
-  background-color: hsl(120, 30%, 55%);
+  background-color: var(--thl-primary-1-light);
 }

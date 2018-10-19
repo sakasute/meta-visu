@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import RegisterItem from '../RegisterItem/RegisterItem';
 import { compareByName } from '../_js/helpers';
 
+import '../_css/simpleList.css';
 import './RegisterList.css';
 
 function RegisterSelector({
@@ -19,7 +20,9 @@ function RegisterSelector({
       />
     ));
 
-  const selectorClass = show ? 'simpleList' : 'simpleList vanish';
+  const selectorClass = show
+    ? 'simpleList registerList__simpleList'
+    : 'simpleList registerList__simpleList vanish';
 
   return <ul className={selectorClass}>{registerItems}</ul>;
 }

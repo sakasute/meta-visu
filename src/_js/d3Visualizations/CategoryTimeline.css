@@ -4,28 +4,27 @@
 }
 
 .timeline__title {
-  fill: var(--dark-gray);
+  fill: var(--thl-ui-text);
 }
 
 .timeline__separator {
   stroke-width: 1;
-  stroke: var(--dark-gray);
+  stroke: var(--thl-ui-text);
   stroke-dasharray: 4;
 }
 
 .timeline__rect {
-  opacity: 0.75;
 }
 
 .timeline__rect:hover {
-  opacity: 1;
+  opacity: 0.5;
 }
 
 .timeline__year-label {
   font-size: 1rem;
   font-weight: bold;
-  opacity: 0.75;
   pointer-events: none;
+  fill: var(--thl-gray-6);
 }
 
 .timeline__axis {
@@ -34,12 +33,12 @@
 
 .timeline__axis .domain,
 .timeline__axis .tick > line {
-  stroke: var(--dark-gray);
+  stroke: var(--thl-gray-4);
   stroke-width: 1;
 }
 
 .timeline__axis .tick > text {
-  fill: var(--dark-gray);
+  fill: var(--thl-gray-4);
   font-size: 1rem;
   font-weight: bold;
 }
@@ -49,15 +48,31 @@
 }
 
 .fill-color-1 {
-  fill: var(--category-1-color-light);
+  fill: var(--category-1-color-v-light);
 }
 
 .fill-color-2 {
-  fill: var(--category-2-color-light);
+  fill: var(--category-2-color-v-light);
+}
+
+.fill-color-3 {
+  fill: var(--category-3-color-light);
+}
+
+.fill-color-4 {
+  fill: var(--category-4-color-light);
+}
+
+.fill-color-5 {
+  fill: var(--category-5-color-light);
+}
+
+.fill-color-6 {
+  fill: var(--category-6-color-light);
 }
 
 .legend__label {
   font-size: 1rem;
   font-weight: bold;
-  fill: var(--dark-gray);
+  fill: var(--thl-ui-text);
 }

@@ -5,8 +5,8 @@
 }
 
 .input-range__slider {
-  background: var(--thl-blue);
-  border: 1px solid var(--thl-blue);
+  background: var(--thl-primary-2-light);
+  border: 1px solid var(--thl-primary-2-light);
   z-index: 10;
 }
 
@@ -15,26 +15,27 @@
 }
 
 .input-range__track--active {
-  background: var(--thl-blue);
+  background: var(--thl-primary-2-light);
 }
 
 .input-range__label--min,
 .input-range__label--max {
   font: 1.2rem sans-serif;
+  color: var(--thl-ui-text);
   font-weight: bold;
   bottom: -0.25rem;
 }
 
 .input-range__label--min {
-  left: -2rem;
+  left: -2.5rem;
 }
 
 .input-range__label--max {
-  right: -2rem;
+  right: -2.5rem;
 }
 
 .input-range__label--value {
-  color: var(--thl-dark-gray);
+  color: var(--thl-ui-text);
   font: 1.2rem sans-serif;
   top: auto;
   bottom: -1.75rem;

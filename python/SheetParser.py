@@ -48,7 +48,7 @@ class SheetParser:
         return len(self.data) - 1
 
     def create_register(self, register, register_admin_idx):
-        # TODO: add support for keywords and URLs to register description
+        # TODO: add support for keywords
         self.data[register_admin_idx]['registers'].append({
             'name': register,
             'link': {'fi': "", 'en': ""},

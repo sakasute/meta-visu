@@ -115,69 +115,21 @@
             "en": "Occupations",
             "fi": "Ammatti"
           },
-          "samplings": [
-            {
-              "startDate": "2016-01-01",
-              "endDate": false,
-              "cohort": "1997",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "2009-01-01",
-              "endDate": false,
-              "cohort": "1987",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "2016-01-01",
-              "endDate": false,
-              "cohort": "1997",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            }
-          ]
+          "samplings": []
         },
         {
           "name": {
             "en": "Relationships to mother and father",
             "fi": "Sukulaisuussuhteet (isään ja äitiin)"
           },
-          "samplings": [
-            {
-              "startDate": "2016-01-01",
-              "endDate": false,
-              "cohort": "1997",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            }
-          ]
+          "samplings": []
         },
         {
           "name": {
             "en": "Number of cohabitants and their birth dates",
             "fi": "Muiden asukkaiden määrä ja syntymäpäivät (kohorttilaisen kanssa)"
           },
-          "samplings": [
-            {
-              "startDate": "2016-01-01",
-              "endDate": false,
-              "cohort": "1997",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            }
-          ]
+          "samplings": []
         },
         {
           "name": {

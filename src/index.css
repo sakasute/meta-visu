@@ -25,14 +25,28 @@ body {
 :root {
   /* The category colors are from here: https://terho.thl.fi/wiki01/display/viestinta/Kuviot+ja+visualisoinnit?preview=/154993756/154993752/THL%20tiedon%20visualisoinnin%20ohjeistus_200618_bookmarks.pdf */
   --category-1-color: hsl(101, 53%, 40%);
-  --category-1-color-alt: hsl(93, 50%, 51%);
-  --category-1-color-light: hsl(93, 50%, 61%);
+  --category-1-color-light: hsl(101, 53%, 55%);
+  --category-1-color-v-light: hsl(101, 53%, 75%);
+
   --category-2-color: hsl(216, 57%, 43%);
-  --category-2-color-alt: hsl(193, 65%, 46%);
-  --category-2-color-light: hsl(193, 65%, 56%);
-  --category-3-color: hsl(336, 50%, 50%);
-  --category-3-color-alt: hsl(323, 45%, 63%);
-  --category-4-color: hsl(38, 96%, 54%);
+  --category-2-color-light: hsl(216, 57%, 58%);
+  --category-2-color-v-light: hsl(216, 57%, 75%);
+
+  --category-3-color: hsl(323, 45%, 63%);
+  --category-3-color-light: hsl(323, 45%, 78%);
+  --category-3-color-v-light: hsl(323, 45%, 88%);
+
+  --category-4-color: hsl(193, 65%, 46%);
+  --category-4-color-light: hsl(193, 65%, 61%);
+  --category-4-color-v-light: hsl(193, 65%, 71%);
+
+  --category-5-color: hsl(336, 50%, 50%);
+  --category-5-color-light: hsl(336, 50%, 65%);
+  --category-5-color-v-light: hsl(336, 50%, 75%);
+
+  --category-6-color: hsl(38, 96%, 54%);
+  --category-6-color-light: hsl(38, 96%, 69%);
+  --category-6-color-v-light: hsl(38, 96%, 79%);
 
   --dark-gray: hsl(0, 0%, 38%);
   --medium-gray: hsl(255, 3%, 77%);
@@ -54,11 +68,21 @@ body {
   --thl-brown: hsl(36, 90%, 37%);
   --thl-cyan: hsl(193, 65%, 46%);
 
-  --thl-gray-1: hsl(0, 0%, 70%);
-  --thl-gray-2: hsl(0, 0%, 55%);
-  --thl-gray-3: hsl(0, 0%, 40%);
-  --thl-gray-4: hsl(0, 0%, 25%);
-  --thl-gray-5: hsl(0, 0%, 10%);
+  --thl-primary-1: hsl(97, 60%, 43%);
+  --thl-primary-1-light: hsl(97, 60%, 55%);
+  --thl-primary-1-v-light: hsl(97, 60%, 70%);
+  --thl-primary-1-vv-light: hsl(97, 60%, 85%);
+  --thl-primary-2: hsl(216, 57%, 43%);
+  --thl-primary-2-light: hsl(216, 57%, 55%);
+  --thl-primary-2-v-light: hsl(216, 57%, 70%);
+  --thl-primary-2-vv-light: hsl(216, 57%, 85%);
+
+  --thl-gray-1: hsl(0, 0%, 85%);
+  --thl-gray-2: hsl(0, 0%, 70%);
+  --thl-gray-3: hsl(0, 0%, 55%);
+  --thl-gray-4: hsl(0, 0%, 40%);
+  --thl-gray-5: hsl(0, 0%, 25%);
+  --thl-gray-6: hsl(0, 0%, 10%);
 
   /* apparently these greens should only be used  in thl.fi*/
   --thl-green: hsl(93, 50%, 51%);
