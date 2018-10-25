@@ -46,6 +46,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleLangSelect = this.handleLangSelect.bind(this);
+    this.toggleCohortFilter = this.toggleCohortFilter.bind(this);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
     this.data = {};
@@ -53,6 +54,7 @@ class App extends Component {
       dataset: '',
       lang: '',
       filenames: [],
+      cohortFilter: {},
       filters: {},
       treeConfig: {},
       timelineConfig: {},
@@ -69,6 +71,10 @@ class App extends Component {
     const url = new URL(window.location.href);
     const { dataset, lang } = this.constructor.checkURLParams(url);
     const timelineConfig = this.constructor.initializeConfigs(dataset, lang);
+    const cohortFilter = {};
+    timelineConfig.cohorts.forEach((cohort) => {
+      cohortFilter[cohort] = { isSelected: true, name: cohort };
+    });
 
     fetch(`data/${dataset}/data_bundle.json`)
       .then(res => res.json())
@@ -77,6 +83,7 @@ class App extends Component {
         const filenames = Object.keys(dataBundle);
         const filters = this.initializeFilters(filenames);
         this.setState({
+          cohortFilter,
           dataset,
           filenames,
           filters,
@@ -145,9 +152,43 @@ class App extends Component {
     }));
   }
 
+  toggleCohortFilter(cohort) {
+    const { cohortFilter } = this.state;
+    const cohortState = cohortFilter[cohort];
+    if (cohortState) {
+      const cohortSelected = cohortState.isSelected;
+      this.setState(prevState => ({
+        ...prevState,
+        cohortFilter: {
+          ...prevState.cohortFilter,
+          [cohort]: {
+            ...prevState.cohortFilter[cohort],
+            isSelected: !cohortSelected,
+          },
+        },
+      }));
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        cohortFilter: {
+          ...prevState.cohortFilter,
+          [cohort]: {
+            isSelected: false,
+          },
+        },
+      }));
+    }
+  }
+
   render() {
     const {
-      filenames, filters, lang, infoMsg, treeConfig, timelineConfig,
+      cohortFilter,
+      filenames,
+      filters,
+      lang,
+      infoMsg,
+      treeConfig,
+      timelineConfig,
     } = this.state;
 
     const timelineTreeCards = filenames
@@ -174,7 +215,9 @@ class App extends Component {
       <React.Fragment>
         <SidePanel
           lang={lang}
+          cohortFilter={cohortFilter}
           filterState={filters}
+          handleCohortBtnClick={this.toggleCohortFilter}
           handleLangSelect={this.handleLangSelect}
           handleRegisterAdminBtnClick={this.toggleFileFilter}
           handleRegisterSelection={this.toggleRegisterFilter}

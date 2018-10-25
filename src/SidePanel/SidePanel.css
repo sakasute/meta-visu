@@ -32,10 +32,15 @@
 }
 
 .sidePanel__controls {
-  display: flex;
   flex: 1;
   padding: 2.5rem;
   padding-bottom: 0;
+}
+
+.sidePanel__controlsRow {
+  display: flex;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--thl-gray-1);
 }
 
 .sidePanel__langControls {

@@ -1,0 +1,12 @@
+.cohortItem {
+  cursor: pointer;
+  border: none;
+  background-color: var(--thl-gray-1);
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.cohortItem--selected {
+  color: white;
+  background-color: var(--thl-turquoise);
+}
