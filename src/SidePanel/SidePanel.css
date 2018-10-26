@@ -46,6 +46,7 @@
 .sidePanel__langControls {
   flex: 5;
   margin: auto 0;
+  color: var(--thl-ui-text);
 }
 
 .sidePanel__langSelector {

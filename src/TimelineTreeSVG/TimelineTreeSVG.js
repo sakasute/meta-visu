@@ -11,7 +11,6 @@ import { sortTreeData, calculateCategoryCount, idRef } from '../_js/helpers';
 class TimelineTreeSVG extends Component {
   constructor(props) {
     super(props);
-    this.CATEGORY_HEIGHT = 100;
     this.treeConfigDefault = {
       width: 450,
       height: 100,
@@ -36,17 +35,22 @@ class TimelineTreeSVG extends Component {
     // NOTE: this makes sure that we are not modifying the original data in the App-component
     let data = { ...dataProp };
     const {
-      filename, registerFilter, treeConfig, timelineConfig,
+      filename, cohortFilter, registerFilter, treeConfig, timelineConfig,
     } = this.props;
 
     // ***** TreeChart *****
     const filteredRegisterData = data.registers.filter(
       register => registerFilter[register.name.en].isSelected,
     );
+
+    const selectedCohorts = Object.values(cohortFilter).filter(cohort => cohort.isSelected);
+    const cohortNum = selectedCohorts.length;
+    const categoryTimelineHeight = 2 * (20 * cohortNum) + 30;
+
     data.registers = filteredRegisterData;
     data = sortTreeData(data);
     const categoryCount = calculateCategoryCount(data);
-    const treeHeight = categoryCount * this.CATEGORY_HEIGHT;
+    const treeHeight = categoryCount * categoryTimelineHeight;
     this.treeConfigDefault.height = treeHeight;
 
     const treeConfigExtended = { ...this.treeConfigDefault, ...treeConfig };
@@ -61,11 +65,20 @@ class TimelineTreeSVG extends Component {
     treeChart.updateLinks();
 
     // ***** Timelines *****
-    const timelineConfigExtended = { ...this.timelineConfigDefault, ...timelineConfig };
+    const timelineConfigCohorts = {
+      height: categoryTimelineHeight,
+      cohorts: selectedCohorts.map(cohort => cohort.name),
+    };
+    const timelineConfigExtended = {
+      ...this.timelineConfigDefault,
+      ...timelineConfig,
+      ...timelineConfigCohorts,
+    };
     if (treeChart.treeData.children) {
       treeChart.treeData.children.forEach((registerNode, registerIdx) => {
         registerNode.children.forEach((categoryNode, categoryIdx) => {
           let timelineConfigModified = timelineConfigExtended;
+
           if (registerIdx === 0 && categoryIdx === 0) {
             timelineConfigModified = {
               ...timelineConfigExtended,
@@ -74,13 +87,20 @@ class TimelineTreeSVG extends Component {
               xAxisOrientation: 'top',
             };
           }
+
+          const filteredCohortData = categoryNode.data.samplings.filter(
+            sampling => cohortFilter[sampling.cohort].isSelected,
+          );
           const categoryTimeline = new CategoryTimeline(
-            categoryNode.data.samplings,
+            filteredCohortData,
             svg,
             timelineConfigModified,
           );
           // NOTE: the tree structure kind of swaps x and y coords
-          categoryTimeline.moveTo(categoryNode.y + 300, categoryNode.x + 12.5);
+          categoryTimeline.moveTo(
+            categoryNode.y + 300,
+            categoryNode.x + 50 + 10 - categoryTimelineHeight / 2,
+          );
           categoryTimeline.update();
         });
       });

@@ -60,6 +60,7 @@ class RegisterPanel extends Component {
 
     const cohortSelectors = Object.values(cohortFilter).map(cohort => (
       <CohortItem
+        key={cohort.name}
         selected={cohort.isSelected}
         name={cohort.name}
         handleClick={handleCohortBtnClick}

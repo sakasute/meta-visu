@@ -40,7 +40,14 @@ class TimelineTreeCard extends Component {
 
   render() {
     const {
-      lang, show, filename, data, fileFilter, treeConfig, timelineConfig,
+      lang,
+      show,
+      filename,
+      data,
+      cohortFilter,
+      fileFilter,
+      treeConfig,
+      timelineConfig,
     } = this.props;
 
     const { scaleYearsSlider, scaleYears } = this.state;
@@ -58,9 +65,11 @@ class TimelineTreeCard extends Component {
     const registerFilter = fileFilter.registers;
     // NOTE: this key updates depending on the registerFilter prop to force remounting
     // the TimelineTree with updated filters
-    const svgKey = Object.keys(registerFilter).join('')
-      + Object.values(registerFilter)
-        .map(reg => reg.isSelected)
+    const svgKey = Object.values(registerFilter)
+      .map(register => register.isSelected)
+      .join('')
+      + Object.values(cohortFilter)
+        .map(cohort => cohort.isSelected)
         .join('')
       + scaleYears.min
       + scaleYears.max
@@ -71,6 +80,7 @@ class TimelineTreeCard extends Component {
         return (
           <TimelineTreeSVG
             data={data}
+            cohortFilter={cohortFilter}
             registerFilter={registerFilter}
             treeConfig={treeConfig}
             timelineConfig={timelineConfigExtended}

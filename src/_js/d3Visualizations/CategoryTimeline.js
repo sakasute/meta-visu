@@ -39,8 +39,11 @@ class CategoryTimeline {
       .scaleBand()
       .domain(this.config.categories.map(category => category.en))
       .range([this.xAxisPadding, this.config.height])
-      .paddingInner(0.25)
+      .paddingInner(0.1)
       .round(true);
+
+    this.cohortNum = this.config.cohorts.length;
+    this.cohortHeight = this.y.bandwidth() / this.cohortNum;
   }
 
   static prepareData(data, config) {
@@ -116,22 +119,19 @@ class CategoryTimeline {
       const category = legend
         .append('g')
         .attr('class', 'legend__category')
-        .attr('transform', `translate(0, ${(idx * this.y.bandwidth()) / 2})`);
+        .attr('transform', `translate(0, ${idx * this.cohortHeight})`);
 
       category
         .append('rect')
         .attr('class', `fill-color-${idx + 1}`)
-        .attr('width', this.y.bandwidth() / 2)
-        .attr('height', this.y.bandwidth() / 2);
+        .attr('width', this.cohortHeight)
+        .attr('height', this.cohortHeight);
 
       category
         .append('text')
         .attr('class', 'legend__label')
         .text(cohort)
-        .attr(
-          'transform',
-          `translate(${this.y.bandwidth() / 2 + 5}, ${this.y.bandwidth() / 2 - 5})`,
-        );
+        .attr('transform', `translate(${this.cohortHeight + 5}, ${this.cohortHeight - 5})`);
     });
   }
 
@@ -176,7 +176,7 @@ class CategoryTimeline {
       || new Date(d.startDate) > this.config.scaleEndDate
     ) {
       // if section is out of scales, throw the label way off screen
-      return `translate(${1000}, ${this.y.bandwidth() / 2 - 4})`;
+      return `translate(${1000}, ${this.cohortHeight - 4})`;
     }
 
     const [startDate, endDate] = this.calculateScaleBoundDates(d.startDate, d.endDate);
@@ -191,7 +191,7 @@ class CategoryTimeline {
     xCentre = xCentre < limit ? xCentre + offset : xCentre;
     xCentre = Math.abs(xCentre - xEndScale) < limit ? xCentre - offset : xCentre;
 
-    return `translate(${xCentre}, ${this.y.bandwidth() / 2 - 4})`;
+    return `translate(${xCentre}, ${this.cohortHeight - 4})`;
   }
 
   moveTo(x, y) {
@@ -225,9 +225,9 @@ class CategoryTimeline {
           .append('line')
           .attr('class', 'timeline__separator')
           .attr('x1', this.x(this.config.scaleStartDate) - 60)
-          .attr('y1', this.y.bandwidth() + 5)
+          .attr('y1', this.y.bandwidth() + 0.075 * this.y.bandwidth())
           .attr('x2', this.x(this.config.scaleEndDate))
-          .attr('y2', this.y.bandwidth() + 5);
+          .attr('y2', this.y.bandwidth() + 0.075 * this.y.bandwidth());
       }
     });
 
@@ -236,7 +236,7 @@ class CategoryTimeline {
       .attr('class', 'timeline__title')
       .text(d => d.category[this.config.lang])
       .attr('text-anchor', 'end')
-      .attr('dy', '1.5em')
+      .attr('dy', this.y.bandwidth() / 2 + 5)
       .attr('dx', '-1.5em');
 
     const sectionEnter = categoryEnter
@@ -247,13 +247,12 @@ class CategoryTimeline {
       .attr('class', 'timeline__section');
 
     // enter timespan sections => rectangles
-    const cohortNum = this.config.cohorts.length;
     sectionEnter
       .filter(d => new Date(d.startDate).getFullYear() !== new Date(d.endDate).getFullYear())
       .append('rect')
       .attr('class', 'timeline__rect')
       .attr('x', d => this.calculateSectionXPos(d))
-      .attr('height', this.y.bandwidth() / cohortNum)
+      .attr('height', this.cohortHeight)
       .attr('width', d => this.calculateSectionWidth(d));
 
     // enter point sections => circles
@@ -267,15 +266,11 @@ class CategoryTimeline {
         ) {
           return 0;
         }
-        return this.y.bandwidth() / 4;
+        return this.cohortHeight / 2;
       })
       .attr('class', 'timeline__rect')
       .attr('cx', d => this.calculateSectionXPos(d))
-      .attr('cy', 7.5);
-
-    // IDEA: if short timespans become a problem
-    // (ie. sections consisting of several small pieces leading to year labels overflowing),
-    // they could be combined before reaching this point
+      .attr('cy', this.cohortHeight / 2);
 
     sectionEnter
       .append('text')
@@ -288,7 +283,7 @@ class CategoryTimeline {
     this.config.cohorts.forEach((cohort, idx) => {
       sectionEnter
         .filter(d => d.cohort === cohort)
-        .attr('transform', `translate(0, ${(this.y.bandwidth() / cohortNum) * idx})`)
+        .attr('transform', `translate(0, ${this.cohortHeight * idx})`)
         .select('.timeline__rect')
         .attr('class', `timeline__rect fill-color-${idx + 1}`);
     });

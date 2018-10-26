@@ -203,6 +203,7 @@ class App extends Component {
             show={filters[filename].isSelected}
             filename={filename}
             data={this.data[filename]}
+            cohortFilter={cohortFilter}
             fileFilter={fileFilter}
             treeConfig={{ ...treeConfig, lang }}
             timelineConfig={{ ...timelineConfig, lang }}
