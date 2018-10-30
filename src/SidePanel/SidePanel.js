@@ -7,6 +7,7 @@ import { compareByName } from '../_js/helpers';
 import '../_css/simpleList.css';
 import '../_css/card.css';
 import './SidePanel.css';
+import ToggleButton from '../ToggleButton/ToggleButton';
 
 class RegisterPanel extends Component {
   constructor(props) {
@@ -41,30 +42,25 @@ class RegisterPanel extends Component {
       ? 'sidePanel__toggleControl sidePanel__toggleControl--rotate'
       : 'sidePanel__toggleControl';
 
-    const languageSelectors = ['en', 'fi'].map((langOpt) => {
-      const langClasses = lang === langOpt
-        ? 'sidePanel__langSelector sidePanel__langSelector--selected'
-        : 'sidePanel__langSelector';
-      return (
-        <button
-          type="button"
-          className={langClasses}
-          key={langOpt}
-          id={langOpt}
-          onClick={handleLangSelect}
-        >
-          {langOpt}
-        </button>
-      );
-    });
+    const languageSelectors = ['en', 'fi'].map(langOpt => (
+      <ToggleButton
+        isSelected={lang === langOpt}
+        type="TEXT"
+        handleClick={() => handleLangSelect(langOpt)}
+      >
+        {langOpt}
+      </ToggleButton>
+    ));
 
     const cohortSelectors = Object.values(cohortFilter).map(cohort => (
-      <CohortItem
-        key={cohort.name}
-        selected={cohort.isSelected}
-        name={cohort.name}
-        handleClick={handleCohortBtnClick}
-      />
+      <ToggleButton
+        isSelected={cohort.isSelected}
+        type="TAG"
+        handleClick={() => handleCohortBtnClick(cohort.name)}
+        mixClasses="sidePanel__langSelector"
+      >
+        {cohort.name}
+      </ToggleButton>
     ));
 
     const navItems = Object.keys(filterState)

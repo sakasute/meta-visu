@@ -93,8 +93,7 @@ class App extends Component {
       });
   }
 
-  handleLangSelect(event) {
-    const newLang = event.target.id;
+  handleLangSelect(newLang) {
     const { dataset } = this.state;
     this.setState({ lang: newLang });
     window.history.pushState(null, '', `?lang=${newLang}&ds=${dataset}`); // just changes the url to reflect the state

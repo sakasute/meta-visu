@@ -1,0 +1,52 @@
+.toggleButton {
+  cursor: pointer;
+  border: none;
+  background-color: var(--thl-gray-1);
+  color: var(--thl-ui-text);
+}
+
+.toggleButtonBasic {
+  min-height: 3.5rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.toggleButtonBasic.-selected {
+  background-color: var(--category-1-color-v-light);
+}
+
+.toggleButtonBasic:hover {
+  background-color: var(--thl-gray-2);
+}
+
+.toggleButtonBasic.-selected:hover {
+  background-color: var(--category-1-color-light);
+}
+
+.toggleButtonTag {
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.toggleButtonTag.-selected {
+  color: white;
+  background-color: var(--category-2-color-v-light);
+}
+
+.toggleButtonTag.-selected:hover {
+  background-color: var(--category-2-color-light);
+}
+
+.toggleButtonText {
+  background: none;
+  font-size: 1.6rem;
+  text-decoration: underline;
+}
+
+.toggleButtonText.-selected {
+  color: var(--thl-link);
+  font-weight: bold;
+  text-decoration: none;
+  cursor: auto;
+}

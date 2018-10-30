@@ -50,19 +50,7 @@
 }
 
 .sidePanel__langSelector {
-  color: var(--thl-ui-text);
-  cursor: pointer;
-  font-size: 1.6rem;
-  text-decoration: underline;
-  background: none;
-  border: none;
-}
-
-.sidePanel__langSelector--selected {
-  color: var(--thl-link);
-  font-weight: bold;
-  text-decoration: none;
-  cursor: auto;
+  margin-right: 0.5rem;
 }
 
 .sidePanel__toggleControl {

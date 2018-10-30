@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import RegisterSelector from '../RegisterList/RegisterList';
+import ToggleButton from '../ToggleButton/ToggleButton';
 
-import '../_css/button.css';
 import './RegisterAdminItem.css';
 
 class NavItem extends Component {
@@ -36,20 +36,17 @@ class NavItem extends Component {
   render() {
     const { isSelected } = this.state;
     const { filter, lang } = this.props;
-    const btnClass = isSelected
-      ? 'button button--selected simpleList__button'
-      : 'button simpleList__button';
 
     return (
       <li>
-        <button
-          type="button"
-          id={filter.name.en}
-          className={btnClass}
-          onClick={this.handleBtnClick}
+        <ToggleButton
+          isSelected={isSelected}
+          mixClasses="simpleList__button"
+          handleClick={() => this.handleBtnClick(filter.name.en)}
+          type="BASIC"
         >
           {filter.name[lang]}
-        </button>
+        </ToggleButton>
         <RegisterSelector
           lang={lang}
           show={isSelected}
