@@ -2,10 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './RegisterItem.css';
 
-function RegisterItem({ lang, register, handleCheckboxChange }) {
+function RegisterItem({
+  lang, filename, register, toggleRegisterFilter,
+}) {
   return (
     <li className="registerItem">
-      <input type="checkbox" onChange={handleCheckboxChange} id={register.name.en} defaultChecked />
+      <input
+        id={register.name.en}
+        type="checkbox"
+        onChange={() => toggleRegisterFilter(filename, register.name.en)}
+        defaultChecked
+      />
       <label htmlFor={register.name.en}>{register.name[lang]}</label>
     </li>
   );
@@ -14,7 +21,7 @@ function RegisterItem({ lang, register, handleCheckboxChange }) {
 RegisterItem.propTypes = {
   lang: PropTypes.string.isRequired,
   register: PropTypes.object.isRequired,
-  handleCheckboxChange: PropTypes.func.isRequired,
+  toggleRegisterFilter: PropTypes.func.isRequired,
 };
 
 export default RegisterItem;

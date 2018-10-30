@@ -9,7 +9,7 @@ import '../_css/card.css';
 import './SidePanel.css';
 import ToggleButton from '../ToggleButton/ToggleButton';
 
-class RegisterPanel extends Component {
+class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.toggleMinimize = this.toggleMinimize.bind(this);
@@ -25,11 +25,11 @@ class RegisterPanel extends Component {
   render() {
     const {
       cohortFilter,
-      filterState,
-      handleCohortBtnClick,
-      handleRegisterAdminBtnClick,
-      handleRegisterSelection,
-      handleLangSelect,
+      treeFilter,
+      toggleCohortFilter,
+      toggleFileFilter,
+      toggleRegisterFilter,
+      selectLang,
       lang,
     } = this.props;
     const { isMinimized } = this.state;
@@ -44,9 +44,10 @@ class RegisterPanel extends Component {
 
     const languageSelectors = ['en', 'fi'].map(langOpt => (
       <ToggleButton
+        key={langOpt}
         isSelected={lang === langOpt}
         type="TEXT"
-        handleClick={() => handleLangSelect(langOpt)}
+        handleClick={() => selectLang(langOpt)}
       >
         {langOpt}
       </ToggleButton>
@@ -54,30 +55,31 @@ class RegisterPanel extends Component {
 
     const cohortSelectors = Object.values(cohortFilter).map(cohort => (
       <ToggleButton
+        key={cohort.name}
         isSelected={cohort.isSelected}
         type="TAG"
-        handleClick={() => handleCohortBtnClick(cohort.name)}
+        handleClick={() => toggleCohortFilter(cohort.name)}
         mixClasses="sidePanel__langSelector"
       >
         {cohort.name}
       </ToggleButton>
     ));
 
-    const navItems = Object.keys(filterState)
-      .sort((a, b) => compareByName(filterState[a], filterState[b], lang, {
+    const registerAdminItems = Object.keys(treeFilter)
+      .sort((a, b) => compareByName(treeFilter[a], treeFilter[b], lang, {
         en: 'National Institute for Health and Welfare',
         fi: 'THL',
       }))
       .map((filename) => {
-        const filter = filterState[filename];
+        const fileFilter = treeFilter[filename];
         return (
           <RegisterAdminItem
             lang={lang}
             key={filename}
             filename={filename}
-            filter={filter}
-            handleRegisterAdminBtnClick={handleRegisterAdminBtnClick}
-            handleRegisterSelection={handleRegisterSelection}
+            fileFilter={fileFilter}
+            toggleFileFilter={toggleFileFilter}
+            toggleRegisterFilter={toggleRegisterFilter}
           />
         );
       });
@@ -95,18 +97,18 @@ class RegisterPanel extends Component {
           </div>
         </div>
 
-        <ul className="simpleList sidePanel__simpleList">{navItems}</ul>
+        <ul className="simpleList sidePanel__simpleList">{registerAdminItems}</ul>
       </aside>
     );
   }
 }
 
-RegisterPanel.propTypes = {
+SidePanel.propTypes = {
   lang: PropTypes.string.isRequired,
-  filterState: PropTypes.object.isRequired,
-  handleRegisterAdminBtnClick: PropTypes.func.isRequired,
-  handleRegisterSelection: PropTypes.func.isRequired,
-  handleLangSelect: PropTypes.func.isRequired,
+  treeFilter: PropTypes.object.isRequired,
+  toggleFileFilter: PropTypes.func.isRequired,
+  toggleRegisterFilter: PropTypes.func.isRequired,
+  selectLang: PropTypes.func.isRequired,
 };
 
-export default RegisterPanel;
+export default SidePanel;

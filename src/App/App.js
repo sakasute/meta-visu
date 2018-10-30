@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import update from 'immutability-helper';
 import SidePanel from '../SidePanel/SidePanel';
 import TimelineTreeCard from '../TimelineTreeCard/TimelineTreeCard';
 import './App.css';
 import { compareByName } from '../_js/helpers';
-import update from 'immutability-helper';
 
 class App extends Component {
   static checkURLParams(url) {
@@ -54,7 +54,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.handleLangSelect = this.handleLangSelect.bind(this);
+    this.selectLang = this.selectLang.bind(this);
     this.toggleCohortFilter = this.toggleCohortFilter.bind(this);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
@@ -64,7 +64,7 @@ class App extends Component {
       lang: '',
       filenames: [],
       cohortFilter: {},
-      treeFilters: {},
+      treeFilter: {},
       treeConfig: {},
       timelineConfig: {},
       infoMsg: {
@@ -87,52 +87,52 @@ class App extends Component {
       .then((dataBundle) => {
         this.data = dataBundle;
         const filenames = Object.keys(dataBundle);
-        const treeFilters = this.initializeTreeFilters(filenames);
+        const treeFilter = this.initializeTreeFilter(filenames);
         this.setState({
           cohortFilter,
           dataset,
           filenames,
-          treeFilters,
+          treeFilter,
           lang,
           timelineConfig,
         });
       });
   }
 
-  handleLangSelect(newLang) {
+  selectLang(lang) {
     const { dataset } = this.state;
-    this.setState({ lang: newLang });
-    window.history.pushState(null, '', `?lang=${newLang}&ds=${dataset}`); // just changes the url to reflect the state
+    this.setState({ lang });
+    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
   }
 
-  initializeTreeFilters(filenames) {
-    const treeFilters = {};
+  initializeTreeFilter(filenames) {
+    const treeFilter = {};
     filenames.forEach((filename) => {
-      treeFilters[filename] = {
+      treeFilter[filename] = {
         name: this.data[filename].name,
         isSelected: false,
         registers: {},
       };
       this.data[filename].registers.forEach((register) => {
-        treeFilters[filename].registers[register.name.en] = {
+        treeFilter[filename].registers[register.name.en] = {
           name: register.name,
           isSelected: true,
         };
       });
     });
-    return treeFilters;
+    return treeFilter;
   }
 
   // NOTE: using immutability-helper to help updating nested states
   toggleFileFilter(filename) {
     this.setState(prevState => update(prevState, {
-      treeFilters: { [filename]: { isSelected: { $apply: val => !val } } },
+      treeFilter: { [filename]: { isSelected: { $apply: val => !val } } },
     }));
   }
 
   toggleRegisterFilter(filename, registerName) {
     this.setState(prevState => update(prevState, {
-      treeFilters: {
+      treeFilter: {
         [filename]: { registers: { [registerName]: { isSelected: { $apply: val => !val } } } },
       },
     }));
@@ -148,7 +148,7 @@ class App extends Component {
     const {
       cohortFilter,
       filenames,
-      treeFilters,
+      treeFilter,
       lang,
       infoMsg,
       treeConfig,
@@ -156,15 +156,15 @@ class App extends Component {
     } = this.state;
 
     const timelineTreeCards = filenames
-      .map(filename => ({ filename, name: treeFilters[filename].name }))
+      .map(filename => ({ filename, name: treeFilter[filename].name }))
       .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
       .map((nameObj) => {
         const { filename } = nameObj;
-        const fileFilter = treeFilters[filename];
+        const fileFilter = treeFilter[filename];
         return (
           <TimelineTreeCard
             lang={lang}
-            show={treeFilters[filename].isSelected}
+            show={treeFilter[filename].isSelected}
             filename={filename}
             data={this.data[filename]}
             cohortFilter={cohortFilter}
@@ -181,11 +181,11 @@ class App extends Component {
         <SidePanel
           lang={lang}
           cohortFilter={cohortFilter}
-          filterState={treeFilters}
-          handleCohortBtnClick={this.toggleCohortFilter}
-          handleLangSelect={this.handleLangSelect}
-          handleRegisterAdminBtnClick={this.toggleFileFilter}
-          handleRegisterSelection={this.toggleRegisterFilter}
+          treeFilter={treeFilter}
+          selectLang={this.selectLang}
+          toggleCohortFilter={this.toggleCohortFilter}
+          toggleFileFilter={this.toggleFileFilter}
+          toggleRegisterFilter={this.toggleRegisterFilter}
         />
         <div className="content-wrapper">
           <div className="sidebar-placeholder" />
