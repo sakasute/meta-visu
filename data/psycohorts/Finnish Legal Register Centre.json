@@ -9,6 +9,10 @@
         "en": "Criminal Record",
         "fi": "Rikosrekisteri"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -42,6 +46,10 @@
       "name": {
         "en": "Summary Penal Judgement Register",
         "fi": "Rangaistusmääräysrekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {

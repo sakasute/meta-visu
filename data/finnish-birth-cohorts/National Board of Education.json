@@ -1,13 +1,17 @@
 {
   "name": {
-    "en": "Finnish National Board of Education",
+    "en": "National Board of Education",
     "fi": "Opetushallitus"
   },
   "registers": [
     {
       "name": {
-        "en": "<no name>",
+        "en": "<unnamed>",
         "fi": "<ei nimeä>"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {

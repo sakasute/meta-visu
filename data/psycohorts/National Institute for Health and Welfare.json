@@ -9,6 +9,10 @@
         "en": "Terveydenhuollon hoitoilmoitusrekisteri",
         "fi": "Care Register for Health Care"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -177,6 +181,10 @@
         "en": "Register of Primary Health Care visits",
         "fi": "Perusterveydenhuollon avohoidon hoitoilmoitus"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -228,6 +236,10 @@
       "name": {
         "en": "Finnish Cancer Registry",
         "fi": "Suomen Syöpärekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {
@@ -325,6 +337,10 @@
         "en": "Finnish Medical Birth Register",
         "fi": "Syntymärekisteri"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -421,6 +437,10 @@
         "en": "Visual Disability Register",
         "fi": "Näkövammarekisteri"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -473,6 +493,10 @@
         "en": "Infectious Disease Register",
         "fi": "Tartuntatautirekisteri"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -497,6 +521,10 @@
       "name": {
         "en": "Register on Induced Abortions",
         "fi": "Raskaudenkeskeyttämisrekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {
@@ -531,6 +559,10 @@
       "name": {
         "en": "Register on Social Assistance",
         "fi": "Toimeentulorekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {
@@ -584,6 +616,10 @@
         "en": "Institutionalized care in social institutions",
         "fi": "Sosiaalihuollon hoitoilmoitusrekisteri"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -635,6 +671,10 @@
       "name": {
         "en": "Register on Child Welfare",
         "fi": "Lastensuojelurekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {

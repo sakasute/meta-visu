@@ -9,6 +9,10 @@
         "en": "Pension Register",
         "fi": "Eläkerekisteri"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -147,6 +151,10 @@
       "name": {
         "en": "Earning Register",
         "fi": "Ansaintarekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {

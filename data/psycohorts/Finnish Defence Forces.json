@@ -9,6 +9,10 @@
         "en": "Results of aptitude tests register",
         "fi": "Peruskoerekisteri"
       },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
       "categories": [
         {
           "name": {
@@ -23,6 +27,10 @@
       "name": {
         "en": "Data on service register",
         "fi": "Asevelvollisuusrekisteri"
+      },
+      "link": {
+        "fi": "",
+        "en": ""
       },
       "categories": [
         {
