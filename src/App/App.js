@@ -3,6 +3,7 @@ import SidePanel from '../SidePanel/SidePanel';
 import TimelineTreeCard from '../TimelineTreeCard/TimelineTreeCard';
 import './App.css';
 import { compareByName } from '../_js/helpers';
+import update from 'immutability-helper';
 
 class App extends Component {
   static checkURLParams(url) {
@@ -19,6 +20,14 @@ class App extends Component {
     }
     window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
     return { lang, dataset };
+  }
+
+  static initializeCohortFilter(cohorts) {
+    const cohortFilter = {};
+    cohorts.forEach((cohort) => {
+      cohortFilter[cohort] = { isSelected: true, name: cohort };
+    });
+    return cohortFilter;
   }
 
   static initializeConfigs(dataset) {
@@ -55,7 +64,7 @@ class App extends Component {
       lang: '',
       filenames: [],
       cohortFilter: {},
-      filters: {},
+      treeFilters: {},
       treeConfig: {},
       timelineConfig: {},
       infoMsg: {
@@ -71,22 +80,19 @@ class App extends Component {
     const url = new URL(window.location.href);
     const { dataset, lang } = this.constructor.checkURLParams(url);
     const timelineConfig = this.constructor.initializeConfigs(dataset, lang);
-    const cohortFilter = {};
-    timelineConfig.cohorts.forEach((cohort) => {
-      cohortFilter[cohort] = { isSelected: true, name: cohort };
-    });
+    const cohortFilter = this.constructor.initializeCohortFilter(timelineConfig.cohorts);
 
     fetch(`data/${dataset}/data_bundle.json`)
       .then(res => res.json())
       .then((dataBundle) => {
         this.data = dataBundle;
         const filenames = Object.keys(dataBundle);
-        const filters = this.initializeFilters(filenames);
+        const treeFilters = this.initializeTreeFilters(filenames);
         this.setState({
           cohortFilter,
           dataset,
           filenames,
-          filters,
+          treeFilters,
           lang,
           timelineConfig,
         });
@@ -99,91 +105,50 @@ class App extends Component {
     window.history.pushState(null, '', `?lang=${newLang}&ds=${dataset}`); // just changes the url to reflect the state
   }
 
-  initializeFilters(filenames) {
-    const filters = {};
+  initializeTreeFilters(filenames) {
+    const treeFilters = {};
     filenames.forEach((filename) => {
-      filters[filename] = {
+      treeFilters[filename] = {
         name: this.data[filename].name,
         isSelected: false,
         registers: {},
       };
       this.data[filename].registers.forEach((register) => {
-        filters[filename].registers[register.name.en] = {
+        treeFilters[filename].registers[register.name.en] = {
           name: register.name,
           isSelected: true,
         };
       });
     });
-    return filters;
+    return treeFilters;
   }
 
-  // NOTE: this is damn ugly but this is the way to update nested state without external library
-  // and without making a deep copy of the whole object
+  // NOTE: using immutability-helper to help updating nested states
   toggleFileFilter(filename) {
-    this.setState(prevState => ({
-      ...prevState,
-      filters: {
-        ...prevState.filters,
-        [filename]: {
-          ...prevState.filters[filename],
-          isSelected: !prevState.filters[filename].isSelected,
-        },
-      },
+    this.setState(prevState => update(prevState, {
+      treeFilters: { [filename]: { isSelected: { $apply: val => !val } } },
     }));
   }
 
   toggleRegisterFilter(filename, registerName) {
-    this.setState(prevState => ({
-      ...prevState,
-      filters: {
-        ...prevState.filters,
-        [filename]: {
-          ...prevState.filters[filename],
-          registers: {
-            ...prevState.filters[filename].registers,
-            [registerName]: {
-              ...prevState.filters[filename].registers[registerName],
-              isSelected: !prevState.filters[filename].registers[registerName].isSelected,
-            },
-          },
-        },
+    this.setState(prevState => update(prevState, {
+      treeFilters: {
+        [filename]: { registers: { [registerName]: { isSelected: { $apply: val => !val } } } },
       },
     }));
   }
 
   toggleCohortFilter(cohort) {
-    const { cohortFilter } = this.state;
-    const cohortState = cohortFilter[cohort];
-    if (cohortState) {
-      const cohortSelected = cohortState.isSelected;
-      this.setState(prevState => ({
-        ...prevState,
-        cohortFilter: {
-          ...prevState.cohortFilter,
-          [cohort]: {
-            ...prevState.cohortFilter[cohort],
-            isSelected: !cohortSelected,
-          },
-        },
-      }));
-    } else {
-      this.setState(prevState => ({
-        ...prevState,
-        cohortFilter: {
-          ...prevState.cohortFilter,
-          [cohort]: {
-            isSelected: false,
-          },
-        },
-      }));
-    }
+    this.setState(prevState => update(prevState, {
+      cohortFilter: { [cohort]: { isSelected: { $apply: val => !val } } },
+    }));
   }
 
   render() {
     const {
       cohortFilter,
       filenames,
-      filters,
+      treeFilters,
       lang,
       infoMsg,
       treeConfig,
@@ -191,15 +156,15 @@ class App extends Component {
     } = this.state;
 
     const timelineTreeCards = filenames
-      .map(filename => ({ filename, name: filters[filename].name }))
+      .map(filename => ({ filename, name: treeFilters[filename].name }))
       .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
       .map((nameObj) => {
         const { filename } = nameObj;
-        const fileFilter = filters[filename];
+        const fileFilter = treeFilters[filename];
         return (
           <TimelineTreeCard
             lang={lang}
-            show={filters[filename].isSelected}
+            show={treeFilters[filename].isSelected}
             filename={filename}
             data={this.data[filename]}
             cohortFilter={cohortFilter}
@@ -216,7 +181,7 @@ class App extends Component {
         <SidePanel
           lang={lang}
           cohortFilter={cohortFilter}
-          filterState={filters}
+          filterState={treeFilters}
           handleCohortBtnClick={this.toggleCohortFilter}
           handleLangSelect={this.handleLangSelect}
           handleRegisterAdminBtnClick={this.toggleFileFilter}
