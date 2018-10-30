@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import RegisterAdminItem from '../RegisterAdminItem/RegisterAdminItem';
-import CohortItem from '../CohortItem/CohortItem';
 import { compareByName } from '../_js/helpers';
 
 import '../_css/simpleList.css';
@@ -15,7 +15,6 @@ class RegisterPanel extends Component {
     this.toggleMinimize = this.toggleMinimize.bind(this);
     this.state = {
       isMinimized: false,
-      selectedCohorts: {},
     };
   }
 
@@ -35,12 +34,13 @@ class RegisterPanel extends Component {
     } = this.props;
     const { isMinimized } = this.state;
 
-    const classes = isMinimized
-      ? 'card card--strongShadow sidePanel sidePanel--closed'
-      : 'card card--strongShadow sidePanel';
-    const toggleBtnClasses = isMinimized
-      ? 'sidePanel__toggleControl sidePanel__toggleControl--rotate'
-      : 'sidePanel__toggleControl';
+    const classes = classNames('card', 'card--strongShadow', 'sidePanel', {
+      'sidePanel--closed': isMinimized,
+    });
+
+    const toggleBtnClasses = classNames('sidePanel__toggleControl', {
+      'sidePanel__toggleControl--rotate': isMinimized,
+    });
 
     const languageSelectors = ['en', 'fi'].map(langOpt => (
       <ToggleButton
