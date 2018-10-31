@@ -99,7 +99,44 @@
             "en": "Employee pension",
             "fi": "Työeläketiedot"
           },
-          "samplings": []
+          "samplings": [
+            {
+              "startDate": "1966-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1986-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1960-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1960-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
         },
         {
           "name": {
@@ -163,6 +200,42 @@
             "fi": "Ansaintajaksot"
           },
           "samplings": [
+            {
+              "startDate": "1966-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1986-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1960-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1960-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
             {
               "startDate": "1943-01-01",
               "endDate": "2015-12-31",

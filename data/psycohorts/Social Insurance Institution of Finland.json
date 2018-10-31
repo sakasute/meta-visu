@@ -211,7 +211,26 @@
             "en": "Special reimbursable medicines, dg 103, 205, 2011, 104",
             "fi": "Erityiskorvattavat lääkkeet, dg 103, 205, 2011, 104"
           },
-          "samplings": []
+          "samplings": [
+            {
+              "startDate": "1978-01-01",
+              "endDate": "2006-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1978-01-01",
+              "endDate": "1999-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
         },
         {
           "name": {
