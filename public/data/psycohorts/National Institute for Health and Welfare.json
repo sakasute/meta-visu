@@ -6,8 +6,8 @@
   "registers": [
     {
       "name": {
-        "en": "Terveydenhuollon hoitoilmoitusrekisteri",
-        "fi": "Care Register for Health Care"
+        "en": "Care Register for Health Care",
+        "fi": "Terveydenhuollon hoitoilmoitusrekisteri "
       },
       "link": {
         "fi": "",

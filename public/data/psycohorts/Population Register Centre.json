@@ -21,6 +21,42 @@
           },
           "samplings": [
             {
+              "startDate": "1969-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1986-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
               "startDate": "1987-01-01",
               "endDate": "2015-06-12",
               "cohort": "1987",
@@ -45,7 +81,44 @@
             "en": "Children born in the family",
             "fi": "Syntyneet lapset"
           },
-          "samplings": []
+          "samplings": [
+            {
+              "startDate": "1966-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1986-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
         },
         {
           "name": {
@@ -53,6 +126,42 @@
             "fi": "Aviohistoria"
           },
           "samplings": [
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1986-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1966",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
             {
               "startDate": "1987-01-01",
               "endDate": "2015-06-12",
