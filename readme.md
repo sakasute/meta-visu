@@ -11,6 +11,32 @@ In addition to these two main parts, the repository holds many files that are ne
 
 The application is designed to be distributed as a web page hosted from the github repository ([Github Pages](https://pages.github.com/)). This was an easy and cheap option to host and update the application without needing to deploy a backend somewhere. Of course, this sets some limitations such as having to update the data locally (and pushing it to the repository) instead of doing it e.g. through the web app. Of course, the application can be hosted anywhere, e.g. locally if wanted.
 
+## Installing development dependencies on Windows without admin rights (wip)
+
+### Python:
+
+1. Download the "Windows executable installer" from [here](https://www.python.org/downloads/windows/) (the plain x86-version if you aren't sure or the 64-bit version if you know you have 64-bit system)
+2. Execute the installer:
+   - select a location that doesn't need admin right (e.g. you User-folder)
+   - make sure that "Install for all users" is unselected and "add to PATH" is selected
+   - you might need to restart your computer before the `python` and `pip` commands are usable from the command line
+
+### Node and NPM
+
+1. Download the zip-version of Node (it includes NPM) from [here](https://nodejs.org/en/download/)
+2. Extract the zip into e.g. you User-folder
+3. Add the extracted folder into the PATH in your Windows user environment variables (NOTE: going to document this better at some point)
+4. Now `node` and `npm` commands should be usable from the command line
+
+### Setting up proxys for pip and npm
+
+You may need to configure `pip` and `npm` to use a proxy depending on the network your machine is in:
+
+- pip:
+  - use command `pip --proxy <proxy-address> install <module>` to install modules
+- npm:
+  - configure npm to use proxy with `npm config set proxy <proxy-address>`
+
 ## Development environment
 
 Step-by-step instructions to get started with developing the React app:
