@@ -9,6 +9,7 @@
         "en": "Data from the information system of the Employment and Economic Development Offices (URA)",
         "fi": "Työnvälitystilasto"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Summary penal judgements",
             "fi": "Rangaistusmääräykset"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

@@ -9,6 +9,7 @@
         "en": "Benefits Register",
         "fi": "Etuusrekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Sickness benefits",
             "fi": "Sairauspäivärahat"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -45,6 +50,10 @@
             "en": "Pensions, granted/rejected",
             "fi": "Kansaneläkkeet, myönnetyt/hylätyt"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "2000-01-01",
@@ -61,6 +70,10 @@
           "name": {
             "en": "Unemployment information",
             "fi": "Työttömyysturvatiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -124,6 +137,10 @@
             "en": "Basic unemployment allowance",
             "fi": "Peruspäiväraha"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1987-01-01",
@@ -150,6 +167,10 @@
             "en": "Labour market subsidy",
             "fi": "Työmarkkinatuki"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1994-01-01",
@@ -175,6 +196,10 @@
           "name": {
             "en": "Special reimbursable medicines",
             "fi": "Erityiskorvattavat lääkkeet"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -211,6 +236,10 @@
             "en": "Special reimbursable medicines, dg 103, 205, 2011, 104",
             "fi": "Erityiskorvattavat lääkkeet, dg 103, 205, 2011, 104"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1978-01-01",
@@ -237,6 +266,10 @@
             "en": "Medicine purchases",
             "fi": "Lääkeostot"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1997-01-01",
@@ -253,6 +286,10 @@
           "name": {
             "en": "Disability pension",
             "fi": "Työkyvyttömyyseläkkeet"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -289,6 +326,10 @@
             "en": "Psychotropic medicines",
             "fi": "Lääkärin määräämät psyykenlääkkeet"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1994-01-01",
@@ -315,6 +356,10 @@
             "en": "Special reimpbursement rights",
             "fi": "Erityiskorvausoikeudet"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1987-01-01",
@@ -332,6 +377,10 @@
             "en": "Child home care allowance",
             "fi": "Lastenhoitotuki"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1987-01-01",
@@ -348,6 +397,10 @@
           "name": {
             "en": "Disability benefits",
             "fi": "Vammaistuet"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -374,6 +427,10 @@
           "name": {
             "en": "Parental allowance",
             "fi": "Äitiys-, isyys- ja vanhempainpäiväraha"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -419,6 +476,10 @@
             "en": "Home care allowance",
             "fi": "Kotihoidontuki"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1987-01-01",
@@ -444,6 +505,10 @@
           "name": {
             "en": "Rehabilitation allowance",
             "fi": "Kuntoutusraha"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -471,6 +536,10 @@
             "en": "Rehabilitations",
             "fi": "Kuntoutukset"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1987-01-01",
@@ -496,6 +565,10 @@
           "name": {
             "en": "Study gnats",
             "fi": "Opintotuki"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

@@ -9,6 +9,7 @@
         "en": "Cause of Death Register",
         "fi": "Kuolemansyytilasto"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Causes of deaths",
             "fi": "Kuolinsyyt"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -101,6 +106,7 @@
         "en": "<?>",
         "fi": "<?>"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -110,6 +116,10 @@
           "name": {
             "en": "Occupation and socioeconomic status",
             "fi": "Ammatti, sosioekonominen asema"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -148,6 +158,7 @@
         "en": "Register of Educational Achievements",
         "fi": "Tutkintorekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -157,6 +168,10 @@
           "name": {
             "en": "Degree data",
             "fi": "Tutkintotiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

@@ -4,7 +4,10 @@
 import regex
 import os
 import json
+from openpyxl.utils import column_index_from_string
 
+def col_index_0_based(col_str):
+    return column_index_from_string(col_str) - 1
 
 class SheetParser:
     def __init__(self, sheet, config):
@@ -12,9 +15,11 @@ class SheetParser:
         self.sheet = sheet
         self.categories = config['categories']
         self.start_row = config['start_row']
-        self.reg_adm_col = config['reg_adm_col']
-        self.reg_col = config['reg_col']
-        self.cat_col = config['cat_col']
+        self.reg_adm_col = col_index_0_based(config['reg_adm_col'])
+        self.reg_col = col_index_0_based(config['reg_col'])
+        self.cat_col = col_index_0_based(config['cat_col'])
+        self.harmonize_col = col_index_0_based(config['harmonize_col'])
+        self.note_col = col_index_0_based(config['note_col'])
         self.cohort_cols = config['cohort_cols']
 
     @staticmethod
@@ -47,18 +52,20 @@ class SheetParser:
 
         return len(self.data) - 1
 
-    def create_register(self, register, register_admin_idx):
+    def create_register(self, register, is_harmonized, register_admin_idx):
         # TODO: add support for keywords
         self.data[register_admin_idx]['registers'].append({
             'name': register,
+            'isHarmonized': is_harmonized,
             'link': {'fi': "", 'en': ""},
             'categories': []
         })
         return len(self.data[register_admin_idx]['registers']) - 1
 
-    def create_category(self, category, register_admin_idx, register_idx):
+    def create_category(self, category, note, register_admin_idx, register_idx):
         self.data[register_admin_idx]['registers'][register_idx]['categories'].append({
             'name': category,
+            'note': note,
             'samplings': []
         })
         return len(self.data[register_admin_idx]['registers'][register_idx]['categories']) - 1
@@ -119,6 +126,8 @@ class SheetParser:
         register_admin = {'en': '', 'fi': ''}
         register = {'en': '', 'fi': ''}
         category = {'en': '', 'fi': ''}
+        category_note = {'en': '', 'fi': ''}
+
         iterator = self.sheet.iter_rows(min_row=self.start_row)
         for row in iterator:
             row_fi = row
@@ -144,8 +153,9 @@ class SheetParser:
                 self.data[register_admin_idx]['registers'], register, 'en')
 
             if register_idx == None:
+                is_harmonized = row_fi[self.harmonize_col].value == True
                 # using dict() here creates a copy of the dict so the function doesn't modify the original
-                register_idx = self.create_register(dict(register), register_admin_idx)
+                register_idx = self.create_register(dict(register), is_harmonized, register_admin_idx)
 
             category['fi'] = row_fi[self.cat_col].value if row_fi[self.cat_col].value != None else category['fi']
             category['en'] = row_en[self.cat_col].value if row_en[self.cat_col].value != None else category['en']
@@ -153,13 +163,16 @@ class SheetParser:
                                              [register_idx]['categories'], category, 'en')
 
             if category_idx == None:
+                category_note['fi'] = row_fi[self.note_col].value if row_fi[self.note_col].value != None else ''
+                category_note['en'] = row_en[self.note_col].value if row_en[self.note_col].value != None else ''
                 # using dict() here creates a copy of the dict so the function doesn't modify the original
                 category_idx = self.create_category(
-                    dict(category), register_admin_idx, register_idx)
+                    dict(category), dict(category_note), register_admin_idx, register_idx)
 
             samplings = []
             for cohort_col in self.cohort_cols:
-                cohort_dates_str = str(row_fi[cohort_col['col']].value)
+                col = col_index_0_based(cohort_col['col'])
+                cohort_dates_str = str(row_fi[col].value)
                 cohort_samplings = self.create_samplings(
                     cohort_dates_str, cohort_col['cohort'], cohort_col['category'])
                 samplings += cohort_samplings

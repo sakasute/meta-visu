@@ -9,6 +9,7 @@
         "en": "Pension Register",
         "fi": "Eläkerekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Employee pension extras",
             "fi": "Työeläkelisät"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -99,6 +104,10 @@
             "en": "Employee pension",
             "fi": "Työeläketiedot"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1966-01-01",
@@ -142,6 +151,10 @@
           "name": {
             "en": "Pension data",
             "fi": "Eläketiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -189,6 +202,7 @@
         "en": "Earning Register",
         "fi": "Ansaintarekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -198,6 +212,10 @@
           "name": {
             "en": "Earning periods",
             "fi": "Ansaintajaksot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -260,6 +278,10 @@
           "name": {
             "en": "Unpaid times",
             "fi": "Palkattomat ajat"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -376,6 +398,10 @@
           "name": {
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

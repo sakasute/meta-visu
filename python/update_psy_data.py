@@ -13,47 +13,49 @@ DATA_PATH = '../public/data/' + DATASET + '/'
 config = {
     'categories': {"subjects": {"fi": "kohorttilaiset", "en": "subjects"}, "parents": {"fi": "vanhemmat", "en": "parents"}},
     'start_row': 4,
-    'reg_adm_col': 0,
-    'reg_col': 1,
-    'cat_col': 2,
+    'reg_adm_col': 'A',
+    'reg_col': 'B',
+    'harmonize_col': 'C',
+    'cat_col': 'D',
+    'note_col': 'E',
     'cohort_cols': [
         {
-            'col': 3,
+            'col': 'F',
             'cohort': '1966',
             'category': 'subjects'
         },
         {
-            'col': 4,
+            'col': 'G',
             'cohort': '1986',
             'category': 'subjects',
         },
         {
-            'col': 5,
+            'col': 'H',
             'cohort': '1966',
             'category': 'parents'
         },
         {
-            'col': 6,
+            'col': 'I',
             'cohort': '1986',
             'category': 'parents'
         },
         {
-            'col': 7,
+            'col': 'J',
             'cohort': '1987',
             'category': 'subjects'
         },
         {
-            'col': 8,
+            'col': 'K',
             'cohort': '1997',
             'category': 'subjects'
         },
         {
-            'col': 9,
+            'col': 'L',
             'cohort': '1987',
             'category': 'parents',
         },
         {
-            'col': 10,
+            'col': 'M',
             'cohort': '1997',
             'category': 'parents',
         },
