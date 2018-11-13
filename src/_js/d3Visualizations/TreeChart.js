@@ -142,7 +142,7 @@ class TreeChart {
       .attr('dy', d => this.constructor.calculateLabelPlacement(d))
       .attr('dx', -15)
       .attr('text-anchor', 'middle')
-      .text(d => d.data.name[this.config.lang])
+      .text(d => d.data.isHarmonized ? d.data.name[this.config.lang] + ' (*)' : d.data.name[this.config.lang])
       .call(this.constructor.wrapText, 205);
 
     // add actual links to nodes with URLs

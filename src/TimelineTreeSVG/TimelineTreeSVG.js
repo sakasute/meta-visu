@@ -20,7 +20,7 @@ class TimelineTreeSVG extends Component {
       nodeSize: 7.5,
     };
     this.timelineConfigDefault = {
-      width: 250,
+      width: 225,
       height: 100,
       showXAxis: false,
       showLegend: false,
@@ -117,7 +117,11 @@ class TimelineTreeSVG extends Component {
 
   render() {
     const { filename } = this.props;
-    return <svg id={idRef(filename)} className="js-timeline-tree timeline-tree" />;
+    return (
+      <React.Fragment>
+        <svg id={idRef(filename)} className="js-timeline-tree timeline-tree" />
+      </React.Fragment>
+    );
   }
 }
 
