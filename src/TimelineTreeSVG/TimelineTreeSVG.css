@@ -1,0 +1,11 @@
+.svgContainer {
+  position: relative;
+}
+
+.openInfoBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}

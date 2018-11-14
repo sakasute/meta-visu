@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import InfoBox from '../InfoBox/InfoBox';
 
 import d3 from '../_js/d3Visualizations/d3imports';
 // NOTE: CategoryTimelines are currently created with an external helper function
@@ -7,6 +8,8 @@ import d3 from '../_js/d3Visualizations/d3imports';
 import TreeChart from '../_js/d3Visualizations/TreeChart';
 import CategoryTimeline from '../_js/d3Visualizations/CategoryTimeline';
 import { sortTreeData, calculateCategoryCount, idRef } from '../_js/helpers';
+
+import './TimelineTreeSVG.css';
 
 class TimelineTreeSVG extends Component {
   constructor(props) {
@@ -26,12 +29,14 @@ class TimelineTreeSVG extends Component {
       showLegend: false,
       scaleEndDate: new Date(),
     };
-    this.state = {};
+    this.state = {
+      infoBoxes: [],
+    };
   }
 
   // FIXME: could/should be broken into smaller pieces
   componentDidMount() {
-    const { data: dataProp } = this.props;
+    const { data: dataProp, lang } = this.props;
     // NOTE: this makes sure that we are not modifying the original data in the App-component
     let data = { ...dataProp };
     const {
@@ -74,8 +79,18 @@ class TimelineTreeSVG extends Component {
       ...timelineConfig,
       ...timelineConfigCohorts,
     };
+
     if (treeChart.treeData.children) {
       treeChart.treeData.children.forEach((registerNode, registerIdx) => {
+        const { infoBoxes } = this.state;
+        registerNode.children.filter(node => node.data.note[lang] !== '').forEach(node => infoBoxes.push({
+          isShown: false,
+          text: node.data.note,
+          x: node.y,
+          y: node.x,
+        }));
+        this.setState({ infoBoxes });
+
         registerNode.children.forEach((categoryNode, categoryIdx) => {
           let timelineConfigModified = timelineConfigExtended;
 
@@ -116,11 +131,51 @@ class TimelineTreeSVG extends Component {
   }
 
   render() {
-    const { filename } = this.props;
+    const { infoBoxes } = this.state;
+    const { filename, lang } = this.props;
+
+    const infoBoxEls = infoBoxes.map((infoData) => {
+      const styles = {
+        position: 'absolute',
+        left: `${infoData.x - 150}px`,
+        top: `${infoData.y + 16}px`,
+        width: '300px',
+      };
+      return (
+        <InfoBox layoutStyles={styles} key={`${Object.values(infoData).join('')}Els`}>
+          {infoData.text[lang]}
+        </InfoBox>
+      );
+    });
+
+    const infoBoxBtns = infoBoxes.map((infoData) => {
+      const styles = {
+        position: 'absolute',
+        left: `${infoData.x + 200}px`,
+        top: `${infoData.y + 32}px`,
+      };
+
+      return (
+        <button
+          key={`${Object.values(infoData).join('')}Btns`}
+          type="button"
+          style={styles}
+          className="openInfoBtn"
+          onClick={
+            () => console.log('click') /* this.openInfoBox(infoData.text, infoData.x, infoData.y) */
+          }
+        >
+          <img src="assets/material-info-gray.svg" alt="register panel toggle" />
+        </button>
+      );
+    });
+
     return (
-      <React.Fragment>
+      <div className="svgContainer">
         <svg id={idRef(filename)} className="js-timeline-tree timeline-tree" />
-      </React.Fragment>
+        {infoBoxBtns}
+        {infoBoxEls}
+      </div>
     );
   }
 }

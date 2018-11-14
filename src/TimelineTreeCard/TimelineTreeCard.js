@@ -79,6 +79,7 @@ class TimelineTreeCard extends Component {
       if (fileFilter.isSelected) {
         return (
           <TimelineTreeSVG
+            lang={lang}
             data={data}
             cohortFilter={cohortFilter}
             registerFilter={registerFilter}

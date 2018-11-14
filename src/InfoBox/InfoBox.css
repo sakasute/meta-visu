@@ -1,0 +1,13 @@
+.infoBox {
+  background-color: black;
+  color: white;
+  padding: 1.5rem;
+}
+
+.infoBox__closeBtn {
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  float: right;
+}
