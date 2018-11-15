@@ -102,6 +102,7 @@ class App extends Component {
   selectLang(lang) {
     const { dataset } = this.state;
     this.setState({ lang });
+    // NOTE: update URL without reloading the page
     window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
   }
 

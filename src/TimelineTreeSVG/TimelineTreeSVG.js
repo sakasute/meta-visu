@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import update from 'immutability-helper';
 import PropTypes from 'prop-types';
+
 import InfoBox from '../InfoBox/InfoBox';
 
 import d3 from '../_js/d3Visualizations/d3imports';
@@ -14,6 +16,8 @@ import './TimelineTreeSVG.css';
 class TimelineTreeSVG extends Component {
   constructor(props) {
     super(props);
+    this.showInfoBox = this.showInfoBox.bind(this);
+    this.hideInfoBox = this.hideInfoBox.bind(this);
     this.treeConfigDefault = {
       width: 450,
       height: 100,
@@ -130,16 +134,28 @@ class TimelineTreeSVG extends Component {
     }
   }
 
+  showInfoBox(idx) {
+    const { infoBoxes } = this.state;
+    infoBoxes[idx].isShown = true;
+    this.setState({ infoBoxes });
+  }
+
+  hideInfoBox(idx) {
+    const { infoBoxes } = this.state;
+    infoBoxes[idx].isShown = false;
+    this.setState({ infoBoxes });
+  }
+
   render() {
     const { infoBoxes } = this.state;
     const { filename, lang } = this.props;
 
-    const infoBoxEls = infoBoxes.map((infoData) => {
+    const infoBoxEls = infoBoxes.filter(infoData => infoData.isShown).map((infoData) => {
       const styles = {
         position: 'absolute',
-        left: `${infoData.x - 150}px`,
-        top: `${infoData.y + 16}px`,
-        width: '300px',
+        left: `${infoData.x + 125}px`,
+        top: `${infoData.y + 60}px`,
+        width: '175px',
       };
       return (
         <InfoBox layoutStyles={styles} key={`${Object.values(infoData).join('')}Els`}>
@@ -148,7 +164,7 @@ class TimelineTreeSVG extends Component {
       );
     });
 
-    const infoBoxBtns = infoBoxes.map((infoData) => {
+    const infoBoxBtns = infoBoxes.map((infoData, idx) => {
       const styles = {
         position: 'absolute',
         left: `${infoData.x + 200}px`,
@@ -156,17 +172,15 @@ class TimelineTreeSVG extends Component {
       };
 
       return (
-        <button
+        <img
           key={`${Object.values(infoData).join('')}Btns`}
-          type="button"
           style={styles}
           className="openInfoBtn"
-          onClick={
-            () => console.log('click') /* this.openInfoBox(infoData.text, infoData.x, infoData.y) */
-          }
-        >
-          <img src="assets/material-info-gray.svg" alt="register panel toggle" />
-        </button>
+          src="assets/material-info-gray.svg"
+          alt="cohort info"
+          onMouseEnter={() => this.showInfoBox(idx)}
+          onMouseLeave={() => this.hideInfoBox(idx)}
+        />
       );
     });
 
