@@ -272,8 +272,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-11-03",
+              "endDate": "2016-11-03",
               "cohort": "1997",
               "category": {
                 "fi": "kohorttilaiset",
@@ -281,8 +281,8 @@
               }
             },
             {
-              "startDate": "2009-01-01",
-              "endDate": false,
+              "startDate": "2009-06-10",
+              "endDate": "2009-06-10",
               "cohort": "1987",
               "category": {
                 "fi": "vanhemmat",
@@ -290,8 +290,8 @@
               }
             },
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-11-03",
+              "endDate": "2016-11-03",
               "cohort": "1997",
               "category": {
                 "fi": "vanhemmat",
@@ -311,8 +311,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-03-15",
+              "endDate": "2016-03-15",
               "cohort": "1997",
               "category": {
                 "fi": "kohorttilaiset",
@@ -353,8 +353,8 @@
           },
           "samplings": [
             {
-              "startDate": "2016-01-01",
-              "endDate": false,
+              "startDate": "2016-03-15",
+              "endDate": "2016-03-15",
               "cohort": "1997",
               "category": {
                 "fi": "kohorttilaiset",

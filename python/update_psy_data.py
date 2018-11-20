@@ -17,45 +17,45 @@ config = {
     'reg_col': 'B',
     'harmonize_col': 'C',
     'cat_col': 'D',
-    'note_col': 'E',
+    'note_col': 'M',
     'cohort_cols': [
         {
-            'col': 'F',
+            'col': 'E',
             'cohort': '1966',
             'category': 'subjects'
         },
         {
-            'col': 'G',
+            'col': 'F',
             'cohort': '1986',
             'category': 'subjects',
         },
         {
-            'col': 'H',
+            'col': 'G',
             'cohort': '1966',
             'category': 'parents'
         },
         {
-            'col': 'I',
+            'col': 'H',
             'cohort': '1986',
             'category': 'parents'
         },
         {
-            'col': 'J',
+            'col': 'I',
             'cohort': '1987',
             'category': 'subjects'
         },
         {
-            'col': 'K',
+            'col': 'J',
             'cohort': '1997',
             'category': 'subjects'
         },
         {
-            'col': 'L',
+            'col': 'K',
             'cohort': '1987',
             'category': 'parents',
         },
         {
-            'col': 'M',
+            'col': 'L',
             'cohort': '1997',
             'category': 'parents',
         },

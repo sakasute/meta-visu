@@ -9,7 +9,7 @@
         "en": "Care Register for Health Care",
         "fi": "Terveydenhuollon hoitoilmoitusrekisteri "
       },
-      "isHarmonized": true,
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -21,8 +21,8 @@
             "fi": "Erikoissairaanhoidon osastokäynnit"
           },
           "note": {
-            "en": "test",
-            "fi": "testi"
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -105,8 +105,8 @@
             "fi": "Erikoissairaanhoidon poliklinikkakäynnit"
           },
           "note": {
-            "en": "a slightly longer test",
-            "fi": "hieman pidempi testi"
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -190,7 +190,7 @@
         "en": "Register of Primary Health Care visits",
         "fi": "Perusterveydenhuollon avohoidon hoitoilmoitus"
       },
-      "isHarmonized": true,
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -202,8 +202,8 @@
             "fi": "Perusterveyden avohoidon käynnit"
           },
           "note": {
-            "en": "Deserunt officia exercitation incididunt labore duis commodo cillum excepteur exercitation quis non. Reprehenderit eiusmod dolor veniam id et veniam cillum pariatur. Aute voluptate veniam minim do labore. Laborum in excepteur nulla quis aliquip Lorem ut nisi irure anim quis nostrud.",
-            "fi": "Deserunt officia exercitation incididunt labore duis commodo cillum excepteur exercitation quis non. Reprehenderit eiusmod dolor veniam id et veniam cillum pariatur. Aute voluptate veniam minim do labore. Laborum in excepteur nulla quis aliquip Lorem ut nisi irure anim quis nostrud."
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -251,7 +251,7 @@
         "en": "Finnish Cancer Registry",
         "fi": "Suomen Syöpärekisteri"
       },
-      "isHarmonized": true,
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -384,6 +384,24 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "1987-01-01",
+              "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1997-01-01",
+              "endDate": "1997-01-01",
+              "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
@@ -449,6 +467,15 @@
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "1987-01-01",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
               }
             },
             {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import update from 'immutability-helper';
 import PropTypes from 'prop-types';
 
 import InfoBox from '../InfoBox/InfoBox';
@@ -27,7 +26,7 @@ class TimelineTreeSVG extends Component {
       nodeSize: 7.5,
     };
     this.timelineConfigDefault = {
-      width: 225,
+      width: 250,
       height: 100,
       showXAxis: false,
       showLegend: false,
@@ -48,7 +47,7 @@ class TimelineTreeSVG extends Component {
     } = this.props;
 
     // ***** TreeChart *****
-    const filteredRegisterData = data.registers.filter(
+    const selectedRegisters = data.registers.filter(
       register => registerFilter[register.name.en].isSelected,
     );
 
@@ -56,7 +55,7 @@ class TimelineTreeSVG extends Component {
     const cohortNum = selectedCohorts.length;
     const categoryTimelineHeight = 2 * (20 * cohortNum) + 30;
 
-    data.registers = filteredRegisterData;
+    data.registers = selectedRegisters;
     data = sortTreeData(data);
     const categoryCount = calculateCategoryCount(data);
     const treeHeight = categoryCount * categoryTimelineHeight;
@@ -195,11 +194,13 @@ class TimelineTreeSVG extends Component {
 }
 
 TimelineTreeSVG.propTypes = {
+  cohortFilter: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
+  filename: PropTypes.string.isRequired,
+  lang: PropTypes.string.isRequired,
   registerFilter: PropTypes.object.isRequired,
   treeConfig: PropTypes.object.isRequired,
   timelineConfig: PropTypes.object.isRequired,
-  filename: PropTypes.string.isRequired,
 };
 
 export default TimelineTreeSVG;

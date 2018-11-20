@@ -9,6 +9,7 @@
         "en": "Results of aptitude tests register",
         "fi": "Peruskoerekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -19,6 +20,10 @@
             "en": "Results of aptitude tests",
             "fi": "Peruskokeiden tulokset"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": []
         }
       ]
@@ -28,6 +33,7 @@
         "en": "Data on service register",
         "fi": "Asevelvollisuusrekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri",
         "en": ""
@@ -37,6 +43,10 @@
           "name": {
             "en": "Service class data",
             "fi": "Palveluskelpoisuusluokka"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

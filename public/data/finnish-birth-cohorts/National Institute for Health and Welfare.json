@@ -9,6 +9,7 @@
         "en": "Finnish Medical Birth Register",
         "fi": "Syntymärekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=b66bf56a-8c93-398f-87bb-ec1f57140a1c",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Pregnancy and birth outcomes (own)",
             "fi": "Oman syntymän raskaus- ja synnytystiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": "\"\""
           },
           "samplings": [
             {
@@ -45,6 +50,10 @@
             "en": "Pregnancy and birth outcomes (childrens)",
             "fi": "Omien lasten raskaus- ja synnytystiedot"
           },
+          "note": {
+            "en": "",
+            "fi": ""
+          },
           "samplings": [
             {
               "startDate": "1987-01-01",
@@ -70,6 +79,10 @@
           "name": {
             "en": "Pregnancy and birth outcomes",
             "fi": "Raskaus- ja synnytystiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -99,6 +112,7 @@
         "en": "Finnish Hospital Discharge Register",
         "fi": "Terveydenhuollon hoitoilmoitusrekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=a7d738ce-0130-3891-9646-766d337d233a",
         "en": ""
@@ -108,6 +122,10 @@
           "name": {
             "en": "Specialized inpatient care",
             "fi": "Erikoissairaanhoidon osastokäynnit"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -152,6 +170,10 @@
           "name": {
             "en": "Specialized outpatient care",
             "fi": "Erikoissairaanhoidon poliklinikkakäynnit"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -199,6 +221,7 @@
         "en": "Infectious Disease Register",
         "fi": "Tartuntatautirekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=6b43716d-f090-343f-aafc-a8b1af58496c",
         "en": ""
@@ -208,6 +231,10 @@
           "name": {
             "en": "Chlamydia trachomatis",
             "fi": "Klamydia"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -228,6 +255,7 @@
         "en": "Register on Induced Abortions",
         "fi": "Raskaudenkeskeyttämisrekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=f33cefcf-9413-3c1a-84a2-a088b19b0374",
         "en": ""
@@ -237,6 +265,10 @@
           "name": {
             "en": "Induced abortions",
             "fi": "Raskaudenkeskeytykset"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -266,6 +298,7 @@
         "en": "Register on Social Assistance",
         "fi": "Toimeentulorekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=064b7402-3fab-333a-9496-a27a85cc6684",
         "en": ""
@@ -275,6 +308,10 @@
           "name": {
             "en": "Social assistance",
             "fi": "Toimeentulotuki"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -322,6 +359,7 @@
         "en": "Institutionalized care in social institutions",
         "fi": "Sosiaalihuollon hoitoilmoitusrekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=103e0f03-94f5-3580-964b-d1e789d76257",
         "en": ""
@@ -331,6 +369,10 @@
           "name": {
             "en": "Institutional care and diagnosis",
             "fi": "Palveluala ja diagnoosit"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -378,6 +420,7 @@
         "en": "Register on Child Welfare",
         "fi": "Lastensuojelurekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=2bf2e56f-48d9-334e-8b2d-f025acdb5400",
         "en": ""
@@ -387,6 +430,10 @@
           "name": {
             "en": "Children placed in out-of-home -care",
             "fi": "Lastensuojelutoimenpiteiden kohteena olleet kohorttiin kuuluvat"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

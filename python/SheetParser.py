@@ -6,8 +6,10 @@ import os
 import json
 from openpyxl.utils import column_index_from_string
 
+
 def col_index_0_based(col_str):
     return column_index_from_string(col_str) - 1
+
 
 class SheetParser:
     def __init__(self, sheet, config):
