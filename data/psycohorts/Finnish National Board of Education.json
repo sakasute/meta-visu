@@ -9,6 +9,7 @@
         "en": "Joint Application Register",
         "fi": "Yhteisvalintarekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Joint application data",
             "fi": "Yhteisvalintatiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

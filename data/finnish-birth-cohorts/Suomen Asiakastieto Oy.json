@@ -6,9 +6,10 @@
   "registers": [
     {
       "name": {
-        "en": "<unnamed>",
+        "en": "<no name>",
         "fi": "<ei nimeä>"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Overindebtedness",
             "fi": "Ylivelkaantumistiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": []
         }

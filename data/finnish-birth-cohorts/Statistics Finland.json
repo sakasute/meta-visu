@@ -9,6 +9,7 @@
         "en": "Cause of Death Register",
         "fi": "Kuolemansyytilasto"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://www.stat.fi/til/ksyyt/index.html",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Dates and causes of deaths",
             "fi": "Kuolinpäivä ja kuolemansyy"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -65,6 +70,7 @@
         "en": "Register of Educational Achievements",
         "fi": "Tutkintorekisteri"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html",
         "en": ""
@@ -74,6 +80,10 @@
           "name": {
             "en": "Degree data",
             "fi": "Tutkintotiedot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {

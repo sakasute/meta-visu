@@ -9,6 +9,7 @@
         "en": "Data from the information system of the Employment and Economic Development Offices (URA)",
         "fi": "Työnvälitystilasto"
       },
+      "isHarmonized": false,
       "link": {
         "fi": "https://tem.fi/tyollisyyskatsaus-ja-tyonvalitystilasto",
         "en": ""
@@ -18,6 +19,10 @@
           "name": {
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
+          },
+          "note": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
