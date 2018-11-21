@@ -476,17 +476,6 @@
               }
             }
           ]
-        },
-        {
-          "name": {
-            "en": "Overindebtedness",
-            "fi": "Ylivelkaantumistiedot"
-          },
-          "note": {
-            "en": "",
-            "fi": ""
-          },
-          "samplings": []
         }
       ]
     }
