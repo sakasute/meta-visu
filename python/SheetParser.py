@@ -14,14 +14,16 @@ def col_index_0_based(col_str):
 class SheetParser:
     def __init__(self, sheet, config):
         self.data = []
+        self.row_fi = ()
+        self.row_en = ()
         self.sheet = sheet
         self.categories = config['categories']
         self.start_row = config['start_row']
-        self.reg_adm_col = col_index_0_based(config['reg_adm_col'])
-        self.reg_col = col_index_0_based(config['reg_col'])
-        self.cat_col = col_index_0_based(config['cat_col'])
+        self.registrar_col = col_index_0_based(config['registrar_col'])
+        self.register_col = col_index_0_based(config['register_col'])
+        self.detail_col = col_index_0_based(config['detail_col'])
         self.harmonize_col = col_index_0_based(config['harmonize_col'])
-        self.note_col = col_index_0_based(config['note_col'])
+        self.notes_col = col_index_0_based(config['notes_col'])
         self.cohort_cols = config['cohort_cols']
 
     @staticmethod
@@ -43,34 +45,34 @@ class SheetParser:
         with open(path + 'data_bundle.json', 'w', encoding='utf-8') as f:
             json.dump(data_bundle, f, ensure_ascii=False, default=str)
 
-    def add_link(self, link, register_admin_idx, register_idx):
-        self.data[register_admin_idx]['registers'][register_idx]['link'] = link
+    def add_link(self, link, registrar_idx, register_idx):
+        self.data[registrar_idx]['registers'][register_idx]['link'] = link
 
-    def create_register_admin(self, register_admin):
+    def create_registrar(self, registrar_name):
         self.data.append({
-            'name': register_admin,
+            'name': registrar_name,
             'registers': []
         })
 
         return len(self.data) - 1
 
-    def create_register(self, register, is_harmonized, register_admin_idx):
+    def create_register(self, register_name, is_harmonized, registrar_idx):
         # TODO: add support for keywords
-        self.data[register_admin_idx]['registers'].append({
-            'name': register,
+        self.data[registrar_idx]['registers'].append({
+            'name': register_name,
             'isHarmonized': is_harmonized,
             'link': {'fi': "", 'en': ""},
-            'categories': []
+            'details': []
         })
-        return len(self.data[register_admin_idx]['registers']) - 1
+        return len(self.data[registrar_idx]['registers']) - 1
 
-    def create_category(self, category, note, register_admin_idx, register_idx):
-        self.data[register_admin_idx]['registers'][register_idx]['categories'].append({
-            'name': category,
+    def create_detail(self, detail_name, note, registrar_idx, register_idx):
+        self.data[registrar_idx]['registers'][register_idx]['details'].append({
+            'name': detail_name,
             'note': note,
             'samplings': []
         })
-        return len(self.data[register_admin_idx]['registers'][register_idx]['categories']) - 1
+        return len(self.data[registrar_idx]['registers'][register_idx]['details']) - 1
 
     def create_samplings(self, dates_str, cohort, category):
         dates = self.parse_dates(dates_str)
@@ -84,9 +86,9 @@ class SheetParser:
             })
         return samplings
 
-    def add_samplings(self, samplings, register_admin_idx, register_idx, category_idx):
+    def add_samplings(self, samplings, registrar_idx, register_idx, detail_idx):
         for sampling in samplings:
-            self.data[register_admin_idx]['registers'][register_idx]['categories'][category_idx]['samplings'].append(
+            self.data[registrar_idx]['registers'][register_idx]['details'][detail_idx]['samplings'].append(
                 sampling)
 
     def find_by_name(self, list, name, lang):
@@ -124,65 +126,68 @@ class SheetParser:
                 dates.append({'start_date': start_date, 'end_date': end_date})
         return dates
 
+    def update_if_not_none(self, dictionary, col):
+        value_fi = self.row_fi[col].value
+        value_en = self.row_en[col].value
+        dictionary['fi'] = value_fi if value_fi != None else dictionary['fi']
+        dictionary['en'] = value_en if value_en != None else dictionary['en']
+
     def parse_sheet(self):
-        register_admin = {'en': '', 'fi': ''}
-        register = {'en': '', 'fi': ''}
-        category = {'en': '', 'fi': ''}
-        category_note = {'en': '', 'fi': ''}
+        registrar_name = {'en': '', 'fi': ''}
+        register_name = {'en': '', 'fi': ''}
+        detail_name = {'en': '', 'fi': ''}
 
         iterator = self.sheet.iter_rows(min_row=self.start_row)
         for row in iterator:
-            row_fi = row
+            self.row_fi = row
+
+            # Tries to take the next row from iterator. This should be the English version of the row.
+            # Otherwise, parsing is completed and the loop is broken.
             try:
-                row_en = next(iterator)
+                self.row_en = next(iterator)
             except StopIteration:
                 break
 
-            if len(row_en) == 0:
+            if len(self.row_en) == 0:
                 break
 
-            register_admin['fi'] = row_fi[self.reg_adm_col].value if row_fi[self.reg_adm_col].value != None else register_admin['fi']
-            register_admin['en'] = row_en[self.reg_adm_col].value if row_en[self.reg_adm_col].value != None else register_admin['en']
-            register_admin_idx = self.find_by_name(self.data, register_admin, 'en')
+            notes = {'en': '', 'fi': ''}
 
-            if register_admin_idx == None:
-                # using dict() here creates a copy of the dict so the function doesn't modify the original
-                register_admin_idx = self.create_register_admin(dict(register_admin))
+            self.update_if_not_none(registrar_name, self.registrar_col)
+            registrar_idx = self.find_by_name(self.data, registrar_name, 'en')
 
-            register['fi'] = row_fi[self.reg_col].value if row_fi[self.reg_col].value != None else register['fi']
-            register['en'] = row_en[self.reg_col].value if row_en[self.reg_col].value != None else register['en']
+            if registrar_idx == None:
+                registrar_idx = self.create_registrar(dict(registrar_name))
+
+            self.update_if_not_none(register_name, self.register_col)
             register_idx = self.find_by_name(
-                self.data[register_admin_idx]['registers'], register, 'en')
+                self.data[registrar_idx]['registers'], register_name, 'en')
 
             if register_idx == None:
-                is_harmonized = row_fi[self.harmonize_col].value == True
-                # using dict() here creates a copy of the dict so the function doesn't modify the original
-                register_idx = self.create_register(dict(register), is_harmonized, register_admin_idx)
+                is_harmonized = self.row_fi[self.harmonize_col].value == True
+                register_idx = self.create_register(dict(register_name), is_harmonized, registrar_idx)
 
-            category['fi'] = row_fi[self.cat_col].value if row_fi[self.cat_col].value != None else category['fi']
-            category['en'] = row_en[self.cat_col].value if row_en[self.cat_col].value != None else category['en']
-            category_idx = self.find_by_name(self.data[register_admin_idx]['registers']
-                                             [register_idx]['categories'], category, 'en')
+            self.update_if_not_none(detail_name, self.detail_col)
+            detail_idx = self.find_by_name(self.data[registrar_idx]['registers']
+                                           [register_idx]['details'], detail_name, 'en')
 
-            if category_idx == None:
-                category_note['fi'] = row_fi[self.note_col].value if row_fi[self.note_col].value != None else ''
-                category_note['en'] = row_en[self.note_col].value if row_en[self.note_col].value != None else ''
-                # using dict() here creates a copy of the dict so the function doesn't modify the original
-                category_idx = self.create_category(
-                    dict(category), dict(category_note), register_admin_idx, register_idx)
+            if detail_idx == None:
+                self.update_if_not_none(notes, self.notes_col)
+                detail_idx = self.create_detail(
+                    dict(detail_name), dict(notes), registrar_idx, register_idx)
 
             samplings = []
             for cohort_col in self.cohort_cols:
                 col = col_index_0_based(cohort_col['col'])
-                cohort_dates_str = str(row_fi[col].value)
+                cohort_dates_str = str(self.row_fi[col].value)
                 cohort_samplings = self.create_samplings(
                     cohort_dates_str, cohort_col['cohort'], cohort_col['category'])
                 samplings += cohort_samplings
 
-            self.add_samplings(samplings, register_admin_idx, register_idx, category_idx)
+            self.add_samplings(samplings, registrar_idx, register_idx, detail_idx)
 
     def parse_link_sheet(self, link_sheet):
-        register_admin = {'fi': '', 'en': ''}
+        registrar_name = {'fi': '', 'en': ''}
 
         link_col = 2
         iterator = link_sheet.iter_rows(min_row=self.start_row)
@@ -198,12 +203,12 @@ class SheetParser:
 
             # NOTE: this method assumes that register admins and registers have already been created
             # with parse_sheet()
-            register_admin['fi'] = row_fi[self.reg_adm_col].value if row_fi[self.reg_adm_col].value != None else register_admin['fi']
-            register_admin['en'] = row_en[self.reg_adm_col].value if row_en[self.reg_adm_col].value != None else register_admin['en']
-            register_admin_idx = self.find_by_name(self.data, register_admin, 'en')
+            registrar_name['fi'] = row_fi[self.registrar_col].value if row_fi[self.registrar_col].value != None else registrar_name['fi']
+            registrar_name['en'] = row_en[self.registrar_col].value if row_en[self.registrar_col].value != None else registrar_name['en']
+            registrar_idx = self.find_by_name(self.data, registrar_name, 'en')
 
-            register = {'fi': row_fi[self.reg_col].value, 'en': row_en[self.reg_col].value}
-            register_idx = self.find_by_name(self.data[register_admin_idx]['registers'], register, 'en')
+            register_name = {'fi': row_fi[self.register_col].value, 'en': row_en[self.register_col].value}
+            register_idx = self.find_by_name(self.data[registrar_idx]['registers'], register_name, 'en')
 
             try:
                 link_fi = row_fi[link_col].value if row_fi[link_col].value != None else ''
@@ -216,4 +221,4 @@ class SheetParser:
                 link_en = ''
 
             link = {'fi': link_fi, 'en': link_en}
-            self.add_link(dict(link), register_admin_idx, register_idx)
+            self.add_link(dict(link), registrar_idx, register_idx)

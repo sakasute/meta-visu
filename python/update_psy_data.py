@@ -13,11 +13,11 @@ DATA_PATH = '../public/data/' + DATASET + '/'
 config = {
     'categories': {"subjects": {"fi": "kohorttilaiset", "en": "subjects"}, "parents": {"fi": "vanhemmat", "en": "parents"}},
     'start_row': 4,
-    'reg_adm_col': 'A',
-    'reg_col': 'B',
+    'registrar_col': 'A',
+    'register_col': 'B',
     'harmonize_col': 'C',
-    'cat_col': 'D',
-    'note_col': 'M',
+    'detail_col': 'D',
+    'notes_col': 'M',
     'cohort_cols': [
         {
             'col': 'E',

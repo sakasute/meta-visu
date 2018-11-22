@@ -14,7 +14,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "details": [
         {
           "name": {
             "en": "Results of aptitude tests",
@@ -38,7 +38,7 @@
         "fi": "https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri",
         "en": ""
       },
-      "categories": [
+      "details": [
         {
           "name": {
             "en": "Service class data",

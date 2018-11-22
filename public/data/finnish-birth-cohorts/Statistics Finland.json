@@ -14,7 +14,7 @@
         "fi": "https://www.stat.fi/til/ksyyt/index.html",
         "en": ""
       },
-      "categories": [
+      "details": [
         {
           "name": {
             "en": "Dates and causes of deaths",
@@ -75,7 +75,7 @@
         "fi": "http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html",
         "en": ""
       },
-      "categories": [
+      "details": [
         {
           "name": {
             "en": "Degree data",
