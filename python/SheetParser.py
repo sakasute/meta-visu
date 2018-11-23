@@ -21,7 +21,7 @@ class SheetParser:
         self.start_row = config['start_row']
         self.registrar_col = col_index_0_based(config['registrar_col'])
         self.register_col = col_index_0_based(config['register_col'])
-        self.detail_col = col_index_0_based(config['detail_col'])
+        self.register_detail_col = col_index_0_based(config['register_detail_col'])
         self.harmonize_col = col_index_0_based(config['harmonize_col'])
         self.notes_col = col_index_0_based(config['notes_col'])
         self.cohort_cols = config['cohort_cols']
@@ -62,17 +62,17 @@ class SheetParser:
             'name': register_name,
             'isHarmonized': is_harmonized,
             'link': {'fi': "", 'en': ""},
-            'details': []
+            'registerDetails': []
         })
         return len(self.data[registrar_idx]['registers']) - 1
 
-    def create_detail(self, detail_name, note, registrar_idx, register_idx):
-        self.data[registrar_idx]['registers'][register_idx]['details'].append({
-            'name': detail_name,
+    def create_register_detail(self, register_detail_name, note, registrar_idx, register_idx):
+        self.data[registrar_idx]['registers'][register_idx]['registerDetails'].append({
+            'name': register_detail_name,
             'note': note,
             'samplings': []
         })
-        return len(self.data[registrar_idx]['registers'][register_idx]['details']) - 1
+        return len(self.data[registrar_idx]['registers'][register_idx]['registerDetails']) - 1
 
     def create_samplings(self, dates_str, cohort, category):
         dates = self.parse_dates(dates_str)
@@ -86,9 +86,9 @@ class SheetParser:
             })
         return samplings
 
-    def add_samplings(self, samplings, registrar_idx, register_idx, detail_idx):
+    def add_samplings(self, samplings, registrar_idx, register_idx, register_detail_idx):
         for sampling in samplings:
-            self.data[registrar_idx]['registers'][register_idx]['details'][detail_idx]['samplings'].append(
+            self.data[registrar_idx]['registers'][register_idx]['registerDetails'][register_detail_idx]['samplings'].append(
                 sampling)
 
     def find_by_name(self, list, name, lang):
@@ -135,7 +135,7 @@ class SheetParser:
     def parse_sheet(self):
         registrar_name = {'en': '', 'fi': ''}
         register_name = {'en': '', 'fi': ''}
-        detail_name = {'en': '', 'fi': ''}
+        register_detail_name = {'en': '', 'fi': ''}
 
         iterator = self.sheet.iter_rows(min_row=self.start_row)
         for row in iterator:
@@ -167,14 +167,14 @@ class SheetParser:
                 is_harmonized = self.row_fi[self.harmonize_col].value == True
                 register_idx = self.create_register(dict(register_name), is_harmonized, registrar_idx)
 
-            self.update_if_not_none(detail_name, self.detail_col)
-            detail_idx = self.find_by_name(self.data[registrar_idx]['registers']
-                                           [register_idx]['details'], detail_name, 'en')
+            self.update_if_not_none(register_detail_name, self.register_detail_col)
+            register_detail_idx = self.find_by_name(self.data[registrar_idx]['registers']
+                                                    [register_idx]['registerDetails'], register_detail_name, 'en')
 
-            if detail_idx == None:
+            if register_detail_idx == None:
                 self.update_if_not_none(notes, self.notes_col)
-                detail_idx = self.create_detail(
-                    dict(detail_name), dict(notes), registrar_idx, register_idx)
+                register_detail_idx = self.create_register_detail(
+                    dict(register_detail_name), dict(notes), registrar_idx, register_idx)
 
             samplings = []
             for cohort_col in self.cohort_cols:
@@ -184,7 +184,7 @@ class SheetParser:
                     cohort_dates_str, cohort_col['cohort'], cohort_col['category'])
                 samplings += cohort_samplings
 
-            self.add_samplings(samplings, registrar_idx, register_idx, detail_idx)
+            self.add_samplings(samplings, registrar_idx, register_idx, register_detail_idx)
 
     def parse_link_sheet(self, link_sheet):
         registrar_name = {'fi': '', 'en': ''}

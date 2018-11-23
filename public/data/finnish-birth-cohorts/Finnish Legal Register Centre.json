@@ -14,7 +14,7 @@
         "fi": "https://www.oikeusrekisterikeskus.fi/fi/index/asiakaspalvelu/rekisteritotteetjatodistukset/rikosrekisteri.html",
         "en": ""
       },
-      "details": [
+      "registerDetails": [
         {
           "name": {
             "en": "Criminality (offences and court decisions)",
@@ -57,7 +57,7 @@
         "fi": "",
         "en": ""
       },
-      "details": [
+      "registerDetails": [
         {
           "name": {
             "en": "Summary penal judgements",

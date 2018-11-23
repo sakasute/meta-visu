@@ -14,7 +14,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Results of aptitude tests",
@@ -38,7 +38,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Service class data",

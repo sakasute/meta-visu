@@ -14,7 +14,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Specialized care Inpatient treatments",
@@ -195,7 +195,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Primary care outpatient treatments",
@@ -256,7 +256,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Cancer Register",
@@ -365,7 +365,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Pregnancy and birth outcomes (own)",
@@ -501,7 +501,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Visual Disability Register",
@@ -562,7 +562,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Chlamydia trachomatis",
@@ -596,7 +596,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Induced abortions",
@@ -639,7 +639,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Social assistance",
@@ -700,7 +700,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Institutional care and diagnosis",
@@ -761,7 +761,7 @@
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "registerDetails": [
         {
           "name": {
             "en": "Children placed in out-of-home -care",

@@ -19,7 +19,7 @@ export default function RegisterAdminItem({
 }) {
   const registerFilter = fileFilter.registers;
   const registerItems = Object.keys(registerFilter)
-    .sort((a, b) => compareByName(registerFilter[a], registerFilter[b], lang))
+    // .sort((a, b) => compareByName(registerFilter[a], registerFilter[b], lang))
     .map(registerName => (
       <RegisterItem
         lang={lang}

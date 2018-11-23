@@ -66,10 +66,10 @@ class SidePanel extends Component {
     ));
 
     const registerAdminItems = Object.keys(treeFilter)
-      .sort((a, b) => compareByName(treeFilter[a], treeFilter[b], lang, {
-        en: 'National Institute for Health and Welfare',
-        fi: 'THL',
-      }))
+      // .sort((a, b) => compareByName(treeFilter[a], treeFilter[b], lang, {
+      //   en: 'National Institute for Health and Welfare',
+      //   fi: 'THL',
+      // }))
       .map((filename) => {
         const fileFilter = treeFilter[filename];
         return (

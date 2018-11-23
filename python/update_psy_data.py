@@ -16,7 +16,7 @@ config = {
     'registrar_col': 'A',
     'register_col': 'B',
     'harmonize_col': 'C',
-    'detail_col': 'D',
+    'register_detail_col': 'D',
     'notes_col': 'M',
     'cohort_cols': [
         {

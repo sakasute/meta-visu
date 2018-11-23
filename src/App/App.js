@@ -158,7 +158,7 @@ class App extends Component {
 
     const timelineTreeCards = filenames
       .map(filename => ({ filename, name: treeFilter[filename].name }))
-      .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
+      // .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
       .map((nameObj) => {
         const { filename } = nameObj;
         const fileFilter = treeFilter[filename];

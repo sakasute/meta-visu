@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import InfoBox from '../InfoBox/InfoBox';
 
 import d3 from '../_js/d3Visualizations/d3imports';
-// NOTE: CategoryTimelines are currently created with an external helper function
-// import CategoryTimeline from '../d3Visualizations/CategoryTimeline';
+
 import TreeChart from '../_js/d3Visualizations/TreeChart';
 import CategoryTimeline from '../_js/d3Visualizations/CategoryTimeline';
-import { sortTreeData, calculateCategoryCount, idRef } from '../_js/helpers';
+import { sortTreeData, calculateregisterDetailCount, idRef } from '../_js/helpers';
 
 import './TimelineTreeSVG.css';
 
@@ -22,7 +21,7 @@ class TimelineTreeSVG extends Component {
       height: 100,
       posX: 125,
       posY: 50,
-      childrenNames: ['registers', 'categories'],
+      childrenNames: ['registers', 'registerDetails'],
       nodeSize: 7.5,
     };
     this.timelineConfigDefault = {
@@ -56,9 +55,9 @@ class TimelineTreeSVG extends Component {
     const categoryTimelineHeight = 2 * (20 * cohortNum) + 30;
 
     data.registers = selectedRegisters;
-    data = sortTreeData(data);
-    const categoryCount = calculateCategoryCount(data);
-    const treeHeight = categoryCount * categoryTimelineHeight;
+    // data = sortTreeData(data);
+    const registerDetailCount = calculateregisterDetailCount(data);
+    const treeHeight = registerDetailCount * categoryTimelineHeight;
     this.treeConfigDefault.height = treeHeight;
 
     const treeConfigExtended = { ...this.treeConfigDefault, ...treeConfig };
@@ -94,10 +93,10 @@ class TimelineTreeSVG extends Component {
         }));
         this.setState({ infoBoxes });
 
-        registerNode.children.forEach((categoryNode, categoryIdx) => {
+        registerNode.children.forEach((registerDetailNode, registerDetailIdx) => {
           let timelineConfigModified = timelineConfigExtended;
 
-          if (registerIdx === 0 && categoryIdx === 0) {
+          if (registerIdx === 0 && registerDetailIdx === 0) {
             timelineConfigModified = {
               ...timelineConfigExtended,
               showXAxis: true,
@@ -106,7 +105,7 @@ class TimelineTreeSVG extends Component {
             };
           }
 
-          const filteredCohortData = categoryNode.data.samplings.filter(
+          const filteredCohortData = registerDetailNode.data.samplings.filter(
             sampling => cohortFilter[sampling.cohort].isSelected,
           );
           const categoryTimeline = new CategoryTimeline(
@@ -116,8 +115,8 @@ class TimelineTreeSVG extends Component {
           );
           // NOTE: the tree structure kind of swaps x and y coords
           categoryTimeline.moveTo(
-            categoryNode.y + 300,
-            categoryNode.x + 50 + 10 - categoryTimelineHeight / 2,
+            registerDetailNode.y + 300,
+            registerDetailNode.x + 50 + 10 - categoryTimelineHeight / 2,
           );
           categoryTimeline.update();
         });

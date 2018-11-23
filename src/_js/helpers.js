@@ -4,10 +4,10 @@ export function parseNameFromFilename(filename) {
   return filename.split('.')[0];
 }
 
-export function calculateCategoryCount(data) {
-  let categoryCount = 0;
-  data.registers.forEach(register => register.categories.forEach(category => (categoryCount += 1)));
-  return categoryCount;
+export function calculateregisterDetailCount(data) {
+  let registerDetailCount = 0;
+  data.registers.forEach(register => register.registerDetails.forEach(() => (registerDetailCount += 1)));
+  return registerDetailCount;
 }
 
 export function categoryTimelineHelper(samplingData, svg, config) {
@@ -49,6 +49,6 @@ export function idRef(filename) {
 
 export function sortTreeData(data) {
   data.registers.sort((a, b) => compareByName(a, b));
-  data.registers.forEach(register => register.categories.sort((a, b) => compareByName(a, b)));
+  data.registers.forEach(register => register.registerDetails.sort((a, b) => compareByName(a, b)));
   return data;
 }
