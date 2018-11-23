@@ -28,13 +28,8 @@ class SheetParser:
 
     @staticmethod
     def bundle_json_files(path):
-        # NOTE: this method breaks if there are subfolders in the given path
-        filelist = os.listdir(path)
-        try:
-            filelist.remove('filenames.json')
-            filelist.remove('data_bundle.json')
-        except ValueError:
-            pass
+        with open(path + 'filenames.json', 'r', encoding='utf-8') as f:
+            filelist = json.load(f)
 
         data_bundle = {}
         for filename in filelist:
