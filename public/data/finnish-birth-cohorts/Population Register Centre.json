@@ -7,11 +7,11 @@
     {
       "name": {
         "en": "Population Information System",
-        "fi": "Väestötietojärjestelmä"
+        "fi": "=HYPERLINK(\"https://vrk.fi/vaestotietojarjestelma\",\"Väestötietojärjestelmä\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://vrk.fi/vaestotietojarjestelma",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

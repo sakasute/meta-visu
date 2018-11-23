@@ -7,11 +7,11 @@
     {
       "name": {
         "en": "Pension Register",
-        "fi": "Eläkerekisteri"
+        "fi": "=HYPERLINK(\"https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf\",\"Eläkerekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -68,11 +68,11 @@
     {
       "name": {
         "en": "Earning Register",
-        "fi": "Ansaintarekisteri"
+        "fi": "=HYPERLINK(\"https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf\",\"Ansaintarekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

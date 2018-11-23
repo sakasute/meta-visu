@@ -7,11 +7,11 @@
     {
       "name": {
         "en": "Finnish Medical Birth Register",
-        "fi": "Syntymärekisteri"
+        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=b66bf56a-8c9\"&\"3-398f-87bb-ec1f57140a1c\",\"Syntymärekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=b66bf56a-8c93-398f-87bb-ec1f57140a1c",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -110,11 +110,11 @@
     {
       "name": {
         "en": "Finnish Hospital Discharge Register",
-        "fi": "Terveydenhuollon hoitoilmoitusrekisteri"
+        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=a7d738ce-013\"&\"0-3891-9646-766d337d233a\",\"Terveydenhuollon hoitoilmoitusrekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=a7d738ce-0130-3891-9646-766d337d233a",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -219,11 +219,11 @@
     {
       "name": {
         "en": "Infectious Disease Register",
-        "fi": "Tartuntatautirekisteri"
+        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=6b43716d-f09\"&\"0-343f-aafc-a8b1af58496c\",\"Tartuntatautirekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=6b43716d-f090-343f-aafc-a8b1af58496c",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -253,11 +253,11 @@
     {
       "name": {
         "en": "Register on Induced Abortions",
-        "fi": "Raskaudenkeskeyttämisrekisteri"
+        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=f33cefcf-941\"&\"3-3c1a-84a2-a088b19b0374\",\"Raskaudenkeskeyttämisrekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=f33cefcf-9413-3c1a-84a2-a088b19b0374",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -296,11 +296,11 @@
     {
       "name": {
         "en": "Register on Social Assistance",
-        "fi": "Toimeentulorekisteri"
+        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=064b7402-3fa\"&\"b-333a-9496-a27a85cc6684\",\"Toimeentulorekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=064b7402-3fab-333a-9496-a27a85cc6684",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -357,11 +357,11 @@
     {
       "name": {
         "en": "Institutionalized care in social institutions",
-        "fi": "Sosiaalihuollon hoitoilmoitusrekisteri"
+        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=103e0f03-94f\"&\"5-3580-964b-d1e789d76257\",\"Sosiaalihuollon hoitoilmoitusrekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=103e0f03-94f5-3580-964b-d1e789d76257",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -418,11 +418,11 @@
     {
       "name": {
         "en": "Register on Child Welfare",
-        "fi": "Lastensuojelurekisteri"
+        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=2bf2e56f-48d\"&\"9-334e-8b2d-f025acdb5400\",\"Lastensuojelurekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=2bf2e56f-48d9-334e-8b2d-f025acdb5400",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

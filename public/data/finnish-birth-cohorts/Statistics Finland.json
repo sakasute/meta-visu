@@ -7,11 +7,11 @@
     {
       "name": {
         "en": "Cause of Death Register",
-        "fi": "Kuolemansyytilasto"
+        "fi": "=HYPERLINK(\"https://www.stat.fi/til/ksyyt/index.html\",\"Kuolemansyytilasto\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://www.stat.fi/til/ksyyt/index.html",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [
@@ -68,11 +68,11 @@
     {
       "name": {
         "en": "Register of Educational Achievements",
-        "fi": "Tutkintorekisteri"
+        "fi": "=HYPERLINK(\"http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html\",\"Tutkintorekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

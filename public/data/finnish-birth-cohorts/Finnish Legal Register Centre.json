@@ -7,11 +7,11 @@
     {
       "name": {
         "en": "Criminal Record",
-        "fi": "Rikosrekisteri"
+        "fi": "=HYPERLINK(\"https://www.oikeusrekisterikeskus.fi/fi/index/asiakaspalvelu/rekisteritotteetjatodistukset/rikosrekisteri.html\",\"Rikosrekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://www.oikeusrekisterikeskus.fi/fi/index/asiakaspalvelu/rekisteritotteetjatodistukset/rikosrekisteri.html",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

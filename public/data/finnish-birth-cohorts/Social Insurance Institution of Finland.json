@@ -7,11 +7,11 @@
     {
       "name": {
         "en": "Benefits Register",
-        "fi": "Etuusrekisteri"
+        "fi": "=HYPERLINK(\"https://www.kela.fi/documents/10180/7276260/Tietosuojaseloste+-+Etuusrekisteri..pdf/\",\"Etuusrekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://www.kela.fi/documents/10180/7276260/Tietosuojaseloste+-+Etuusrekisteri..pdf/",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

@@ -7,11 +7,11 @@
     {
       "name": {
         "en": "Data from the information system of the Employment and Economic Development Offices (URA)",
-        "fi": "Työnvälitystilasto"
+        "fi": "=HYPERLINK(\"https://tem.fi/tyollisyyskatsaus-ja-tyonvalitystilasto\",\"Työnvälitystilasto\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://tem.fi/tyollisyyskatsaus-ja-tyonvalitystilasto",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

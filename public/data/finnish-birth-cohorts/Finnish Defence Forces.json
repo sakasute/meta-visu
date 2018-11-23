@@ -31,11 +31,11 @@
     {
       "name": {
         "en": "Data on service register",
-        "fi": "Asevelvollisuusrekisteri"
+        "fi": "=HYPERLINK(\"https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri\",\"Asevelvollisuusrekisteri\")"
       },
       "isHarmonized": false,
       "link": {
-        "fi": "https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri",
+        "fi": "",
         "en": ""
       },
       "registerDetails": [

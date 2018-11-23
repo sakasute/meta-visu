@@ -17,14 +17,16 @@ class SheetParser:
         self.row_fi = ()
         self.row_en = ()
         self.sheet = sheet
-        self.categories = config['categories']
-        self.start_row = config['start_row']
-        self.registrar_col = col_index_0_based(config['registrar_col'])
-        self.register_col = col_index_0_based(config['register_col'])
-        self.register_detail_col = col_index_0_based(config['register_detail_col'])
-        self.harmonize_col = col_index_0_based(config['harmonize_col'])
-        self.notes_col = col_index_0_based(config['notes_col'])
-        self.cohort_cols = config['cohort_cols']
+        self.config = config
+
+        self.categories = self.extract_config('categories')
+        self.start_row = self.extract_config('start_row')
+        self.registrar_col = col_index_0_based(self.extract_config('registrar_col'))
+        self.register_col = col_index_0_based(self.extract_config('register_col'))
+        self.register_detail_col = col_index_0_based(self.extract_config('register_detail_col'))
+        self.harmonize_col = col_index_0_based(self.extract_config('harmonize_col'))
+        self.notes_col = col_index_0_based(self.extract_config('notes_col'))
+        self.cohort_cols = self.extract_config('cohort_cols')
 
     @staticmethod
     def bundle_json_files(path):
@@ -42,6 +44,9 @@ class SheetParser:
 
     def add_link(self, link, registrar_idx, register_idx):
         self.data[registrar_idx]['registers'][register_idx]['link'] = link
+
+    def extract_config(self, key):
+        return self.config[key] if key in self.config.keys() else False
 
     def create_registrar(self, registrar_name):
         self.data.append({
@@ -121,6 +126,7 @@ class SheetParser:
                 dates.append({'start_date': start_date, 'end_date': end_date})
         return dates
 
+    # updates given dictionary with the value of current cell if the value is not None
     def update_if_not_none(self, dictionary, col):
         value_fi = self.row_fi[col].value
         value_en = self.row_en[col].value
