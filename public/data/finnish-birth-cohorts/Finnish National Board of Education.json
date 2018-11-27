@@ -20,9 +20,13 @@
             "en": "Joint application data and primary school achievements",
             "fi": "Yhteisvalintatiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

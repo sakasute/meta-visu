@@ -85,9 +85,9 @@ class TimelineTreeSVG extends Component {
     if (treeChart.treeData.children) {
       treeChart.treeData.children.forEach((registerNode, registerIdx) => {
         const { infoBoxes } = this.state;
-        registerNode.children.filter(node => node.data.note[lang] !== '').forEach(node => infoBoxes.push({
+        registerNode.children.filter(node => node.data.notes[lang] !== '').forEach(node => infoBoxes.push({
           isShown: false,
-          text: node.data.note,
+          text: node.data.notes,
           x: node.y,
           y: node.x,
         }));

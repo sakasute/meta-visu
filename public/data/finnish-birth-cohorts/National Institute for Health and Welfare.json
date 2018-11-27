@@ -20,9 +20,21 @@
             "en": "Pregnancy and birth outcomes (own)",
             "fi": "Oman syntymän raskaus- ja synnytystiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [
+              "testi1",
+              "testi2",
+              "testi3"
+            ],
+            "en": [
+              "test1",
+              "test2",
+              "test3"
+            ]
           },
           "samplings": [
             {
@@ -50,9 +62,17 @@
             "en": "Pregnancy and birth outcomes (childrens)",
             "fi": "Omien lasten raskaus- ja synnytystiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [
+              "testi1"
+            ],
+            "en": [
+              "test1"
+            ]
           },
           "samplings": [
             {
@@ -80,9 +100,17 @@
             "en": "Pregnancy and birth outcomes",
             "fi": "Raskaus- ja synnytystiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [
+              "testi2"
+            ],
+            "en": [
+              "test2"
+            ]
           },
           "samplings": [
             {
@@ -123,9 +151,13 @@
             "en": "Specialized inpatient care",
             "fi": "Erikoissairaanhoidon osastokäynnit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -171,9 +203,13 @@
             "en": "Specialized outpatient care",
             "fi": "Erikoissairaanhoidon poliklinikkakäynnit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -232,9 +268,13 @@
             "en": "Chlamydia trachomatis",
             "fi": "Klamydia"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -266,9 +306,13 @@
             "en": "Induced abortions",
             "fi": "Raskaudenkeskeytykset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -309,9 +353,13 @@
             "en": "Social assistance",
             "fi": "Toimeentulotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -370,9 +418,13 @@
             "en": "Institutional care and diagnosis",
             "fi": "Palveluala ja diagnoosit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -431,9 +483,13 @@
             "en": "Children placed in out-of-home -care",
             "fi": "Lastensuojelutoimenpiteiden kohteena olleet kohorttiin kuuluvat"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

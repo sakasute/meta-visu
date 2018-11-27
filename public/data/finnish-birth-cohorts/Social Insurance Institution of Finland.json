@@ -20,9 +20,13 @@
             "en": "Psychotropic medicines",
             "fi": "Lääkärin määräämät psyykenlääkkeet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -50,9 +54,13 @@
             "en": "Special reimpbursement rights",
             "fi": "Erityiskorvausoikeudet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -71,9 +79,13 @@
             "en": "Child home care allowance",
             "fi": "Lastenhoitotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -92,9 +104,13 @@
             "en": "Disability benefits",
             "fi": "Vammaistuet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -122,9 +138,13 @@
             "en": "Parental allowance",
             "fi": "Äitiys-, isyys- ja vanhempainpäiväraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -170,9 +190,13 @@
             "en": "Home care allowance",
             "fi": "Kotihoidontuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -200,9 +224,13 @@
             "en": "Unemployment benefits",
             "fi": "Työttömyyskorvaustiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -239,9 +267,13 @@
             "en": "Basic unemployment allowance",
             "fi": "Peruspäiväraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -269,9 +301,13 @@
             "en": "Labour market subsidy",
             "fi": "Työmarkkinatuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -299,9 +335,13 @@
             "en": "Rehabilitation allowance",
             "fi": "Kuntoutusraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -329,9 +369,13 @@
             "en": "Rehabilitations",
             "fi": "Kuntoutukset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -359,9 +403,13 @@
             "en": "Disability pension",
             "fi": "Työkyvyttömyyseläkkeet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -389,9 +437,13 @@
             "en": "Study gnats",
             "fi": "Opintotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -419,9 +471,13 @@
             "en": "Marital status, county, municipality",
             "fi": "Siviilisääty, lääni, kunta"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -440,9 +496,13 @@
             "en": "Parents' all children",
             "fi": "Vanhempien kaikki lapset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -461,9 +521,13 @@
             "en": "Private doctor visits",
             "fi": "Yksityiset lääkärissäkäynnit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

@@ -20,9 +20,13 @@
             "en": "Pension data",
             "fi": "Eläketiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -81,9 +85,13 @@
             "en": "Earning periods",
             "fi": "Ansaintajaksot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -129,9 +137,13 @@
             "en": "Most common unsalaried benefit periods",
             "fi": "Palkattomien aikojen etuudet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -177,9 +189,13 @@
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

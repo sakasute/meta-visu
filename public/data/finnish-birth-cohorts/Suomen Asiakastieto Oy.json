@@ -20,9 +20,13 @@
             "en": "Overindebtedness",
             "fi": "Ylivelkaantumistiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": []
         }

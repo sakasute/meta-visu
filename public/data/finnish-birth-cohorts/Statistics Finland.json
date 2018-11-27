@@ -20,9 +20,13 @@
             "en": "Dates and causes of deaths",
             "fi": "Kuolinpäivä ja kuolemansyy"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -81,9 +85,13 @@
             "en": "Degree data",
             "fi": "Tutkintotiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

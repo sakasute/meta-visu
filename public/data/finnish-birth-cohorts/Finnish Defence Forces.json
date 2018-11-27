@@ -20,9 +20,13 @@
             "en": "Results of aptitude tests",
             "fi": "Peruskokeiden tulokset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": []
         }
@@ -44,9 +48,13 @@
             "en": "Service class data",
             "fi": "Palveluskelpoisuusluokka"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

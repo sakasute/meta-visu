@@ -20,9 +20,13 @@
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
