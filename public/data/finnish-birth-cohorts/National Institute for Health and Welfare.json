@@ -6,14 +6,14 @@
   "registers": [
     {
       "name": {
-        "en": "Finnish Medical Birth Register",
-        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=b66bf56a-8c9\"&\"3-398f-87bb-ec1f57140a1c\",\"Syntymärekisteri\")"
+        "fi": "\"Syntymärekisteri\"",
+        "en": "Finnish Medical Birth Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -137,14 +137,14 @@
     },
     {
       "name": {
-        "en": "Finnish Hospital Discharge Register",
-        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=a7d738ce-013\"&\"0-3891-9646-766d337d233a\",\"Terveydenhuollon hoitoilmoitusrekisteri\")"
+        "fi": "\"Terveydenhuollon hoitoilmoitusrekisteri\"",
+        "en": "Finnish Hospital Discharge Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -254,14 +254,14 @@
     },
     {
       "name": {
-        "en": "Infectious Disease Register",
-        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=6b43716d-f09\"&\"0-343f-aafc-a8b1af58496c\",\"Tartuntatautirekisteri\")"
+        "fi": "\"Tartuntatautirekisteri\"",
+        "en": "Infectious Disease Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -292,14 +292,14 @@
     },
     {
       "name": {
-        "en": "Register on Induced Abortions",
-        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=f33cefcf-941\"&\"3-3c1a-84a2-a088b19b0374\",\"Raskaudenkeskeyttämisrekisteri\")"
+        "fi": "\"Raskaudenkeskeyttämisrekisteri\"",
+        "en": "Register on Induced Abortions"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -339,14 +339,14 @@
     },
     {
       "name": {
-        "en": "Register on Social Assistance",
-        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=064b7402-3fa\"&\"b-333a-9496-a27a85cc6684\",\"Toimeentulorekisteri\")"
+        "fi": "\"Toimeentulorekisteri\"",
+        "en": "Register on Social Assistance"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -404,14 +404,14 @@
     },
     {
       "name": {
-        "en": "Institutionalized care in social institutions",
-        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=103e0f03-94f\"&\"5-3580-964b-d1e789d76257\",\"Sosiaalihuollon hoitoilmoitusrekisteri\")"
+        "fi": "\"Sosiaalihuollon hoitoilmoitusrekisteri\"",
+        "en": "Institutionalized care in social institutions"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -469,14 +469,14 @@
     },
     {
       "name": {
-        "en": "Register on Child Welfare",
-        "fi": "=HYPERLINK(\"https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=2bf2e56f-48d\"&\"9-334e-8b2d-f025acdb5400\",\"Lastensuojelurekisteri\")"
+        "fi": "\"Lastensuojelurekisteri\"",
+        "en": "Register on Child Welfare"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {

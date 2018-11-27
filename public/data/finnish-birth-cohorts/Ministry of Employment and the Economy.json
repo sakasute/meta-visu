@@ -6,14 +6,14 @@
   "registers": [
     {
       "name": {
-        "en": "Data from the information system of the Employment and Economic Development Offices (URA)",
-        "fi": "=HYPERLINK(\"https://tem.fi/tyollisyyskatsaus-ja-tyonvalitystilasto\",\"Työnvälitystilasto\")"
+        "fi": "\"Työnvälitystilasto\"",
+        "en": "Data from the information system of the Employment and Economic Development Offices (URA)"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {

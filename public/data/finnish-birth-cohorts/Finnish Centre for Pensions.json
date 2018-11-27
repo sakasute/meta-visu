@@ -6,14 +6,14 @@
   "registers": [
     {
       "name": {
-        "en": "Pension Register",
-        "fi": "=HYPERLINK(\"https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf\",\"Eläkerekisteri\")"
+        "fi": "\"Eläkerekisteri\"",
+        "en": "Pension Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -71,14 +71,14 @@
     },
     {
       "name": {
-        "en": "Earning Register",
-        "fi": "=HYPERLINK(\"https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf\",\"Ansaintarekisteri\")"
+        "fi": "\"Ansaintarekisteri\"",
+        "en": "Earning Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {

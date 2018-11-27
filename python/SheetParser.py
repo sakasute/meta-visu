@@ -41,6 +41,21 @@ def parse_dates(raw_dates_str):
     return dates
 
 
+def parse_possible_link(value):
+    if value.startswith('=HYPERLINK'):
+        info = parse_hyperlink(value)
+    else:
+        info = {'name': value, 'link': ''}
+    return info
+
+
+def parse_hyperlink(hyperlink):
+    # hyperlink format: =HYPERLINK("https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf","Eläkerekisteri")
+    value = hyperlink[hyperlink.find('(')+1:hyperlink.find(')')]  # gets the value from inside the brackets
+    splitted_value = value.split(',')
+    return {'name': splitted_value[1], 'link': splitted_value[0]}
+
+
 class SheetParser:
     def __init__(self, sheet, config):
         self.data = []
@@ -50,7 +65,7 @@ class SheetParser:
         self.keywords = {'en': [], 'fi': []}
 
         self.registrar_name = {'en': '', 'fi': ''}
-        self.register_name = {'en': '', 'fi': ''}
+        self.register_info = {'name': {'en': '', 'fi': ''}, 'link': {'en': '', 'fi': ''}}
         self.register_detail_name = {'en': '', 'fi': ''}
         self.current_registrar_idx = None
         self.current_register_idx = None
@@ -97,10 +112,11 @@ class SheetParser:
 
         return len(self.data) - 1
 
-    def create_register(self, register_name, is_harmonized, registrar_idx):
+    def create_register(self, register_name, link, is_harmonized, registrar_idx):
         # TODO: add support for keywords
         self.data[registrar_idx]['registers'].append({
             'name': register_name,
+            'link': link,
             'isHarmonized': is_harmonized,
             'link': {'fi': "", 'en': ""},
             'registerDetails': []
@@ -146,16 +162,16 @@ class SheetParser:
             self.current_registrar_idx = self.create_registrar(dict(self.registrar_name))
 
     def parse_register_cols(self):
-        self.update_dict_from_col(self.register_name, self.register_col)
+        self.update_register_info()
         self.current_register_idx = self.find_by_name(
-            self.data[self.current_registrar_idx]['registers'], self.register_name, 'en')
+            self.data[self.current_registrar_idx]['registers'], self.register_info['name'], 'en')
 
         if self.current_register_idx == None:
             is_harmonized = False
             if self.harmonize_col is not False:
                 is_harmonized = self.row_fi[self.harmonize_col].value == True
             self.current_register_idx = self.create_register(
-                dict(self.register_name), is_harmonized, self.current_registrar_idx)
+                dict(self.register_info['name']), dict(self.register_info['link']), is_harmonized, self.current_registrar_idx)
 
     def parse_register_detail_cols(self):
         self.update_dict_from_col(self.register_detail_name, self.register_detail_col)
@@ -209,6 +225,25 @@ class SheetParser:
         for keyword in keyword_list_en:
             if keyword not in self.keywords:
                 self.keywords['en'].append(keyword)
+
+    def update_register_info(self):
+        value_fi = self.row_fi[self.register_col].value
+        value_en = self.row_en[self.register_col].value
+
+        if value_fi != None:
+            register_info_fi = parse_possible_link(value_fi)
+            register_info_en = parse_possible_link(value_en)
+
+            self.register_info = {
+                'name': {
+                    'fi': register_info_fi['name'],
+                    'en': register_info_en['name']
+                },
+                'link': {
+                    'fi': register_info_fi['link'],
+                    'en': register_info_en['link']
+                }
+            }
 
     def parse_sheet(self):
         iterator = self.sheet.iter_rows(min_row=self.start_row)

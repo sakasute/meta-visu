@@ -6,14 +6,14 @@
   "registers": [
     {
       "name": {
-        "en": "Criminal Record",
-        "fi": "=HYPERLINK(\"https://www.oikeusrekisterikeskus.fi/fi/index/asiakaspalvelu/rekisteritotteetjatodistukset/rikosrekisteri.html\",\"Rikosrekisteri\")"
+        "fi": "\"Rikosrekisteri\"",
+        "en": "Criminal Record"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -53,14 +53,14 @@
     },
     {
       "name": {
-        "en": "Summary Penal Judgement Register",
-        "fi": "Rangaistusmääräysrekisteri"
+        "fi": "Rangaistusmääräysrekisteri",
+        "en": "Summary Penal Judgement Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {

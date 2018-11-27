@@ -6,14 +6,14 @@
   "registers": [
     {
       "name": {
-        "en": "Results of aptitude tests register",
-        "fi": "Peruskoerekisteri"
+        "fi": "Peruskoerekisteri",
+        "en": "Results of aptitude tests register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
@@ -34,14 +34,14 @@
     },
     {
       "name": {
-        "en": "Data on service register",
-        "fi": "=HYPERLINK(\"https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri\",\"Asevelvollisuusrekisteri\")"
+        "fi": "\"Asevelvollisuusrekisteri\"",
+        "en": "Data on service register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
