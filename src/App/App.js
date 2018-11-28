@@ -52,6 +52,21 @@ class App extends Component {
     return timelineConfig;
   }
 
+  /*
+  keywords = {'lang1': [String], 'lang2', [String]...}
+  */
+  static initializeKeywordFilter(keywords) {
+    const keywordFilter = {};
+    Object.keys(keywords).forEach((lang) => {
+      keywordFilter[lang] = {};
+      keywords[lang].forEach((keyword) => {
+        keywordFilter[lang][keyword] = { isSelected: false };
+      });
+    });
+
+    return keywordFilter;
+  }
+
   constructor(props) {
     super(props);
     this.selectLang = this.selectLang.bind(this);
@@ -88,11 +103,13 @@ class App extends Component {
       .then((dataBundle) => {
         this.data = dataBundle.data;
         const filenames = Object.keys(this.data);
+        const keywordFilter = this.constructor.initializeKeywordFilter(dataBundle.keywords);
         const treeFilter = this.initializeTreeFilter(filenames);
         this.setState({
           cohortFilter,
           dataset,
           filenames,
+          keywordFilter,
           treeFilter,
           lang,
           timelineConfig,
@@ -150,6 +167,7 @@ class App extends Component {
     const {
       cohortFilter,
       filenames,
+      keywordFilter,
       treeFilter,
       lang,
       infoMsg,
@@ -171,6 +189,7 @@ class App extends Component {
             data={this.data[filename]}
             cohortFilter={cohortFilter}
             fileFilter={fileFilter}
+            keywordFilter={keywordFilter}
             treeConfig={{ ...treeConfig, lang }}
             timelineConfig={{ ...timelineConfig, lang }}
             key={filename}
@@ -183,6 +202,7 @@ class App extends Component {
         <SidePanel
           lang={lang}
           cohortFilter={cohortFilter}
+          keywordFilter={keywordFilter}
           treeFilter={treeFilter}
           selectLang={this.selectLang}
           toggleCohortFilter={this.toggleCohortFilter}

@@ -17,25 +17,26 @@ config = {
     'register_col': 'B',
     'harmonize_col': 'C',
     'register_detail_col': 'D',
-    'notes_col': 'I',
+    'keywords_col': 'E',
+    'notes_col': 'J',
     'cohort_cols': [
         {
-            'col': 'E',
-            'cohort': '1987',
-            'category': 'subjects'
-        },
-        {
             'col': 'F',
-            'cohort': '1997',
+            'cohort': '1987',
             'category': 'subjects'
         },
         {
             'col': 'G',
+            'cohort': '1997',
+            'category': 'subjects'
+        },
+        {
+            'col': 'H',
             'cohort': '1987',
             'category': 'parents',
         },
         {
-            'col': 'H',
+            'col': 'I',
             'cohort': '1997',
             'category': 'parents',
         }
@@ -43,7 +44,7 @@ config = {
 }
 
 workbook = load_workbook(FILENAME, read_only=True)
-parser = SheetParser(workbook['Yhdistetty'], config)  # FIXME: change me back to 'Yhdistetty'
+parser = SheetParser(workbook['testi'], config)  # FIXME: change me back to 'Yhdistetty'
 parser.parse_sheet()
 data = parser.data
 

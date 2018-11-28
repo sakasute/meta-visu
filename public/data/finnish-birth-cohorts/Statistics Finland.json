@@ -10,7 +10,7 @@
         "en": "Cause of Death Register"
       },
       "link": {
-        "fi": "",
+        "fi": "https://www.stat.fi/til/ksyyt/index.html",
         "en": ""
       },
       "isHarmonized": false,
@@ -75,7 +75,7 @@
         "en": "Register of Educational Achievements"
       },
       "link": {
-        "fi": "",
+        "fi": "http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html",
         "en": ""
       },
       "isHarmonized": false,

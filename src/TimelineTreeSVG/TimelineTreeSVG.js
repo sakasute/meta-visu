@@ -40,9 +40,14 @@ class TimelineTreeSVG extends Component {
   componentDidMount() {
     const { data: dataProp, lang } = this.props;
     // NOTE: this makes sure that we are not modifying the original data in the App-component
-    let data = { ...dataProp };
+    const data = { ...dataProp };
     const {
-      filename, cohortFilter, registerFilter, treeConfig, timelineConfig,
+      filename,
+      cohortFilter,
+      keywordFilter,
+      registerFilter,
+      treeConfig,
+      timelineConfig,
     } = this.props;
 
     // ***** TreeChart *****
