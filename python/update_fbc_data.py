@@ -46,7 +46,6 @@ config = {
 workbook = load_workbook(FILENAME, read_only=True)
 parser = SheetParser(workbook['testi'], config)  # FIXME: change me back to 'Yhdistetty'
 parser.parse_sheet()
-# parser.parse_link_sheet(workbook['Linkit rekisterikuvauksiin'])
 data = parser.data
 
 filenames = []

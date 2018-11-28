@@ -52,7 +52,8 @@ def parse_possible_link(value):
 def parse_hyperlink(hyperlink):
     # hyperlink format: =HYPERLINK("https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf","Eläkerekisteri")
     value = hyperlink[hyperlink.find('(')+1:hyperlink.find(')')]  # gets the value from inside the brackets
-    splitted_value = value.split(',')
+    splitted_value = ''.join(value.replace('"', '')).split(',')
+    print({'name': splitted_value[1], 'link': splitted_value[0]})
     return {'name': splitted_value[1], 'link': splitted_value[0]}
 
 
@@ -118,7 +119,6 @@ class SheetParser:
             'name': register_name,
             'link': link,
             'isHarmonized': is_harmonized,
-            'link': {'fi': "", 'en': ""},
             'registerDetails': []
         })
         return len(self.data[registrar_idx]['registers']) - 1
