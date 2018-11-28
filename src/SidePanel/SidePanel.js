@@ -25,6 +25,7 @@ class SidePanel extends Component {
   render() {
     const {
       cohortFilter,
+      keywordFilter,
       treeFilter,
       toggleCohortFilter,
       toggleFileFilter,
@@ -65,6 +66,25 @@ class SidePanel extends Component {
       </ToggleButton>
     ));
 
+    const langKeywords = keywordFilter[lang];
+    let keywordSelectors = [];
+    if (langKeywords) {
+      keywordSelectors = Object.keys(langKeywords).map((keyword) => {
+        const { isSelected } = langKeywords[keyword];
+        return (
+          <ToggleButton
+            key={keyword}
+            isSelected={isSelected}
+            type="TAG"
+            handleClick={() => console.log('click')}
+            mixClasses="sidePanel__keyworSelector"
+          >
+            {keyword}
+          </ToggleButton>
+        );
+      });
+    }
+
     const registerAdminItems = Object.keys(treeFilter)
       // .sort((a, b) => compareByName(treeFilter[a], treeFilter[b], lang, {
       //   en: 'National Institute for Health and Welfare',
@@ -94,6 +114,9 @@ class SidePanel extends Component {
           </div>
           <div className="sidePanel__controlsRow">
             <div>{cohortSelectors}</div>
+          </div>
+          <div className="sidePanel__controlsRow">
+            <div>{keywordSelectors}</div>
           </div>
         </div>
 

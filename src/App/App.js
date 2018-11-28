@@ -79,7 +79,7 @@ class App extends Component {
       lang: '',
       filenames: [],
       cohortFilter: {},
-      keywordFilter: {},
+      keywordFilter: { en: [], fi: [] },
       treeFilter: {},
       treeConfig: {},
       timelineConfig: {},
