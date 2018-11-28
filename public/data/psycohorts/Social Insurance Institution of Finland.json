@@ -6,23 +6,27 @@
   "registers": [
     {
       "name": {
-        "en": "Benefits Register",
-        "fi": "Etuusrekisteri"
+        "fi": "Etuusrekisteri",
+        "en": "Benefits Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Sickness benefits",
             "fi": "Sairauspäivärahat"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -50,9 +54,13 @@
             "en": "Pensions, granted/rejected",
             "fi": "Kansaneläkkeet, myönnetyt/hylätyt"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -71,9 +79,13 @@
             "en": "Unemployment information",
             "fi": "Työttömyysturvatiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -137,9 +149,13 @@
             "en": "Basic unemployment allowance",
             "fi": "Peruspäiväraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -167,9 +183,13 @@
             "en": "Labour market subsidy",
             "fi": "Työmarkkinatuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -197,9 +217,13 @@
             "en": "Special reimbursable medicines",
             "fi": "Erityiskorvattavat lääkkeet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -236,9 +260,13 @@
             "en": "Special reimbursable medicines, dg 103, 205, 2011, 104",
             "fi": "Erityiskorvattavat lääkkeet, dg 103, 205, 2011, 104"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -266,9 +294,13 @@
             "en": "Medicine purchases",
             "fi": "Lääkeostot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -287,9 +319,13 @@
             "en": "Disability pension",
             "fi": "Työkyvyttömyyseläkkeet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -326,9 +362,13 @@
             "en": "Psychotropic medicines",
             "fi": "Lääkärin määräämät psyykenlääkkeet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -356,9 +396,13 @@
             "en": "Special reimpbursement rights",
             "fi": "Erityiskorvausoikeudet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -377,9 +421,13 @@
             "en": "Child home care allowance",
             "fi": "Lastenhoitotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -398,9 +446,13 @@
             "en": "Disability benefits",
             "fi": "Vammaistuet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -428,9 +480,13 @@
             "en": "Parental allowance",
             "fi": "Äitiys-, isyys- ja vanhempainpäiväraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -476,9 +532,13 @@
             "en": "Home care allowance",
             "fi": "Kotihoidontuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -506,9 +566,13 @@
             "en": "Rehabilitation allowance",
             "fi": "Kuntoutusraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -536,9 +600,13 @@
             "en": "Rehabilitations",
             "fi": "Kuntoutukset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -566,9 +634,13 @@
             "en": "Study gnats",
             "fi": "Opintotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

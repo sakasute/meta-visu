@@ -6,23 +6,27 @@
   "registers": [
     {
       "name": {
-        "en": "Data from the information system of the Employment and Economic Development Offices (URA)",
-        "fi": "Työnvälitystilasto"
+        "fi": "Työnvälitystilasto",
+        "en": "Data from the information system of the Employment and Economic Development Offices (URA)"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Summary penal judgements",
             "fi": "Rangaistusmääräykset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

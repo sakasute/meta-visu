@@ -10,7 +10,7 @@
         "en": "Finnish Medical Birth Register"
       },
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=b66bf56a-8c9&3-398f-87bb-ec1f57140a1c",
+        "fi": "",
         "en": ""
       },
       "isHarmonized": false,
@@ -25,16 +25,8 @@
             "fi": ""
           },
           "keywords": {
-            "fi": [
-              "testi1",
-              "testi2",
-              "testi3"
-            ],
-            "en": [
-              "test1",
-              "test2",
-              "test3"
-            ]
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -67,12 +59,8 @@
             "fi": ""
           },
           "keywords": {
-            "fi": [
-              "testi1"
-            ],
-            "en": [
-              "test1"
-            ]
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -105,12 +93,8 @@
             "fi": ""
           },
           "keywords": {
-            "fi": [
-              "testi2"
-            ],
-            "en": [
-              "test2"
-            ]
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -141,7 +125,7 @@
         "en": "Finnish Hospital Discharge Register"
       },
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=a7d738ce-013&0-3891-9646-766d337d233a",
+        "fi": "",
         "en": ""
       },
       "isHarmonized": false,
@@ -258,7 +242,7 @@
         "en": "Infectious Disease Register"
       },
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=6b43716d-f09&0-343f-aafc-a8b1af58496c",
+        "fi": "",
         "en": ""
       },
       "isHarmonized": false,
@@ -296,7 +280,7 @@
         "en": "Register on Induced Abortions"
       },
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=f33cefcf-941&3-3c1a-84a2-a088b19b0374",
+        "fi": "",
         "en": ""
       },
       "isHarmonized": false,
@@ -343,7 +327,7 @@
         "en": "Register on Social Assistance"
       },
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=064b7402-3fa&b-333a-9496-a27a85cc6684",
+        "fi": "",
         "en": ""
       },
       "isHarmonized": false,
@@ -408,7 +392,7 @@
         "en": "Institutionalized care in social institutions"
       },
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=103e0f03-94f&5-3580-964b-d1e789d76257",
+        "fi": "",
         "en": ""
       },
       "isHarmonized": false,
@@ -473,7 +457,7 @@
         "en": "Register on Child Welfare"
       },
       "link": {
-        "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=2bf2e56f-48d&9-334e-8b2d-f025acdb5400",
+        "fi": "",
         "en": ""
       },
       "isHarmonized": false,

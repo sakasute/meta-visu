@@ -8,6 +8,9 @@ from openpyxl.utils import column_index_from_string
 
 
 def col_index_0_based(col_str):
+    if col_str == False:
+        return False
+
     return column_index_from_string(col_str) - 1
 
 
@@ -53,7 +56,6 @@ def parse_hyperlink(hyperlink):
     # hyperlink format: =HYPERLINK("https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf","Eläkerekisteri")
     value = hyperlink[hyperlink.find('(')+1:hyperlink.find(')')]  # gets the value from inside the brackets
     splitted_value = ''.join(value.replace('"', '')).split(',')
-    print({'name': splitted_value[1], 'link': splitted_value[0]})
     return {'name': splitted_value[1], 'link': splitted_value[0]}
 
 
@@ -83,22 +85,18 @@ class SheetParser:
         self.keywords_col = col_index_0_based(self.extract_config('keywords_col'))
         self.cohort_cols = self.extract_config('cohort_cols')
 
-    @staticmethod
-    def bundle_json_files(path):
+    def bundle_json_files(self, path):
         with open(path + 'filenames.json', 'r', encoding='utf-8') as f:
             filelist = json.load(f)
 
-        data_bundle = {}
+        data_bundle = {'data': {}, 'keywords': self.keywords}
         for filename in filelist:
             with open(path + filename, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                data_bundle[filename] = data
+                data_bundle['data'][filename] = data
 
         with open(path + 'data_bundle.json', 'w', encoding='utf-8') as f:
             json.dump(data_bundle, f, ensure_ascii=False, default=str)
-
-    def add_link(self, link, registrar_idx, register_idx):
-        self.data[registrar_idx]['registers'][register_idx]['link'] = link
 
     def add_samplings(self, samplings, registrar_idx, register_idx, register_detail_idx):
         for sampling in samplings:
@@ -114,7 +112,6 @@ class SheetParser:
         return len(self.data) - 1
 
     def create_register(self, register_name, link, is_harmonized, registrar_idx):
-        # TODO: add support for keywords
         self.data[registrar_idx]['registers'].append({
             'name': register_name,
             'link': link,
@@ -180,13 +177,14 @@ class SheetParser:
 
         if self.current_register_detail_idx == None:
             notes = {'en': '', 'fi': ''}
-            keywords = {'fi': [], 'en': []}
+            register_detail_keywords = {'fi': [], 'en': []}
             if self.notes_col is not False:
                 self.update_dict_from_col(notes, self.notes_col)
             if self.keywords_col is not False:
-                self.update_dict_with_list_col(keywords, self.keywords_col)
+                self.update_dict_with_list_col(register_detail_keywords, self.keywords_col)
+                self.update_keywords(register_detail_keywords['en'], register_detail_keywords['fi'])
             self.current_register_detail_idx = self.create_register_detail(
-                dict(self.register_detail_name), dict(notes), dict(keywords), self.current_registrar_idx, self.current_register_idx)
+                dict(self.register_detail_name), dict(notes), dict(register_detail_keywords), self.current_registrar_idx, self.current_register_idx)
 
     def parse_cohort_cols(self):
         samplings = []
@@ -217,14 +215,14 @@ class SheetParser:
         if value_en != None:
             dictionary['en'] = ''.join(value_en.split()).split(',')
 
-    def update_keywords(self, keyword_list_fi, keyword_list_en):
-        for keyword in keyword_list_fi:
-            if keyword not in self.keywords:
-                self.keywords['fi'].append(keyword)
-
+    def update_keywords(self, keyword_list_en, keyword_list_fi):
         for keyword in keyword_list_en:
-            if keyword not in self.keywords:
+            if keyword not in self.keywords['en']:
                 self.keywords['en'].append(keyword)
+
+        for keyword in keyword_list_fi:
+            if keyword not in self.keywords['fi']:
+                self.keywords['fi'].append(keyword)
 
     def update_register_info(self):
         value_fi = self.row_fi[self.register_col].value
@@ -264,40 +262,3 @@ class SheetParser:
             self.parse_register_cols()
             self.parse_register_detail_cols()
             self.parse_cohort_cols()
-
-    def parse_link_sheet(self, link_sheet):
-        registrar_name = {'fi': '', 'en': ''}
-
-        link_col = 2
-        iterator = link_sheet.iter_rows(min_row=self.start_row)
-        for row in iterator:
-            row_fi = row
-            try:
-                row_en = next(iterator)
-            except StopIteration:
-                break
-
-            if len(row_en) == 0:
-                break
-
-            # NOTE: this method assumes that register admins and registers have already been created
-            # with parse_sheet()
-            registrar_name['fi'] = row_fi[self.registrar_col].value if row_fi[self.registrar_col].value != None else registrar_name['fi']
-            registrar_name['en'] = row_en[self.registrar_col].value if row_en[self.registrar_col].value != None else registrar_name['en']
-            registrar_idx = self.find_by_name(self.data, registrar_name, 'en')
-
-            register_name = {'fi': row_fi[self.register_col].value, 'en': row_en[self.register_col].value}
-            register_idx = self.find_by_name(self.data[registrar_idx]['registers'], register_name, 'en')
-
-            try:
-                link_fi = row_fi[link_col].value if row_fi[link_col].value != None else ''
-            except IndexError:
-                link_fi = ''
-
-            try:
-                link_en = row_en[link_col].value if row_en[link_col].value != None else ''
-            except IndexError:
-                link_en = ''
-
-            link = {'fi': link_fi, 'en': link_en}
-            self.add_link(dict(link), registrar_idx, register_idx)

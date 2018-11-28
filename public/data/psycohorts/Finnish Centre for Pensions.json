@@ -6,23 +6,27 @@
   "registers": [
     {
       "name": {
-        "en": "Pension Register",
-        "fi": "Eläkerekisteri"
+        "fi": "Eläkerekisteri",
+        "en": "Pension Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Employee pension extras",
             "fi": "Työeläkelisät"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -104,9 +108,13 @@
             "en": "Employee pension",
             "fi": "Työeläketiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -152,9 +160,13 @@
             "en": "Pension data",
             "fi": "Eläketiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -199,23 +211,27 @@
     },
     {
       "name": {
-        "en": "Earning Register",
-        "fi": "Ansaintarekisteri"
+        "fi": "Ansaintarekisteri",
+        "en": "Earning Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Earning periods",
             "fi": "Ansaintajaksot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -279,9 +295,13 @@
             "en": "Unpaid times",
             "fi": "Palkattomat ajat"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -399,9 +419,13 @@
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

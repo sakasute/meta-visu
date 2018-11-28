@@ -64,6 +64,7 @@ class App extends Component {
       lang: '',
       filenames: [],
       cohortFilter: {},
+      keywordFilter: {},
       treeFilter: {},
       treeConfig: {},
       timelineConfig: {},
@@ -85,8 +86,8 @@ class App extends Component {
     fetch(`data/${dataset}/data_bundle.json`)
       .then(res => res.json())
       .then((dataBundle) => {
-        this.data = dataBundle;
-        const filenames = Object.keys(dataBundle);
+        this.data = dataBundle.data;
+        const filenames = Object.keys(this.data);
         const treeFilter = this.initializeTreeFilter(filenames);
         this.setState({
           cohortFilter,

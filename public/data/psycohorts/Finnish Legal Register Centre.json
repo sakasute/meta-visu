@@ -6,23 +6,27 @@
   "registers": [
     {
       "name": {
-        "en": "Criminal Record",
-        "fi": "Rikosrekisteri"
+        "fi": "Rikosrekisteri",
+        "en": "Criminal Record"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Criminality (offences and court decisions)",
             "fi": "Tuomiot (ehdoton, ehdollinen, yhdyskuntapalvelu)"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -49,23 +53,27 @@
     },
     {
       "name": {
-        "en": "Summary Penal Judgement Register",
-        "fi": "Rangaistusmääräysrekisteri"
+        "fi": "Rangaistusmääräysrekisteri",
+        "en": "Summary Penal Judgement Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Summary penal judgements",
             "fi": "Rangaistusmääräykset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

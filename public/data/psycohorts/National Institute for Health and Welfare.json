@@ -6,23 +6,27 @@
   "registers": [
     {
       "name": {
-        "en": "Care Register for Health Care",
-        "fi": "Terveydenhuollon hoitoilmoitusrekisteri "
+        "fi": "Terveydenhuollon hoitoilmoitusrekisteri ",
+        "en": "Care Register for Health Care"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Specialized care Inpatient treatments",
             "fi": "Erikoissairaanhoidon osastokäynnit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -104,9 +108,13 @@
             "en": "Specialized care outpatient treatments",
             "fi": "Erikoissairaanhoidon poliklinikkakäynnit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -187,23 +195,27 @@
     },
     {
       "name": {
-        "en": "Register of Primary Health Care visits",
-        "fi": "Perusterveydenhuollon avohoidon hoitoilmoitus"
+        "fi": "Perusterveydenhuollon avohoidon hoitoilmoitus",
+        "en": "Register of Primary Health Care visits"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Primary care outpatient treatments",
             "fi": "Perusterveyden avohoidon käynnit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -248,23 +260,27 @@
     },
     {
       "name": {
-        "en": "Finnish Cancer Registry",
-        "fi": "Suomen Syöpärekisteri"
+        "fi": "Suomen Syöpärekisteri",
+        "en": "Finnish Cancer Registry"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Cancer Register",
             "fi": "Syöpärekisteri"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -310,9 +326,13 @@
             "en": "Mass screening data, Cervical and breast cancer screening data ",
             "fi": "Joukkorekisteridata (kohdunkaulan ja rintasyövän seulontatiedot)"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -357,23 +377,27 @@
     },
     {
       "name": {
-        "en": "Finnish Medical Birth Register",
-        "fi": "Syntymärekisteri"
+        "fi": "Syntymärekisteri",
+        "en": "Finnish Medical Birth Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Pregnancy and birth outcomes (own)",
             "fi": "Oman syntymän raskaus- ja synnytystiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -410,9 +434,13 @@
             "en": "Pregnancy and birth outcomes (childrens)",
             "fi": "Omien lasten raskaus- ja synnytystiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -493,23 +521,27 @@
     },
     {
       "name": {
-        "en": "Visual Disability Register",
-        "fi": "Näkövammarekisteri"
+        "fi": "Näkövammarekisteri",
+        "en": "Visual Disability Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Visual Disability Register",
             "fi": "Näkövammarekisteri"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -554,23 +586,27 @@
     },
     {
       "name": {
-        "en": "Infectious Disease Register",
-        "fi": "Tartuntatautirekisteri"
+        "fi": "Tartuntatautirekisteri",
+        "en": "Infectious Disease Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Chlamydia trachomatis",
             "fi": "Klamydia"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -588,23 +624,27 @@
     },
     {
       "name": {
-        "en": "Register on Induced Abortions",
-        "fi": "Raskaudenkeskeyttämisrekisteri"
+        "fi": "Raskaudenkeskeyttämisrekisteri",
+        "en": "Register on Induced Abortions"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Induced abortions",
             "fi": "Raskaudenkeskeytykset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -631,23 +671,27 @@
     },
     {
       "name": {
-        "en": "Register on Social Assistance",
-        "fi": "Toimeentulorekisteri"
+        "fi": "Toimeentulorekisteri",
+        "en": "Register on Social Assistance"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Social assistance",
             "fi": "Toimeentulotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -692,23 +736,27 @@
     },
     {
       "name": {
-        "en": "Institutionalized care in social institutions",
-        "fi": "Sosiaalihuollon hoitoilmoitusrekisteri"
+        "fi": "Sosiaalihuollon hoitoilmoitusrekisteri",
+        "en": "Institutionalized care in social institutions"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Institutional care and diagnosis",
             "fi": "Palveluala ja diagnoosit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -753,23 +801,27 @@
     },
     {
       "name": {
-        "en": "Register on Child Welfare",
-        "fi": "Lastensuojelurekisteri"
+        "fi": "Lastensuojelurekisteri",
+        "en": "Register on Child Welfare"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Children placed in out-of-home -care",
             "fi": "Lastensuojelutoimenpiteiden kohteena olleet kohorttiin kuuluvat"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {

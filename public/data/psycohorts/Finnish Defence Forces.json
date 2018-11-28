@@ -6,23 +6,27 @@
   "registers": [
     {
       "name": {
-        "en": "Results of aptitude tests register",
-        "fi": "Peruskoerekisteri"
+        "fi": "Peruskoerekisteri",
+        "en": "Results of aptitude tests register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Results of aptitude tests",
             "fi": "Peruskokeiden tulokset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": []
         }
@@ -30,23 +34,27 @@
     },
     {
       "name": {
-        "en": "Data on service register",
-        "fi": "Asevelvollisuusrekisteri"
+        "fi": "Asevelvollisuusrekisteri",
+        "en": "Data on service register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Service class data",
             "fi": "Palveluskelpoisuusluokka"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
@@ -65,9 +73,13 @@
             "en": "Overindebtedness",
             "fi": "Ylivelkaantumistiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": []
         }

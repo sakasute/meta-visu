@@ -6,23 +6,27 @@
   "registers": [
     {
       "name": {
-        "en": "Joint Application Register",
-        "fi": "Yhteisvalintarekisteri"
+        "fi": "Yhteisvalintarekisteri",
+        "en": "Joint Application Register"
       },
-      "isHarmonized": false,
       "link": {
         "fi": "",
         "en": ""
       },
+      "isHarmonized": false,
       "registerDetails": [
         {
           "name": {
             "en": "Joint application data",
             "fi": "Yhteisvalintatiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
+          },
+          "keywords": {
+            "fi": [],
+            "en": []
           },
           "samplings": [
             {
