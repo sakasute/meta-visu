@@ -47,6 +47,7 @@ body {
   --category-6-color: hsl(38, 96%, 54%);
   --category-6-color-light: hsl(38, 96%, 69%);
   --category-6-color-v-light: hsl(38, 96%, 79%);
+  --category-6-color-dark: hsl(38, 96%, 39%);
 
   --dark-gray: hsl(0, 0%, 38%);
   --medium-gray: hsl(255, 3%, 77%);

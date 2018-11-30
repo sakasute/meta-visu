@@ -31,6 +31,7 @@ class SidePanel extends Component {
       treeFilter,
       toggleCohortFilter,
       toggleFileFilter,
+      toggleKeywordFilter,
       toggleRegisterFilter,
       selectLang,
       lang,
@@ -78,7 +79,7 @@ class SidePanel extends Component {
             key={keyword}
             isSelected={isSelected}
             type="TAG"
-            handleClick={() => console.log('click')}
+            handleClick={() => toggleKeywordFilter(keyword)}
             mixClasses="sidePanel__keywordSelector"
           >
             {keyword}

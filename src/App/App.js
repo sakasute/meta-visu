@@ -60,7 +60,7 @@ class App extends Component {
     Object.keys(keywords).forEach((lang) => {
       keywordFilter[lang] = {};
       keywords[lang].forEach((keyword) => {
-        keywordFilter[lang][keyword] = { isSelected: false };
+        keywordFilter[lang][keyword] = { isSelected: true };
       });
     });
 
@@ -72,6 +72,7 @@ class App extends Component {
     this.selectLang = this.selectLang.bind(this);
     this.toggleCohortFilter = this.toggleCohortFilter.bind(this);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
+    this.toggleKeywordFilter = this.toggleKeywordFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
     this.data = {};
     this.state = {
@@ -163,6 +164,13 @@ class App extends Component {
     }));
   }
 
+  toggleKeywordFilter(keyword) {
+    const { lang } = this.state;
+    this.setState(prevState => update(prevState, {
+      keywordFilter: { [lang]: { [keyword]: { isSelected: { $apply: val => !val } } } },
+    }));
+  }
+
   render() {
     const {
       cohortFilter,
@@ -207,6 +215,7 @@ class App extends Component {
           selectLang={this.selectLang}
           toggleCohortFilter={this.toggleCohortFilter}
           toggleFileFilter={this.toggleFileFilter}
+          toggleKeywordFilter={this.toggleKeywordFilter}
           toggleRegisterFilter={this.toggleRegisterFilter}
         />
         <div className="content-wrapper">

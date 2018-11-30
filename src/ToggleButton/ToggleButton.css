@@ -51,6 +51,10 @@
   color: white;
 }
 
+.sidePanel__keywordSelector.-selected:hover {
+  background-color: var(--category-6-color-dark);
+}
+
 .toggleButtonText {
   background: none;
   font-size: 1.6rem;
