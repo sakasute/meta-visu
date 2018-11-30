@@ -13,6 +13,8 @@ class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.toggleMinimize = this.toggleMinimize.bind(this);
+    this.cohortTitle = { en: 'Filter by cohorts:', fi: 'Valitse kohortit:' };
+    this.keywordTitle = { en: 'Filter by keywords:', fi: 'Valitse avainsanat:' };
     this.state = {
       isMinimized: false,
     };
@@ -77,7 +79,7 @@ class SidePanel extends Component {
             isSelected={isSelected}
             type="TAG"
             handleClick={() => console.log('click')}
-            mixClasses="sidePanel__keyworSelector"
+            mixClasses="sidePanel__keywordSelector"
           >
             {keyword}
           </ToggleButton>
@@ -112,12 +114,15 @@ class SidePanel extends Component {
               <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
             </button>
           </div>
-          <div className="sidePanel__controlsRow">
+          <div className="">
+            <h2 className="sidePanel__categoryTitle">{this.cohortTitle[lang]}</h2>
             <div>{cohortSelectors}</div>
           </div>
-          <div className="sidePanel__controlsRow">
+          <div className="">
+            <h2 className="sidePanel__categoryTitle">{this.keywordTitle[lang]}</h2>
             <div>{keywordSelectors}</div>
           </div>
+          <div className="sidePanel__controlsRow" />
         </div>
 
         <ul className="simpleList sidePanel__simpleList">{registerAdminItems}</ul>

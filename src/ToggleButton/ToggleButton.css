@@ -38,6 +38,19 @@
   background-color: var(--category-2-color-light);
 }
 
+.sidePanel__langSelector {
+  margin-right: 0.5rem;
+}
+
+.sidePanel__keywordSelector {
+  margin-right: 0.5rem;
+}
+
+.sidePanel__keywordSelector.-selected {
+  background-color: var(--category-6-color);
+  color: white;
+}
+
 .toggleButtonText {
   background: none;
   font-size: 1.6rem;

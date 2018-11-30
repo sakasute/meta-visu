@@ -43,14 +43,15 @@
   border-bottom: 1px solid var(--thl-gray-1);
 }
 
+.sidePanel__categoryTitle {
+  display: block;
+  font-size: 1.4rem;
+}
+
 .sidePanel__langControls {
   flex: 5;
   margin: auto 0;
   color: var(--thl-ui-text);
-}
-
-.sidePanel__langSelector {
-  margin-right: 0.5rem;
 }
 
 .sidePanel__toggleControl {
