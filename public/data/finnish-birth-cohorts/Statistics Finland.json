@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Statistics Finland",
     "fi": "Tilastokeskus"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Kuolemansyytilasto",
-        "en": "Cause of Death Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://www.stat.fi/til/ksyyt/index.html",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Kuolemansyytilasto",
+        "en": "Cause of Death Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Dates and causes of deaths",
             "fi": "Kuolinpäivä ja kuolemansyy"
@@ -23,10 +35,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -70,17 +78,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Tutkintorekisteri",
-        "en": "Register of Educational Achievements"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Tutkintorekisteri",
+        "en": "Register of Educational Achievements"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Degree data",
             "fi": "Tutkintotiedot"
@@ -88,10 +104,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {

@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Statistics Finland",
     "fi": "Tilastokeskus"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Kuolemansyytilasto",
-        "en": "Cause of Death Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Kuolemansyytilasto",
+        "en": "Cause of Death Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Causes of deaths",
             "fi": "Kuolinsyyt"
@@ -23,10 +35,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -106,17 +114,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "<?>",
-        "en": "<?>"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "<?>",
+        "en": "<?>"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Occupation and socioeconomic status",
             "fi": "Ammatti, sosioekonominen asema"
@@ -124,10 +140,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -162,17 +174,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Tutkintorekisteri",
-        "en": "Register of Educational Achievements"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Tutkintorekisteri",
+        "en": "Register of Educational Achievements"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Degree data",
             "fi": "Tutkintotiedot"
@@ -180,10 +200,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {

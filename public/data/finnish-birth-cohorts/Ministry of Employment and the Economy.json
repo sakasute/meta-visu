@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Ministry of Employment and the Economy",
     "fi": "Työ- ja elinkeinoministeriö"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Työnvälitystilasto",
-        "en": "Data from the information system of the Employment and Economic Development Offices (URA)"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://tem.fi/tyollisyyskatsaus-ja-tyonvalitystilasto",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Työnvälitystilasto",
+        "en": "Data from the information system of the Employment and Economic Development Offices (URA)"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
@@ -23,10 +35,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {

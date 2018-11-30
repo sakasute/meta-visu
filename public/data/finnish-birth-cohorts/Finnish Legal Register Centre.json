@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Legal Register Centre",
     "fi": "Oikeusrekisterikeskus"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Rikosrekisteri",
-        "en": "Criminal Record"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://www.oikeusrekisterikeskus.fi/fi/index/asiakaspalvelu/rekisteritotteetjatodistukset/rikosrekisteri.html",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Rikosrekisteri",
+        "en": "Criminal Record"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Criminality (offences and court decisions)",
             "fi": "Tuomiot (ehdoton, ehdollinen, yhdyskuntapalvelu)"
@@ -23,10 +35,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -52,17 +60,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Rangaistusmääräysrekisteri",
-        "en": "Summary Penal Judgement Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Rangaistusmääräysrekisteri",
+        "en": "Summary Penal Judgement Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Summary penal judgements",
             "fi": "Rangaistusmääräykset"
@@ -70,10 +86,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {

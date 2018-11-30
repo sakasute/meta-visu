@@ -1,29 +1,45 @@
 {
+  "keywords": {
+    "en": [
+      "test1",
+      "test2",
+      "test3"
+    ],
+    "fi": [
+      "testi1",
+      "testi2",
+      "testi3"
+    ]
+  },
   "name": {
     "en": "National Institute for Health and Welfare",
     "fi": "THL"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Syntymärekisteri",
-        "en": "Finnish Medical Birth Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [
+          "test1",
+          "test2",
+          "test3"
+        ],
+        "fi": [
+          "testi1",
+          "testi2",
+          "testi3"
+        ]
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=b66bf56a-8c9&3-398f-87bb-ec1f57140a1c",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Syntymärekisteri",
+        "en": "Finnish Medical Birth Register"
+      },
       "registerDetails": [
         {
-          "name": {
-            "en": "Pregnancy and birth outcomes (own)",
-            "fi": "Oman syntymän raskaus- ja synnytystiedot"
-          },
-          "notes": {
-            "en": "",
-            "fi": ""
-          },
           "keywords": {
             "fi": [
               "testi1",
@@ -35,6 +51,14 @@
               "test2",
               "test3"
             ]
+          },
+          "name": {
+            "en": "Pregnancy and birth outcomes (own)",
+            "fi": "Oman syntymän raskaus- ja synnytystiedot"
+          },
+          "notes": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -58,14 +82,6 @@
           ]
         },
         {
-          "name": {
-            "en": "Pregnancy and birth outcomes (childrens)",
-            "fi": "Omien lasten raskaus- ja synnytystiedot"
-          },
-          "notes": {
-            "en": "",
-            "fi": ""
-          },
           "keywords": {
             "fi": [
               "testi1"
@@ -73,6 +89,14 @@
             "en": [
               "test1"
             ]
+          },
+          "name": {
+            "en": "Pregnancy and birth outcomes (childrens)",
+            "fi": "Omien lasten raskaus- ja synnytystiedot"
+          },
+          "notes": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -96,14 +120,6 @@
           ]
         },
         {
-          "name": {
-            "en": "Pregnancy and birth outcomes",
-            "fi": "Raskaus- ja synnytystiedot"
-          },
-          "notes": {
-            "en": "",
-            "fi": ""
-          },
           "keywords": {
             "fi": [
               "testi2"
@@ -111,6 +127,14 @@
             "en": [
               "test2"
             ]
+          },
+          "name": {
+            "en": "Pregnancy and birth outcomes",
+            "fi": "Raskaus- ja synnytystiedot"
+          },
+          "notes": {
+            "en": "",
+            "fi": ""
           },
           "samplings": [
             {
@@ -136,17 +160,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Terveydenhuollon hoitoilmoitusrekisteri",
-        "en": "Finnish Hospital Discharge Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=a7d738ce-013&0-3891-9646-766d337d233a",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Terveydenhuollon hoitoilmoitusrekisteri",
+        "en": "Finnish Hospital Discharge Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Specialized inpatient care",
             "fi": "Erikoissairaanhoidon osastokäynnit"
@@ -154,10 +186,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -199,6 +227,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Specialized outpatient care",
             "fi": "Erikoissairaanhoidon poliklinikkakäynnit"
@@ -206,10 +238,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -253,17 +281,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Tartuntatautirekisteri",
-        "en": "Infectious Disease Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=6b43716d-f09&0-343f-aafc-a8b1af58496c",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Tartuntatautirekisteri",
+        "en": "Infectious Disease Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Chlamydia trachomatis",
             "fi": "Klamydia"
@@ -271,10 +307,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -291,17 +323,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Raskaudenkeskeyttämisrekisteri",
-        "en": "Register on Induced Abortions"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=f33cefcf-941&3-3c1a-84a2-a088b19b0374",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Raskaudenkeskeyttämisrekisteri",
+        "en": "Register on Induced Abortions"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Induced abortions",
             "fi": "Raskaudenkeskeytykset"
@@ -309,10 +349,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -338,17 +374,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Toimeentulorekisteri",
-        "en": "Register on Social Assistance"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=064b7402-3fa&b-333a-9496-a27a85cc6684",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Toimeentulorekisteri",
+        "en": "Register on Social Assistance"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Social assistance",
             "fi": "Toimeentulotuki"
@@ -356,10 +400,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -403,17 +443,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Sosiaalihuollon hoitoilmoitusrekisteri",
-        "en": "Institutionalized care in social institutions"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=103e0f03-94f&5-3580-964b-d1e789d76257",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Sosiaalihuollon hoitoilmoitusrekisteri",
+        "en": "Institutionalized care in social institutions"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Institutional care and diagnosis",
             "fi": "Palveluala ja diagnoosit"
@@ -421,10 +469,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -468,17 +512,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Lastensuojelurekisteri",
-        "en": "Register on Child Welfare"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=2bf2e56f-48d&9-334e-8b2d-f025acdb5400",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Lastensuojelurekisteri",
+        "en": "Register on Child Welfare"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Children placed in out-of-home -care",
             "fi": "Lastensuojelutoimenpiteiden kohteena olleet kohorttiin kuuluvat"
@@ -486,10 +538,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {

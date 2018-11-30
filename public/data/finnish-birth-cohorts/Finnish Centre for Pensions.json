@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Centre for Pensions",
     "fi": "Eläketurvakeskus ETK"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Eläkerekisteri",
-        "en": "Pension Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Eläkerekisteri",
+        "en": "Pension Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Pension data",
             "fi": "Eläketiedot"
@@ -23,10 +35,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -70,17 +78,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Ansaintarekisteri",
-        "en": "Earning Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Ansaintarekisteri",
+        "en": "Earning Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Earning periods",
             "fi": "Ansaintajaksot"
@@ -88,10 +104,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -133,6 +145,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Most common unsalaried benefit periods",
             "fi": "Palkattomien aikojen etuudet"
@@ -140,10 +156,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -185,6 +197,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
@@ -192,10 +208,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {

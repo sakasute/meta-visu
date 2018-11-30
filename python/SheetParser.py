@@ -59,6 +59,14 @@ def parse_hyperlink(hyperlink):
     return {'name': splitted_value[1], 'link': splitted_value[0]}
 
 
+def update_with_new_elements(list_to_update, update_list):
+    for el in update_list:
+        if el not in list_to_update:
+            list_to_update.append(el)
+
+    return list_to_update
+
+
 class SheetParser:
     def __init__(self, sheet, config):
         self.data = []
@@ -98,6 +106,21 @@ class SheetParser:
         with open(path + 'data_bundle.json', 'w', encoding='utf-8') as f:
             json.dump(data_bundle, f, ensure_ascii=False, default=str)
 
+    def add_keywords_to_tree(self, keywords, registrar_idx, register_idx):
+        registrar_keywords_en = self.data[registrar_idx]['keywords']['en']
+        registrar_keywords_fi = self.data[registrar_idx]['keywords']['fi']
+
+        register_keywords_en = self.data[registrar_idx]['registers'][register_idx]['keywords']['en']
+        register_keywords_fi = self.data[registrar_idx]['registers'][register_idx]['keywords']['fi']
+
+        self.data[registrar_idx]['keywords']['en'] = update_with_new_elements(registrar_keywords_en, keywords['en'])
+        self.data[registrar_idx]['keywords']['fi'] = update_with_new_elements(registrar_keywords_fi, keywords['fi'])
+
+        self.data[registrar_idx]['registers'][register_idx]['keywords']['en'] = update_with_new_elements(
+            register_keywords_en, keywords['en'])
+        self.data[registrar_idx]['registers'][register_idx]['keywords']['fi'] = update_with_new_elements(
+            register_keywords_fi, keywords['fi'])
+
     def add_samplings(self, samplings, registrar_idx, register_idx, register_detail_idx):
         for sampling in samplings:
             self.data[registrar_idx]['registers'][register_idx]['registerDetails'][register_detail_idx]['samplings'].append(
@@ -105,26 +128,30 @@ class SheetParser:
 
     def create_registrar(self, registrar_name):
         self.data.append({
+            'keywords': {'en': [], 'fi': []},
             'name': registrar_name,
-            'registers': []
+            'registers': [],
         })
 
         return len(self.data) - 1
 
     def create_register(self, register_name, link, is_harmonized, registrar_idx):
         self.data[registrar_idx]['registers'].append({
-            'name': register_name,
-            'link': link,
             'isHarmonized': is_harmonized,
-            'registerDetails': []
+            'keywords': {'en': [], 'fi': []},
+            'link': link,
+            'name': register_name,
+            'registerDetails': [],
         })
         return len(self.data[registrar_idx]['registers']) - 1
 
     def create_register_detail(self, register_detail_name, notes, keywords, registrar_idx, register_idx):
+        # NOTE: keywords are added to every level of the tree for easier filtering later on.
+        self.add_keywords_to_tree(keywords, registrar_idx, register_idx)
         self.data[registrar_idx]['registers'][register_idx]['registerDetails'].append({
+            'keywords': keywords,
             'name': register_detail_name,
             'notes': notes,
-            'keywords': keywords,
             'samplings': []
         })
         return len(self.data[registrar_idx]['registers'][register_idx]['registerDetails']) - 1
@@ -216,13 +243,8 @@ class SheetParser:
             dictionary['en'] = ''.join(value_en.split()).split(',')
 
     def update_keywords(self, keyword_list_en, keyword_list_fi):
-        for keyword in keyword_list_en:
-            if keyword not in self.keywords['en']:
-                self.keywords['en'].append(keyword)
-
-        for keyword in keyword_list_fi:
-            if keyword not in self.keywords['fi']:
-                self.keywords['fi'].append(keyword)
+        self.keywords['en'] = update_with_new_elements(self.keywords['en'], keyword_list_en)
+        self.keywords['fi'] = update_with_new_elements(self.keywords['fi'], keyword_list_fi)
 
     def update_register_info(self):
         value_fi = self.row_fi[self.register_col].value

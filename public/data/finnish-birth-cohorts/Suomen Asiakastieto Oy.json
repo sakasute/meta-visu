@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Suomen Asiakastieto Oy",
     "fi": "Suomen Asiakastieto Oy"
   },
   "registers": [
     {
-      "name": {
-        "fi": "<ei nimeä>",
-        "en": "<no name>"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "<ei nimeä>",
+        "en": "<no name>"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Overindebtedness",
             "fi": "Ylivelkaantumistiedot"
@@ -23,10 +35,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": []
         }

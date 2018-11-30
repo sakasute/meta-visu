@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Centre for Pensions",
     "fi": "Eläketurvakeskus ETK"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Eläkerekisteri",
-        "en": "Pension Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Eläkerekisteri",
+        "en": "Pension Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Employee pension extras",
             "fi": "Työeläkelisät"
@@ -23,10 +35,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -104,6 +112,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Employee pension",
             "fi": "Työeläketiedot"
@@ -111,10 +123,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -156,6 +164,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Pension data",
             "fi": "Eläketiedot"
@@ -163,10 +175,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -210,17 +218,25 @@
       ]
     },
     {
-      "name": {
-        "fi": "Ansaintarekisteri",
-        "en": "Earning Register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Ansaintarekisteri",
+        "en": "Earning Register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Earning periods",
             "fi": "Ansaintajaksot"
@@ -228,10 +244,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -291,6 +303,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Unpaid times",
             "fi": "Palkattomat ajat"
@@ -298,10 +314,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -415,6 +427,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
@@ -422,10 +438,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {

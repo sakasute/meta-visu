@@ -1,21 +1,33 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Defence Forces",
     "fi": "Puolustusvoimat"
   },
   "registers": [
     {
-      "name": {
-        "fi": "Peruskoerekisteri",
-        "en": "Results of aptitude tests register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Peruskoerekisteri",
+        "en": "Results of aptitude tests register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Results of aptitude tests",
             "fi": "Peruskokeiden tulokset"
@@ -24,26 +36,30 @@
             "en": "",
             "fi": ""
           },
-          "keywords": {
-            "fi": [],
-            "en": []
-          },
           "samplings": []
         }
       ]
     },
     {
-      "name": {
-        "fi": "Asevelvollisuusrekisteri",
-        "en": "Data on service register"
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "",
         "en": ""
       },
-      "isHarmonized": false,
+      "name": {
+        "fi": "Asevelvollisuusrekisteri",
+        "en": "Data on service register"
+      },
       "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Service class data",
             "fi": "Palveluskelpoisuusluokka"
@@ -51,10 +67,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": [
             {
@@ -69,6 +81,10 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Overindebtedness",
             "fi": "Ylivelkaantumistiedot"
@@ -76,10 +92,6 @@
           "notes": {
             "en": "",
             "fi": ""
-          },
-          "keywords": {
-            "fi": [],
-            "en": []
           },
           "samplings": []
         }
