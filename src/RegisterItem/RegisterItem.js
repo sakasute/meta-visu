@@ -11,7 +11,7 @@ function RegisterItem({
         id={register.name.en}
         type="checkbox"
         onChange={() => toggleRegisterFilter(filename, register.name.en)}
-        defaultChecked
+        checked={register.isSelected}
       />
       <label htmlFor={register.name.en}>{register.name[lang]}</label>
     </li>
