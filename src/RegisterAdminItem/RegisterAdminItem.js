@@ -35,7 +35,7 @@ export default function RegisterAdminItem({
   });
 
   return (
-    <li>
+    <li className="simpleList__listItem">
       <ToggleButton
         isSelected={fileFilter.isSelected}
         mixClasses="simpleList__button"

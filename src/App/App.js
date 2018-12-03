@@ -60,7 +60,7 @@ class App extends Component {
     Object.keys(keywords).forEach((lang) => {
       keywordFilter[lang] = {};
       keywords[lang].forEach((keyword) => {
-        keywordFilter[lang][keyword] = { isSelected: true };
+        keywordFilter[lang][keyword] = { isSelected: false };
       });
     });
 
@@ -70,6 +70,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.selectLang = this.selectLang.bind(this);
+    this.updateTreeFilterWithKeyword = this.updateTreeFilterWithKeyword.bind(this);
     this.toggleCohortFilter = this.toggleCohortFilter.bind(this);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleKeywordFilter = this.toggleKeywordFilter.bind(this);
@@ -87,7 +88,7 @@ class App extends Component {
       infoMsg: {
         en:
           'Please select which register adminstrators you want to view from the panel on the left.',
-        fi: 'Valitse haluttu rekisteriviranomainen paneelista vasemmalla.',
+        fi: 'Valitse haluttu rekisteriylläpitäjä paneelista vasemmalla.',
       },
     };
   }
@@ -125,19 +126,31 @@ class App extends Component {
     window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
   }
 
-  initializeTreeFilter(filenames) {
+  initializeTreeFilter(filenames, defaultIsSelected = true) {
     const treeFilter = {};
     filenames.forEach((filename) => {
       treeFilter[filename] = {
         name: this.data[filename].name,
         isSelected: false,
+        keywords: this.data[filename].keywords,
         registers: {},
       };
       this.data[filename].registers.forEach((register) => {
         treeFilter[filename].registers[register.name.en] = {
           name: register.name,
-          isSelected: true,
+          isSelected: defaultIsSelected,
+          keywords: register.keywords,
+          registerDetails: {},
         };
+        register.registerDetails.forEach((registerDetail) => {
+          treeFilter[filename].registers[register.name.en].registerDetails[
+            registerDetail.name.en
+          ] = {
+            name: registerDetail.name,
+            isSelected: defaultIsSelected,
+            keywords: registerDetail.keywords,
+          };
+        });
       });
     });
     return treeFilter;
@@ -165,10 +178,48 @@ class App extends Component {
   }
 
   toggleKeywordFilter(keyword) {
-    const { lang } = this.state;
-    this.setState(prevState => update(prevState, {
-      keywordFilter: { [lang]: { [keyword]: { isSelected: { $apply: val => !val } } } },
-    }));
+    const { lang, keywordFilter } = this.state;
+    const keywordIsSelected = keywordFilter[lang][keyword].isSelected;
+    const toggleKeywordIsSelected = !keywordIsSelected;
+    // set all keywords as unselected
+    Object.keys(keywordFilter[lang]).forEach((keywordKey) => {
+      keywordFilter[lang][keywordKey].isSelected = false;
+    });
+    // set the clicked keyword with updated value
+    const updatedKeywordFilter = update(keywordFilter, {
+      [lang]: { [keyword]: { isSelected: { $set: toggleKeywordIsSelected } } },
+    });
+    const updatedTreeFilter = this.updateTreeFilterWithKeyword(keyword, toggleKeywordIsSelected);
+    this.setState({ keywordFilter: updatedKeywordFilter, treeFilter: updatedTreeFilter });
+  }
+
+  // FIXME: quite ugly function
+  updateTreeFilterWithKeyword(keyword, keywordIsSelected) {
+    const { lang, filenames } = this.state;
+    if (!keywordIsSelected) {
+      return this.initializeTreeFilter(filenames);
+    }
+    const updatedTreeFilter = this.initializeTreeFilter(filenames, false);
+    Object.keys(updatedTreeFilter).forEach((filename) => {
+      const registrar = updatedTreeFilter[filename];
+      const registrarKeywordFound = registrar.keywords[lang].includes(keyword);
+      registrar.isSelected = registrarKeywordFound;
+      if (registrarKeywordFound) {
+        Object.keys(registrar.registers).forEach((registerName) => {
+          const register = registrar.registers[registerName];
+          const registerKeywordFound = register.keywords[lang].includes(keyword);
+          register.isSelected = registerKeywordFound;
+          if (registerKeywordFound) {
+            Object.keys(register.registerDetails).forEach((detailName) => {
+              const registerDetail = register.registerDetails[detailName];
+              const registerDetailKeywordFound = registerDetail.keywords[lang].includes(keyword);
+              registerDetail.isSelected = registerDetailKeywordFound;
+            });
+          }
+        });
+      }
+    });
+    return updatedTreeFilter;
   }
 
   render() {

@@ -5,7 +5,11 @@
   font-size: 1.4rem;
 }
 
+.simpleList__listItem {
+  margin-top: 1rem;
+}
+
 .simpleList__button {
   width: 100%;
-  margin: 1rem auto 0 auto;
+  margin: 0 auto;
 }

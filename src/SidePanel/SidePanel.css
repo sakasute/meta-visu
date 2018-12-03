@@ -48,6 +48,10 @@
   font-size: 1.4rem;
 }
 
+.sidePanel__categoryTitle--secondary {
+  margin: 1.5rem auto 0 auto;
+}
+
 .sidePanel__langControls {
   flex: 5;
   margin: auto 0;

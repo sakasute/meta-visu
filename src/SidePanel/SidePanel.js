@@ -13,8 +13,12 @@ class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.toggleMinimize = this.toggleMinimize.bind(this);
-    this.cohortTitle = { en: 'Filter by cohorts:', fi: 'Valitse kohortit:' };
-    this.keywordTitle = { en: 'Filter by keywords:', fi: 'Valitse avainsanat:' };
+    this.cohortTitle = { en: 'Filter by cohorts:', fi: 'Suodata kohortteja:' };
+    this.keywordTitle = { en: 'Select a keyword...', fi: 'Valitse avainsana...' };
+    this.registrarTitle = {
+      en: '...or select a registrar:',
+      fi: '...tai valitse ylläpitäjä:',
+    };
     this.state = {
       isMinimized: false,
     };
@@ -72,20 +76,22 @@ class SidePanel extends Component {
     const langKeywords = keywordFilter[lang];
     let keywordSelectors = [];
     if (langKeywords) {
-      keywordSelectors = Object.keys(langKeywords).map((keyword) => {
-        const { isSelected } = langKeywords[keyword];
-        return (
-          <ToggleButton
-            key={keyword}
-            isSelected={isSelected}
-            type="TAG"
-            handleClick={() => toggleKeywordFilter(keyword)}
-            mixClasses="sidePanel__keywordSelector"
-          >
-            {keyword}
-          </ToggleButton>
-        );
-      });
+      keywordSelectors = Object.keys(langKeywords)
+        .sort()
+        .map((keyword) => {
+          const { isSelected } = langKeywords[keyword];
+          return (
+            <ToggleButton
+              key={keyword}
+              isSelected={isSelected}
+              type="TAG"
+              handleClick={() => toggleKeywordFilter(keyword)}
+              mixClasses="sidePanel__keywordSelector"
+            >
+              {keyword}
+            </ToggleButton>
+          );
+        });
     }
 
     const registerAdminItems = Object.keys(treeFilter)
@@ -115,15 +121,20 @@ class SidePanel extends Component {
               <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
             </button>
           </div>
+
           <div className="">
             <h2 className="sidePanel__categoryTitle">{this.cohortTitle[lang]}</h2>
             <div>{cohortSelectors}</div>
           </div>
+          <div className="sidePanel__controlsRow" />
+
           <div className="">
             <h2 className="sidePanel__categoryTitle">{this.keywordTitle[lang]}</h2>
             <div>{keywordSelectors}</div>
+            <h2 className="sidePanel__categoryTitle sidePanel__categoryTitle--secondary">
+              {this.registrarTitle[lang]}
+            </h2>
           </div>
-          <div className="sidePanel__controlsRow" />
         </div>
 
         <ul className="simpleList sidePanel__simpleList">{registerAdminItems}</ul>
