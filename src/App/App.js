@@ -99,7 +99,6 @@ class App extends Component {
     const { dataset, lang } = this.constructor.checkURLParams(url);
     const timelineConfig = this.constructor.initializeConfigs(dataset, lang);
     const cohortFilter = this.constructor.initializeCohortFilter(timelineConfig.cohorts);
-
     fetch(`data/${dataset}/data_bundle.json`)
       .then(res => res.json())
       .then((dataBundle) => {
@@ -130,25 +129,25 @@ class App extends Component {
     const treeFilter = {};
     filenames.forEach((filename) => {
       treeFilter[filename] = {
-        name: this.data[filename].name,
+        name: { ...this.data[filename].name },
         isSelected: false,
-        keywords: this.data[filename].keywords,
+        keywords: { ...this.data[filename].keywords },
         registers: {},
       };
       this.data[filename].registers.forEach((register) => {
         treeFilter[filename].registers[register.name.en] = {
-          name: register.name,
+          name: { ...register.name },
           isSelected: defaultIsSelected,
-          keywords: register.keywords,
+          keywords: { ...register.keywords },
           registerDetails: {},
         };
         register.registerDetails.forEach((registerDetail) => {
           treeFilter[filename].registers[register.name.en].registerDetails[
             registerDetail.name.en
           ] = {
-            name: registerDetail.name,
+            name: { ...registerDetail.name },
             isSelected: defaultIsSelected,
-            keywords: registerDetail.keywords,
+            keywords: { ...registerDetail.keywords },
           };
         });
       });
@@ -166,7 +165,11 @@ class App extends Component {
   toggleRegisterFilter(filename, registerName) {
     this.setState(prevState => update(prevState, {
       treeFilter: {
-        [filename]: { registers: { [registerName]: { isSelected: { $apply: val => !val } } } },
+        [filename]: {
+          registers: {
+            [registerName]: { isSelected: { $apply: val => !val } },
+          },
+        },
       },
     }));
   }
@@ -190,7 +193,10 @@ class App extends Component {
       [lang]: { [keyword]: { isSelected: { $set: toggleKeywordIsSelected } } },
     });
     const updatedTreeFilter = this.updateTreeFilterWithKeyword(keyword, toggleKeywordIsSelected);
-    this.setState({ keywordFilter: updatedKeywordFilter, treeFilter: updatedTreeFilter });
+    this.setState({
+      keywordFilter: updatedKeywordFilter,
+      treeFilter: updatedTreeFilter,
+    });
   }
 
   // FIXME: quite ugly function
@@ -248,7 +254,6 @@ class App extends Component {
             data={this.data[filename]}
             cohortFilter={cohortFilter}
             fileFilter={fileFilter}
-            keywordFilter={keywordFilter}
             treeConfig={{ ...treeConfig, lang }}
             timelineConfig={{ ...timelineConfig, lang }}
             key={filename}

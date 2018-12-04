@@ -7,7 +7,11 @@ import d3 from '../_js/d3Visualizations/d3imports';
 
 import TreeChart from '../_js/d3Visualizations/TreeChart';
 import CategoryTimeline from '../_js/d3Visualizations/CategoryTimeline';
-import { sortTreeData, calculateregisterDetailCount, idRef } from '../_js/helpers';
+import {
+  sortTreeData,
+  calculateregisterDetailCount,
+  idRef,
+} from '../_js/helpers';
 
 import './TimelineTreeSVG.css';
 
@@ -40,26 +44,36 @@ class TimelineTreeSVG extends Component {
   componentDidMount() {
     const { data: dataProp, lang } = this.props;
     // NOTE: this makes sure that we are not modifying the original data in the App-component
-    const data = { ...dataProp };
     const {
       filename,
       cohortFilter,
-      keywordFilter,
-      registerFilter,
+      treeFilter,
       treeConfig,
       timelineConfig,
     } = this.props;
 
     // ***** TreeChart *****
-    const selectedRegisters = data.registers.filter(
-      register => registerFilter[register.name.en].isSelected,
-    );
+    const selectedNodes = dataProp.registers
+      .filter(register => treeFilter[register.name.en].isSelected)
+      .map(register => ({ ...register }));
+    // NOTE: the map() above is important step! It replaces the reference to the original register with a copy.
 
-    const selectedCohorts = Object.values(cohortFilter).filter(cohort => cohort.isSelected);
+    selectedNodes.forEach((register) => {
+      register.registerDetails = register.registerDetails
+        .filter(
+          registerDetail => treeFilter[register.name.en].registerDetails[registerDetail.name.en]
+            .isSelected,
+        )
+        .map(registerDetail => ({ ...registerDetail }));
+    });
+
+    const selectedCohorts = Object.values(cohortFilter).filter(
+      cohort => cohort.isSelected,
+    );
     const cohortNum = selectedCohorts.length;
     const categoryTimelineHeight = 2 * (20 * cohortNum) + 30;
 
-    data.registers = selectedRegisters;
+    const data = { ...dataProp, registers: selectedNodes };
     // data = sortTreeData(data);
     const registerDetailCount = calculateregisterDetailCount(data);
     const treeHeight = registerDetailCount * categoryTimelineHeight;
@@ -90,48 +104,54 @@ class TimelineTreeSVG extends Component {
     if (treeChart.treeData.children) {
       treeChart.treeData.children.forEach((registerNode, registerIdx) => {
         const { infoBoxes } = this.state;
-        registerNode.children.filter(node => node.data.notes[lang] !== '').forEach(node => infoBoxes.push({
-          isShown: false,
-          text: node.data.notes,
-          x: node.y,
-          y: node.x,
-        }));
+        registerNode.children
+          .filter(node => node.data.notes[lang] !== '')
+          .forEach(node => infoBoxes.push({
+            isShown: false,
+            text: node.data.notes,
+            x: node.y,
+            y: node.x,
+          }));
         this.setState({ infoBoxes });
 
-        registerNode.children.forEach((registerDetailNode, registerDetailIdx) => {
-          let timelineConfigModified = timelineConfigExtended;
+        registerNode.children.forEach(
+          (registerDetailNode, registerDetailIdx) => {
+            let timelineConfigModified = timelineConfigExtended;
 
-          if (registerIdx === 0 && registerDetailIdx === 0) {
-            timelineConfigModified = {
-              ...timelineConfigExtended,
-              showXAxis: true,
-              showLegend: true,
-              xAxisOrientation: 'top',
-            };
-          }
+            if (registerIdx === 0 && registerDetailIdx === 0) {
+              timelineConfigModified = {
+                ...timelineConfigExtended,
+                showXAxis: true,
+                showLegend: true,
+                xAxisOrientation: 'top',
+              };
+            }
 
-          const filteredCohortData = registerDetailNode.data.samplings.filter(
-            sampling => cohortFilter[sampling.cohort].isSelected,
-          );
-          const categoryTimeline = new CategoryTimeline(
-            filteredCohortData,
-            svg,
-            timelineConfigModified,
-          );
-          // NOTE: the tree structure kind of swaps x and y coords
-          categoryTimeline.moveTo(
-            registerDetailNode.y + 300,
-            registerDetailNode.x + 50 + 10 - categoryTimelineHeight / 2,
-          );
-          categoryTimeline.update();
-        });
+            const filteredCohortData = registerDetailNode.data.samplings.filter(
+              sampling => cohortFilter[sampling.cohort].isSelected,
+            );
+            const categoryTimeline = new CategoryTimeline(
+              filteredCohortData,
+              svg,
+              timelineConfigModified,
+            );
+            // NOTE: the tree structure kind of swaps x and y coords
+            categoryTimeline.moveTo(
+              registerDetailNode.y + 300,
+              registerDetailNode.x + 50 + 10 - categoryTimelineHeight / 2,
+            );
+            categoryTimeline.update();
+          },
+        );
       });
     }
   }
 
   componentWillUnmount() {
     const { filename } = this.props;
-    const nodeToEmpty = document.querySelector(`.js-timeline-tree#${idRef(filename)}`);
+    const nodeToEmpty = document.querySelector(
+      `.js-timeline-tree#${idRef(filename)}`,
+    );
     while (nodeToEmpty.firstChild) {
       nodeToEmpty.removeChild(nodeToEmpty.firstChild);
     }
@@ -153,19 +173,24 @@ class TimelineTreeSVG extends Component {
     const { infoBoxes } = this.state;
     const { filename, lang } = this.props;
 
-    const infoBoxEls = infoBoxes.filter(infoData => infoData.isShown).map((infoData) => {
-      const styles = {
-        position: 'absolute',
-        left: `${infoData.x + 125}px`,
-        top: `${infoData.y + 60}px`,
-        width: '175px',
-      };
-      return (
-        <InfoBox layoutStyles={styles} key={`${Object.values(infoData).join('')}Els`}>
-          {infoData.text[lang]}
-        </InfoBox>
-      );
-    });
+    const infoBoxEls = infoBoxes
+      .filter(infoData => infoData.isShown)
+      .map((infoData) => {
+        const styles = {
+          position: 'absolute',
+          left: `${infoData.x + 125}px`,
+          top: `${infoData.y + 60}px`,
+          width: '175px',
+        };
+        return (
+          <InfoBox
+            layoutStyles={styles}
+            key={`${Object.values(infoData).join('')}Els`}
+          >
+            {infoData.text[lang]}
+          </InfoBox>
+        );
+      });
 
     const infoBoxBtns = infoBoxes.map((infoData, idx) => {
       const styles = {
@@ -202,7 +227,7 @@ TimelineTreeSVG.propTypes = {
   data: PropTypes.object.isRequired,
   filename: PropTypes.string.isRequired,
   lang: PropTypes.string.isRequired,
-  registerFilter: PropTypes.object.isRequired,
+  treeFilter: PropTypes.object.isRequired,
   treeConfig: PropTypes.object.isRequired,
   timelineConfig: PropTypes.object.isRequired,
 };

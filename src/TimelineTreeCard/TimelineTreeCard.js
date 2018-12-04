@@ -63,17 +63,18 @@ class TimelineTreeCard extends Component {
     const classes = show
       ? 'timeline-tree-wrapper card'
       : ' timeline-tree-wrapper card card--collapsed';
-    const registerFilter = fileFilter.registers;
+    const treeFilter = fileFilter.registers;
     // NOTE: this key updates depending on the filter props to force remounting
     // the TimelineTree with updated filters
-    const svgKey = Object.values(registerFilter)
-      .map(register => register.isSelected)
+    const svgKey = Object.values(treeFilter)
+      .map(
+        register => `${register.isSelected}${Object.values(register.registerDetails)
+          .map(registerDetail => registerDetail.isSelected)
+          .join('')}`,
+      )
       .join('')
       + Object.values(cohortFilter)
         .map(cohort => cohort.isSelected)
-        .join('')
-      + Object.values(keywordFilter[lang])
-        .map(keyword => keyword.isSelected)
         .join('')
       + scaleYears.min
       + scaleYears.max
@@ -86,8 +87,7 @@ class TimelineTreeCard extends Component {
             lang={lang}
             data={data}
             cohortFilter={cohortFilter}
-            keywordFilter={keywordFilter}
-            registerFilter={registerFilter}
+            treeFilter={treeFilter}
             treeConfig={treeConfig}
             timelineConfig={timelineConfigExtended}
             filename={filename}
