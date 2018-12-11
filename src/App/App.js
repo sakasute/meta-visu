@@ -67,6 +67,31 @@ class App extends Component {
     return keywordFilter;
   }
 
+  static initializeRegisters(registrarData, isSelected = true, registerDetailsIsSelected = true) {
+    const registers = {};
+    registrarData.registers.forEach((register) => {
+      registers[register.name.en] = {
+        name: { ...register.name },
+        isSelected,
+        keywords: { ...register.keywords },
+        registerDetails: this.initializeRegisterDetails(register, registerDetailsIsSelected),
+      };
+    });
+    return registers;
+  }
+
+  static initializeRegisterDetails(registerData, isSelected = true) {
+    const registerDetails = {};
+    registerData.registerDetails.forEach((registerDetail) => {
+      registerDetails[registerDetail.name.en] = {
+        name: { ...registerDetail.name },
+        isSelected,
+        keywords: { ...registerDetail.keywords },
+      };
+    });
+    return registerDetails;
+  }
+
   constructor(props) {
     super(props);
     this.selectLang = this.selectLang.bind(this);
@@ -76,10 +101,11 @@ class App extends Component {
     this.toggleKeywordFilter = this.toggleKeywordFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
     this.data = {};
+    this.keywords = {};
+    this.filenames = [];
     this.state = {
       dataset: '',
       lang: '',
-      filenames: [],
       cohortFilter: {},
       keywordFilter: { en: [], fi: [] },
       treeFilter: {},
@@ -103,13 +129,13 @@ class App extends Component {
       .then(res => res.json())
       .then((dataBundle) => {
         this.data = dataBundle.data;
-        const filenames = Object.keys(this.data);
+        this.filenames = Object.keys(this.data);
+        this.keywords = dataBundle.keywords;
         const keywordFilter = this.constructor.initializeKeywordFilter(dataBundle.keywords);
-        const treeFilter = this.initializeTreeFilter(filenames);
+        const treeFilter = this.initializeTreeFilter(this.filenames);
         this.setState({
           cohortFilter,
           dataset,
-          filenames,
           keywordFilter,
           treeFilter,
           lang,
@@ -125,32 +151,15 @@ class App extends Component {
     window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
   }
 
-  initializeTreeFilter(filenames, defaultIsSelected = true) {
+  initializeTreeFilter(filenames, isSelected = true) {
     const treeFilter = {};
     filenames.forEach((filename) => {
       treeFilter[filename] = {
         name: { ...this.data[filename].name },
         isSelected: false,
         keywords: { ...this.data[filename].keywords },
-        registers: {},
+        registers: this.constructor.initializeRegisters(this.data[filename], isSelected),
       };
-      this.data[filename].registers.forEach((register) => {
-        treeFilter[filename].registers[register.name.en] = {
-          name: { ...register.name },
-          isSelected: defaultIsSelected,
-          keywords: { ...register.keywords },
-          registerDetails: {},
-        };
-        register.registerDetails.forEach((registerDetail) => {
-          treeFilter[filename].registers[register.name.en].registerDetails[
-            registerDetail.name.en
-          ] = {
-            name: { ...registerDetail.name },
-            isSelected: defaultIsSelected,
-            keywords: { ...registerDetail.keywords },
-          };
-        });
-      });
     });
     return treeFilter;
   }
@@ -163,14 +172,33 @@ class App extends Component {
   }
 
   toggleRegisterFilter(filename, registerName) {
+    const { treeFilter } = this.state;
+    const registerFilter = treeFilter[filename].registers[registerName];
+    const resetKeywordFilter = this.constructor.initializeKeywordFilter(this.keywords);
+
+    const registerData = this.data[filename].registers.filter(
+      register => registerName === register.name.en,
+    )[0];
+
+    // FIXME: yhä joku ongelma: avainsanojen jälkeen rekisterin valinta ei nollaa filtteröityjä detailseja
+    const resetRegisterDetailsFilter = this.constructor.initializeRegisterDetails(registerData);
+
+    const updatedRegisterFilter = {
+      ...registerFilter,
+      isSelected: !registerFilter.isSelected,
+      registerDetails: resetRegisterDetailsFilter,
+    };
     this.setState(prevState => update(prevState, {
       treeFilter: {
         [filename]: {
           registers: {
-            [registerName]: { isSelected: { $apply: val => !val } },
+            [registerName]: {
+              $set: updatedRegisterFilter,
+            },
           },
         },
       },
+      keywordFilter: { $set: resetKeywordFilter },
     }));
   }
 
@@ -199,13 +227,13 @@ class App extends Component {
     });
   }
 
-  // FIXME: quite ugly function
+  // FIXME: quite an ugly function
   updateTreeFilterWithKeyword(keyword, keywordIsSelected) {
-    const { lang, filenames } = this.state;
+    const { lang } = this.state;
     if (!keywordIsSelected) {
-      return this.initializeTreeFilter(filenames);
+      return this.initializeTreeFilter(this.filenames);
     }
-    const updatedTreeFilter = this.initializeTreeFilter(filenames, false);
+    const updatedTreeFilter = this.initializeTreeFilter(this.filenames, false);
     Object.keys(updatedTreeFilter).forEach((filename) => {
       const registrar = updatedTreeFilter[filename];
       const registrarKeywordFound = registrar.keywords[lang].includes(keyword);
@@ -231,7 +259,6 @@ class App extends Component {
   render() {
     const {
       cohortFilter,
-      filenames,
       keywordFilter,
       treeFilter,
       lang,
@@ -240,7 +267,14 @@ class App extends Component {
       timelineConfig,
     } = this.state;
 
-    const timelineTreeCards = filenames
+    if (this.data['National Institute for Health and Welfare.json']) {
+      console.log(
+        'app-render',
+        this.data['National Institute for Health and Welfare.json'].registers[1].registerDetails,
+      );
+    }
+
+    const timelineTreeCards = this.filenames
       .map(filename => ({ filename, name: treeFilter[filename].name }))
       // .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
       .map((nameObj) => {
