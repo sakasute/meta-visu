@@ -238,9 +238,9 @@ class SheetParser:
         value_en = self.row_en[col].value
         if value_fi != None:
             # this snippet first removes all whitespace and then splits the string between commas
-            dictionary['fi'] = ''.join(value_fi.split()).split(',')
+            dictionary['fi'] = list(map(lambda s: s.strip(), value_fi.split(',')))
         if value_en != None:
-            dictionary['en'] = ''.join(value_en.split()).split(',')
+            dictionary['en'] = list(map(lambda s: s.strip(), value_en.split(',')))
 
     def update_keywords(self, keyword_list_en, keyword_list_fi):
         self.keywords['en'] = update_with_new_elements(self.keywords['en'], keyword_list_en)
