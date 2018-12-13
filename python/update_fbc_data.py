@@ -44,7 +44,7 @@ config = {
 }
 
 workbook = load_workbook(FILENAME, read_only=True)
-parser = SheetParser(workbook['testi'], config)  # FIXME: change me back to 'Yhdistetty'
+parser = SheetParser(workbook['rekisterit'], config)
 parser.parse_sheet()
 data = parser.data
 

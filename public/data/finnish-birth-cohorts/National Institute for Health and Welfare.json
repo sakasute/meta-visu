@@ -1,15 +1,7 @@
 {
   "keywords": {
-    "en": [
-      "test1",
-      "test2",
-      "test3"
-    ],
-    "fi": [
-      "testi1",
-      "testi2",
-      "testi3"
-    ]
+    "en": [],
+    "fi": []
   },
   "name": {
     "en": "National Institute for Health and Welfare",
@@ -19,16 +11,8 @@
     {
       "isHarmonized": false,
       "keywords": {
-        "en": [
-          "test1",
-          "test2",
-          "test3"
-        ],
-        "fi": [
-          "testi1",
-          "testi2",
-          "testi3"
-        ]
+        "en": [],
+        "fi": []
       },
       "link": {
         "fi": "https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/aineistoluettelo/aineistoluettelo-a-o/-/aineistoluettelo/view?_rekisteriselosteportlet_WAR_rekisteriselosteportlet_action=details&_rekisteriselosteportlet_WAR_rekisteriselosteportlet_id=b66bf56a-8c9&3-398f-87bb-ec1f57140a1c",
@@ -41,16 +25,8 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [
-              "testi1",
-              "testi2",
-              "testi3"
-            ],
-            "en": [
-              "test1",
-              "test2",
-              "test3"
-            ]
+            "fi": [],
+            "en": []
           },
           "name": {
             "en": "Pregnancy and birth outcomes (own)",
@@ -83,12 +59,8 @@
         },
         {
           "keywords": {
-            "fi": [
-              "testi1"
-            ],
-            "en": [
-              "test1"
-            ]
+            "fi": [],
+            "en": []
           },
           "name": {
             "en": "Pregnancy and birth outcomes (childrens)",
@@ -121,12 +93,8 @@
         },
         {
           "keywords": {
-            "fi": [
-              "testi2"
-            ],
-            "en": [
-              "test2"
-            ]
+            "fi": [],
+            "en": []
           },
           "name": {
             "en": "Pregnancy and birth outcomes",
