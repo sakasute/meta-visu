@@ -1,5 +1,5 @@
-import React from 'react';
-import './InfoBox.css';
+import React from "react";
+import "./InfoBox.css";
 
 export default function InfoBox({ children, layoutStyles }) {
   return (

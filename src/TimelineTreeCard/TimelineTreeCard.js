@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import CardHeader from '../CardHeader/CardHeader';
-import TimelineTreeSVG from '../TimelineTreeSVG/TimelineTreeSVG';
-import '../_css/card.css';
-import './TimelineTreeCard.css';
+import CardHeader from "../CardHeader/CardHeader";
+import TimelineTreeSVG from "../TimelineTreeSVG/TimelineTreeSVG";
+import "../_css/card.css";
+import "./TimelineTreeCard.css";
 
 class TimelineTreeCard extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class TimelineTreeCard extends Component {
     this.handleYearSelection = this.handleYearSelection.bind(this);
     this.state = {
       scaleYearsSlider: { min: 1900, max: 2018 },
-      scaleYears: { min: 1900, max: 2018 },
+      scaleYears: { min: 1900, max: 2018 }
     };
   }
 
@@ -27,14 +27,14 @@ class TimelineTreeCard extends Component {
   handleYearSelection(years, mode) {
     const { scaleYearsSlider } = this.state;
     switch (mode) {
-      case 'change':
+      case "change":
         this.setState({ scaleYearsSlider: { min: years.min, max: years.max } });
         break;
-      case 'afterChange':
+      case "afterChange":
         this.setState({ scaleYears: scaleYearsSlider });
         break;
       default:
-        console.log('no such event mode');
+        console.log("no such event mode");
     }
   }
 
@@ -46,9 +46,8 @@ class TimelineTreeCard extends Component {
       data,
       cohortFilter,
       fileFilter,
-      keywordFilter,
       treeConfig,
-      timelineConfig,
+      timelineConfig
     } = this.props;
 
     const { scaleYearsSlider, scaleYears } = this.state;
@@ -57,29 +56,31 @@ class TimelineTreeCard extends Component {
     const timelineConfigExtended = {
       ...timelineConfig,
       scaleStartDate,
-      scaleEndDate,
+      scaleEndDate
     };
 
     const classes = show
-      ? 'timeline-tree-wrapper card'
-      : ' timeline-tree-wrapper card card--collapsed';
+      ? "timeline-tree-wrapper card"
+      : " timeline-tree-wrapper card card--collapsed";
     const treeFilter = fileFilter.registers;
     // NOTE: this key updates depending on the filter props to force remounting
     // the TimelineTree with updated filters
-    // IDEA: proper solution probably would be to componenDidUpdate() in the svg-component?
-    const svgKey = Object.values(treeFilter)
-      .map(
-        register => `${register.isSelected}${Object.values(register.registerDetails)
-          .map(registerDetail => registerDetail.isSelected)
-          .join('')}`,
-      )
-      .join('')
-      + Object.values(cohortFilter)
+    // IDEA: proper solution probably might be to componenDidUpdate() in the svg-component?
+    const svgKey =
+      Object.values(treeFilter)
+        .map(
+          register =>
+            `${register.isSelected}${Object.values(register.registerDetails)
+              .map(registerDetail => registerDetail.isSelected)
+              .join("")}`
+        )
+        .join("") +
+      Object.values(cohortFilter)
         .map(cohort => cohort.isSelected)
-        .join('')
-      + scaleYears.min
-      + scaleYears.max
-      + lang;
+        .join("") +
+      scaleYears.min +
+      scaleYears.max +
+      lang;
 
     const renderSVG = () => {
       if (fileFilter.isSelected) {
@@ -119,7 +120,7 @@ TimelineTreeCard.propTypes = {
   data: PropTypes.object.isRequired,
   fileFilter: PropTypes.object.isRequired,
   treeConfig: PropTypes.object.isRequired,
-  timelineConfig: PropTypes.object.isRequired,
+  timelineConfig: PropTypes.object.isRequired
 };
 
 export default TimelineTreeCard;

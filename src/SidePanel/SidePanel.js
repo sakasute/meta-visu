@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import RegisterAdminItem from '../RegisterAdminItem/RegisterAdminItem';
-import { compareByName } from '../_js/helpers';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import RegisterAdminItem from "../RegisterAdminItem/RegisterAdminItem";
+//import { compareByName } from '../_js/helpers';
 
-import '../_css/simpleList.css';
-import '../_css/card.css';
-import './SidePanel.css';
-import ToggleButton from '../ToggleButton/ToggleButton';
+import "../_css/simpleList.css";
+import "../_css/card.css";
+import "./SidePanel.css";
+import ToggleButton from "../ToggleButton/ToggleButton";
 
 class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.toggleMinimize = this.toggleMinimize.bind(this);
-    this.cohortTitle = { en: 'Filter by cohorts:', fi: 'Suodata kohortteja:' };
-    this.keywordTitle = { en: 'Select a keyword...', fi: 'Valitse avainsana...' };
+    this.cohortTitle = { en: "Filter by cohorts:", fi: "Suodata kohortteja:" };
+    this.keywordTitle = {
+      en: "Select a keyword...",
+      fi: "Valitse avainsana..."
+    };
     this.registrarTitle = {
-      en: '...or select a registrar:',
-      fi: '...tai valitse ylläpitäjä:',
+      en: "...or select a registrar:",
+      fi: "...tai valitse ylläpitäjä:"
     };
     this.state = {
-      isMinimized: false,
+      isMinimized: false
     };
   }
 
@@ -38,19 +41,19 @@ class SidePanel extends Component {
       toggleKeywordFilter,
       toggleRegisterFilter,
       selectLang,
-      lang,
+      lang
     } = this.props;
     const { isMinimized } = this.state;
 
-    const classes = classNames('card', 'card--strongShadow', 'sidePanel', {
-      'sidePanel--closed': isMinimized,
+    const classes = classNames("card", "card--strongShadow", "sidePanel", {
+      "sidePanel--closed": isMinimized
     });
 
-    const toggleBtnClasses = classNames('sidePanel__toggleControl', {
-      'sidePanel__toggleControl--rotate': isMinimized,
+    const toggleBtnClasses = classNames("sidePanel__toggleControl", {
+      "sidePanel__toggleControl--rotate": isMinimized
     });
 
-    const languageSelectors = ['en', 'fi'].map(langOpt => (
+    const languageSelectors = ["en", "fi"].map(langOpt => (
       <ToggleButton
         key={langOpt}
         isSelected={lang === langOpt}
@@ -78,7 +81,7 @@ class SidePanel extends Component {
     if (langKeywords) {
       keywordSelectors = Object.keys(langKeywords)
         .sort()
-        .map((keyword) => {
+        .map(keyword => {
           const { isSelected } = langKeywords[keyword];
           return (
             <ToggleButton
@@ -99,7 +102,7 @@ class SidePanel extends Component {
       //   en: 'National Institute for Health and Welfare',
       //   fi: 'THL',
       // }))
-      .map((filename) => {
+      .map(filename => {
         const fileFilter = treeFilter[filename];
         return (
           <RegisterAdminItem
@@ -117,19 +120,30 @@ class SidePanel extends Component {
         <div className="sidePanel__controls">
           <div className="sidePanel__controlsRow">
             <div className="sidePanel__langControls">{languageSelectors}</div>
-            <button type="button" className={toggleBtnClasses} onClick={this.toggleMinimize}>
-              <img src="assets/material-arrow_back.svg" alt="register panel toggle" />
+            <button
+              type="button"
+              className={toggleBtnClasses}
+              onClick={this.toggleMinimize}
+            >
+              <img
+                src="assets/material-arrow_back.svg"
+                alt="register panel toggle"
+              />
             </button>
           </div>
 
           <div className="">
-            <h2 className="sidePanel__categoryTitle">{this.cohortTitle[lang]}</h2>
+            <h2 className="sidePanel__categoryTitle">
+              {this.cohortTitle[lang]}
+            </h2>
             <div>{cohortSelectors}</div>
           </div>
           <div className="sidePanel__controlsRow" />
 
           <div className="">
-            <h2 className="sidePanel__categoryTitle">{this.keywordTitle[lang]}</h2>
+            <h2 className="sidePanel__categoryTitle">
+              {this.keywordTitle[lang]}
+            </h2>
             <div>{keywordSelectors}</div>
             <h2 className="sidePanel__categoryTitle sidePanel__categoryTitle--secondary">
               {this.registrarTitle[lang]}
@@ -137,7 +151,9 @@ class SidePanel extends Component {
           </div>
         </div>
 
-        <ul className="simpleList sidePanel__simpleList">{registerAdminItems}</ul>
+        <ul className="simpleList sidePanel__simpleList">
+          {registerAdminItems}
+        </ul>
       </aside>
     );
   }
@@ -148,7 +164,7 @@ SidePanel.propTypes = {
   treeFilter: PropTypes.object.isRequired,
   toggleFileFilter: PropTypes.func.isRequired,
   toggleRegisterFilter: PropTypes.func.isRequired,
-  selectLang: PropTypes.func.isRequired,
+  selectLang: PropTypes.func.isRequired
 };
 
 export default SidePanel;

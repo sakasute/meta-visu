@@ -1,6 +1,6 @@
-import React from 'react';
-import classNames from 'classnames';
-import './ToggleButton.css';
+import React from "react";
+import classNames from "classnames";
+import "./ToggleButton.css";
 
 export default function ToggleButton({
   children,
@@ -8,15 +8,20 @@ export default function ToggleButton({
   isSelected,
   mixClasses,
   size,
-  type,
+  type
 }) {
   const TYPES = {
-    BASIC: 'toggleButtonBasic',
-    TAG: 'toggleButtonTag',
-    TEXT: 'toggleButtonText',
+    BASIC: "toggleButtonBasic",
+    TAG: "toggleButtonTag",
+    TEXT: "toggleButtonText"
   };
 
-  const classes = classNames('toggleButton', TYPES[type], { '-selected': isSelected }, mixClasses);
+  const classes = classNames(
+    "toggleButton",
+    TYPES[type],
+    { "-selected": isSelected },
+    mixClasses
+  );
 
   return (
     <button className={classes} type="button" onClick={handleClick}>

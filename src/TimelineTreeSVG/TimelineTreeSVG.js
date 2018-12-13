@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import InfoBox from '../InfoBox/InfoBox';
+import InfoBox from "../InfoBox/InfoBox";
 
-import d3 from '../_js/d3Visualizations/d3imports';
+import d3 from "../_js/d3Visualizations/d3imports";
 
-import TreeChart from '../_js/d3Visualizations/TreeChart';
-import CategoryTimeline from '../_js/d3Visualizations/CategoryTimeline';
+import TreeChart from "../_js/d3Visualizations/TreeChart";
+import CategoryTimeline from "../_js/d3Visualizations/CategoryTimeline";
 import {
-  sortTreeData,
+  //sortTreeData,
   calculateregisterDetailCount,
-  idRef,
-} from '../_js/helpers';
+  idRef
+} from "../_js/helpers";
 
-import './TimelineTreeSVG.css';
+import "./TimelineTreeSVG.css";
 
 class TimelineTreeSVG extends Component {
   constructor(props) {
@@ -25,18 +25,18 @@ class TimelineTreeSVG extends Component {
       height: 100,
       posX: 125,
       posY: 50,
-      childrenNames: ['registers', 'registerDetails'],
-      nodeSize: 7.5,
+      childrenNames: ["registers", "registerDetails"],
+      nodeSize: 7.5
     };
     this.timelineConfigDefault = {
       width: 250,
       height: 100,
       showXAxis: false,
       showLegend: false,
-      scaleEndDate: new Date(),
+      scaleEndDate: new Date()
     };
     this.state = {
-      infoBoxes: [],
+      infoBoxes: []
     };
   }
 
@@ -49,7 +49,7 @@ class TimelineTreeSVG extends Component {
       cohortFilter,
       treeFilter,
       treeConfig,
-      timelineConfig,
+      timelineConfig
     } = this.props;
 
     // ***** TreeChart *****
@@ -58,17 +58,18 @@ class TimelineTreeSVG extends Component {
       .map(register => ({ ...register }));
     // NOTE: the map() above is important step! It replaces the reference to the original register with a copy.
 
-    selectedNodes.forEach((register) => {
+    selectedNodes.forEach(register => {
       register.registerDetails = register.registerDetails
         .filter(
-          registerDetail => treeFilter[register.name.en].registerDetails[registerDetail.name.en]
-            .isSelected,
+          registerDetail =>
+            treeFilter[register.name.en].registerDetails[registerDetail.name.en]
+              .isSelected
         )
         .map(registerDetail => ({ ...registerDetail }));
     });
 
     const selectedCohorts = Object.values(cohortFilter).filter(
-      cohort => cohort.isSelected,
+      cohort => cohort.isSelected
     );
     const cohortNum = selectedCohorts.length;
     const categoryTimelineHeight = 2 * (20 * cohortNum) + 30;
@@ -83,8 +84,8 @@ class TimelineTreeSVG extends Component {
 
     const svg = d3
       .select(`.js-timeline-tree#${idRef(filename)}`)
-      .attr('height', treeHeight + 100)
-      .attr('width', 1050);
+      .attr("height", treeHeight + 100)
+      .attr("width", 1050);
 
     const treeChart = new TreeChart(data, svg, treeConfigExtended);
     treeChart.updateNodes();
@@ -93,25 +94,27 @@ class TimelineTreeSVG extends Component {
     // ***** Timelines *****
     const timelineConfigCohorts = {
       height: categoryTimelineHeight,
-      cohorts: selectedCohorts.map(cohort => cohort.name),
+      cohorts: selectedCohorts.map(cohort => cohort.name)
     };
     const timelineConfigExtended = {
       ...this.timelineConfigDefault,
       ...timelineConfig,
-      ...timelineConfigCohorts,
+      ...timelineConfigCohorts
     };
 
     if (treeChart.treeData.children) {
       treeChart.treeData.children.forEach((registerNode, registerIdx) => {
         const { infoBoxes } = this.state;
         registerNode.children
-          .filter(node => node.data.notes[lang] !== '')
-          .forEach(node => infoBoxes.push({
-            isShown: false,
-            text: node.data.notes,
-            x: node.y,
-            y: node.x,
-          }));
+          .filter(node => node.data.notes[lang] !== "")
+          .forEach(node =>
+            infoBoxes.push({
+              isShown: false,
+              text: node.data.notes,
+              x: node.y,
+              y: node.x
+            })
+          );
         this.setState({ infoBoxes });
 
         registerNode.children.forEach(
@@ -123,25 +126,25 @@ class TimelineTreeSVG extends Component {
                 ...timelineConfigExtended,
                 showXAxis: true,
                 showLegend: true,
-                xAxisOrientation: 'top',
+                xAxisOrientation: "top"
               };
             }
 
             const filteredCohortData = registerDetailNode.data.samplings.filter(
-              sampling => cohortFilter[sampling.cohort].isSelected,
+              sampling => cohortFilter[sampling.cohort].isSelected
             );
             const categoryTimeline = new CategoryTimeline(
               filteredCohortData,
               svg,
-              timelineConfigModified,
+              timelineConfigModified
             );
             // NOTE: the tree structure kind of swaps x and y coords
             categoryTimeline.moveTo(
               registerDetailNode.y + 300,
-              registerDetailNode.x + 50 + 10 - categoryTimelineHeight / 2,
+              registerDetailNode.x + 50 + 10 - categoryTimelineHeight / 2
             );
             categoryTimeline.update();
-          },
+          }
         );
       });
     }
@@ -150,7 +153,7 @@ class TimelineTreeSVG extends Component {
   componentWillUnmount() {
     const { filename } = this.props;
     const nodeToEmpty = document.querySelector(
-      `.js-timeline-tree#${idRef(filename)}`,
+      `.js-timeline-tree#${idRef(filename)}`
     );
     while (nodeToEmpty.firstChild) {
       nodeToEmpty.removeChild(nodeToEmpty.firstChild);
@@ -175,17 +178,17 @@ class TimelineTreeSVG extends Component {
 
     const infoBoxEls = infoBoxes
       .filter(infoData => infoData.isShown)
-      .map((infoData) => {
+      .map(infoData => {
         const styles = {
-          position: 'absolute',
+          position: "absolute",
           left: `${infoData.x + 125}px`,
           top: `${infoData.y + 60}px`,
-          width: '175px',
+          width: "175px"
         };
         return (
           <InfoBox
             layoutStyles={styles}
-            key={`${Object.values(infoData).join('')}Els`}
+            key={`${Object.values(infoData).join("")}Els`}
           >
             {infoData.text[lang]}
           </InfoBox>
@@ -194,14 +197,14 @@ class TimelineTreeSVG extends Component {
 
     const infoBoxBtns = infoBoxes.map((infoData, idx) => {
       const styles = {
-        position: 'absolute',
+        position: "absolute",
         left: `${infoData.x + 200}px`,
-        top: `${infoData.y + 32}px`,
+        top: `${infoData.y + 32}px`
       };
 
       return (
         <img
-          key={`${Object.values(infoData).join('')}Btns`}
+          key={`${Object.values(infoData).join("")}Btns`}
           style={styles}
           className="openInfoBtn"
           src="assets/material-info-gray.svg"
@@ -229,7 +232,7 @@ TimelineTreeSVG.propTypes = {
   lang: PropTypes.string.isRequired,
   treeFilter: PropTypes.object.isRequired,
   treeConfig: PropTypes.object.isRequired,
-  timelineConfig: PropTypes.object.isRequired,
+  timelineConfig: PropTypes.object.isRequired
 };
 
 export default TimelineTreeSVG;

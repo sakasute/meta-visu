@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/input-range/input-range.css';
-import './YearSlider.css';
+import React from "react";
+import PropTypes from "prop-types";
+import InputRange from "react-input-range";
+import "react-input-range/lib/css/input-range/input-range.css";
+import "./YearSlider.css";
 
 function YearSlider({ handleYearSelection, selectedYears }) {
   const currentYear = new Date().getFullYear();
@@ -14,8 +14,8 @@ function YearSlider({ handleYearSelection, selectedYears }) {
         minValue={1900}
         maxValue={currentYear}
         value={selectedYears}
-        onChange={years => handleYearSelection(years, 'change')}
-        onChangeComplete={years => handleYearSelection(years, 'afterChange')}
+        onChange={years => handleYearSelection(years, "change")}
+        onChangeComplete={years => handleYearSelection(years, "afterChange")}
       />
     </div>
   );
@@ -23,7 +23,7 @@ function YearSlider({ handleYearSelection, selectedYears }) {
 
 YearSlider.propTypes = {
   handleYearSelection: PropTypes.func.isRequired,
-  selectedYears: PropTypes.object.isRequired,
+  selectedYears: PropTypes.object.isRequired
 };
 
 export default YearSlider;

@@ -1,5 +1,5 @@
-import d3 from './d3imports';
-import './CategoryTimeline.css';
+import d3 from "./d3imports";
+import "./CategoryTimeline.css";
 
 class CategoryTimeline {
   constructor(data, svgElement, config) {
@@ -8,27 +8,34 @@ class CategoryTimeline {
       height: config.height ? config.height : 200,
       posX: config.posX ? config.posX : 0,
       posY: config.posY ? config.posY : 0,
-      scaleStartDate: config.scaleStartDate ? config.scaleStartDate : new Date('1987-01-01'),
+      scaleStartDate: config.scaleStartDate
+        ? config.scaleStartDate
+        : new Date("1987-01-01"),
       scaleEndDate: config.scaleEndDate ? config.scaleEndDate : new Date(),
-      xAxisOrientation: config.xAxisOrientation ? config.xAxisOrientation : 'bottom',
+      xAxisOrientation: config.xAxisOrientation
+        ? config.xAxisOrientation
+        : "bottom",
       showXAxis: config.showXAxis != null ? config.showXAxis : true,
       showLegend: config.showLegend != null ? config.showLegend : true,
       categories: config.categories
         ? config.categories
-        : [{ en: 'parents', fi: 'vanhemmat' }, { en: 'subjects', fi: 'kohorttilaiset' }],
-      cohorts: config.cohorts ? config.cohorts : ['1987', '1997'],
-      lang: config.lang ? config.lang : 'en',
+        : [
+            { en: "parents", fi: "vanhemmat" },
+            { en: "subjects", fi: "kohorttilaiset" }
+          ],
+      cohorts: config.cohorts ? config.cohorts : ["1987", "1997"],
+      lang: config.lang ? config.lang : "en"
     };
     this.data = this.constructor.prepareData(data, this.config);
 
     this.xAxisPadding = 30;
 
     this.svg = svgElement
-      .append('g')
-      .attr('class', 'timeline-chart')
-      .attr('width', this.config.width)
-      .attr('height', this.config.height + this.xAxisPadding)
-      .attr('transform', `translate(${this.config.posX}, ${this.config.posY})`);
+      .append("g")
+      .attr("class", "timeline-chart")
+      .attr("width", this.config.width)
+      .attr("height", this.config.height + this.xAxisPadding)
+      .attr("transform", `translate(${this.config.posX}, ${this.config.posY})`);
 
     this.x = d3
       .scaleTime()
@@ -48,10 +55,10 @@ class CategoryTimeline {
 
   static prepareData(data, config) {
     const timelineData = [];
-    config.categories.forEach((category) => {
+    config.categories.forEach(category => {
       timelineData.push({
         category,
-        data: data.filter(el => el.category.en === category.en),
+        data: data.filter(el => el.category.en === category.en)
       });
     });
 
@@ -74,8 +81,10 @@ class CategoryTimeline {
     const startYear = startDate.getFullYear();
     const endYear = endDate.getFullYear();
 
-    const startStr = startMonth === 0 ? startYear : `${startMonth + 1}/${startYear}`;
-    const endStr = endMonth === 11 ? endYear : `${endDate.getMonth() + 1}/${endYear}`;
+    const startStr =
+      startMonth === 0 ? startYear : `${startMonth + 1}/${startYear}`;
+    const endStr =
+      endMonth === 11 ? endYear : `${endDate.getMonth() + 1}/${endYear}`;
 
     if (startYear === endYear) {
       if (startMonth === endMonth) {
@@ -91,7 +100,7 @@ class CategoryTimeline {
 
   drawXAxis() {
     let xAxis;
-    if (this.config.xAxisOrientation === 'top') {
+    if (this.config.xAxisOrientation === "top") {
       xAxis = d3.axisTop(this.x);
     } else {
       xAxis = d3.axisBottom(this.x);
@@ -100,38 +109,41 @@ class CategoryTimeline {
     xAxis.ticks(d3.timeYear.every(10));
 
     this.svg
-      .append('g')
-      .attr('class', 'timeline__axis')
+      .append("g")
+      .attr("class", "timeline__axis")
       .call(xAxis)
-      .attr('transform', () => {
-        if (this.config.xAxisOrientation === 'top') {
-          return 'translate(0, -2.5)';
+      .attr("transform", () => {
+        if (this.config.xAxisOrientation === "top") {
+          return "translate(0, -2.5)";
         }
         return `translate(0, ${this.config.height - this.xAxisPadding + 2.5})`;
       });
   }
 
   drawLegend() {
-    const legend = this.svg.append('g').attr('class', 'legend');
-    legend.attr('transform', `translate(${this.config.width - 15}, 0)`);
+    const legend = this.svg.append("g").attr("class", "legend");
+    legend.attr("transform", `translate(${this.config.width - 15}, 0)`);
 
     this.config.cohorts.forEach((cohort, idx) => {
       const category = legend
-        .append('g')
-        .attr('class', 'legend__category')
-        .attr('transform', `translate(0, ${idx * this.cohortHeight})`);
+        .append("g")
+        .attr("class", "legend__category")
+        .attr("transform", `translate(0, ${idx * this.cohortHeight})`);
 
       category
-        .append('rect')
-        .attr('class', `fill-color-${idx + 1}`)
-        .attr('width', this.cohortHeight)
-        .attr('height', this.cohortHeight);
+        .append("rect")
+        .attr("class", `fill-color-${idx + 1}`)
+        .attr("width", this.cohortHeight)
+        .attr("height", this.cohortHeight);
 
       category
-        .append('text')
-        .attr('class', 'legend__label')
+        .append("text")
+        .attr("class", "legend__label")
         .text(cohort)
-        .attr('transform', `translate(${this.cohortHeight + 5}, ${this.cohortHeight - 5})`);
+        .attr(
+          "transform",
+          `translate(${this.cohortHeight + 5}, ${this.cohortHeight - 5})`
+        );
     });
   }
 
@@ -158,7 +170,7 @@ class CategoryTimeline {
   calculateSectionWidth(sectionData) {
     const [startDate, endDate] = this.calculateScaleBoundDates(
       sectionData.startDate,
-      sectionData.endDate,
+      sectionData.endDate
     );
 
     return this.x(endDate) - this.x(startDate);
@@ -172,14 +184,17 @@ class CategoryTimeline {
 
   positionYearLabel(d) {
     if (
-      new Date(d.endDate) < this.config.scaleStartDate
-      || new Date(d.startDate) > this.config.scaleEndDate
+      new Date(d.endDate) < this.config.scaleStartDate ||
+      new Date(d.startDate) > this.config.scaleEndDate
     ) {
       // if section is out of scales, throw the label way off screen
       return `translate(${1000}, ${this.cohortHeight - 4})`;
     }
 
-    const [startDate, endDate] = this.calculateScaleBoundDates(d.startDate, d.endDate);
+    const [startDate, endDate] = this.calculateScaleBoundDates(
+      d.startDate,
+      d.endDate
+    );
     const xStart = this.x(startDate);
     const xEnd = this.x(endDate);
     let xCentre = (xStart + xEnd) / 2 - 2;
@@ -189,13 +204,14 @@ class CategoryTimeline {
     const offset = 15;
 
     xCentre = xCentre < limit ? xCentre + offset : xCentre;
-    xCentre = Math.abs(xCentre - xEndScale) < limit ? xCentre - offset : xCentre;
+    xCentre =
+      Math.abs(xCentre - xEndScale) < limit ? xCentre - offset : xCentre;
 
     return `translate(${xCentre}, ${this.cohortHeight - 4})`;
   }
 
   moveTo(x, y) {
-    this.svg.attr('transform', `translate(${x}, ${y})`);
+    this.svg.attr("transform", `translate(${x}, ${y})`);
   }
 
   update() {
@@ -207,85 +223,91 @@ class CategoryTimeline {
     }
     // enter
     const categoryEnter = this.svg
-      .selectAll('.timeline')
+      .selectAll(".timeline")
       .data(this.data)
       .enter()
-      .append('g')
-      .attr('class', 'timeline');
+      .append("g")
+      .attr("class", "timeline");
 
     categoryEnter.attr(
-      'transform',
-      d => `translate(0, ${this.y(d.category.en) - this.xAxisPadding})`,
+      "transform",
+      d => `translate(0, ${this.y(d.category.en) - this.xAxisPadding})`
     );
 
     this.config.categories.forEach((category, i) => {
       if (i < this.config.categories.length - 1) {
         categoryEnter
           .filter(d => d.category.en === category.en)
-          .append('line')
-          .attr('class', 'timeline__separator')
-          .attr('x1', this.x(this.config.scaleStartDate) - 60)
-          .attr('y1', this.y.bandwidth() + 0.075 * this.y.bandwidth())
-          .attr('x2', this.x(this.config.scaleEndDate))
-          .attr('y2', this.y.bandwidth() + 0.075 * this.y.bandwidth());
+          .append("line")
+          .attr("class", "timeline__separator")
+          .attr("x1", this.x(this.config.scaleStartDate) - 60)
+          .attr("y1", this.y.bandwidth() + 0.075 * this.y.bandwidth())
+          .attr("x2", this.x(this.config.scaleEndDate))
+          .attr("y2", this.y.bandwidth() + 0.075 * this.y.bandwidth());
       }
     });
 
     categoryEnter
-      .append('text')
-      .attr('class', 'timeline__title')
+      .append("text")
+      .attr("class", "timeline__title")
       .text(d => d.category[this.config.lang])
-      .attr('text-anchor', 'end')
-      .attr('dy', this.y.bandwidth() / 2 + 5)
-      .attr('dx', '-1.5em');
+      .attr("text-anchor", "end")
+      .attr("dy", this.y.bandwidth() / 2 + 5)
+      .attr("dx", "-1.5em");
 
     const sectionEnter = categoryEnter
-      .selectAll('timeline__section')
+      .selectAll("timeline__section")
       .data(d => d.data)
       .enter()
-      .append('g')
-      .attr('class', 'timeline__section');
+      .append("g")
+      .attr("class", "timeline__section");
 
     // enter timespan sections => rectangles
     sectionEnter
-      .filter(d => new Date(d.startDate).getFullYear() !== new Date(d.endDate).getFullYear())
-      .append('rect')
-      .attr('class', 'timeline__rect')
-      .attr('x', d => this.calculateSectionXPos(d))
-      .attr('height', this.cohortHeight)
-      .attr('width', d => this.calculateSectionWidth(d));
+      .filter(
+        d =>
+          new Date(d.startDate).getFullYear() !==
+          new Date(d.endDate).getFullYear()
+      )
+      .append("rect")
+      .attr("class", "timeline__rect")
+      .attr("x", d => this.calculateSectionXPos(d))
+      .attr("height", this.cohortHeight)
+      .attr("width", d => this.calculateSectionWidth(d));
 
     // enter point sections => circles
     sectionEnter
-      .filter(d => new Date(d.startDate).getTime() === new Date(d.endDate).getTime())
-      .append('circle')
-      .attr('r', (d) => {
+      .filter(
+        d => new Date(d.startDate).getTime() === new Date(d.endDate).getTime()
+      )
+      .append("circle")
+      .attr("r", d => {
         if (
-          new Date(d.startDate) < this.config.scaleStartDate
-          || new Date(d.endDate) > this.config.scaleEndDate
+          new Date(d.startDate) < this.config.scaleStartDate ||
+          new Date(d.endDate) > this.config.scaleEndDate
         ) {
           return 0;
         }
         return this.cohortHeight / 2;
       })
-      .attr('class', 'timeline__rect')
-      .attr('cx', d => this.calculateSectionXPos(d))
-      .attr('cy', this.cohortHeight / 2);
+      .attr("class", "timeline__rect")
+      .attr("cx", d => this.calculateSectionXPos(d))
+      .attr("cy", this.cohortHeight / 2);
 
     sectionEnter
-      .append('text')
-      .attr('class', 'timeline__year-label')
+      .append("text")
+      .attr("class", "timeline__year-label")
       .text(d => this.constructor.createYearLabel(d))
-      .attr('text-anchor', 'middle')
-      .attr('transform', d => this.positionYearLabel(d));
+      .attr("text-anchor", "middle")
+      .attr("transform", d => this.positionYearLabel(d));
 
     // move cohorts to "own lanes"
     this.config.cohorts.forEach((cohort, idx) => {
       sectionEnter
         .filter(d => d.cohort === cohort)
-        .attr('transform', `translate(0, ${this.cohortHeight * idx})`)
-        .select('.timeline__rect')
-        .attr('class', `timeline__rect fill-color-${idx + 1}`);
+        .attr("transform", `translate(0, ${this.cohortHeight * idx})`)
+        .select(".timeline__rect")
+        .attr("class", `timeline__rect fill-color-${idx + 1}`);
     });
   }
 }

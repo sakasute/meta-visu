@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
-import update from 'immutability-helper';
-import SidePanel from '../SidePanel/SidePanel';
-import TimelineTreeCard from '../TimelineTreeCard/TimelineTreeCard';
-import './App.css';
+import React, { Component } from "react";
+import update from "immutability-helper";
+import SidePanel from "../SidePanel/SidePanel";
+import TimelineTreeCard from "../TimelineTreeCard/TimelineTreeCard";
+import "./App.css";
 
 class App extends Component {
   static checkURLParams(url) {
-    const langParam = url.searchParams.get('lang');
-    const datasetParam = url.searchParams.get('ds');
-    let lang = langParam || 'fi';
-    let dataset = datasetParam || 'finnish-birth-cohorts';
+    const langParam = url.searchParams.get("lang");
+    const datasetParam = url.searchParams.get("ds");
+    let lang = langParam || "fi";
+    let dataset = datasetParam || "finnish-birth-cohorts";
     // defaults
-    if (['en', 'fi'].includes(langParam)) {
+    if (["en", "fi"].includes(langParam)) {
       lang = langParam;
     }
-    if (['finnish-birth-cohorts', 'psycohorts'].includes(datasetParam)) {
+    if (["finnish-birth-cohorts", "psycohorts"].includes(datasetParam)) {
       dataset = datasetParam;
     }
-    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
+    window.history.pushState(null, "", `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
     return { lang, dataset };
   }
 
   static initializeCohortFilter(cohorts) {
     const cohortFilter = {};
-    cohorts.forEach((cohort) => {
+    cohorts.forEach(cohort => {
       cohortFilter[cohort] = { isSelected: true, name: cohort };
     });
     return cohortFilter;
@@ -32,21 +32,21 @@ class App extends Component {
   static initializeConfigs(dataset) {
     let timelineConfig = {};
     switch (dataset) {
-      case 'finnish-birth-cohorts':
+      case "finnish-birth-cohorts":
         timelineConfig = {
-          cohorts: ['1987', '1997'],
-          scaleStartDate: new Date('1987-01-01'),
+          cohorts: ["1987", "1997"],
+          scaleStartDate: new Date("1987-01-01")
         };
         break;
-      case 'psycohorts':
+      case "psycohorts":
         timelineConfig = {
-          cohorts: ['1966', '1986', '1987', '1997'],
-          scaleStartDate: new Date('1966-01-01'),
+          cohorts: ["1966", "1986", "1987", "1997"],
+          scaleStartDate: new Date("1966-01-01")
         };
         break;
 
       default:
-        console.log('Given dataset was not found!');
+        console.log("Given dataset was not found!");
     }
     return timelineConfig;
   }
@@ -56,9 +56,9 @@ class App extends Component {
   */
   static initializeKeywordFilter(keywords) {
     const keywordFilter = {};
-    Object.keys(keywords).forEach((lang) => {
+    Object.keys(keywords).forEach(lang => {
       keywordFilter[lang] = {};
-      keywords[lang].forEach((keyword) => {
+      keywords[lang].forEach(keyword => {
         keywordFilter[lang][keyword] = { isSelected: false };
       });
     });
@@ -66,14 +66,21 @@ class App extends Component {
     return keywordFilter;
   }
 
-  static initializeRegisters(registrarData, isSelected = true, registerDetailsIsSelected = true) {
+  static initializeRegisters(
+    registrarData,
+    isSelected = true,
+    registerDetailsIsSelected = true
+  ) {
     const registers = {};
-    registrarData.registers.forEach((register) => {
+    registrarData.registers.forEach(register => {
       registers[register.name.en] = {
         name: { ...register.name },
         isSelected,
         keywords: { ...register.keywords },
-        registerDetails: this.initializeRegisterDetails(register, registerDetailsIsSelected),
+        registerDetails: this.initializeRegisterDetails(
+          register,
+          registerDetailsIsSelected
+        )
       };
     });
     return registers;
@@ -81,11 +88,11 @@ class App extends Component {
 
   static initializeRegisterDetails(registerData, isSelected = true) {
     const registerDetails = {};
-    registerData.registerDetails.forEach((registerDetail) => {
+    registerData.registerDetails.forEach(registerDetail => {
       registerDetails[registerDetail.name.en] = {
         name: { ...registerDetail.name },
         isSelected,
-        keywords: { ...registerDetail.keywords },
+        keywords: { ...registerDetail.keywords }
       };
     });
     return registerDetails;
@@ -94,19 +101,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.selectLang = this.selectLang.bind(this);
-    this.updateTreeFilterWithKeyword = this.updateTreeFilterWithKeyword.bind(this);
+    this.updateTreeFilterWithKeyword = this.updateTreeFilterWithKeyword.bind(
+      this
+    );
     this.toggleCohortFilter = this.toggleCohortFilter.bind(this);
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleKeywordFilter = this.toggleKeywordFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
-    this.resetRegisterDetailFilters = this.resetRegisterDetailFilters.bind(this);
+    this.resetRegisterDetailFilters = this.resetRegisterDetailFilters.bind(
+      this
+    );
     this.data = {};
     this.keywords = {};
     this.filenames = [];
     this.state = {
-      dataset: '',
-      filterMode: 'manual', // 'manual' or 'keywords'
-      lang: '',
+      dataset: "",
+      filterMode: "manual", // 'manual' or 'keywords'
+      lang: "",
       cohortFilter: {},
       keywordFilter: { en: [], fi: [] },
       treeFilter: {},
@@ -114,9 +125,9 @@ class App extends Component {
       timelineConfig: {},
       infoMsg: {
         en:
-          'Please select which register adminstrators you want to view from the panel on the left.',
-        fi: 'Valitse haluttu rekisteriylläpitäjä paneelista vasemmalla.',
-      },
+          "Please select which register adminstrators you want to view from the panel on the left.",
+        fi: "Valitse haluttu rekisteriylläpitäjä paneelista vasemmalla."
+      }
     };
   }
 
@@ -125,14 +136,18 @@ class App extends Component {
     const url = new URL(window.location.href);
     const { dataset, lang } = this.constructor.checkURLParams(url);
     const timelineConfig = this.constructor.initializeConfigs(dataset, lang);
-    const cohortFilter = this.constructor.initializeCohortFilter(timelineConfig.cohorts);
+    const cohortFilter = this.constructor.initializeCohortFilter(
+      timelineConfig.cohorts
+    );
     fetch(`data/${dataset}/data_bundle.json`)
       .then(res => res.json())
-      .then((dataBundle) => {
+      .then(dataBundle => {
         this.data = dataBundle.data;
         this.filenames = Object.keys(this.data);
         this.keywords = dataBundle.keywords;
-        const keywordFilter = this.constructor.initializeKeywordFilter(dataBundle.keywords);
+        const keywordFilter = this.constructor.initializeKeywordFilter(
+          dataBundle.keywords
+        );
         const treeFilter = this.initializeTreeFilter(this.filenames);
         this.setState({
           cohortFilter,
@@ -140,7 +155,7 @@ class App extends Component {
           keywordFilter,
           treeFilter,
           lang,
-          timelineConfig,
+          timelineConfig
         });
       });
   }
@@ -149,17 +164,20 @@ class App extends Component {
     const { dataset } = this.state;
     this.setState({ lang });
     // NOTE: update URL without reloading the page
-    window.history.pushState(null, '', `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
+    window.history.pushState(null, "", `?lang=${lang}&ds=${dataset}`); // just changes the url to reflect the state
   }
 
   initializeTreeFilter(filenames, isSelected = true) {
     const treeFilter = {};
-    filenames.forEach((filename) => {
+    filenames.forEach(filename => {
       treeFilter[filename] = {
         name: { ...this.data[filename].name },
         isSelected: false,
         keywords: { ...this.data[filename].keywords },
-        registers: this.constructor.initializeRegisters(this.data[filename], isSelected),
+        registers: this.constructor.initializeRegisters(
+          this.data[filename],
+          isSelected
+        )
       };
     });
     return treeFilter;
@@ -170,27 +188,29 @@ class App extends Component {
     const { treeFilter } = this.state;
     const updatedTreeFilter = {};
     const filenames = Object.keys(treeFilter);
-    filenames.forEach((filename) => {
+    filenames.forEach(filename => {
       const registrar = treeFilter[filename];
       const updatedRegistrar = {
         ...registrar,
-        registers: {},
+        registers: {}
       };
       const registerNames = Object.keys(registrar.registers);
-      registerNames.forEach((registerName) => {
+      registerNames.forEach(registerName => {
         const register = registrar.registers[registerName];
         const updatedRegister = {
           ...register,
-          registerDetails: {},
+          registerDetails: {}
         };
         const registerDetailNames = Object.keys(register.registerDetails);
-        registerDetailNames.forEach((registerDetailName) => {
+        registerDetailNames.forEach(registerDetailName => {
           const registerDetail = register.registerDetails[registerDetailName];
           const updatedRegisterDetail = {
             ...registerDetail,
-            isSelected: true,
+            isSelected: true
           };
-          updatedRegister.registerDetails[registerDetailName] = updatedRegisterDetail;
+          updatedRegister.registerDetails[
+            registerDetailName
+          ] = updatedRegisterDetail;
         });
         updatedRegistrar.registers[registerName] = updatedRegister;
       });
@@ -202,41 +222,51 @@ class App extends Component {
 
   // NOTE: using immutability-helper to help updating nested states
   toggleFileFilter(filename) {
-    const resetKeywordFilter = this.constructor.initializeKeywordFilter(this.keywords);
-    this.setState(prevState => update(prevState, {
-      treeFilter: { [filename]: { isSelected: { $apply: val => !val } } },
-      keywordFilter: { $set: resetKeywordFilter },
-      filterMode: { $set: 'manual' },
-    }));
+    const resetKeywordFilter = this.constructor.initializeKeywordFilter(
+      this.keywords
+    );
+    this.setState(prevState =>
+      update(prevState, {
+        treeFilter: { [filename]: { isSelected: { $apply: val => !val } } },
+        keywordFilter: { $set: resetKeywordFilter },
+        filterMode: { $set: "manual" }
+      })
+    );
   }
 
   toggleRegisterFilter(filename, registerName) {
     const { filterMode } = this.state;
-    const resetKeywordFilter = this.constructor.initializeKeywordFilter(this.keywords);
+    const resetKeywordFilter = this.constructor.initializeKeywordFilter(
+      this.keywords
+    );
 
-    if (filterMode === 'keywords') {
+    if (filterMode === "keywords") {
       this.resetRegisterDetailFilters(filename);
     }
 
-    this.setState(prevState => update(prevState, {
-      treeFilter: {
-        [filename]: {
-          registers: {
-            [registerName]: {
-              isSelected: { $apply: val => !val },
-            },
-          },
+    this.setState(prevState =>
+      update(prevState, {
+        treeFilter: {
+          [filename]: {
+            registers: {
+              [registerName]: {
+                isSelected: { $apply: val => !val }
+              }
+            }
+          }
         },
-      },
-      keywordFilter: { $set: resetKeywordFilter },
-      filterMode: { $set: 'manual' },
-    }));
+        keywordFilter: { $set: resetKeywordFilter },
+        filterMode: { $set: "manual" }
+      })
+    );
   }
 
   toggleCohortFilter(cohort) {
-    this.setState(prevState => update(prevState, {
-      cohortFilter: { [cohort]: { isSelected: { $apply: val => !val } } },
-    }));
+    this.setState(prevState =>
+      update(prevState, {
+        cohortFilter: { [cohort]: { isSelected: { $apply: val => !val } } }
+      })
+    );
   }
 
   toggleKeywordFilter(keyword) {
@@ -244,18 +274,21 @@ class App extends Component {
     const keywordIsSelected = keywordFilter[lang][keyword].isSelected;
     const toggleKeywordIsSelected = !keywordIsSelected;
     // set all keywords as unselected
-    Object.keys(keywordFilter[lang]).forEach((keywordKey) => {
+    Object.keys(keywordFilter[lang]).forEach(keywordKey => {
       keywordFilter[lang][keywordKey].isSelected = false;
     });
     // set the clicked keyword with updated value
     const updatedKeywordFilter = update(keywordFilter, {
-      [lang]: { [keyword]: { isSelected: { $set: toggleKeywordIsSelected } } },
+      [lang]: { [keyword]: { isSelected: { $set: toggleKeywordIsSelected } } }
     });
-    const updatedTreeFilter = this.updateTreeFilterWithKeyword(keyword, toggleKeywordIsSelected);
+    const updatedTreeFilter = this.updateTreeFilterWithKeyword(
+      keyword,
+      toggleKeywordIsSelected
+    );
     this.setState({
       keywordFilter: updatedKeywordFilter,
       treeFilter: updatedTreeFilter,
-      filterMode: 'keywords',
+      filterMode: "keywords"
     });
   }
 
@@ -266,19 +299,23 @@ class App extends Component {
       return this.initializeTreeFilter(this.filenames);
     }
     const updatedTreeFilter = this.initializeTreeFilter(this.filenames, false);
-    Object.keys(updatedTreeFilter).forEach((filename) => {
+    Object.keys(updatedTreeFilter).forEach(filename => {
       const registrar = updatedTreeFilter[filename];
       const registrarKeywordFound = registrar.keywords[lang].includes(keyword);
       registrar.isSelected = registrarKeywordFound;
       if (registrarKeywordFound) {
-        Object.keys(registrar.registers).forEach((registerName) => {
+        Object.keys(registrar.registers).forEach(registerName => {
           const register = registrar.registers[registerName];
-          const registerKeywordFound = register.keywords[lang].includes(keyword);
+          const registerKeywordFound = register.keywords[lang].includes(
+            keyword
+          );
           register.isSelected = registerKeywordFound;
           if (registerKeywordFound) {
-            Object.keys(register.registerDetails).forEach((detailName) => {
+            Object.keys(register.registerDetails).forEach(detailName => {
               const registerDetail = register.registerDetails[detailName];
-              const registerDetailKeywordFound = registerDetail.keywords[lang].includes(keyword);
+              const registerDetailKeywordFound = registerDetail.keywords[
+                lang
+              ].includes(keyword);
               registerDetail.isSelected = registerDetailKeywordFound;
             });
           }
@@ -296,12 +333,12 @@ class App extends Component {
       lang,
       infoMsg,
       treeConfig,
-      timelineConfig,
+      timelineConfig
     } = this.state;
 
     const timelineTreeCards = this.filenames
       .map(filename => ({ filename, name: treeFilter[filename].name }))
-      .map((nameObj) => {
+      .map(nameObj => {
         const { filename } = nameObj;
         const fileFilter = treeFilter[filename];
         return (

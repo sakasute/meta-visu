@@ -1,21 +1,23 @@
-import CategoryTimeline from './d3Visualizations/CategoryTimeline';
+import CategoryTimeline from "./d3Visualizations/CategoryTimeline";
 
 export function parseNameFromFilename(filename) {
-  return filename.split('.')[0];
+  return filename.split(".")[0];
 }
 
 export function calculateregisterDetailCount(data) {
   let registerDetailCount = 0;
-  data.registers.forEach(register => register.registerDetails.forEach(() => (registerDetailCount += 1)));
+  data.registers.forEach(register =>
+    register.registerDetails.forEach(() => (registerDetailCount += 1))
+  );
   return registerDetailCount;
 }
 
 export function categoryTimelineHelper(samplingData, svg, config) {
   const timelineData = [];
-  config.categories.forEach((category) => {
+  config.categories.forEach(category => {
     timelineData.push({
       category,
-      data: samplingData.filter(el => el.category.en === category.en),
+      data: samplingData.filter(el => el.category.en === category.en)
     });
   });
 
@@ -44,11 +46,13 @@ export function compareByName(a, b, lang, forcedFirstStr) {
 }
 
 export function idRef(filename) {
-  return parseNameFromFilename(filename).replace(/ /g, '');
+  return parseNameFromFilename(filename).replace(/ /g, "");
 }
 
 export function sortTreeData(data) {
   data.registers.sort((a, b) => compareByName(a, b));
-  data.registers.forEach(register => register.registerDetails.sort((a, b) => compareByName(a, b)));
+  data.registers.forEach(register =>
+    register.registerDetails.sort((a, b) => compareByName(a, b))
+  );
   return data;
 }

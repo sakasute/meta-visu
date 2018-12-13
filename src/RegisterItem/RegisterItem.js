@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './RegisterItem.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./RegisterItem.css";
 
-function RegisterItem({
-  lang, filename, register, toggleRegisterFilter,
-}) {
+function RegisterItem({ lang, filename, register, toggleRegisterFilter }) {
   return (
     <li className="registerItem">
       <input
@@ -21,7 +19,7 @@ function RegisterItem({
 RegisterItem.propTypes = {
   lang: PropTypes.string.isRequired,
   register: PropTypes.object.isRequired,
-  toggleRegisterFilter: PropTypes.func.isRequired,
+  toggleRegisterFilter: PropTypes.func.isRequired
 };
 
 export default RegisterItem;
