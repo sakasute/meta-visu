@@ -66,6 +66,7 @@ class TimelineTreeCard extends Component {
     const treeFilter = fileFilter.registers;
     // NOTE: this key updates depending on the filter props to force remounting
     // the TimelineTree with updated filters
+    // IDEA: proper solution probably would be to componenDidUpdate() in the svg-component?
     const svgKey = Object.values(treeFilter)
       .map(
         register => `${register.isSelected}${Object.values(register.registerDetails)

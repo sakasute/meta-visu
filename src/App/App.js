@@ -3,7 +3,6 @@ import update from 'immutability-helper';
 import SidePanel from '../SidePanel/SidePanel';
 import TimelineTreeCard from '../TimelineTreeCard/TimelineTreeCard';
 import './App.css';
-import { compareByName } from '../_js/helpers';
 
 class App extends Component {
   static checkURLParams(url) {
@@ -100,11 +99,13 @@ class App extends Component {
     this.toggleFileFilter = this.toggleFileFilter.bind(this);
     this.toggleKeywordFilter = this.toggleKeywordFilter.bind(this);
     this.toggleRegisterFilter = this.toggleRegisterFilter.bind(this);
+    this.resetRegisterDetailFilters = this.resetRegisterDetailFilters.bind(this);
     this.data = {};
     this.keywords = {};
     this.filenames = [];
     this.state = {
       dataset: '',
+      filterMode: 'manual', // 'manual' or 'keywords'
       lang: '',
       cohortFilter: {},
       keywordFilter: { en: [], fi: [] },
@@ -120,7 +121,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // get starting parameters/cofiguration from the url
+    // get starting parameters/configuration from the url
     const url = new URL(window.location.href);
     const { dataset, lang } = this.constructor.checkURLParams(url);
     const timelineConfig = this.constructor.initializeConfigs(dataset, lang);
@@ -164,41 +165,71 @@ class App extends Component {
     return treeFilter;
   }
 
+  // FIXME: should find a neater way to handle the treeData/filter
+  resetRegisterDetailFilters() {
+    const { treeFilter } = this.state;
+    const updatedTreeFilter = {};
+    const filenames = Object.keys(treeFilter);
+    filenames.forEach((filename) => {
+      const registrar = treeFilter[filename];
+      const updatedRegistrar = {
+        ...registrar,
+        registers: {},
+      };
+      const registerNames = Object.keys(registrar.registers);
+      registerNames.forEach((registerName) => {
+        const register = registrar.registers[registerName];
+        const updatedRegister = {
+          ...register,
+          registerDetails: {},
+        };
+        const registerDetailNames = Object.keys(register.registerDetails);
+        registerDetailNames.forEach((registerDetailName) => {
+          const registerDetail = register.registerDetails[registerDetailName];
+          const updatedRegisterDetail = {
+            ...registerDetail,
+            isSelected: true,
+          };
+          updatedRegister.registerDetails[registerDetailName] = updatedRegisterDetail;
+        });
+        updatedRegistrar.registers[registerName] = updatedRegister;
+      });
+      updatedTreeFilter[filename] = updatedRegistrar;
+    });
+
+    this.setState({ treeFilter: updatedTreeFilter });
+  }
+
   // NOTE: using immutability-helper to help updating nested states
   toggleFileFilter(filename) {
+    const resetKeywordFilter = this.constructor.initializeKeywordFilter(this.keywords);
     this.setState(prevState => update(prevState, {
       treeFilter: { [filename]: { isSelected: { $apply: val => !val } } },
+      keywordFilter: { $set: resetKeywordFilter },
+      filterMode: { $set: 'manual' },
     }));
   }
 
   toggleRegisterFilter(filename, registerName) {
-    const { treeFilter } = this.state;
-    const registerFilter = treeFilter[filename].registers[registerName];
+    const { filterMode } = this.state;
     const resetKeywordFilter = this.constructor.initializeKeywordFilter(this.keywords);
 
-    const registerData = this.data[filename].registers.filter(
-      register => registerName === register.name.en,
-    )[0];
+    if (filterMode === 'keywords') {
+      this.resetRegisterDetailFilters(filename);
+    }
 
-    // FIXME: yhä joku ongelma: avainsanojen jälkeen rekisterin valinta ei nollaa filtteröityjä detailseja
-    const resetRegisterDetailsFilter = this.constructor.initializeRegisterDetails(registerData);
-
-    const updatedRegisterFilter = {
-      ...registerFilter,
-      isSelected: !registerFilter.isSelected,
-      registerDetails: resetRegisterDetailsFilter,
-    };
     this.setState(prevState => update(prevState, {
       treeFilter: {
         [filename]: {
           registers: {
             [registerName]: {
-              $set: updatedRegisterFilter,
+              isSelected: { $apply: val => !val },
             },
           },
         },
       },
       keywordFilter: { $set: resetKeywordFilter },
+      filterMode: { $set: 'manual' },
     }));
   }
 
@@ -224,6 +255,7 @@ class App extends Component {
     this.setState({
       keywordFilter: updatedKeywordFilter,
       treeFilter: updatedTreeFilter,
+      filterMode: 'keywords',
     });
   }
 
@@ -267,16 +299,8 @@ class App extends Component {
       timelineConfig,
     } = this.state;
 
-    if (this.data['National Institute for Health and Welfare.json']) {
-      console.log(
-        'app-render',
-        this.data['National Institute for Health and Welfare.json'].registers[1].registerDetails,
-      );
-    }
-
     const timelineTreeCards = this.filenames
       .map(filename => ({ filename, name: treeFilter[filename].name }))
-      // .sort((a, b) => compareByName(a, b, lang, { en: 'National Institute for Health and Welfare', fi: 'THL' }))
       .map((nameObj) => {
         const { filename } = nameObj;
         const fileFilter = treeFilter[filename];
