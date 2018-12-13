@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Social Insurance Institution of Finland",
     "fi": "Kela"
   },
   "registers": [
     {
-      "name": {
-        "en": "Benefits Register",
-        "fi": "Etuusrekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "https://www.kela.fi/documents/10180/7276260/Tietosuojaseloste+-+Etuusrekisteri..pdf/",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Etuusrekisteri",
+        "en": "Benefits Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Psychotropic medicines",
             "fi": "Lääkärin määräämät psyykenlääkkeet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -46,11 +58,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Special reimpbursement rights",
             "fi": "Erityiskorvausoikeudet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -67,11 +83,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Child home care allowance",
             "fi": "Lastenhoitotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -88,11 +108,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Disability benefits",
             "fi": "Vammaistuet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -118,11 +142,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Parental allowance",
             "fi": "Äitiys-, isyys- ja vanhempainpäiväraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -166,11 +194,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Home care allowance",
             "fi": "Kotihoidontuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -196,11 +228,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Unemployment benefits",
             "fi": "Työttömyyskorvaustiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -235,11 +271,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Basic unemployment allowance",
             "fi": "Peruspäiväraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -265,11 +305,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Labour market subsidy",
             "fi": "Työmarkkinatuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -295,11 +339,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Rehabilitation allowance",
             "fi": "Kuntoutusraha"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -325,11 +373,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Rehabilitations",
             "fi": "Kuntoutukset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -355,11 +407,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Disability pension",
             "fi": "Työkyvyttömyyseläkkeet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -385,11 +441,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Study gnats",
             "fi": "Opintotuki"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -415,11 +475,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Marital status, county, municipality",
             "fi": "Siviilisääty, lääni, kunta"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -436,11 +500,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Parents' all children",
             "fi": "Vanhempien kaikki lapset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -457,11 +525,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Private doctor visits",
             "fi": "Yksityiset lääkärissäkäynnit"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

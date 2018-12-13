@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Ministry of Employment and the Economy",
     "fi": "Työ- ja elinkeinoministeriö"
   },
   "registers": [
     {
-      "name": {
-        "en": "Data from the information system of the Employment and Economic Development Offices (URA)",
-        "fi": "Työnvälitystilasto"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Työnvälitystilasto",
+        "en": "Data from the information system of the Employment and Economic Development Offices (URA)"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Summary penal judgements",
             "fi": "Rangaistusmääräykset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

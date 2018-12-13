@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Legal Register Centre",
     "fi": "Oikeusrekisterikeskus"
   },
   "registers": [
     {
-      "name": {
-        "en": "Criminal Record",
-        "fi": "Rikosrekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Rikosrekisteri",
+        "en": "Criminal Record"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Criminality (offences and court decisions)",
             "fi": "Tuomiot (ehdoton, ehdollinen, yhdyskuntapalvelu)"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -48,22 +60,30 @@
       ]
     },
     {
-      "name": {
-        "en": "Summary Penal Judgement Register",
-        "fi": "Rangaistusmääräysrekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Rangaistusmääräysrekisteri",
+        "en": "Summary Penal Judgement Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Summary penal judgements",
             "fi": "Rangaistusmääräykset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Centre for Pensions",
     "fi": "Eläketurvakeskus ETK"
   },
   "registers": [
     {
-      "name": {
-        "en": "Pension Register",
-        "fi": "Eläkerekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Eläkerekisteri",
+        "en": "Pension Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Employee pension extras",
             "fi": "Työeläkelisät"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -100,11 +112,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Employee pension",
             "fi": "Työeläketiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -148,11 +164,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Pension data",
             "fi": "Eläketiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -198,22 +218,30 @@
       ]
     },
     {
-      "name": {
-        "en": "Earning Register",
-        "fi": "Ansaintarekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Ansaintarekisteri",
+        "en": "Earning Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Earning periods",
             "fi": "Ansaintajaksot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -275,11 +303,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Unpaid times",
             "fi": "Palkattomat ajat"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -395,11 +427,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

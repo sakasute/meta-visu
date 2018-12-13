@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Defence Forces",
     "fi": "Puolustusvoimat"
   },
   "registers": [
     {
-      "name": {
-        "en": "Results of aptitude tests register",
-        "fi": "Peruskoerekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Peruskoerekisteri",
+        "en": "Results of aptitude tests register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Results of aptitude tests",
             "fi": "Peruskokeiden tulokset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -29,22 +41,30 @@
       ]
     },
     {
-      "name": {
-        "en": "Data on service register",
-        "fi": "Asevelvollisuusrekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Asevelvollisuusrekisteri",
+        "en": "Data on service register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Service class data",
             "fi": "Palveluskelpoisuusluokka"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -61,11 +81,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Overindebtedness",
             "fi": "Ylivelkaantumistiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

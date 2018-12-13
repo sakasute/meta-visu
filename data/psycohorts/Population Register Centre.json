@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Population Register Centre",
     "fi": "Väestörekisterikeskus"
   },
   "registers": [
     {
-      "name": {
-        "en": "Population Information System",
-        "fi": "Väestötietojärjestelmä"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Väestötietojärjestelmä",
+        "en": "Population Information System"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Place of Residence and GI",
             "fi": "Asumishistoria ja paikkatieto"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -82,11 +94,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Children born in the family",
             "fi": "Syntyneet lapset"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -130,11 +146,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Marital history",
             "fi": "Aviohistoria"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -214,11 +234,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Deaths",
             "fi": "Kuolemat"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -262,11 +286,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Occupations",
             "fi": "Ammatti"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -301,11 +329,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Relationships to mother and father",
             "fi": "Sukulaisuussuhteet (isään ja äitiin)"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -322,11 +354,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Nationality history",
             "fi": "Kansalaisuushistoria"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -343,11 +379,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Number of cohabitants and their birth dates",
             "fi": "Muiden asukkaiden määrä ja syntymäpäivät (kohorttilaisen kanssa)"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

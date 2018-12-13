@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish National Board of Education",
     "fi": "Opetushallitus"
   },
   "registers": [
     {
-      "name": {
-        "en": "<no name>",
-        "fi": "<ei nimeä>"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "<ei nimeä>",
+        "en": "<no name>"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Joint application data and primary school achievements",
             "fi": "Yhteisvalintatiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

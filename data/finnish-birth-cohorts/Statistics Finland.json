@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Statistics Finland",
     "fi": "Tilastokeskus"
   },
   "registers": [
     {
-      "name": {
-        "en": "Cause of Death Register",
-        "fi": "Kuolemansyytilasto"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "https://www.stat.fi/til/ksyyt/index.html",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Kuolemansyytilasto",
+        "en": "Cause of Death Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Dates and causes of deaths",
             "fi": "Kuolinpäivä ja kuolemansyy"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -66,22 +78,30 @@
       ]
     },
     {
-      "name": {
-        "en": "Register of Educational Achievements",
-        "fi": "Tutkintorekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Tutkintorekisteri",
+        "en": "Register of Educational Achievements"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Degree data",
             "fi": "Tutkintotiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

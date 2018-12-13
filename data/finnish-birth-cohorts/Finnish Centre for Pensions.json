@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish Centre for Pensions",
     "fi": "Eläketurvakeskus ETK"
   },
   "registers": [
     {
-      "name": {
-        "en": "Pension Register",
-        "fi": "Eläkerekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Eläkerekisteri",
+        "en": "Pension Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Pension data",
             "fi": "Eläketiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -66,22 +78,30 @@
       ]
     },
     {
-      "name": {
-        "en": "Earning Register",
-        "fi": "Ansaintarekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Ansaintarekisteri",
+        "en": "Earning Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Earning periods",
             "fi": "Ansaintajaksot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -125,11 +145,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Most common unsalaried benefit periods",
             "fi": "Palkattomien aikojen etuudet"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
@@ -173,11 +197,15 @@
           ]
         },
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Annual earnings",
             "fi": "Vuosiansiot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },

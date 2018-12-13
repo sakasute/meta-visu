@@ -1,26 +1,38 @@
 {
+  "keywords": {
+    "en": [],
+    "fi": []
+  },
   "name": {
     "en": "Finnish National Board of Education",
     "fi": "Opetushallitus"
   },
   "registers": [
     {
-      "name": {
-        "en": "Joint Application Register",
-        "fi": "Yhteisvalintarekisteri"
-      },
       "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
       "link": {
         "fi": "",
         "en": ""
       },
-      "categories": [
+      "name": {
+        "fi": "Yhteisvalintarekisteri",
+        "en": "Joint Application Register"
+      },
+      "registerDetails": [
         {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
           "name": {
             "en": "Joint application data",
             "fi": "Yhteisvalintatiedot"
           },
-          "note": {
+          "notes": {
             "en": "",
             "fi": ""
           },
