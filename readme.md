@@ -8,7 +8,7 @@ The purpose of this project is to visualize some metadata in the case where ther
 
 The application consists of three main components: the data as an excel-file, Python-script to convert the data from the excel into json-files, and the React frontend to show the visualization and let the user to control the filters. The data is saved to the `public/data/<dataset>`-folder (dataset is either finnish-birth-cohort or psycohorts).
 
-The excel file should be formatted more or less as below. The Python script has some possible configurations (such as the order of columns). Currently, there is one version for updating each, the finnish-birth-cohort and psycohorts, data.
+The excel file should be formatted more or less as below. The Python script has some possible configurations (such as the order of columns). Currently, there is one version for updating each, the finnish-birth-cohort and psycohorts, data. The excel format as the source of the data was selected because it is easily human-readable and human-editable. There was also a similarly formatted excel excisting for the fbc-data.
 
 ![Screenshot of the excel format](readme-imgs/data-screenshot.PNG?raw=true "Screenshot of the excel format")
 
@@ -20,6 +20,7 @@ A few notes about the format:
 - true-false/harmonization column is planned to be used on the psycohorts-dataset to show which registers have been "harmonized". Currently, it only adds an asterisk next to the register name on the visualization. (this feature might be unnecessary: more elegant way to mark harmonized registers could be through keywords). Data format: TRUE/FALSE
 - Keywords are saved as comma-separated plain text. In the fronten, a user can select a keyword to show only the corresponding registrar, register and description nodes.
 - The data year/date cells should be plain text, not date formatted. Otherwise, the python script won't parse them correctly. A single year is parsed as a section of one whole year, single date as one point in time and a dash-separated pair of years/dates as a section with the given start and end year/date. Multiple sections/points can be added with `;` as the separator.
+- Notes from notes-column are shown in the visualization when hovering mouse cursor over an info-icon next to the corresponding timeline.
 
 The frontend uses two optional url-parametes: `lang` to select the shown language and `ds` to select the shown dataset. So, if you want a direct link to the English version of the Psycohorts-visualization, you can use url https://fbc-studies.github.io/meta-visu/?lang=en&ds=psycohorts . If no parameters are given, the application defaults to `lang=fi` and `ds=finnish-birth-cohorts`.
 
@@ -71,6 +72,6 @@ Step-by-step instructions to update the data after you have set up Python and No
 1. Make the desired changes to the excel-file (probably saved in Google Drive).
 2. Download the file as .xlsx-file if the file is in Google Drive or save it.
 3. Replace the previous version of the file inside the python-folder.
-4. Run `python update_fbc_data.py` (or `update_psy_data.py` depending which dataset you are updating).
+4. Run `python update_fbc_data.py` (or `update_psy_data.py` depending which dataset you are updating) inside the python-folder.
 5. The data should now be updated. Now you should commit and push the changes to keep the github-repository up-to-date.
 6. Lastly, run command `npm run deploy`. This updates the production build of the application inside the build-folder and pushes it to gh-pages -branch. This branch is the one that is served at https://fbc-studies.github.io/meta-visu/
