@@ -1,6 +1,6 @@
 # meta-visu
 
-The purpose of this project is to visualize some metadata in the case where there are lots datasets from multpile data adminstrators and registers. The data is visualized in a tree like structure showing where the data is from. In the leaves', there is a timeline that shows which years are included in the data. The visualization is live here: https://fbc-studies.github.io/meta-visu/
+The purpose of this project is to visualize some metadata in the case where there are lots datasets from multpile data adminstrators and registers. The visualization is used by the [Finnish Birth Cohort 1987 and 1997](https://thl.fi/fi/tutkimus-ja-kehittaminen/tutkimukset-ja-hankkeet/kansallinen-syntymakohortti-1987), and [Psycohorts](http://psycohorts.utu.fi/) studies. The data is visualized in a tree like structure showing where the data is from. In the leaves, there is a timeline that shows which years are included in the data. The visualization is live here: https://fbc-studies.github.io/meta-visu/
 
 ## Implementation
 
