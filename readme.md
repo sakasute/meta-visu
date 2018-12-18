@@ -14,15 +14,15 @@ The excel file should be formatted more or less as below. The Python script has 
 
 A few notes about the format:
 
-- On registrar, register, description, keywords and notes columns are rows are handled as pairs: the first one is for Finnish and the second for the English translation.
+- On registrar, register, description, keywords and notes columns the rows are handled as pairs: the first one is for Finnish and the second for the English translation.
 - All registrars, registers and descriptions should have both Finnish and English translations or at least some text in both cells. Otherwise, the data is parsed incorrectly (e.g. wrong register may be added under wrong registrar).
 - Register-cells can hold hyperlinks. If a link to the register description is added, the link is presented in the visualization. The links are separate for the Finnish and English rows.
-- true-false/harmonization column is planned to be used on the psycohorts-dataset to show which registers have been "harmonized". Currently, it only adds an asterisk next to the register name on the visualization. (this feature might be unnecessary: more elegant way to mark harmonized registers could be through keywords). Data format: TRUE/FALSE
-- Keywords are saved as comma-separated plain text. In the fronten, a user can select a keyword to show only the corresponding registrar, register and description nodes.
+- true-false/harmonization column is planned to be used on the psycohorts-dataset to show which registers have been "harmonized". Currently, it only adds an asterisk next to the register name on the visualization. This feature might be unnecessary: more elegant way to mark harmonized registers could be through keywords. Data format: TRUE/FALSE
+- Keywords are saved as comma-separated plain text. In the frontend, a user can select a keyword to show only the corresponding registrar, register and description nodes.
 - The data year/date cells should be plain text, not date formatted. Otherwise, the python script won't parse them correctly. A single year is parsed as a section of one whole year, single date as one point in time and a dash-separated pair of years/dates as a section with the given start and end year/date. Multiple sections/points can be added with `;` as the separator.
 - Notes from notes-column are shown in the visualization when hovering mouse cursor over an info-icon next to the corresponding timeline.
 
-The frontend uses two optional url-parametes: `lang` to select the shown language and `ds` to select the shown dataset. So, if you want a direct link to the English version of the Psycohorts-visualization, you can use url https://fbc-studies.github.io/meta-visu/?lang=en&ds=psycohorts . If no parameters are given, the application defaults to `lang=fi` and `ds=finnish-birth-cohorts`.
+The frontend uses two optional url-parametes: `lang` to select the shown language and `ds` to select the shown dataset. So, if you want a direct link e.g. to the English version of the Psycohorts-visualization, you can use url https://fbc-studies.github.io/meta-visu/?lang=en&ds=psycohorts . If no parameters are given, the application defaults to `lang=fi` and `ds=finnish-birth-cohorts`.
 
 The actual visualization is done with a javascript library called [d3.js](https://d3js.org/).
 In addition to these main parts, the repository holds many files that are needed when developing new features or modifying the application.
