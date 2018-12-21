@@ -9,7 +9,7 @@
   },
   "registers": [
     {
-      "isHarmonized": false,
+      "isHarmonized": true,
       "keywords": {
         "en": [],
         "fi": []
@@ -199,7 +199,7 @@
           },
           "notes": {
             "en": "",
-            "fi": ""
+            "fi": "jes"
           },
           "samplings": [
             {
