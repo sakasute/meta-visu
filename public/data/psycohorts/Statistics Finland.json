@@ -1,7 +1,11 @@
 {
   "keywords": {
-    "en": [],
-    "fi": []
+    "en": [
+      "Harmonized"
+    ],
+    "fi": [
+      "Harmonisoitu"
+    ]
   },
   "name": {
     "en": "Statistics Finland",
@@ -11,8 +15,12 @@
     {
       "isHarmonized": true,
       "keywords": {
-        "en": [],
-        "fi": []
+        "en": [
+          "Harmonized"
+        ],
+        "fi": [
+          "Harmonisoitu"
+        ]
       },
       "link": {
         "fi": "",
@@ -25,8 +33,12 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [],
-            "en": []
+            "fi": [
+              "Harmonisoitu"
+            ],
+            "en": [
+              "Harmonized"
+            ]
           },
           "name": {
             "en": "Causes of deaths",
@@ -199,7 +211,7 @@
           },
           "notes": {
             "en": "",
-            "fi": "jes"
+            "fi": ""
           },
           "samplings": [
             {

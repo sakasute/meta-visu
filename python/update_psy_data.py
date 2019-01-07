@@ -17,6 +17,7 @@ config = {
     'register_col': 'B',
     'harmonize_col': 'C',
     'register_detail_col': 'D',
+    'keywords_col': 'N',	
     'notes_col': 'M',
     'cohort_cols': [
         {
