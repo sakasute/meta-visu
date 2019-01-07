@@ -1,9 +1,7 @@
 {
   "keywords": {
     "en": [],
-    "fi": [
-      "testi"
-    ]
+    "fi": []
   },
   "name": {
     "en": "National Institute for Health and Welfare",
@@ -14,9 +12,7 @@
       "isHarmonized": false,
       "keywords": {
         "en": [],
-        "fi": [
-          "testi"
-        ]
+        "fi": []
       },
       "link": {
         "fi": "https://aineistokatalogi.fi/catalog/studies/4028c5c4-a235-4524-b92d-8a72071d2516",
@@ -29,9 +25,7 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [
-              "testi"
-            ],
+            "fi": [],
             "en": []
           },
           "name": {
