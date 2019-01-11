@@ -36,7 +36,17 @@
             "en": "",
             "fi": ""
           },
-          "samplings": []
+          "samplings": [
+            {
+              "startDate": "2010-04-01",
+              "endDate": "2010-04-01",
+              "cohort": "1987",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
         }
       ]
     }
