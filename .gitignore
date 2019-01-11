@@ -23,3 +23,9 @@ __pycache__/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
