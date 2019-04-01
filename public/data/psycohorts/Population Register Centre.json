@@ -90,6 +90,15 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "1981-01-01",
+              "endDate": "2011-03-07",
+              "cohort": "FNBCS-81",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
@@ -230,6 +239,15 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
+            },
+            {
+              "startDate": "1951-02-24",
+              "endDate": "2016-05-03",
+              "cohort": "FIPS-ADHD",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         },
@@ -278,6 +296,24 @@
               "startDate": "1947-06-28",
               "endDate": "2016-03-15",
               "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1981-01-01",
+              "endDate": "2011-03-07",
+              "cohort": "FNBCS-81",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1981-01-01",
+              "endDate": "2011-03-07",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"

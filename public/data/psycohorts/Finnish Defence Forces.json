@@ -15,38 +15,6 @@
         "fi": []
       },
       "link": {
-        "fi": "",
-        "en": ""
-      },
-      "name": {
-        "fi": "Peruskoerekisteri",
-        "en": "Results of aptitude tests register"
-      },
-      "registerDetails": [
-        {
-          "keywords": {
-            "fi": [],
-            "en": []
-          },
-          "name": {
-            "en": "Results of aptitude tests",
-            "fi": "Peruskokeiden tulokset"
-          },
-          "notes": {
-            "en": "",
-            "fi": ""
-          },
-          "samplings": []
-        }
-      ]
-    },
-    {
-      "isHarmonized": false,
-      "keywords": {
-        "en": [],
-        "fi": []
-      },
-      "link": {
         "fi": "https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri",
         "en": ""
       },
@@ -79,7 +47,24 @@
               }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
+      "name": {
+        "fi": " ",
+        "en": " "
+      },
+      "registerDetails": [
         {
           "keywords": {
             "fi": [],
@@ -94,6 +79,31 @@
             "fi": ""
           },
           "samplings": []
+        },
+        {
+          "keywords": {
+            "fi": [],
+            "en": []
+          },
+          "name": {
+            "en": " ",
+            "fi": "Rikos- ja rikkomusepäilyt"
+          },
+          "notes": {
+            "en": "",
+            "fi": ""
+          },
+          "samplings": [
+            {
+              "startDate": "1992-05-27",
+              "endDate": "2012-05-02",
+              "cohort": "FNBCS-81",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            }
+          ]
         }
       ]
     }
