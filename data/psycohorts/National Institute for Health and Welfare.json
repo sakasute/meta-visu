@@ -9,7 +9,7 @@
   },
   "registers": [
     {
-      "isHarmonized": false,
+      "isHarmonized": true,
       "keywords": {
         "en": [],
         "fi": []
@@ -38,8 +38,8 @@
           },
           "samplings": [
             {
-              "startDate": "2008-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1966-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1966",
               "category": {
                 "fi": "kohorttilaiset",
@@ -47,8 +47,8 @@
               }
             },
             {
-              "startDate": "2008-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1986-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1986",
               "category": {
                 "fi": "kohorttilaiset",
@@ -56,8 +56,8 @@
               }
             },
             {
-              "startDate": "2008-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1969-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1966",
               "category": {
                 "fi": "vanhemmat",
@@ -65,8 +65,8 @@
               }
             },
             {
-              "startDate": "2008-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1969-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1986",
               "category": {
                 "fi": "vanhemmat",
@@ -108,6 +108,51 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
+            },
+            {
+              "startDate": "1981-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "FNBCS-81",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1991-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "FIPS-ADHD",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "FIPS-ADHD",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "FIPS-ASD",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1969-01-01",
+              "endDate": "2015-12-31",
+              "cohort": "FIPS-ASD",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         },
@@ -126,8 +171,8 @@
           },
           "samplings": [
             {
-              "startDate": "1966-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1998-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1966",
               "category": {
                 "fi": "kohorttilaiset",
@@ -135,8 +180,8 @@
               }
             },
             {
-              "startDate": "1966-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1998-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1986",
               "category": {
                 "fi": "kohorttilaiset",
@@ -144,8 +189,8 @@
               }
             },
             {
-              "startDate": "1966-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1998-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1966",
               "category": {
                 "fi": "vanhemmat",
@@ -153,8 +198,8 @@
               }
             },
             {
-              "startDate": "1966-01-01",
-              "endDate": "2018-12-31",
+              "startDate": "1998-01-01",
+              "endDate": "2015-12-31",
               "cohort": "1986",
               "category": {
                 "fi": "vanhemmat",
@@ -195,6 +240,15 @@
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
+              }
+            },
+            {
+              "startDate": "1994-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "FNBCS-81",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
               }
             }
           ]
@@ -421,15 +475,6 @@
           },
           "samplings": [
             {
-              "startDate": "1986-01-01",
-              "endDate": "1986-01-01",
-              "cohort": "1986",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
               "startDate": "1987-01-01",
               "endDate": "1987-01-01",
               "cohort": "1987",
@@ -446,9 +491,44 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "1991-01-01",
+              "endDate": "2005-12-31",
+              "cohort": "FIPS-ADHD",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2005-12-31",
+              "cohort": "FIPS-ASD",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
+      "name": {
+        "fi": " ",
+        "en": " "
+      },
+      "registerDetails": [
         {
           "keywords": {
             "fi": [],
@@ -465,7 +545,7 @@
           "samplings": [
             {
               "startDate": "1987-01-01",
-              "endDate": "2014-12-31",
+              "endDate": "2018-12-31",
               "cohort": "1966",
               "category": {
                 "fi": "kohorttilaiset",
@@ -474,29 +554,11 @@
             },
             {
               "startDate": "1987-01-01",
-              "endDate": "2014-12-31",
+              "endDate": "2018-12-31",
               "cohort": "1986",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2014-12-31",
-              "cohort": "1966",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2014-12-31",
-              "cohort": "1986",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
               }
             },
             {
@@ -569,7 +631,7 @@
           },
           "samplings": [
             {
-              "startDate": "1983-01-01",
+              "startDate": "1966-01-01",
               "endDate": "2012-12-31",
               "cohort": "1966",
               "category": {
@@ -578,7 +640,7 @@
               }
             },
             {
-              "startDate": "1983-01-01",
+              "startDate": "1986-01-01",
               "endDate": "2012-12-31",
               "cohort": "1986",
               "category": {
@@ -587,7 +649,7 @@
               }
             },
             {
-              "startDate": "1983-01-01",
+              "startDate": "1966-01-01",
               "endDate": "2012-12-31",
               "cohort": "1966",
               "category": {
@@ -596,7 +658,7 @@
               }
             },
             {
-              "startDate": "1983-01-01",
+              "startDate": "1966-01-01",
               "endDate": "2012-12-31",
               "cohort": "1986",
               "category": {
@@ -692,6 +754,15 @@
               "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1991-01-01",
+              "endDate": "2009-12-31",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"

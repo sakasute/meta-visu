@@ -39,7 +39,7 @@
           "samplings": [
             {
               "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
+              "endDate": false,
               "cohort": "1966",
               "category": {
                 "fi": "kohorttilaiset",
@@ -47,25 +47,7 @@
               }
             },
             {
-              "startDate": "2010-01-01",
-              "endDate": "2016-12-31",
-              "cohort": "1966",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1986",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "2010-01-01",
+              "startDate": "1986-01-01",
               "endDate": "2016-12-31",
               "cohort": "1986",
               "category": {
@@ -75,15 +57,6 @@
             },
             {
               "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1966",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "2010-01-01",
               "endDate": "2016-12-31",
               "cohort": "1966",
               "category": {
@@ -93,15 +66,6 @@
             },
             {
               "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1986",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "2010-01-01",
               "endDate": "2016-12-31",
               "cohort": "1986",
               "category": {
@@ -318,15 +282,6 @@
           "samplings": [
             {
               "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1966",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "2005-01-01",
               "endDate": "2016-12-31",
               "cohort": "1966",
               "category": {
@@ -336,15 +291,6 @@
             },
             {
               "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1986",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "2005-01-01",
               "endDate": "2016-12-31",
               "cohort": "1986",
               "category": {
@@ -354,15 +300,6 @@
             },
             {
               "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1966",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "2005-01-01",
               "endDate": "2016-12-31",
               "cohort": "1966",
               "category": {
@@ -372,15 +309,6 @@
             },
             {
               "startDate": "1967-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1986",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "2005-01-01",
               "endDate": "2016-12-31",
               "cohort": "1986",
               "category": {
