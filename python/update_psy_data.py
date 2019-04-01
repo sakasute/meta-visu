@@ -59,36 +59,6 @@ config = {
             'col': 'L',
             'cohort': '1997',
             'category': 'parents'
-        },
-        {
-            'col': 'M',
-            'cohort': 'FNBCS-81',
-            'category': 'subjects'
-        },
-        {
-            'col': 'N',
-            'cohort': 'FNBCS-81',
-            'category': 'parents'
-        },
-        {
-            'col': 'O',
-            'cohort': 'FIPS-ADHD',
-            'category': 'subjects'
-        },
-        {
-            'col': 'P',
-            'cohort': 'FIPS-ADHD',
-            'category': 'parents'
-        },
-        {
-            'col': 'Q',
-            'cohort': 'FIPS-ASD',
-            'category': 'subjects'
-        },
-        {
-            'col': 'R',
-            'cohort': 'FIPS-ASD',
-            'category': 'parents'
         }
     ]
 }
