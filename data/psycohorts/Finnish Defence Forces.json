@@ -61,8 +61,8 @@
         "en": ""
       },
       "name": {
-        "fi": " ",
-        "en": " "
+        "fi": "<ei nimeä>",
+        "en": "<no name>"
       },
       "registerDetails": [
         {
@@ -78,15 +78,42 @@
             "en": "",
             "fi": ""
           },
-          "samplings": []
-        },
+          "samplings": [
+            {
+              "startDate": "2010-04-01",
+              "endDate": "2010-04-01",
+              "cohort": "1997",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isHarmonized": false,
+      "keywords": {
+        "en": [],
+        "fi": []
+      },
+      "link": {
+        "fi": "",
+        "en": ""
+      },
+      "name": {
+        "fi": "Arkisto",
+        "en": " "
+      },
+      "registerDetails": [
         {
           "keywords": {
             "fi": [],
             "en": []
           },
           "name": {
-            "en": " ",
+            "en": "Rikos- ja rikkomusepäilyt",
             "fi": "Rikos- ja rikkomusepäilyt"
           },
           "notes": {
