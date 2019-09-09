@@ -59,16 +59,6 @@ config = {
             'col': 'L',
             'cohort': '1997',
             'category': 'parents'
-        },
-        {
-            'col': 'M',
-            'cohort': '2007',
-            'category': 'subjects'
-        },
-        {
-            'col': 'N',
-            'cohort': '2007',
-            'category': 'parents'
         }
     ]
 }
