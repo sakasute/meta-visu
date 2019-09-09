@@ -4,8 +4,8 @@
     "fi": []
   },
   "name": {
-    "en": "Finnish Defence Forces",
-    "fi": "Puolustusvoimat"
+    "en": "Suomen Asiakastieto Oy",
+    "fi": "Suomen Asiakastieto Oy"
   },
   "registers": [
     {
@@ -15,12 +15,12 @@
         "fi": []
       },
       "link": {
-        "fi": "https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri",
+        "fi": "",
         "en": ""
       },
       "name": {
-        "fi": "Asevelvollisuusrekisteri",
-        "en": "Data on service register"
+        "fi": "Ylivelkaantumistiedot",
+        "en": "Overindebtedness"
       },
       "registerDetails": [
         {
@@ -29,8 +29,8 @@
             "en": []
           },
           "name": {
-            "en": "Service class data",
-            "fi": "Palveluskelpoisuusluokka"
+            "en": "Overindebtedness",
+            "fi": "Ylivelkaantumistiedot"
           },
           "notes": {
             "en": "",
@@ -38,12 +38,12 @@
           },
           "samplings": [
             {
-              "startDate": "2005-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "1987",
+              "startDate": "2010-04-01",
+              "endDate": "2010-04-01",
+              "cohort": "1997",
               "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
+                "fi": "vanhemmat",
+                "en": "parents"
               }
             }
           ]
