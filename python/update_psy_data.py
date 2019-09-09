@@ -59,6 +59,11 @@ config = {
             'col': 'L',
             'cohort': '1997',
             'category': 'parents'
+        },
+        {
+            'col': 'M',
+            'cohort': 'FNBCS-81',
+            'category': 'subjects'
         }
     ]
 }

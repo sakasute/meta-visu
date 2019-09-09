@@ -201,6 +201,15 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "1981-01-01",
+              "endDate": "2005-12-31",
+              "cohort": "FNBCS-81",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
@@ -240,6 +249,15 @@
               "startDate": "1997-01-01",
               "endDate": "2016-12-31",
               "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1994-01-01",
+              "endDate": "2005-12-31",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
