@@ -108,15 +108,6 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
-            },
-            {
-              "startDate": "1981-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "FNBCS-81",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
             }
           ]
         },
@@ -204,15 +195,6 @@
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
-              }
-            },
-            {
-              "startDate": "1994-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "FNBCS-81",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
               }
             }
           ]
@@ -700,15 +682,6 @@
               "startDate": "1997-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1991-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"

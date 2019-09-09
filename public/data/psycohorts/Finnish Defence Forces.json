@@ -120,17 +120,7 @@
             "en": "",
             "fi": ""
           },
-          "samplings": [
-            {
-              "startDate": "1992-05-27",
-              "endDate": "2012-05-02",
-              "cohort": "FNBCS-81",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            }
-          ]
+          "samplings": []
         }
       ]
     }

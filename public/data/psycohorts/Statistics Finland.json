@@ -120,15 +120,6 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
-            },
-            {
-              "startDate": "1989-01-01",
-              "endDate": "2016-12-31",
-              "cohort": "FNBCS-81",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
             }
           ]
         }
@@ -266,15 +257,6 @@
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
-              }
-            },
-            {
-              "startDate": "2001-01-01",
-              "endDate": "2016-12-31",
-              "cohort": "FNBCS-81",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
               }
             }
           ]
