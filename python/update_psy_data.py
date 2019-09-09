@@ -62,12 +62,12 @@ config = {
         },
         {
             'col': 'M',
-            'cohort': 'FNBCS-81',
+            'cohort': '81',
             'category': 'subjects'
         },
         {
             'col': 'N',
-            'cohort': 'FNBCS-81',
+            'cohort': '81',
             'category': 'parents'
         }
     ]

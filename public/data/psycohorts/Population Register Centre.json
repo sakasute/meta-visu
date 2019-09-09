@@ -94,7 +94,7 @@
             {
               "startDate": "1981-01-01",
               "endDate": "2011-03-07",
-              "cohort": "FNBCS-81",
+              "cohort": "81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -295,7 +295,7 @@
             {
               "startDate": "1981-01-01",
               "endDate": "2011-03-07",
-              "cohort": "FNBCS-81",
+              "cohort": "81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -304,7 +304,7 @@
             {
               "startDate": "1981-01-01",
               "endDate": "2011-03-07",
-              "cohort": "FNBCS-81",
+              "cohort": "81",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
