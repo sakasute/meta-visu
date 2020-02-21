@@ -40,7 +40,7 @@ class App extends Component {
         break;
       case "psycohorts":
         timelineConfig = {
-          cohorts: ["1966", "1986", "1987", "1997"],
+          cohorts: ["1966", "1986", "1987", "1997", "2007", "FIPS-ADHD", "FIPS-ASD", "FIPS-Tourette", "FIPS-Conduct dis.", "FIPS-Anxiety", "FIPS-Depression", "FIPS-Schizophrenia", "FIPS-Bipolar", "FIPS-Learning dis.", "FIPS-OCD", "SSRI"],
           scaleStartDate: new Date("1966-01-01")
         };
         break;

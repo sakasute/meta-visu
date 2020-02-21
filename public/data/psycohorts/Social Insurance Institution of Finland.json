@@ -158,6 +158,24 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         },
@@ -197,6 +215,15 @@
               "startDate": "1987-01-01",
               "endDate": "2016-12-31",
               "cohort": "1987",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -244,6 +271,15 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "1994-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
@@ -287,6 +323,15 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
@@ -317,6 +362,15 @@
               "startDate": "1997-01-01",
               "endDate": "2016-12-31",
               "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -373,6 +427,24 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1986-01-01",
+              "endDate": "1994-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         },
@@ -403,6 +475,15 @@
               "startDate": "1997-01-01",
               "endDate": "2016-12-31",
               "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -441,6 +522,15 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "2003-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
@@ -475,6 +565,15 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
@@ -505,6 +604,15 @@
               "startDate": "1997-01-01",
               "endDate": "2016-12-31",
               "cohort": "1997",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"

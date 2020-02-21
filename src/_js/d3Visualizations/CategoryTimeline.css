@@ -48,27 +48,67 @@
 }
 
 .fill-color-1 {
-  fill: var(--category-1-color-v-light);
+  fill: var(--category-1-color);
 }
 
 .fill-color-2 {
-  fill: var(--category-2-color-v-light);
+  fill: var(--category-2-color);
 }
 
 .fill-color-3 {
-  fill: var(--category-3-color-light);
+  fill: var(--category-3-color);
 }
 
 .fill-color-4 {
-  fill: var(--category-4-color-light);
+  fill: var(--category-4-color);
 }
 
 .fill-color-5 {
-  fill: var(--category-5-color-light);
+  fill: var(--category-5-color);
 }
 
 .fill-color-6 {
-  fill: var(--category-6-color-light);
+  fill: var(--category-6-color);
+}
+
+.fill-color-7 {
+  fill: var(--category-7-color);
+}
+
+.fill-color-8 {
+  fill: var(--category-8-color);
+}
+
+.fill-color-9 {
+  fill: var(--category-9-color);
+}
+
+.fill-color-10 {
+  fill: var(--category-10-color);
+}
+
+.fill-color-11 {
+  fill: var(--category-11-color);
+}
+
+.fill-color-12 {
+  fill: var(--category-12-color);
+}
+
+.fill-color-13 {
+  fill: var(--category-13-color);
+}
+
+.fill-color-14 {
+  fill: var(--category-14-color);
+}
+
+.fill-color-15 {
+  fill: var(--category-15-color);
+}
+
+.fill-color-16 {
+  fill: var(--category-16-color);
 }
 
 .legend__label {

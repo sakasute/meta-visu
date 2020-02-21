@@ -24,30 +24,37 @@ body {
 
 :root {
   /* The category colors are from here: https://terho.thl.fi/wiki01/display/viestinta/Kuviot+ja+visualisoinnit?preview=/154993756/154993752/THL%20tiedon%20visualisoinnin%20ohjeistus_200618_bookmarks.pdf */
-  --category-1-color: hsl(101, 53%, 40%);
-  --category-1-color-light: hsl(101, 53%, 55%);
-  --category-1-color-v-light: hsl(101, 53%, 75%);
+  --category-1-color: #4e79a7;
 
-  --category-2-color: hsl(216, 57%, 43%);
-  --category-2-color-light: hsl(216, 57%, 58%);
-  --category-2-color-v-light: hsl(216, 57%, 75%);
+  --category-2-color: #f18f3b;
 
-  --category-3-color: hsl(323, 45%, 63%);
-  --category-3-color-light: hsl(323, 45%, 78%);
-  --category-3-color-v-light: hsl(323, 45%, 88%);
+  --category-3-color: #e0585b;
 
-  --category-4-color: hsl(193, 65%, 46%);
-  --category-4-color-light: hsl(193, 65%, 61%);
-  --category-4-color-v-light: hsl(193, 65%, 71%);
+  --category-4-color: #76b7b2;
 
-  --category-5-color: hsl(336, 50%, 50%);
-  --category-5-color-light: hsl(336, 50%, 65%);
-  --category-5-color-v-light: hsl(336, 50%, 75%);
+  --category-5-color: #59a14e;
 
-  --category-6-color: hsl(38, 96%, 54%);
-  --category-6-color-light: hsl(38, 96%, 69%);
-  --category-6-color-v-light: hsl(38, 96%, 79%);
-  --category-6-color-dark: hsl(38, 96%, 39%);
+  --category-6-color: #edc942;
+
+  --category-7-color: #af7aa0;
+
+  --category-8-color: #fe9ea8;
+
+  --category-9-color: #9c755f;
+
+  --category-10-color: #bab0ac;
+
+  --category-11-color: #4e79a7;
+
+  --category-12-color: #f18f3b;
+
+  --category-13-color: #e0585b;
+
+  --category-14-color: #76b7b2;
+
+  --category-15-color: #59a14e;
+
+  --category-16-color: #edc942;
 
   --dark-gray: hsl(0, 0%, 38%);
   --medium-gray: hsl(255, 3%, 77%);

@@ -13,7 +13,7 @@
 }
 
 .toggleButtonBasic.-selected {
-  background-color: var(--category-1-color-v-light);
+  background-color: lightgreen;
 }
 
 .toggleButtonBasic:hover {
@@ -21,7 +21,7 @@
 }
 
 .toggleButtonBasic.-selected:hover {
-  background-color: var(--category-1-color-light);
+  background-color: greenyellow;
 }
 
 .toggleButtonTag {
@@ -31,11 +31,11 @@
 
 .toggleButtonTag.-selected {
   color: white;
-  background-color: var(--category-2-color-v-light);
+  background-color: var(--category-2-color);
 }
 
 .toggleButtonTag.-selected:hover {
-  background-color: var(--category-2-color-light);
+  background-color: var(--category-2-color);
 }
 
 .sidePanel__langSelector {
@@ -47,12 +47,12 @@
 }
 
 .sidePanel__keywordSelector.-selected {
-  background-color: var(--category-6-color);
+  background-color: var(--category-2-color);
   color: white;
 }
 
 .sidePanel__keywordSelector.-selected:hover {
-  background-color: var(--category-6-color-dark);
+  background-color: var(--category-2-color);
 }
 
 .toggleButtonText {

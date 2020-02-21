@@ -59,6 +59,126 @@ config = {
             'col': 'L',
             'cohort': '1997',
             'category': 'parents'
+        },
+        {
+            'col': 'M',
+            'cohort': '2007',
+            'category': 'subjects'
+        },
+        {
+            'col': 'N',
+            'cohort': '2007',
+            'category': 'parents'
+        },
+        {
+            'col': 'O',
+            'cohort': 'FIPS-ADHD',
+            'category': 'subjects'
+        },
+        {
+            'col': 'P',
+            'cohort': 'FIPS-ADHD',
+            'category': 'parents'
+        },
+        {
+            'col': 'Q',
+            'cohort': 'FIPS-ASD',
+            'category': 'subjects'
+        },
+        {
+            'col': 'R',
+            'cohort': 'FIPS-ASD',
+            'category': 'parents'
+        },
+        {
+            'col': 'S',
+            'cohort': 'FIPS-Tourette',
+            'category': 'subjects'
+        },
+        {
+            'col': 'T',
+            'cohort': 'FIPS-Tourette',
+            'category': 'parents'
+        },
+        {
+            'col': 'U',
+            'cohort': 'FIPS-Conduct dis.',
+            'category': 'subjects'
+        },
+        {
+            'col': 'V',
+            'cohort': 'FIPS-Conduct dis.',
+            'category': 'parents'
+        },
+        {
+            'col': 'W',
+            'cohort': 'FIPS-Anxiety',
+            'category': 'subjects'
+        },
+        {
+            'col': 'X',
+            'cohort': 'FIPS-Anxiety',
+            'category': 'parents'
+        },
+        {
+            'col': 'Y',
+            'cohort': 'FIPS-Depression',
+            'category': 'subjects'
+        },
+        {
+            'col': 'Z',
+            'cohort': 'FIPS-Depression',
+            'category': 'parents'
+        },
+        {
+            'col': 'AA',
+            'cohort': 'FIPS-Schizophrenia',
+            'category': 'subjects'
+        },
+        {
+            'col': 'AB',
+            'cohort': 'FIPS-Schizophrenia',
+            'category': 'parents'
+        },
+        {
+            'col': 'AC',
+            'cohort': 'FIPS-Bipolar',
+            'category': 'subjects'
+        },
+        {
+            'col': 'AD',
+            'cohort': 'FIPS-Bipolar',
+            'category': 'parents'
+        },
+        {
+            'col': 'AE',
+            'cohort': 'FIPS-Learning dis.',
+            'category': 'subjects'
+        },
+        {
+            'col': 'AF',
+            'cohort': 'FIPS-Learning dis.',
+            'category': 'parents'
+        },
+        {
+            'col': 'AG',
+            'cohort': 'FIPS-OCD',
+            'category': 'subjects'
+        },
+        {
+            'col': 'AH',
+            'cohort': 'FIPS-OCD',
+            'category': 'parents'
+        },
+        {
+            'col': 'AI',
+            'cohort': 'SSRI',
+            'category': 'subjects'
+        },
+        {
+            'col': 'AJ',
+            'cohort': 'SSRI',
+            'category': 'parents'
         }
     ]
 }
