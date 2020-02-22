@@ -1,0 +1,154 @@
+[
+  {
+    "registerId": 4,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/4028c5c4-a235-4524-b92d-8a72071d2516\",\"Syntymärekisteri\")",
+      "en": "Finnish Medical Birth Register"
+    },
+    "registrar_id": 4
+  },
+  {
+    "registerId": 10,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/7567e45d-72b7-428b-be9e-510440336edf\",\"Terveydenhuollon hoitoilmoitusrekisteri\")",
+      "en": "Finnish Hospital Discharge Register"
+    },
+    "registrar_id": 4
+  },
+  {
+    "registerId": 14,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/d6eaf26a-0def-4171-a029-33503572ab4f\",\"Tartuntatautirekisteri\")",
+      "en": "Infectious Disease Register"
+    },
+    "registrar_id": 4
+  },
+  {
+    "registerId": 16,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/dae286b6-f05b-4ccd-8677-490df8f12483\",\"Raskaudenkeskeyttämisrekisteri\")",
+      "en": "Register on Induced Abortions"
+    },
+    "registrar_id": 4
+  },
+  {
+    "registerId": 18,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/40d61867-321c-4638-b6c7-afaaef4a897d\",\"Toimeentulorekisteri\")",
+      "en": "Register on Social Assistance"
+    },
+    "registrar_id": 4
+  },
+  {
+    "registerId": 20,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/7567e45d-72b7-428b-be9e-510440336edf/datasets/abcc2578-1a24-41e0-bce9-2c214538b087\",\"Sosiaalihuollon hoitoilmoitusrekisteri\")",
+      "en": "Institutionalized care in social institutions"
+    },
+    "registrar_id": 4
+  },
+  {
+    "registerId": 22,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/c5c77504-6e32-4db0-91d0-f2d953f35fce\",\"Lastensuojelurekisteri\")",
+      "en": "Register on Child Welfare"
+    },
+    "registrar_id": 4
+  },
+  {
+    "registerId": 24,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://www.stat.fi/til/ksyyt/index.html\",\"Kuolemansyytilasto\")",
+      "en": "Cause of Death Register"
+    },
+    "registrar_id": 24
+  },
+  {
+    "registerId": 26,
+    "registerName": {
+      "fi": "=HYPERLINK(\"http://www.stat.fi/meta/rekisteriselosteet/rekisteriseloste_tutkintorekisteri.html\",\"Tutkintorekisteri\")",
+      "en": "Register of Educational Achievements"
+    },
+    "registrar_id": 24
+  },
+  {
+    "registerId": 28,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://vrk.fi/vaestotietojarjestelma\",\"Väestötietojärjestelmä\")",
+      "en": "Population Information System"
+    },
+    "registrar_id": 28
+  },
+  {
+    "registerId": 42,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://www.kela.fi/documents/10180/7276260/Tietosuojaseloste+-+Etuusrekisteri..pdf/\",\"Etuusrekisteri\")",
+      "en": "Benefits Register"
+    },
+    "registrar_id": 42
+  },
+  {
+    "registerId": 74,
+    "registerName": {
+      "fi": "<ei nimeä>",
+      "en": "<no name>"
+    },
+    "registrar_id": 74
+  },
+  {
+    "registerId": 76,
+    "registerName": {
+      "fi": "<ei nimeä>",
+      "en": "<no name>"
+    },
+    "registrar_id": 76
+  },
+  {
+    "registerId": 78,
+    "registerName": {
+      "fi": "Peruskoerekisteri",
+      "en": "Results of aptitude tests register"
+    },
+    "registrar_id": 78
+  },
+  {
+    "registerId": 80,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://puolustusvoimat.fi/asiointi/asevelvollisuusrekisteri\",\"Asevelvollisuusrekisteri\")",
+      "en": "Data on service register"
+    },
+    "registrar_id": 78
+  },
+  {
+    "registerId": 82,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://www.oikeusrekisterikeskus.fi/fi/index/asiakaspalvelu/rekisteritotteetjatodistukset/rikosrekisteri.html\",\"Rikosrekisteri\")",
+      "en": "Criminal Record"
+    },
+    "registrar_id": 82
+  },
+  {
+    "registerId": 84,
+    "registerName": {
+      "fi": "Rangaistusmääräysrekisteri",
+      "en": "Summary Penal Judgement Register"
+    },
+    "registrar_id": 82
+  },
+  {
+    "registerId": 86,
+    "registerName": {
+      "fi": "=HYPERLINK(\"https://aineistokatalogi.fi/catalog/studies/50b7d99a-3e5e-495c-874b-7622a0c897c3\",\"Eläkerekisteri\")",
+      "en": "Pension Register"
+    },
+    "registrar_id": 86
+  },
+  {
+    "registerId": 88,
+    "registerName": {
+      "fi": "Ansaintarekisteri",
+      "en": "Earning Register"
+    },
+    "registrar_id": 86
+  }
+]

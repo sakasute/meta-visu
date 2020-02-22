@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from SheetParser import SheetParser
-from openpyxl import load_workbook
 from parse_sheet import parse_sheet
+from openpyxl import load_workbook
 import json
 
 
@@ -14,6 +13,7 @@ DATA_PATH = '../public/data/' + DATASET + '/'
 config = {
     'categories': {"subjects": {"fi": "kohorttilaiset", "en": "subjects"}, "parents": {"fi": "vanhemmat", "en": "parents"}},
     'start_row': 4,
+    'end_row': 101,
     'registrar_col': 'A',
     'register_col': 'B',
     'dataset_col': 'C',
@@ -185,21 +185,20 @@ config = {
 
 workbook = load_workbook(FILENAME, read_only=True)
 sheet = workbook['registers']
-parse_sheet(sheet, config)
-# sheet_parser = SheetParser(sheet, config)
-# sheet_parser.parse_sheet()
-# data = sheet_parser.data
+(registrars, registers, datasets, samplings) = parse_sheet(sheet, config)
 
-filenames = []
+with open(DATA_PATH + 'registrars.json', 'w', encoding='utf-8') as f:
+    print('create file: ' + DATA_PATH + 'registrars.json')
+    json.dump(registrars, f, ensure_ascii=False, default=str, indent=2)
 
-# for dataset in data:
-#     filename = dataset['name']['en'] + '.json'
-#     with open(DATA_PATH + filename, 'w', encoding='utf-8') as f:
-#         print('Create/update file: ' + DATA_PATH + filename)
-#         json.dump(dataset, f, ensure_ascii=False, default=str, indent=2)
-#         filenames.append(filename)
+with open(DATA_PATH + 'registers.json', 'w', encoding='utf-8') as f:
+    print('create file: ' + DATA_PATH + 'registers.json')
+    json.dump(registers, f, ensure_ascii=False, default=str, indent=2)
 
-# with open(DATA_PATH + 'filenames.json', 'w', encoding='utf-8') as f:
-#     json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
+with open(DATA_PATH + 'datasets.json', 'w', encoding='utf-8') as f:
+    print('create file: ' + DATA_PATH + 'datasets.json')
+    json.dump(datasets, f, ensure_ascii=False, default=str, indent=2)
 
-# sheet_parser.bundle_json_files(DATA_PATH)
+with open(DATA_PATH + 'samplings.json', 'w', encoding='utf-8') as f:
+    print('create file: ' + DATA_PATH + 'samplings.json')
+    json.dump(samplings, f, ensure_ascii=False, default=str, indent=2)

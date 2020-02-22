@@ -1,0 +1,65 @@
+[
+  {
+    "registrarId": 4,
+    "registrarName": {
+      "fi": "THL",
+      "en": "National Institute for Health and Welfare"
+    }
+  },
+  {
+    "registrarId": 24,
+    "registrarName": {
+      "fi": "Tilastokeskus",
+      "en": "Statistics Finland"
+    }
+  },
+  {
+    "registrarId": 28,
+    "registrarName": {
+      "fi": "Väestörekisterikeskus",
+      "en": "Population Register Centre"
+    }
+  },
+  {
+    "registrarId": 42,
+    "registrarName": {
+      "fi": "Kela",
+      "en": "Social Insurance Institution of Finland"
+    }
+  },
+  {
+    "registrarId": 74,
+    "registrarName": {
+      "fi": "Suomen Asiakastieto Oy",
+      "en": "Suomen Asiakastieto Oy"
+    }
+  },
+  {
+    "registrarId": 76,
+    "registrarName": {
+      "fi": "Opetushallitus",
+      "en": "Finnish National Board of Education"
+    }
+  },
+  {
+    "registrarId": 78,
+    "registrarName": {
+      "fi": "Puolustusvoimat",
+      "en": "Finnish Defence Forces"
+    }
+  },
+  {
+    "registrarId": 82,
+    "registrarName": {
+      "fi": "Oikeusrekisterikeskus",
+      "en": "Finnish Legal Register Centre"
+    }
+  },
+  {
+    "registrarId": 86,
+    "registrarName": {
+      "fi": "Eläketurvakeskus ETK",
+      "en": "Finnish Centre for Pensions"
+    }
+  }
+]

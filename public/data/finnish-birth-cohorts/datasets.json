@@ -1,0 +1,722 @@
+[
+  {
+    "datasetId": 4,
+    "datasetName": {
+      "fi": "Oman syntymän raskaus- ja synnytystiedot",
+      "en": "Pregnancy and birth outcomes (own)"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 4
+  },
+  {
+    "datasetId": 6,
+    "datasetName": {
+      "fi": "Omien lasten raskaus- ja synnytystiedot",
+      "en": "Pregnancy and birth outcomes (childrens)"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 4
+  },
+  {
+    "datasetId": 8,
+    "datasetName": {
+      "fi": "Raskaus- ja synnytystiedot",
+      "en": "Pregnancy and birth outcomes"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 4
+  },
+  {
+    "datasetId": 10,
+    "datasetName": {
+      "fi": "Erikoissairaanhoidon osastokäynnit",
+      "en": "Specialized inpatient care"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 10
+  },
+  {
+    "datasetId": 12,
+    "datasetName": {
+      "fi": "Erikoissairaanhoidon poliklinikkakäynnit",
+      "en": "Specialized outpatient care"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 10
+  },
+  {
+    "datasetId": 14,
+    "datasetName": {
+      "fi": "Klamydia",
+      "en": "Chlamydia trachomatis"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 14
+  },
+  {
+    "datasetId": 16,
+    "datasetName": {
+      "fi": "Raskaudenkeskeytykset",
+      "en": "Induced abortions"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 16
+  },
+  {
+    "datasetId": 18,
+    "datasetName": {
+      "fi": "Toimeentulotuki",
+      "en": "Social assistance"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 18
+  },
+  {
+    "datasetId": 20,
+    "datasetName": {
+      "fi": "Palveluala ja diagnoosit",
+      "en": "Institutional care and diagnosis"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 20
+  },
+  {
+    "datasetId": 22,
+    "datasetName": {
+      "fi": "Lastensuojelutoimenpiteiden kohteena olleet kohorttiin kuuluvat",
+      "en": "Children placed in out-of-home -care"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 22
+  },
+  {
+    "datasetId": 24,
+    "datasetName": {
+      "fi": "Kuolinpäivä ja kuolemansyy",
+      "en": "Dates and causes of deaths"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 24
+  },
+  {
+    "datasetId": 26,
+    "datasetName": {
+      "fi": "Tutkintotiedot",
+      "en": "Degree data"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 26
+  },
+  {
+    "datasetId": 28,
+    "datasetName": {
+      "fi": "Asumishistoria ja paikkatieto",
+      "en": "Place of Residence and GI"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 28
+  },
+  {
+    "datasetId": 30,
+    "datasetName": {
+      "fi": "Avioliitot ja -erot, parisuhteet",
+      "en": "Marriages, divorces and relationships"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 28
+  },
+  {
+    "datasetId": 32,
+    "datasetName": {
+      "fi": "Kansalaisuushistoria",
+      "en": "Nationality history"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 28
+  },
+  {
+    "datasetId": 34,
+    "datasetName": {
+      "fi": "Kuolemat",
+      "en": "Deaths"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 28
+  },
+  {
+    "datasetId": 36,
+    "datasetName": {
+      "fi": "Ammatti",
+      "en": "Occupations"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 28
+  },
+  {
+    "datasetId": 38,
+    "datasetName": {
+      "fi": "Sukulaisuussuhteet (isään ja äitiin)",
+      "en": "Relationships to mother and father"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 28
+  },
+  {
+    "datasetId": 40,
+    "datasetName": {
+      "fi": "Muiden asukkaiden määrä ja syntymäpäivät (kohorttilaisen kanssa)",
+      "en": "Number of cohabitants and their birth dates"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 28
+  },
+  {
+    "datasetId": 42,
+    "datasetName": {
+      "fi": "Lääkärin määräämät psyykenlääkkeet",
+      "en": "Psychotropic medicines"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 44,
+    "datasetName": {
+      "fi": "Erityiskorvausoikeudet",
+      "en": "Special reimpbursement rights"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 46,
+    "datasetName": {
+      "fi": "Lastenhoitotuki",
+      "en": "Child home care allowance"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 48,
+    "datasetName": {
+      "fi": "Vammaistuet",
+      "en": "Disability benefits"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 50,
+    "datasetName": {
+      "fi": "Äitiys-, isyys- ja vanhempainpäiväraha",
+      "en": "Parental allowance"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 52,
+    "datasetName": {
+      "fi": "Kotihoidontuki",
+      "en": "Home care allowance"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 54,
+    "datasetName": {
+      "fi": "Työttömyyskorvaustiedot",
+      "en": "Unemployment benefits"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 56,
+    "datasetName": {
+      "fi": "Peruspäiväraha",
+      "en": "Basic unemployment allowance"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 58,
+    "datasetName": {
+      "fi": "Työmarkkinatuki",
+      "en": "Labour market subsidy"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 60,
+    "datasetName": {
+      "fi": "Kuntoutusraha",
+      "en": "Rehabilitation allowance"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 62,
+    "datasetName": {
+      "fi": "Kuntoutukset",
+      "en": "Rehabilitations"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 64,
+    "datasetName": {
+      "fi": "Työkyvyttömyyseläkkeet",
+      "en": "Disability pension"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 66,
+    "datasetName": {
+      "fi": "Opintotuki",
+      "en": "Study gnats"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 68,
+    "datasetName": {
+      "fi": "Siviilisääty, lääni, kunta",
+      "en": "Marital status, county, municipality"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 70,
+    "datasetName": {
+      "fi": "Vanhempien kaikki lapset",
+      "en": "Parents' all children"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 72,
+    "datasetName": {
+      "fi": "Yksityiset lääkärissäkäynnit",
+      "en": "Private doctor visits"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 42
+  },
+  {
+    "datasetId": 74,
+    "datasetName": {
+      "fi": "Ylivelkaantumistiedot",
+      "en": "Overindebtedness"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 74
+  },
+  {
+    "datasetId": 76,
+    "datasetName": {
+      "fi": "Yhteisvalintatiedot",
+      "en": "Joint application data and primary school achievements"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 76
+  },
+  {
+    "datasetId": 78,
+    "datasetName": {
+      "fi": "Peruskokeiden tulokset",
+      "en": "Results of aptitude tests"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 78
+  },
+  {
+    "datasetId": 80,
+    "datasetName": {
+      "fi": "Palveluskelpoisuusluokka",
+      "en": "Service class data"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 80
+  },
+  {
+    "datasetId": 82,
+    "datasetName": {
+      "fi": "Tuomiot (ehdoton, ehdollinen, yhdyskuntapalvelu)",
+      "en": "Criminality (offences and court decisions)"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 82
+  },
+  {
+    "datasetId": 84,
+    "datasetName": {
+      "fi": "Rangaistusmääräykset",
+      "en": "Summary penal judgements"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 84
+  },
+  {
+    "datasetId": 86,
+    "datasetName": {
+      "fi": "Eläketiedot",
+      "en": "Pension data"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 86
+  },
+  {
+    "datasetId": 88,
+    "datasetName": {
+      "fi": "Ansaintajaksot",
+      "en": "Earning periods"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 88
+  },
+  {
+    "datasetId": 90,
+    "datasetName": {
+      "fi": "Palkattomien aikojen etuudet",
+      "en": "Most common unsalaried benefit periods"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 88
+  },
+  {
+    "datasetId": 92,
+    "datasetName": {
+      "fi": "Vuosiansiot",
+      "en": "Annual earnings"
+    },
+    "notes": {
+      "fi": "",
+      "en": ""
+    },
+    "keywords": {
+      "fi": [],
+      "en": []
+    },
+    "registerId": 88
+  }
+]
