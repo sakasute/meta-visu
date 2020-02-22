@@ -13,7 +13,7 @@
   },
   "registers": [
     {
-      "isHarmonized": true,
+      "isHarmonized": false,
       "keywords": {
         "en": [
           "Harmonized"

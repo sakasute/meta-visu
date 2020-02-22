@@ -15,28 +15,27 @@ config = {
     'start_row': 4,
     'registrar_col': 'A',
     'register_col': 'B',
-    'harmonize_col': 'C',
-    'register_detail_col': 'D',
-    'keywords_col': 'E',
-    'notes_col': 'J',
+    'dataset_col': 'C',
+    'keywords_col': 'D',
+    'notes_col': 'I',
     'cohort_cols': [
         {
-            'col': 'F',
+            'col': 'E',
             'cohort': '1987',
             'category': 'subjects'
         },
         {
-            'col': 'G',
+            'col': 'F',
             'cohort': '1997',
             'category': 'subjects'
         },
         {
-            'col': 'H',
+            'col': 'G',
             'cohort': '1987',
             'category': 'parents',
         },
         {
-            'col': 'I',
+            'col': 'H',
             'cohort': '1997',
             'category': 'parents',
         }

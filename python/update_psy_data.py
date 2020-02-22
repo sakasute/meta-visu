@@ -3,6 +3,7 @@
 
 from SheetParser import SheetParser
 from openpyxl import load_workbook
+from parse_sheet import parse_sheet
 import json
 
 
@@ -15,168 +16,167 @@ config = {
     'start_row': 4,
     'registrar_col': 'A',
     'register_col': 'B',
-    'harmonize_col': 'C',
-    'register_detail_col': 'D',
-    'keywords_col': 'AL',	
-    'notes_col': 'AK',
+    'dataset_col': 'C',
+    'keywords_col': 'AK',	
+    'notes_col': 'AJ',
     'cohort_cols': [
         {
-            'col': 'E',
+            'col': 'D',
             'cohort': '1966',
+            'category': 'subjects'
+        },
+        {
+            'col': 'E',
+            'cohort': '1986',
             'category': 'subjects'
         },
         {
             'col': 'F',
-            'cohort': '1986',
-            'category': 'subjects'
-        },
-        {
-            'col': 'G',
             'cohort': '1966',
             'category': 'parents'
         },
         {
-            'col': 'H',
+            'col': 'G',
             'cohort': '1986',
             'category': 'parents'
         },
         {
-            'col': 'I',
+            'col': 'H',
             'cohort': '1987',
+            'category': 'subjects'
+        },
+        {
+            'col': 'I',
+            'cohort': '1997',
             'category': 'subjects'
         },
         {
             'col': 'J',
-            'cohort': '1997',
-            'category': 'subjects'
-        },
-        {
-            'col': 'K',
             'cohort': '1987',
             'category': 'parents'
         },
         {
-            'col': 'L',
+            'col': 'K',
             'cohort': '1997',
             'category': 'parents'
         },
         {
-            'col': 'M',
+            'col': 'L',
             'cohort': '2007',
             'category': 'subjects'
         },
         {
-            'col': 'N',
+            'col': 'M',
             'cohort': '2007',
             'category': 'parents'
+        },
+        {
+            'col': 'N',
+            'cohort': 'FIPS-ADHD',
+            'category': 'subjects'
         },
         {
             'col': 'O',
             'cohort': 'FIPS-ADHD',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'P',
-            'cohort': 'FIPS-ADHD',
-            'category': 'parents'
+            'cohort': 'FIPS-ASD',
+            'category': 'subjects'
         },
         {
             'col': 'Q',
             'cohort': 'FIPS-ASD',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'R',
-            'cohort': 'FIPS-ASD',
-            'category': 'parents'
+            'cohort': 'FIPS-Tourette',
+            'category': 'subjects'
         },
         {
             'col': 'S',
             'cohort': 'FIPS-Tourette',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'T',
-            'cohort': 'FIPS-Tourette',
-            'category': 'parents'
+            'cohort': 'FIPS-Conduct dis.',
+            'category': 'subjects'
         },
         {
             'col': 'U',
             'cohort': 'FIPS-Conduct dis.',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'V',
-            'cohort': 'FIPS-Conduct dis.',
-            'category': 'parents'
+            'cohort': 'FIPS-Anxiety',
+            'category': 'subjects'
         },
         {
             'col': 'W',
             'cohort': 'FIPS-Anxiety',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'X',
-            'cohort': 'FIPS-Anxiety',
-            'category': 'parents'
+            'cohort': 'FIPS-Depression',
+            'category': 'subjects'
         },
         {
             'col': 'Y',
             'cohort': 'FIPS-Depression',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'Z',
-            'cohort': 'FIPS-Depression',
-            'category': 'parents'
+            'cohort': 'FIPS-Schizophrenia',
+            'category': 'subjects'
         },
         {
             'col': 'AA',
             'cohort': 'FIPS-Schizophrenia',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'AB',
-            'cohort': 'FIPS-Schizophrenia',
-            'category': 'parents'
+            'cohort': 'FIPS-Bipolar',
+            'category': 'subjects'
         },
         {
             'col': 'AC',
             'cohort': 'FIPS-Bipolar',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'AD',
-            'cohort': 'FIPS-Bipolar',
-            'category': 'parents'
+            'cohort': 'FIPS-Learning dis.',
+            'category': 'subjects'
         },
         {
             'col': 'AE',
             'cohort': 'FIPS-Learning dis.',
-            'category': 'subjects'
+            'category': 'parents'
         },
         {
             'col': 'AF',
-            'cohort': 'FIPS-Learning dis.',
-            'category': 'parents'
+            'cohort': 'FIPS-OCD',
+            'category': 'subjects'
         },
         {
             'col': 'AG',
             'cohort': 'FIPS-OCD',
-            'category': 'subjects'
-        },
-        {
-            'col': 'AH',
-            'cohort': 'FIPS-OCD',
             'category': 'parents'
         },
         {
-            'col': 'AI',
+            'col': 'AH',
             'cohort': 'SSRI',
             'category': 'subjects'
         },
         {
-            'col': 'AJ',
+            'col': 'AI',
             'cohort': 'SSRI',
             'category': 'parents'
         }
@@ -185,20 +185,21 @@ config = {
 
 workbook = load_workbook(FILENAME, read_only=True)
 sheet = workbook['registers']
-sheet_parser = SheetParser(sheet, config)
-sheet_parser.parse_sheet()
-data = sheet_parser.data
+parse_sheet(sheet, config)
+# sheet_parser = SheetParser(sheet, config)
+# sheet_parser.parse_sheet()
+# data = sheet_parser.data
 
 filenames = []
 
-for dataset in data:
-    filename = dataset['name']['en'] + '.json'
-    with open(DATA_PATH + filename, 'w', encoding='utf-8') as f:
-        print('Create/update file: ' + DATA_PATH + filename)
-        json.dump(dataset, f, ensure_ascii=False, default=str, indent=2)
-        filenames.append(filename)
+# for dataset in data:
+#     filename = dataset['name']['en'] + '.json'
+#     with open(DATA_PATH + filename, 'w', encoding='utf-8') as f:
+#         print('Create/update file: ' + DATA_PATH + filename)
+#         json.dump(dataset, f, ensure_ascii=False, default=str, indent=2)
+#         filenames.append(filename)
 
-with open(DATA_PATH + 'filenames.json', 'w', encoding='utf-8') as f:
-    json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
+# with open(DATA_PATH + 'filenames.json', 'w', encoding='utf-8') as f:
+#     json.dump(filenames, f, ensure_ascii=False, default=str, indent=2)
 
-sheet_parser.bundle_json_files(DATA_PATH)
+# sheet_parser.bundle_json_files(DATA_PATH)

@@ -70,6 +70,11 @@ def update_with_new_elements(list_to_update, update_list):
 class SheetParser:
     def __init__(self, sheet, config):
         self.data = []
+
+        self.registars = []
+        self.registers = []
+        self.register_details = []
+
         self.row_fi = ()
         self.row_en = ()
         self.sheet = sheet

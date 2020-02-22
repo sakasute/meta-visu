@@ -1,7 +1,11 @@
 {
   "keywords": {
-    "en": [],
-    "fi": []
+    "en": [
+      "Harmonized"
+    ],
+    "fi": [
+      "Harmonisoitu"
+    ]
   },
   "name": {
     "en": "National Institute for Health and Welfare",
@@ -9,10 +13,14 @@
   },
   "registers": [
     {
-      "isHarmonized": true,
+      "isHarmonized": false,
       "keywords": {
-        "en": [],
-        "fi": []
+        "en": [
+          "Harmonized"
+        ],
+        "fi": [
+          "Harmonisoitu"
+        ]
       },
       "link": {
         "fi": "https://aineistokatalogi.fi/catalog/studies/7567e45d-72b7-428b-be9e-510440336edf",
@@ -25,8 +33,12 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [],
-            "en": []
+            "fi": [
+              "Harmonisoitu"
+            ],
+            "en": [
+              "Harmonized"
+            ]
           },
           "name": {
             "en": "Specialized care Inpatient treatments",
@@ -311,8 +323,12 @@
         },
         {
           "keywords": {
-            "fi": [],
-            "en": []
+            "fi": [
+              "Harmonisoitu"
+            ],
+            "en": [
+              "Harmonized"
+            ]
           },
           "name": {
             "en": "Specialized care outpatient treatments",
