@@ -18,10 +18,13 @@ import "./TimelineTreeSVG.css";
 class TimelineTreeSVG extends Component {
   constructor(props) {
     super(props);
+
+    this.hasManyCohortsSelected = Object.values(props.cohortFilter).filter(cohort => cohort.isSelected).length > 4
+
     this.showInfoBox = this.showInfoBox.bind(this);
     this.hideInfoBox = this.hideInfoBox.bind(this);
     this.treeConfigDefault = {
-      width: 450,
+      width: 350,
       height: 100,
       posX: 125,
       posY: 50,
@@ -31,8 +34,9 @@ class TimelineTreeSVG extends Component {
     this.timelineConfigDefault = {
       width: 250,
       height: 100,
-      showXAxis: false,
-      showLegend: false,
+      showXAxis: this.hasManyCohortsSelected ? true : false,
+      showLegend: this.hasManyCohortsSelected ? true : false,
+      xAxisOrientation: this.hasManyCohortsSelected ? "top" : "bottom",
       scaleEndDate: new Date()
     };
     this.state = {
@@ -94,6 +98,7 @@ class TimelineTreeSVG extends Component {
     // ***** Timelines *****
     const timelineConfigCohorts = {
       height: categoryTimelineHeight,
+      width: 350,
       cohorts: selectedCohorts.map(cohort => cohort.name)
     };
     const timelineConfigExtended = {

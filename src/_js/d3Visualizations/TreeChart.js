@@ -152,7 +152,7 @@ class TreeChart {
           ? d.data.name[this.config.lang] + " (*)"
           : d.data.name[this.config.lang]
       )
-      .call(this.constructor.wrapText, 225);
+      .call(this.constructor.wrapText, 175);
 
     // add actual links to nodes with URLs
     nodeGroup

@@ -40,7 +40,7 @@ class CategoryTimeline {
     this.x = d3
       .scaleTime()
       .domain([this.config.scaleStartDate, this.config.scaleEndDate])
-      .range([0, this.config.width - 25]);
+      .range([0, this.config.width - 100]);
 
     this.y = d3
       .scaleBand()
@@ -122,7 +122,7 @@ class CategoryTimeline {
 
   drawLegend() {
     const legend = this.svg.append("g").attr("class", "legend");
-    legend.attr("transform", `translate(${this.config.width - 15}, 0)`);
+    legend.attr("transform", `translate(${this.config.width - 90}, 0)`);
 
     this.config.cohorts.forEach((cohort, idx) => {
       const category = legend
