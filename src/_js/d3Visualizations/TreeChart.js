@@ -51,7 +51,6 @@ class TreeChart {
   }
 
   // NOTE: src: https://bl.ocks.org/mbostock/7555321
-  // FIXME: make it better?
   static wrapText(textSelections, width) {
     textSelections.each(function wrap() {
       const text = d3.select(this);
@@ -61,7 +60,6 @@ class TreeChart {
         .reverse();
       let word;
       let line = [];
-      let lineNumber = 0;
       const lineHeight = 1.25;
       const y = text.attr("y");
       const dy = parseFloat(text.attr("dy"));
@@ -84,9 +82,10 @@ class TreeChart {
             .append("tspan")
             .attr("x", 0)
             .attr("y", y)
-            .attr("dy", ++lineNumber * lineHeight + "em")
+            .attr("dy", lineHeight + "em")
             .attr("dx", dx)
             .text(word);
+          
         }
       }
       /* eslint enable */
@@ -153,7 +152,7 @@ class TreeChart {
           ? d.data.name[this.config.lang] + " (*)"
           : d.data.name[this.config.lang]
       )
-      .call(this.constructor.wrapText, 205);
+      .call(this.constructor.wrapText, 225);
 
     // add actual links to nodes with URLs
     nodeGroup
@@ -169,26 +168,22 @@ class TreeChart {
       .attr("target", "_blank")
       .attr("class", "tree__url-link");
 
-    // NOTE: handle root node separately to support text wrapping
-    this.addRootLabel(nodeGroup.filter(d => !d.parent));
+    // NOTE: handle root node separately
+    nodeGroup.filter(d => !d.parent)
+      .append("a")
+      .append("text")
+      .attr("class", "tree__node-label")
+      .attr("dy", 0)
+      .attr("dx", -35)
+      .attr("text-anchor", "middle")
+      .text(d =>
+        d.data.isHarmonized
+          ? d.data.name[this.config.lang] + " (*)"
+          : d.data.name[this.config.lang]
+      )
+      .call(this.constructor.wrapText, 50);
   }
 
-  addRootLabel(rootNode) {
-    const fo = rootNode
-      .append("foreignObject")
-      .attr("class", "tree__html-object");
-
-    const rootLabel = fo
-      .append("xhtml:p")
-      .attr("class", "tree__html-label")
-      .html(d => d.data.name[this.config.lang]);
-
-    const boundingRect = rootLabel.node().getBoundingClientRect();
-    fo.attr(
-      "transform",
-      `translate(${-1 * boundingRect.width}, ${boundingRect.height / -2})`
-    );
-  }
   /* eslint-enable class-methods-use-this */
 
   updateNodes() {
