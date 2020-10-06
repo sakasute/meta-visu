@@ -92,8 +92,8 @@
               }
             },
             {
-              "startDate": "1987-01-01",
-              "endDate": "2015-06-12",
+              "startDate": "1981-01-01",
+              "endDate": "2011-03-07",
               "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
@@ -241,24 +241,6 @@
               }
             },
             {
-              "startDate": "1987-01-01",
-              "endDate": "2015-06-12",
-              "cohort": "2007",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1959-01-01",
-              "endDate": "2009-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
               "startDate": "1951-02-24",
               "endDate": "2016-05-03",
               "cohort": "FIPS-ADHD",
@@ -320,8 +302,8 @@
               }
             },
             {
-              "startDate": "1987-01-01",
-              "endDate": "2009-06-10",
+              "startDate": "1981-01-01",
+              "endDate": "2011-03-07",
               "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
@@ -329,8 +311,8 @@
               }
             },
             {
-              "startDate": "1959-01-01",
-              "endDate": "2009-12-31",
+              "startDate": "1981-01-01",
+              "endDate": "2011-03-07",
               "cohort": "2007",
               "category": {
                 "fi": "vanhemmat",
@@ -375,15 +357,6 @@
               "startDate": "2016-11-03",
               "endDate": "2016-11-03",
               "cohort": "1997",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "2009-06-10",
-              "endDate": "2009-06-10",
-              "cohort": "2007",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"

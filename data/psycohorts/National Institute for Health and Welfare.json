@@ -1,7 +1,12 @@
 {
   "keywords": {
-    "en": [],
-    "fi": []
+    "en": [
+      "2008-2010"
+    ],
+    "fi": [
+      "2006-2017",
+      "2011-2017"
+    ]
   },
   "name": {
     "en": "National Institute for Health and Welfare",
@@ -12,7 +17,9 @@
       "isHarmonized": true,
       "keywords": {
         "en": [],
-        "fi": []
+        "fi": [
+          "2006-2017"
+        ]
       },
       "link": {
         "fi": "https://aineistokatalogi.fi/catalog/studies/7567e45d-72b7-428b-be9e-510440336edf",
@@ -25,7 +32,9 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [],
+            "fi": [
+              "2006-2017"
+            ],
             "en": []
           },
           "name": {
@@ -33,8 +42,8 @@
             "fi": "Erikoissairaanhoidon osastokäynnit"
           },
           "notes": {
-            "en": "1963-1993 Hospital Discharge Registry",
-            "fi": "1963-1993 Poistoilmoitusrekisteri"
+            "en": "",
+            "fi": "2008-2017"
           },
           "samplings": [
             {
@@ -110,21 +119,12 @@
               }
             },
             {
-              "startDate": "1987-01-01",
-              "endDate": "2016-12-31",
+              "startDate": "1981-01-01",
+              "endDate": "2009-12-31",
               "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1969-01-01",
-              "endDate": "2016-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
               }
             },
             {
@@ -183,7 +183,7 @@
             },
             {
               "startDate": "1991-01-01",
-              "endDate": "2015-12-31",
+              "endDate": false,
               "cohort": "FIPS-Conduct dis.",
               "category": {
                 "fi": "kohorttilaiset",
@@ -192,7 +192,7 @@
             },
             {
               "startDate": "1969-01-01",
-              "endDate": "2015-12-31",
+              "endDate": false,
               "cohort": "FIPS-Conduct dis.",
               "category": {
                 "fi": "vanhemmat",
@@ -219,7 +219,7 @@
             },
             {
               "startDate": "1987-01-01",
-              "endDate": "2015-12-31",
+              "endDate": false,
               "cohort": "FIPS-Depression",
               "category": {
                 "fi": "kohorttilaiset",
@@ -228,7 +228,7 @@
             },
             {
               "startDate": "1969-01-01",
-              "endDate": "2015-12-31",
+              "endDate": "2017-12-31",
               "cohort": "FIPS-Depression",
               "category": {
                 "fi": "vanhemmat",
@@ -246,7 +246,7 @@
             },
             {
               "startDate": "1969-01-01",
-              "endDate": "2015-12-31",
+              "endDate": "2009-12-31",
               "cohort": "FIPS-Schizophrenia",
               "category": {
                 "fi": "vanhemmat",
@@ -255,7 +255,7 @@
             },
             {
               "startDate": "1983-01-01",
-              "endDate": "2008-12-31",
+              "endDate": "2009-12-31",
               "cohort": "FIPS-Bipolar",
               "category": {
                 "fi": "kohorttilaiset",
@@ -264,7 +264,7 @@
             },
             {
               "startDate": "1969-01-01",
-              "endDate": "2015-12-31",
+              "endDate": "2009-12-31",
               "cohort": "FIPS-Bipolar",
               "category": {
                 "fi": "vanhemmat",
@@ -287,6 +287,15 @@
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
+              }
+            },
+            {
+              "startDate": "1987-01-01",
+              "endDate": "2016-12-31",
+              "cohort": "FIPS-OCD",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
               }
             },
             {
@@ -311,7 +320,9 @@
         },
         {
           "keywords": {
-            "fi": [],
+            "fi": [
+              "2006-2017"
+            ],
             "en": []
           },
           "name": {
@@ -320,7 +331,7 @@
           },
           "notes": {
             "en": "",
-            "fi": ""
+            "fi": "2008-2017"
           },
           "samplings": [
             {
@@ -396,21 +407,12 @@
               }
             },
             {
-              "startDate": "1998-01-01",
-              "endDate": "2016-12-31",
+              "startDate": "1994-01-01",
+              "endDate": "2009-12-31",
               "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1998-01-01",
-              "endDate": "2016-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
               }
             }
           ]
@@ -421,7 +423,9 @@
       "isHarmonized": false,
       "keywords": {
         "en": [],
-        "fi": []
+        "fi": [
+          "2011-2017"
+        ]
       },
       "link": {
         "fi": "https://aineistokatalogi.fi/catalog/studies/7567e45d-72b7-428b-be9e-510440336edf/datasets/25ff4fc4-6166-4e6c-b6b8-e9c4c1a2cc7d",
@@ -434,7 +438,9 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [],
+            "fi": [
+              "2011-2017"
+            ],
             "en": []
           },
           "name": {
@@ -443,7 +449,7 @@
           },
           "notes": {
             "en": "",
-            "fi": ""
+            "fi": "2011-2017"
           },
           "samplings": [
             {
@@ -610,7 +616,9 @@
     {
       "isHarmonized": false,
       "keywords": {
-        "en": [],
+        "en": [
+          "2008-2010"
+        ],
         "fi": []
       },
       "link": {
@@ -633,7 +641,7 @@
           },
           "notes": {
             "en": "",
-            "fi": ""
+            "fi": "2008-2010"
           },
           "samplings": [
             {
@@ -649,15 +657,6 @@
               "startDate": "1997-01-01",
               "endDate": "1997-01-01",
               "cohort": "1997",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "1987-01-01",
-              "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -758,7 +757,9 @@
         {
           "keywords": {
             "fi": [],
-            "en": []
+            "en": [
+              "2008-2010"
+            ]
           },
           "name": {
             "en": "Pregnancy and birth outcomes (childrens)",
@@ -818,24 +819,6 @@
               "startDate": "1987-01-01",
               "endDate": "2015-12-31",
               "cohort": "1997",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2012-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "1987-01-01",
-              "cohort": "2007",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
@@ -951,15 +934,6 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2013-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
             }
           ]
         }
@@ -1013,8 +987,8 @@
               }
             },
             {
-              "startDate": "1987-01-01",
-              "endDate": "2012-12-31",
+              "startDate": "1991-01-01",
+              "endDate": "2009-12-31",
               "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
@@ -1089,24 +1063,6 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2016-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2016-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
             }
           ]
         }
@@ -1176,24 +1132,6 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2011-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1994-01-01",
-              "endDate": "2005-12-31",
-              "cohort": "2007",
-              "category": {
-                "fi": "vanhemmat",
-                "en": "parents"
-              }
             }
           ]
         }
@@ -1241,15 +1179,6 @@
               "startDate": "1997-01-01",
               "endDate": "2016-12-31",
               "cohort": "1997",
-              "category": {
-                "fi": "kohorttilaiset",
-                "en": "subjects"
-              }
-            },
-            {
-              "startDate": "1987-01-01",
-              "endDate": "2008-12-31",
-              "cohort": "2007",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
