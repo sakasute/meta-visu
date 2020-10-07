@@ -174,7 +174,7 @@
             },
             {
               "startDate": "1991-01-01",
-              "endDate": false,
+              "endDate": "2011-12-31",
               "cohort": "FIPS-Conduct dis.",
               "category": {
                 "fi": "kohorttilaiset",
@@ -183,7 +183,7 @@
             },
             {
               "startDate": "1969-01-01",
-              "endDate": false,
+              "endDate": "2011-12-31",
               "cohort": "FIPS-Conduct dis.",
               "category": {
                 "fi": "vanhemmat",
@@ -210,7 +210,7 @@
             },
             {
               "startDate": "1987-01-01",
-              "endDate": false,
+              "endDate": "2012-12-31",
               "cohort": "FIPS-Depression",
               "category": {
                 "fi": "kohorttilaiset",

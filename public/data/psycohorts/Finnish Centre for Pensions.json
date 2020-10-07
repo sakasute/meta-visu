@@ -39,7 +39,7 @@
           "samplings": [
             {
               "startDate": "1967-01-01",
-              "endDate": false,
+              "endDate": "2016-12-31",
               "cohort": "1966",
               "category": {
                 "fi": "kohorttilaiset",
