@@ -1,12 +1,7 @@
 {
   "keywords": {
-    "en": [
-      "2008-2010"
-    ],
-    "fi": [
-      "2006-2017",
-      "2011-2017"
-    ]
+    "en": [],
+    "fi": []
   },
   "name": {
     "en": "National Institute for Health and Welfare",
@@ -17,9 +12,7 @@
       "isHarmonized": true,
       "keywords": {
         "en": [],
-        "fi": [
-          "2006-2017"
-        ]
+        "fi": []
       },
       "link": {
         "fi": "https://aineistokatalogi.fi/catalog/studies/7567e45d-72b7-428b-be9e-510440336edf",
@@ -32,9 +25,7 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [
-              "2006-2017"
-            ],
+            "fi": [],
             "en": []
           },
           "name": {
@@ -42,8 +33,8 @@
             "fi": "Erikoissairaanhoidon osastokäynnit"
           },
           "notes": {
-            "en": "",
-            "fi": "2008-2017"
+            "en": "1963-1993 Hospital Discharge Registry",
+            "fi": "1963-1993 Poistoilmoitusrekisteri"
           },
           "samplings": [
             {
@@ -121,7 +112,7 @@
             {
               "startDate": "1981-01-01",
               "endDate": "2009-12-31",
-              "cohort": "2007",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -315,14 +306,30 @@
                 "fi": "vanhemmat",
                 "en": "parents"
               }
+            },
+            {
+              "startDate": "2008-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "SFBC",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2006-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "SFBC",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
             }
           ]
         },
         {
           "keywords": {
-            "fi": [
-              "2006-2017"
-            ],
+            "fi": [],
             "en": []
           },
           "name": {
@@ -331,7 +338,7 @@
           },
           "notes": {
             "en": "",
-            "fi": "2008-2017"
+            "fi": "SFBC 2008-2010 VSSH alueella syntyneet lapset N = 14946"
           },
           "samplings": [
             {
@@ -409,10 +416,28 @@
             {
               "startDate": "1994-01-01",
               "endDate": "2009-12-31",
-              "cohort": "2007",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2008-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "SFBC",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2006-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "SFBC",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
               }
             }
           ]
@@ -423,9 +448,7 @@
       "isHarmonized": false,
       "keywords": {
         "en": [],
-        "fi": [
-          "2011-2017"
-        ]
+        "fi": []
       },
       "link": {
         "fi": "https://aineistokatalogi.fi/catalog/studies/7567e45d-72b7-428b-be9e-510440336edf/datasets/25ff4fc4-6166-4e6c-b6b8-e9c4c1a2cc7d",
@@ -438,9 +461,7 @@
       "registerDetails": [
         {
           "keywords": {
-            "fi": [
-              "2011-2017"
-            ],
+            "fi": [],
             "en": []
           },
           "name": {
@@ -449,7 +470,7 @@
           },
           "notes": {
             "en": "",
-            "fi": "2011-2017"
+            "fi": ""
           },
           "samplings": [
             {
@@ -483,6 +504,24 @@
               "startDate": "2011-01-01",
               "endDate": "2015-12-31",
               "cohort": "1986",
+              "category": {
+                "fi": "vanhemmat",
+                "en": "parents"
+              }
+            },
+            {
+              "startDate": "2011-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "SFBC",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
+            },
+            {
+              "startDate": "2011-01-01",
+              "endDate": "2017-12-31",
+              "cohort": "SFBC",
               "category": {
                 "fi": "vanhemmat",
                 "en": "parents"
@@ -616,9 +655,7 @@
     {
       "isHarmonized": false,
       "keywords": {
-        "en": [
-          "2008-2010"
-        ],
+        "en": [],
         "fi": []
       },
       "link": {
@@ -641,7 +678,7 @@
           },
           "notes": {
             "en": "",
-            "fi": "2008-2010"
+            "fi": ""
           },
           "samplings": [
             {
@@ -751,15 +788,22 @@
                 "fi": "kohorttilaiset",
                 "en": "subjects"
               }
+            },
+            {
+              "startDate": "2008-01-01",
+              "endDate": "2010-12-31",
+              "cohort": "SFBC",
+              "category": {
+                "fi": "kohorttilaiset",
+                "en": "subjects"
+              }
             }
           ]
         },
         {
           "keywords": {
             "fi": [],
-            "en": [
-              "2008-2010"
-            ]
+            "en": []
           },
           "name": {
             "en": "Pregnancy and birth outcomes (childrens)",
@@ -989,7 +1033,7 @@
             {
               "startDate": "1991-01-01",
               "endDate": "2009-12-31",
-              "cohort": "2007",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
