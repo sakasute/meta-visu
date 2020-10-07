@@ -205,7 +205,7 @@
             {
               "startDate": "1981-01-01",
               "endDate": "2005-12-31",
-              "cohort": "2007",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"
@@ -224,7 +224,7 @@
           },
           "notes": {
             "en": "",
-            "fi": ""
+            "fi": "Pelkät psyykenlääkkeet 87/97-kohorteista"
           },
           "samplings": [
             {
@@ -257,7 +257,7 @@
             {
               "startDate": "1994-01-01",
               "endDate": "2005-12-31",
-              "cohort": "2007",
+              "cohort": "FNBCS-81",
               "category": {
                 "fi": "kohorttilaiset",
                 "en": "subjects"

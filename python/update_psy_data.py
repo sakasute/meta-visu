@@ -17,8 +17,8 @@ config = {
     'register_col': 'B',
     'harmonize_col': 'C',
     'register_detail_col': 'D',
-    'keywords_col': 'AL',	
-    'notes_col': 'AK',
+    'keywords_col': 'AN',
+    'notes_col': 'AM',
     'cohort_cols': [
         {
             'col': 'E',
@@ -62,12 +62,12 @@ config = {
         },
         {
             'col': 'M',
-            'cohort': '2007',
+            'cohort': 'FNBCS-81',
             'category': 'subjects'
         },
         {
             'col': 'N',
-            'cohort': '2007',
+            'cohort': 'FNBCS-81',
             'category': 'parents'
         },
         {
@@ -178,6 +178,16 @@ config = {
         {
             'col': 'AJ',
             'cohort': 'SSRI',
+            'category': 'parents'
+        },
+        {
+            'col': 'AK',
+            'cohort': 'SFBC',
+            'category': 'subjects'
+        },
+        {
+            'col': 'AL',
+            'cohort': 'SFBC',
             'category': 'parents'
         }
     ]

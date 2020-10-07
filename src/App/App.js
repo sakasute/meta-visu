@@ -23,7 +23,7 @@ class App extends Component {
 
   static initializeCohortFilter(cohorts) {
     const cohortFilter = {};
-    cohorts.forEach(cohort => {
+    cohorts.forEach((cohort) => {
       cohortFilter[cohort] = { isSelected: true, name: cohort };
     });
     return cohortFilter;
@@ -35,13 +35,31 @@ class App extends Component {
       case "finnish-birth-cohorts":
         timelineConfig = {
           cohorts: ["1987", "1997"],
-          scaleStartDate: new Date("1987-01-01")
+          scaleStartDate: new Date("1987-01-01"),
         };
         break;
       case "psycohorts":
         timelineConfig = {
-          cohorts: ["1966", "1986", "1987", "1997", "2007", "FIPS-ADHD", "FIPS-ASD", "FIPS-Tourette", "FIPS-Conduct dis.", "FIPS-Anxiety", "FIPS-Depression", "FIPS-Schizophrenia", "FIPS-Bipolar", "FIPS-Learning dis.", "FIPS-OCD", "SSRI"],
-          scaleStartDate: new Date("1966-01-01")
+          cohorts: [
+            "1966",
+            "1986",
+            "1987",
+            "1997",
+            "FNBCS-81",
+            "FIPS-ADHD",
+            "FIPS-ASD",
+            "FIPS-Tourette",
+            "FIPS-Conduct dis.",
+            "FIPS-Anxiety",
+            "FIPS-Depression",
+            "FIPS-Schizophrenia",
+            "FIPS-Bipolar",
+            "FIPS-Learning dis.",
+            "FIPS-OCD",
+            "SSRI",
+            "SFBC",
+          ],
+          scaleStartDate: new Date("1966-01-01"),
         };
         break;
 
@@ -56,9 +74,9 @@ class App extends Component {
   */
   static initializeKeywordFilter(keywords) {
     const keywordFilter = {};
-    Object.keys(keywords).forEach(lang => {
+    Object.keys(keywords).forEach((lang) => {
       keywordFilter[lang] = {};
-      keywords[lang].forEach(keyword => {
+      keywords[lang].forEach((keyword) => {
         keywordFilter[lang][keyword] = { isSelected: false };
       });
     });
@@ -72,7 +90,7 @@ class App extends Component {
     registerDetailsIsSelected = true
   ) {
     const registers = {};
-    registrarData.registers.forEach(register => {
+    registrarData.registers.forEach((register) => {
       registers[register.name.en] = {
         name: { ...register.name },
         isSelected,
@@ -80,7 +98,7 @@ class App extends Component {
         registerDetails: this.initializeRegisterDetails(
           register,
           registerDetailsIsSelected
-        )
+        ),
       };
     });
     return registers;
@@ -88,11 +106,11 @@ class App extends Component {
 
   static initializeRegisterDetails(registerData, isSelected = true) {
     const registerDetails = {};
-    registerData.registerDetails.forEach(registerDetail => {
+    registerData.registerDetails.forEach((registerDetail) => {
       registerDetails[registerDetail.name.en] = {
         name: { ...registerDetail.name },
         isSelected,
-        keywords: { ...registerDetail.keywords }
+        keywords: { ...registerDetail.keywords },
       };
     });
     return registerDetails;
@@ -126,8 +144,8 @@ class App extends Component {
       infoMsg: {
         en:
           "Please select which register adminstrators you want to view from the panel on the left.",
-        fi: "Valitse haluttu rekisteriylläpitäjä paneelista vasemmalla."
-      }
+        fi: "Valitse haluttu rekisteriylläpitäjä paneelista vasemmalla.",
+      },
     };
   }
 
@@ -140,8 +158,8 @@ class App extends Component {
       timelineConfig.cohorts
     );
     fetch(`data/${dataset}/data_bundle.json`)
-      .then(res => res.json())
-      .then(dataBundle => {
+      .then((res) => res.json())
+      .then((dataBundle) => {
         this.data = dataBundle.data;
         this.filenames = Object.keys(this.data);
         this.keywords = dataBundle.keywords;
@@ -155,7 +173,7 @@ class App extends Component {
           keywordFilter,
           treeFilter,
           lang,
-          timelineConfig
+          timelineConfig,
         });
       });
   }
@@ -169,7 +187,7 @@ class App extends Component {
 
   initializeTreeFilter(filenames, isSelected = true) {
     const treeFilter = {};
-    filenames.forEach(filename => {
+    filenames.forEach((filename) => {
       treeFilter[filename] = {
         name: { ...this.data[filename].name },
         isSelected: false,
@@ -177,7 +195,7 @@ class App extends Component {
         registers: this.constructor.initializeRegisters(
           this.data[filename],
           isSelected
-        )
+        ),
       };
     });
     return treeFilter;
@@ -188,25 +206,25 @@ class App extends Component {
     const { treeFilter } = this.state;
     const updatedTreeFilter = {};
     const filenames = Object.keys(treeFilter);
-    filenames.forEach(filename => {
+    filenames.forEach((filename) => {
       const registrar = treeFilter[filename];
       const updatedRegistrar = {
         ...registrar,
-        registers: {}
+        registers: {},
       };
       const registerNames = Object.keys(registrar.registers);
-      registerNames.forEach(registerName => {
+      registerNames.forEach((registerName) => {
         const register = registrar.registers[registerName];
         const updatedRegister = {
           ...register,
-          registerDetails: {}
+          registerDetails: {},
         };
         const registerDetailNames = Object.keys(register.registerDetails);
-        registerDetailNames.forEach(registerDetailName => {
+        registerDetailNames.forEach((registerDetailName) => {
           const registerDetail = register.registerDetails[registerDetailName];
           const updatedRegisterDetail = {
             ...registerDetail,
-            isSelected: true
+            isSelected: true,
           };
           updatedRegister.registerDetails[
             registerDetailName
@@ -225,11 +243,11 @@ class App extends Component {
     const resetKeywordFilter = this.constructor.initializeKeywordFilter(
       this.keywords
     );
-    this.setState(prevState =>
+    this.setState((prevState) =>
       update(prevState, {
-        treeFilter: { [filename]: { isSelected: { $apply: val => !val } } },
+        treeFilter: { [filename]: { isSelected: { $apply: (val) => !val } } },
         keywordFilter: { $set: resetKeywordFilter },
-        filterMode: { $set: "manual" }
+        filterMode: { $set: "manual" },
       })
     );
   }
@@ -244,27 +262,27 @@ class App extends Component {
       this.resetRegisterDetailFilters(filename);
     }
 
-    this.setState(prevState =>
+    this.setState((prevState) =>
       update(prevState, {
         treeFilter: {
           [filename]: {
             registers: {
               [registerName]: {
-                isSelected: { $apply: val => !val }
-              }
-            }
-          }
+                isSelected: { $apply: (val) => !val },
+              },
+            },
+          },
         },
         keywordFilter: { $set: resetKeywordFilter },
-        filterMode: { $set: "manual" }
+        filterMode: { $set: "manual" },
       })
     );
   }
 
   toggleCohortFilter(cohort) {
-    this.setState(prevState =>
+    this.setState((prevState) =>
       update(prevState, {
-        cohortFilter: { [cohort]: { isSelected: { $apply: val => !val } } }
+        cohortFilter: { [cohort]: { isSelected: { $apply: (val) => !val } } },
       })
     );
   }
@@ -274,12 +292,12 @@ class App extends Component {
     const keywordIsSelected = keywordFilter[lang][keyword].isSelected;
     const toggleKeywordIsSelected = !keywordIsSelected;
     // set all keywords as unselected
-    Object.keys(keywordFilter[lang]).forEach(keywordKey => {
+    Object.keys(keywordFilter[lang]).forEach((keywordKey) => {
       keywordFilter[lang][keywordKey].isSelected = false;
     });
     // set the clicked keyword with updated value
     const updatedKeywordFilter = update(keywordFilter, {
-      [lang]: { [keyword]: { isSelected: { $set: toggleKeywordIsSelected } } }
+      [lang]: { [keyword]: { isSelected: { $set: toggleKeywordIsSelected } } },
     });
     const updatedTreeFilter = this.updateTreeFilterWithKeyword(
       keyword,
@@ -288,7 +306,7 @@ class App extends Component {
     this.setState({
       keywordFilter: updatedKeywordFilter,
       treeFilter: updatedTreeFilter,
-      filterMode: "keywords"
+      filterMode: "keywords",
     });
   }
 
@@ -299,19 +317,19 @@ class App extends Component {
       return this.initializeTreeFilter(this.filenames);
     }
     const updatedTreeFilter = this.initializeTreeFilter(this.filenames, false);
-    Object.keys(updatedTreeFilter).forEach(filename => {
+    Object.keys(updatedTreeFilter).forEach((filename) => {
       const registrar = updatedTreeFilter[filename];
       const registrarKeywordFound = registrar.keywords[lang].includes(keyword);
       registrar.isSelected = registrarKeywordFound;
       if (registrarKeywordFound) {
-        Object.keys(registrar.registers).forEach(registerName => {
+        Object.keys(registrar.registers).forEach((registerName) => {
           const register = registrar.registers[registerName];
           const registerKeywordFound = register.keywords[lang].includes(
             keyword
           );
           register.isSelected = registerKeywordFound;
           if (registerKeywordFound) {
-            Object.keys(register.registerDetails).forEach(detailName => {
+            Object.keys(register.registerDetails).forEach((detailName) => {
               const registerDetail = register.registerDetails[detailName];
               const registerDetailKeywordFound = registerDetail.keywords[
                 lang
@@ -333,12 +351,12 @@ class App extends Component {
       lang,
       infoMsg,
       treeConfig,
-      timelineConfig
+      timelineConfig,
     } = this.state;
 
     const timelineTreeCards = this.filenames
-      .map(filename => ({ filename, name: treeFilter[filename].name }))
-      .map(nameObj => {
+      .map((filename) => ({ filename, name: treeFilter[filename].name }))
+      .map((nameObj) => {
         const { filename } = nameObj;
         const fileFilter = treeFilter[filename];
         return (

@@ -23,7 +23,6 @@ body {
 }
 
 :root {
-  /* The category colors are from here: https://terho.thl.fi/wiki01/display/viestinta/Kuviot+ja+visualisoinnit?preview=/154993756/154993752/THL%20tiedon%20visualisoinnin%20ohjeistus_200618_bookmarks.pdf */
   --category-1-color: #4e79a7;
 
   --category-2-color: #f18f3b;
@@ -55,6 +54,8 @@ body {
   --category-15-color: #59a14e;
 
   --category-16-color: #edc942;
+
+  --category-17-color: #e0585b;
 
   --dark-gray: hsl(0, 0%, 38%);
   --medium-gray: hsl(255, 3%, 77%);

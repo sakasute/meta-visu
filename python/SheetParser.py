@@ -54,7 +54,8 @@ def parse_possible_link(value):
 
 def parse_hyperlink(hyperlink):
     # hyperlink format: =HYPERLINK("https://www.etk.fi/wp-content/uploads/aineistolupahakemus_2tietosis%C3%A4ll%C3%B6n_kuvaus_2015_09_24.pdf","Eläkerekisteri")
-    value = hyperlink[hyperlink.find('(')+1:hyperlink.find(')')]  # gets the value from inside the brackets
+    # gets the value from inside the brackets
+    value = hyperlink[hyperlink.find('(')+1:hyperlink.find(')')]
     splitted_value = ''.join(value.replace('"', '')).split(',')
     return {'name': splitted_value[1], 'link': splitted_value[0]}
 
@@ -113,8 +114,10 @@ class SheetParser:
         register_keywords_en = self.data[registrar_idx]['registers'][register_idx]['keywords']['en']
         register_keywords_fi = self.data[registrar_idx]['registers'][register_idx]['keywords']['fi']
 
-        self.data[registrar_idx]['keywords']['en'] = update_with_new_elements(registrar_keywords_en, keywords['en'])
-        self.data[registrar_idx]['keywords']['fi'] = update_with_new_elements(registrar_keywords_fi, keywords['fi'])
+        self.data[registrar_idx]['keywords']['en'] = update_with_new_elements(
+            registrar_keywords_en, keywords['en'])
+        self.data[registrar_idx]['keywords']['fi'] = update_with_new_elements(
+            registrar_keywords_fi, keywords['fi'])
 
         self.data[registrar_idx]['registers'][register_idx]['keywords']['en'] = update_with_new_elements(
             register_keywords_en, keywords['en'])

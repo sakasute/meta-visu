@@ -111,6 +111,10 @@
   fill: var(--category-16-color);
 }
 
+.fill-color-17 {
+  fill: var(--category-17-color);
+}
+
 .legend__label {
   font-size: 1rem;
   font-weight: bold;
